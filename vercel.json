@@ -1,14 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "EasyPortrait/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "cd EasyPortrait && npm install && npm run build",
+  "outputDirectory": ".",
   "routes": [
     {
       "src": "/portrait/(.*)",
@@ -27,12 +19,8 @@
       "dest": "/srt-editor/index.html"
     },
     {
-      "src": "/(logo\\.png|ads\\.txt|robots\\.txt|sitemap\\.xml|google.*\\.html|privacy\\.html)",
+      "src": "/(.*)",
       "dest": "/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
     }
   ]
 }
