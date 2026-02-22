@@ -26,6 +26,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   // Replace with your actual Client ID from PayPal
   const PAYPAL_CLIENT_ID = 'AVOQ7jzJkMtSk0ttbX7Uhk9QZI5y4K_U66cdB2jwn_5eCs0O9LpQF-N5TxqB8lwQw-6hXLGPw_rzTAQn'; // ← Paste your Client ID here
 
+  // Debug: Log Client ID for verification (remove after testing)
+  console.log('🔑 PayPal Client ID:', PAYPAL_CLIENT_ID);
+  console.log('✅ Payment Modal Opened - Amount:', `€${amount.toFixed(2)}`);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 overflow-hidden">
