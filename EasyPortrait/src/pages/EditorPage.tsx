@@ -332,6 +332,12 @@ export const EditorPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Home Button */}
+      <a href="/" className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 text-gray-700 hover:text-indigo-600 font-medium">
+        <span className="text-xl">🏠</span>
+        <span className="hidden sm:inline">Home</span>
+      </a>
+      
       {/* Header */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
