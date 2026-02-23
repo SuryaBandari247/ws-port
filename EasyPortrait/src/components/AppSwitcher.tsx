@@ -30,7 +30,7 @@ function AppSwitcher() {
   }, [open]);
 
   return (
-    <div ref={ref} className="fixed top-4 right-4 z-50">
+    <div ref={ref} className="fixed top-4 left-4 z-50">
       <button
         onClick={() => setOpen(!open)}
         aria-label="Open app switcher"
@@ -43,7 +43,7 @@ function AppSwitcher() {
       {open && (
         <>
           {/* Desktop dropdown */}
-          <div className="hidden md:block absolute top-12 right-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
+          <div className="hidden md:block absolute top-12 left-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
             <div className="px-4 py-3 border-b border-gray-100">
               <p className="text-sm font-semibold text-gray-900">WithSwag Tools</p>
             </div>
