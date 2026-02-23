@@ -182,49 +182,21 @@ export const LandingPage: React.FC = () => {
       <Breadcrumbs toolName="Portrait Photo" />
 
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Create Professional Passport Photos
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Resize, crop, and create passport-sized photos meeting international standards. All processing happens on your device.
-            </p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid md:grid-cols-3 gap-8 items-center">
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/editor/single"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white rounded-lg font-semibold transition"
-              >
-                <Camera className="h-5 w-5" />
-                Single Photo
-              </Link>
-              <Link
-                to="/editor/collage"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary hover:bg-purple-600 text-white rounded-lg font-semibold transition"
-              >
-                <Grid3x3 className="h-5 w-5" />
-                Create Collage
-              </Link>
-            </div>
-          </div>
-
-          {/* Hero — Dual showcase: Background Removal + Collage */}
-          <div className="hidden md:flex flex-col gap-5">
+          {/* Left Column: Cards 1 & 2 */}
+          <div className="hidden md:flex flex-col gap-5 order-1">
             {/* Card 1: AI Background Removal */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-15 blur-lg" />
               <div className="relative bg-white rounded-xl shadow-lg px-6 py-5">
                 <div className="flex items-center gap-4">
-                  {/* Before → After visual */}
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    {/* Before */}
                     <div className="w-[52px] h-[68px] rounded-md overflow-hidden shadow-sm border border-gray-200">
                       <img src={samplePhoto1} alt="Original" className="w-full h-full object-cover" />
                     </div>
                     <ArrowRight className="h-3 w-3 text-primary flex-shrink-0" />
-                    {/* After */}
                     <div
                       className="w-[52px] h-[68px] rounded-md shadow-sm border border-primary/30 overflow-hidden relative transition-colors duration-700 ease-in-out"
                       style={{ backgroundColor: BG_DEMO_COLORS[activeBgIndex].color }}
@@ -241,8 +213,6 @@ export const LandingPage: React.FC = () => {
                       />
                     </div>
                   </div>
-
-                  {/* Color picker + label */}
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap gap-1.5">
                       {BG_DEMO_COLORS.map((c, i) => (
@@ -278,7 +248,6 @@ export const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary rounded-xl opacity-15 blur-lg" />
               <div className="relative bg-white rounded-xl shadow-lg px-6 py-5">
                 <div className="flex items-center gap-4">
-                  {/* Crop visual */}
                   <div className="relative w-28 h-28 bg-gray-100 rounded-lg overflow-hidden shadow-inner flex-shrink-0">
                     <img src={samplePhoto2} alt="Full photo" className="absolute inset-0 w-full h-full object-cover opacity-30" />
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -293,15 +262,12 @@ export const LandingPage: React.FC = () => {
                         {['-top-0.5 -left-0.5', '-top-0.5 -right-0.5', '-bottom-0.5 -left-0.5', '-bottom-0.5 -right-0.5'].map((pos, i) => (
                           <div key={i} className={`absolute ${pos} w-2 h-2 bg-primary rounded-sm`} />
                         ))}
-                        {/* Country flag overlay */}
                         <div className="absolute bottom-0 inset-x-0 bg-black/50 text-white text-center py-0.5 text-[10px] font-bold">
                           {CROP_SIZES[activeCropIndex].flag} {CROP_SIZES[activeCropIndex].dims}
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* Country buttons */}
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap gap-1.5">
                       {CROP_SIZES.map((size, i) => (
@@ -327,13 +293,41 @@ export const LandingPage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
 
+          {/* Center Column: Text Block */}
+          <div className="order-first md:order-2 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Create Professional Passport Photos
+            </h1>
+            <p className="text-xl text-gray-600 mb-8">
+              Resize, crop, and create passport-sized photos meeting international standards. All processing happens on your device.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/editor/single"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-blue-600 text-white rounded-lg font-semibold transition"
+              >
+                <Camera className="h-5 w-5" />
+                Single Photo
+              </Link>
+              <Link
+                to="/editor/collage"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-secondary hover:bg-purple-600 text-white rounded-lg font-semibold transition"
+              >
+                <Grid3x3 className="h-5 w-5" />
+                Create Collage
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column: Cards 3 & 4 */}
+          <div className="hidden md:flex flex-col gap-5 order-3">
             {/* Card 3: Sheet Sizes */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-primary rounded-xl opacity-15 blur-lg" />
               <div className="relative bg-white rounded-xl shadow-lg px-6 py-5">
                 <div className="flex items-center gap-4">
-                  {/* Sheet visual */}
                   <div className="relative w-28 h-28 bg-gray-50 rounded-lg overflow-hidden shadow-inner flex-shrink-0 flex items-center justify-center">
                     {(() => {
                       const sheet = SHEET_SIZES[activeSheetIndex];
@@ -346,7 +340,6 @@ export const LandingPage: React.FC = () => {
                           className="relative bg-white border-2 border-gray-300 rounded-sm shadow-sm transition-all duration-700 ease-in-out"
                           style={{ width: `${sheetW}px`, height: `${sheetH}px` }}
                         >
-                          {/* Grid of photo slots */}
                           <div
                             className="absolute inset-1 grid gap-[2px] transition-all duration-700"
                             style={{
@@ -360,7 +353,6 @@ export const LandingPage: React.FC = () => {
                               </div>
                             ))}
                           </div>
-                          {/* Sheet label */}
                           <div className="absolute -bottom-0.5 inset-x-0 bg-black/50 text-white text-center py-0.5 text-[9px] font-bold rounded-b-sm">
                             {sheet.label}
                           </div>
@@ -368,8 +360,6 @@ export const LandingPage: React.FC = () => {
                       );
                     })()}
                   </div>
-
-                  {/* Sheet buttons */}
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap gap-1.5">
                       {SHEET_SIZES.map((size, i) => (
@@ -402,7 +392,6 @@ export const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl opacity-15 blur-lg" />
               <div className="relative bg-white rounded-xl shadow-lg px-6 py-5">
                 <div className="flex items-center gap-4">
-                  {/* Adjusted image — filter intensity driven by slider position */}
                   <div className="relative w-28 h-28 rounded-lg overflow-hidden shadow-inner flex-shrink-0">
                     <img
                       src={samplePhoto4}
@@ -417,7 +406,6 @@ export const LandingPage: React.FC = () => {
                       }}
                     />
                   </div>
-                  {/* Adjustment name pills */}
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap gap-1.5">
                       {ADJUST_DEMO_ITEMS.map((item, i) => (
@@ -441,8 +429,8 @@ export const LandingPage: React.FC = () => {
                 </div>
               </div>
             </div>
-
           </div>
+
         </div>
       </section>
 
