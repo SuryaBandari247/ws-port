@@ -188,60 +188,16 @@ After deployment, test:
 
 ## UI/UX Guidelines
 
-### Home Button (Required)
+### Navigation (Required)
 
-Every tool MUST include a home button that links back to the landing page (`/`).
+Every tool MUST implement the standard WithSwag navigation components. See `.kiro/steering/NAVIGATION.md` for full details.
 
-#### For Static Tools (HTML/CSS):
+Required components:
+1. **Home Button** (top-left) — Lucide `Home` icon, links to `/`
+2. **App Switcher** (top-right) — Lucide `LayoutGrid` icon, dropdown with all tools
+3. **Breadcrumbs** — `WithSwag > Tool Name > Current Step`
 
-Add this HTML in the header:
-```html
-<a href="/" class="home-btn" title="Back to WithSwag Home">🏠</a>
-```
-
-Add this CSS:
-```css
-/* Home Button */
-.home-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 24px;
-    text-decoration: none;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    transition: all 0.2s;
-    z-index: 100;
-}
-
-.home-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-    .home-btn {
-        top: 10px;
-        left: 10px;
-        font-size: 20px;
-        padding: 6px 10px;
-    }
-}
-```
-
-#### For React Apps:
-
-Add this component at the top of your main page/layout:
-```tsx
-<a 
-  href="/" 
-  className="fixed top-4 left-4 z-50 flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 text-gray-700 hover:text-indigo-600 font-medium"
->
-  <span className="text-xl">🏠</span>
-  <span className="hidden sm:inline">Home</span>
-</a>
-```
+When adding a new tool, also update the `WITHSWAG_APPS` constant in the shared registry.
 
 ### Color Palette & Design System
 
