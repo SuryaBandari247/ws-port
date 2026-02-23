@@ -8,6 +8,7 @@ import samplePhoto1 from '../resources/Gemini_Generated_Image_29o95h29o95h29o9_1
 import samplePhoto2 from '../resources/Gemini_Generated_Image_2ff4mq2ff4mq2ff4.jpeg';
 import samplePhoto3 from '../resources/Gemini_Generated_Image_7aflzh7aflzh7afl.jpeg';
 import samplePhoto4 from '../resources/Gemini_Generated_Image_n0jv12n0jv12n0jv.jpeg';
+import collagePhoto from '../resources/abced.jpeg';
 
 const BG_DEMO_COLORS = [
   { color: '#FFFFFF', label: 'White' },
@@ -407,16 +408,20 @@ export const LandingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl opacity-15 blur-lg" />
               <div className="relative bg-white rounded-xl shadow-lg px-6 py-5">
                 <div className="flex items-center gap-4">
-                  {/* Before/After slider visual */}
+                  {/* Adjusted image — filter intensity driven by slider position */}
                   <div className="relative w-28 h-28 rounded-lg overflow-hidden shadow-inner flex-shrink-0">
-                    {/* Original image (full) */}
-                    <img src={samplePhoto4} alt="Before adjustments" className="absolute inset-0 w-full h-full object-cover" />
-                    {/* Adjusted image (clipped) */}
-                    <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - adjustSliderPos}% 0 0)` }}>
-                      <img src={samplePhoto4} alt="After adjustments" className="w-full h-full object-cover" style={{ filter: activeAdjustIndex === 0 ? 'brightness(1.3)' : activeAdjustIndex === 1 ? 'contrast(1.4)' : 'saturate(1.5)' }} />
-                    </div>
-                    {/* Slider line */}
-                    <div className="absolute top-0 bottom-0 w-0.5 bg-white shadow-md transition-all duration-100" style={{ left: `${adjustSliderPos}%` }} />
+                    <img
+                      src={samplePhoto4}
+                      alt="Photo adjustment demo"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{
+                        filter: activeAdjustIndex === 0
+                          ? `brightness(${1 + 0.3 * (adjustSliderPos / 100)})`
+                          : activeAdjustIndex === 1
+                          ? `contrast(${1 + 0.4 * (adjustSliderPos / 100)})`
+                          : `saturate(${1 + 0.5 * (adjustSliderPos / 100)})`,
+                      }}
+                    />
                   </div>
                   {/* Adjustment name pills */}
                   <div className="flex-1 min-w-0">
@@ -506,7 +511,7 @@ export const LandingPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary rounded-2xl opacity-20 blur-2xl" />
                   <div className="relative bg-white rounded-2xl p-6 shadow-2xl">
                     <div className="grid grid-cols-2 gap-3">
-                      {[samplePhoto1, samplePhoto2, samplePhoto3, samplePhoto4].map((photo, i) => (
+                      {[collagePhoto, samplePhoto2, samplePhoto3, samplePhoto4].map((photo, i) => (
                         <div key={i} className="w-32 h-40 rounded-lg overflow-hidden border-2 border-gray-200 shadow-md hover:scale-105 transition-transform">
                           <img src={photo} alt={`Passport photo ${i + 1}`} className="w-full h-full object-cover" />
                         </div>
