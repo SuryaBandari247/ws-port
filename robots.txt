@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /portrait/
+Allow: /srt-editor/
+Allow: /privacy.html
+Disallow: /portrait/assets/
+Disallow: /.git/
 
 Sitemap: https://withswag.org/sitemap.xml

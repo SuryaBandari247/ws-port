@@ -205,11 +205,12 @@
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Subtitle Editor - WithSwag",
-      "description": "Free online subtitle editor for creating, editing, and converting subtitle files in all formats: SRT, VTT, ASS, SBV",
+      "name": "Free Subtitle Editor Online - SRT, VTT, ASS, SBV",
+      "description": "Free online subtitle editor for creating, editing, and converting subtitle files in all formats: SRT, VTT, ASS, SBV. No installation required.",
       "url": "https://withswag.org/srt-editor/",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "Any",
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -219,11 +220,89 @@
         "Create subtitle files in SRT, VTT, ASS, SBV formats",
         "Edit existing subtitle files",
         "Convert between subtitle formats",
-        "Manual subtitle entry with auto-increment",
+        "Manual subtitle entry with auto-increment timestamps",
         "Time adjustment and sync tools",
+        "Video speed adjustment for subtitle re-timing",
         "Import and parse subtitle files",
         "Download subtitle files instantly",
-        "Free online tool - no installation"
+        "Free online tool - no installation required"
+      ],
+      "author": {
+        "@type": "Organization",
+        "name": "WithSwag",
+        "url": "https://withswag.org"
+      }
+    }
+    </script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an SRT file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SRT (SubRip Text) is the most widely used subtitle format. It contains numbered subtitle entries with timestamps and text. SRT files work with virtually all video players including VLC, Windows Media Player, and online platforms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I create subtitles for a YouTube video?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use WithSwag's subtitle editor to create subtitles manually or import existing ones. You can export in SBV format (YouTube's native format) or SRT format, then upload directly to YouTube Studio under your video's subtitle settings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I convert SRT to VTT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Upload or paste your SRT file, then use the Format Conversion tool to convert to VTT (WebVTT), ASS, or SBV format. The conversion is instant and free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I fix subtitle timing that is out of sync?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the Time Shift tool to move all subtitles forward or backward by a set number of seconds. For example, entering +2.5 shifts all subtitles 2.5 seconds later. You can also use the Speed Adjustment tool if the video plays at a different speed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this subtitle editor free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the basic subtitle editor is free with no signup required. Free users can create up to 10 subtitles per project with 3 format conversions per day. Pro users get unlimited access to all features."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- BreadcrumbList Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "WithSwag",
+          "item": "https://withswag.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Subtitle Editor",
+          "item": "https://withswag.org/srt-editor/"
+        }
       ]
     }
     </script>
