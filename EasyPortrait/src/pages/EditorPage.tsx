@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Area } from 'react-easy-crop';
 import { PassportSize, AdjustmentValues } from '../types';
@@ -45,6 +45,8 @@ export const EditorPage: React.FC = () => {
   const [adjustmentValues, setAdjustmentValues] = useState<AdjustmentValues>({...DEFAULT_ADJUSTMENT_VALUES});
   const [canvasSupported, setCanvasSupported] = useState(true);
   const [customColor, setCustomColor] = useState('#FF6B00');
+  const customColorRef = useRef<HTMLInputElement>(null);
+  const customColorSidebarRef = useRef<HTMLInputElement>(null);
 
   const BG_COLORS = [
     { id: 'none', label: 'Original', color: 'transparent', preview: 'bg-gray-200 bg-[url("data:image/svg+xml,%3Csvg width=\'10\' height=\'10\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'5\' height=\'5\' fill=\'%23ccc\'/%3E%3Crect x=\'5\' y=\'5\' width=\'5\' height=\'5\' fill=\'%23ccc\'/%3E%3C/svg%3E")]' },
@@ -238,7 +240,7 @@ export const EditorPage: React.FC = () => {
     }
   };
 
-  const handleBgColorChange = async (colorId: string) => {
+  const handleBgColorChange = async (colorId: string, colorOverride?: string) => {
     setBgColor(colorId);
     if (colorId === 'none' || !cropArea || !imageSrc) {
       setProcessedImageUrl('');
@@ -248,7 +250,7 @@ export const EditorPage: React.FC = () => {
       return;
     }
 
-    const selectedColor = BG_COLORS.find(b => b.id === colorId)?.color;
+    const selectedColor = colorOverride || BG_COLORS.find(b => b.id === colorId)?.color;
     if (!selectedColor) return;
 
     try {
@@ -562,7 +564,13 @@ export const EditorPage: React.FC = () => {
                       {BG_COLORS.map((bg) => (
                         <button
                           key={bg.id}
-                          onClick={() => bg.id === 'custom' ? setBgColor('custom') : handleBgColorChange(bg.id)}
+                          onClick={() => {
+                            if (bg.id === 'custom') {
+                              customColorSidebarRef.current?.click();
+                            } else {
+                              handleBgColorChange(bg.id);
+                            }
+                          }}
                           disabled={isRemovingBg}
                           className={`flex flex-col items-center gap-1.5 p-2 rounded-lg transition ${
                             bgColor === bg.id
@@ -579,28 +587,17 @@ export const EditorPage: React.FC = () => {
                         </button>
                       ))}
                     </div>
-                    {bgColor === 'custom' && (
-                      <div className="mt-3 flex items-center gap-3">
-                        <input
-                          type="color"
-                          value={customColor}
-                          onChange={(e) => {
-                            setCustomColor(e.target.value);
-                          }}
-                          onBlur={() => handleBgColorChange('custom')}
-                          className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer p-0.5"
-                        />
-                        <div className="flex-1">
-                          <span className="text-xs text-gray-600 dark:text-slate-400">Pick any color</span>
-                          <button
-                            onClick={() => handleBgColorChange('custom')}
-                            className="block text-xs text-primary font-semibold mt-0.5 hover:underline"
-                          >
-                            Apply {customColor}
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    <input
+                      ref={customColorSidebarRef}
+                      type="color"
+                      value={customColor}
+                      onChange={(e) => {
+                        const newColor = e.target.value;
+                        setCustomColor(newColor);
+                        handleBgColorChange('custom', newColor);
+                      }}
+                      className="sr-only"
+                    />
                   </div>
                   <button
                     onClick={handleBack}
@@ -790,7 +787,13 @@ export const EditorPage: React.FC = () => {
                       {BG_COLORS.map((bg) => (
                         <button
                           key={bg.id}
-                          onClick={() => bg.id === 'custom' ? setBgColor('custom') : handleBgColorChange(bg.id)}
+                          onClick={() => {
+                            if (bg.id === 'custom') {
+                              customColorRef.current?.click();
+                            } else {
+                              handleBgColorChange(bg.id);
+                            }
+                          }}
                           disabled={isRemovingBg}
                           className={`flex flex-col items-center gap-1.5 p-2 rounded-lg transition ${
                             bgColor === bg.id
@@ -807,28 +810,17 @@ export const EditorPage: React.FC = () => {
                         </button>
                       ))}
                     </div>
-                    {bgColor === 'custom' && (
-                      <div className="mt-4 flex items-center justify-center gap-3">
-                        <input
-                          type="color"
-                          value={customColor}
-                          onChange={(e) => {
-                            setCustomColor(e.target.value);
-                          }}
-                          onBlur={() => handleBgColorChange('custom')}
-                          className="w-12 h-12 rounded-lg border border-gray-300 dark:border-slate-600 cursor-pointer p-0.5"
-                        />
-                        <div>
-                          <span className="text-sm text-gray-600 dark:text-slate-400">Pick any color</span>
-                          <button
-                            onClick={() => handleBgColorChange('custom')}
-                            className="block text-sm text-primary font-semibold mt-0.5 hover:underline"
-                          >
-                            Apply {customColor}
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                    <input
+                      ref={customColorRef}
+                      type="color"
+                      value={customColor}
+                      onChange={(e) => {
+                        const newColor = e.target.value;
+                        setCustomColor(newColor);
+                        handleBgColorChange('custom', newColor);
+                      }}
+                      className="sr-only"
+                    />
                     {bgColor !== 'none' && (
                       <p className="text-xs text-green-600 text-center mt-3">✓ Background changed to {BG_COLORS.find(b => b.id === bgColor)?.label}</p>
                     )}
