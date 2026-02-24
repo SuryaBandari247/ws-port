@@ -44,6 +44,7 @@ export const EditorPage: React.FC = () => {
   const [pendingDownload, setPendingDownload] = useState<{ canvas: HTMLCanvasElement; format: 'png' | 'jpg' } | null>(null);
   const [adjustmentValues, setAdjustmentValues] = useState<AdjustmentValues>({...DEFAULT_ADJUSTMENT_VALUES});
   const [canvasSupported, setCanvasSupported] = useState(true);
+  const [customColor, setCustomColor] = useState('#FF6B00');
 
   const BG_COLORS = [
     { id: 'none', label: 'Original', color: 'transparent', preview: 'bg-gray-200 bg-[url("data:image/svg+xml,%3Csvg width=\'10\' height=\'10\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'5\' height=\'5\' fill=\'%23ccc\'/%3E%3Crect x=\'5\' y=\'5\' width=\'5\' height=\'5\' fill=\'%23ccc\'/%3E%3C/svg%3E")]' },
@@ -52,6 +53,7 @@ export const EditorPage: React.FC = () => {
     { id: 'light-blue', label: 'Light Blue', color: '#D4E6F1', preview: 'bg-[#D4E6F1]' },
     { id: 'blue', label: 'Blue', color: '#2980B9', preview: 'bg-[#2980B9]' },
     { id: 'red', label: 'Red', color: '#C0392B', preview: 'bg-[#C0392B]' },
+    { id: 'custom', label: 'Custom', color: customColor, preview: '' },
   ];
 
   // Collage-specific state
@@ -560,7 +562,7 @@ export const EditorPage: React.FC = () => {
                       {BG_COLORS.map((bg) => (
                         <button
                           key={bg.id}
-                          onClick={() => handleBgColorChange(bg.id)}
+                          onClick={() => bg.id === 'custom' ? setBgColor('custom') : handleBgColorChange(bg.id)}
                           disabled={isRemovingBg}
                           className={`flex flex-col items-center gap-1.5 p-2 rounded-lg transition ${
                             bgColor === bg.id
@@ -568,11 +570,37 @@ export const EditorPage: React.FC = () => {
                               : 'hover:bg-gray-50 dark:hover:bg-slate-700'
                           } ${isRemovingBg ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                          <div className={`w-8 h-8 rounded-full ${bg.preview} flex-shrink-0`} />
+                          {bg.id === 'custom' ? (
+                            <div className="w-8 h-8 rounded-full flex-shrink-0 border border-gray-300 bg-gradient-to-br from-red-400 via-green-400 to-blue-400" style={bgColor === 'custom' ? { background: customColor } : undefined} />
+                          ) : (
+                            <div className={`w-8 h-8 rounded-full ${bg.preview} flex-shrink-0`} />
+                          )}
                           <span className="text-[10px] text-gray-600 dark:text-slate-400 leading-tight text-center">{bg.label}</span>
                         </button>
                       ))}
                     </div>
+                    {bgColor === 'custom' && (
+                      <div className="mt-3 flex items-center gap-3">
+                        <input
+                          type="color"
+                          value={customColor}
+                          onChange={(e) => {
+                            setCustomColor(e.target.value);
+                          }}
+                          onBlur={() => handleBgColorChange('custom')}
+                          className="w-10 h-10 rounded-lg border border-gray-300 cursor-pointer p-0.5"
+                        />
+                        <div className="flex-1">
+                          <span className="text-xs text-gray-600 dark:text-slate-400">Pick any color</span>
+                          <button
+                            onClick={() => handleBgColorChange('custom')}
+                            className="block text-xs text-primary font-semibold mt-0.5 hover:underline"
+                          >
+                            Apply {customColor}
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <button
                     onClick={handleBack}
@@ -758,11 +786,11 @@ export const EditorPage: React.FC = () => {
 
                   <div className="max-w-md mx-auto">
                     <h3 className="text-sm font-semibold text-gray-700 dark:text-slate-300 mb-3 text-center">Choose Background Color</h3>
-                    <div className="grid grid-cols-6 gap-3 justify-center">
+                    <div className="grid grid-cols-7 gap-3 justify-center">
                       {BG_COLORS.map((bg) => (
                         <button
                           key={bg.id}
-                          onClick={() => handleBgColorChange(bg.id)}
+                          onClick={() => bg.id === 'custom' ? setBgColor('custom') : handleBgColorChange(bg.id)}
                           disabled={isRemovingBg}
                           className={`flex flex-col items-center gap-1.5 p-2 rounded-lg transition ${
                             bgColor === bg.id
@@ -770,11 +798,37 @@ export const EditorPage: React.FC = () => {
                               : 'hover:bg-gray-50 hover:scale-105 dark:hover:bg-slate-700'
                           } ${isRemovingBg ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                          <div className={`w-10 h-10 rounded-full ${bg.preview} flex-shrink-0 shadow-sm`} />
+                          {bg.id === 'custom' ? (
+                            <div className="w-10 h-10 rounded-full flex-shrink-0 shadow-sm border border-gray-300 bg-gradient-to-br from-red-400 via-green-400 to-blue-400" style={bgColor === 'custom' ? { background: customColor } : undefined} />
+                          ) : (
+                            <div className={`w-10 h-10 rounded-full ${bg.preview} flex-shrink-0 shadow-sm`} />
+                          )}
                           <span className="text-[10px] text-gray-600 dark:text-slate-400 leading-tight text-center font-medium">{bg.label}</span>
                         </button>
                       ))}
                     </div>
+                    {bgColor === 'custom' && (
+                      <div className="mt-4 flex items-center justify-center gap-3">
+                        <input
+                          type="color"
+                          value={customColor}
+                          onChange={(e) => {
+                            setCustomColor(e.target.value);
+                          }}
+                          onBlur={() => handleBgColorChange('custom')}
+                          className="w-12 h-12 rounded-lg border border-gray-300 dark:border-slate-600 cursor-pointer p-0.5"
+                        />
+                        <div>
+                          <span className="text-sm text-gray-600 dark:text-slate-400">Pick any color</span>
+                          <button
+                            onClick={() => handleBgColorChange('custom')}
+                            className="block text-sm text-primary font-semibold mt-0.5 hover:underline"
+                          >
+                            Apply {customColor}
+                          </button>
+                        </div>
+                      </div>
+                    )}
                     {bgColor !== 'none' && (
                       <p className="text-xs text-green-600 text-center mt-3">✓ Background changed to {BG_COLORS.find(b => b.id === bgColor)?.label}</p>
                     )}
