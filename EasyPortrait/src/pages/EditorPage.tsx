@@ -500,6 +500,37 @@ export const EditorPage: React.FC = () => {
       : { upload: 0, crop: 1, background: 2, adjust: -1, layout: -1, preview: 3 });
   const currentStepIndex = stepMap[step];
 
+  // Reverse map: label index → EditorStep value
+  const indexToStep: EditorStep[] = isCollage
+    ? (canvasSupported
+      ? ['upload', 'crop', 'background', 'adjust', 'layout', 'preview']
+      : ['upload', 'crop', 'background', 'layout', 'preview'])
+    : (canvasSupported
+      ? ['upload', 'crop', 'background', 'adjust', 'preview']
+      : ['upload', 'crop', 'background', 'preview']);
+
+  // Track the highest step the user has reached so far
+  const [maxReachedStep, setMaxReachedStep] = useState(0);
+  useEffect(() => {
+    if (currentStepIndex > maxReachedStep) {
+      setMaxReachedStep(currentStepIndex);
+    }
+  }, [currentStepIndex]);
+
+  const handleStepClick = (labelIndex: number) => {
+    // Only allow navigating to completed steps (not future ones)
+    if (labelIndex >= currentStepIndex) return;
+    const targetStep = indexToStep[labelIndex];
+    if (!targetStep) return;
+
+    // Special case: going back to upload resets everything
+    if (targetStep === 'upload') {
+      handleNewPhoto();
+      return;
+    }
+    setStep(targetStep);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <AppSwitcher />
@@ -584,14 +615,28 @@ export const EditorPage: React.FC = () => {
             </h1>
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-slate-400">
-            {stepLabels.map((label, i) => (
-              <React.Fragment key={label}>
-                {i > 0 && <span className="text-gray-400 dark:text-slate-600">→</span>}
-                <span className={`px-3 py-1 rounded-full ${currentStepIndex === i ? 'bg-primary text-white' : 'bg-gray-200 dark:bg-slate-700 dark:text-slate-300'}`}>
-                  {label}
-                </span>
-              </React.Fragment>
-            ))}
+            {stepLabels.map((label, i) => {
+              const isCompleted = i < currentStepIndex;
+              const isCurrent = i === currentStepIndex;
+              return (
+                <React.Fragment key={label}>
+                  {i > 0 && <span className="text-gray-400 dark:text-slate-600">→</span>}
+                  <button
+                    onClick={() => handleStepClick(i)}
+                    disabled={!isCompleted}
+                    className={`px-3 py-1 rounded-full transition-all ${
+                      isCurrent
+                        ? 'bg-primary text-white'
+                        : isCompleted
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-900/60 cursor-pointer'
+                          : 'bg-gray-200 dark:bg-slate-700 dark:text-slate-300 opacity-60 cursor-not-allowed'
+                    }`}
+                  >
+                    {isCompleted && '✓ '}{label}
+                  </button>
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </div>
