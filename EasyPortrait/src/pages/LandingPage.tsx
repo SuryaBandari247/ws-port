@@ -165,9 +165,15 @@ export const LandingPage: React.FC = () => {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 dark:bg-slate-900/80 dark:border-slate-700">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Camera className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold text-gray-900 dark:text-slate-100">EasyPortrait</span>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Camera className="h-8 w-8 text-primary" />
+              <span className="text-xl font-bold text-gray-900 dark:text-slate-100">EasyPortrait</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-1 text-lg" title="Supports 50+ countries">
+              <span>🇺🇸</span><span>🇪🇺</span><span>🇬🇧</span><span>🇮🇳</span><span>🇨🇦</span><span>🇦🇺</span><span>🇨🇳</span><span>🇯🇵</span>
+            </div>
+            <span className="hidden sm:inline text-xs text-gray-500 dark:text-slate-400 font-medium">50+ countries supported</span>
           </div>
           <div className="flex items-center gap-4">
             <a href="#features" className="text-sm text-gray-600 hover:text-gray-900 dark:text-slate-400 dark:hover:text-slate-100">
@@ -190,21 +196,21 @@ export const LandingPage: React.FC = () => {
           <div className="hidden md:flex flex-col gap-5 order-1">
             {/* Card 1: AI Background Removal */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-xl opacity-15 blur-lg" />
-              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-xl shadow-lg px-6 py-5">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2 flex-shrink-0">
-                    <div className="w-[52px] h-[68px] rounded-md overflow-hidden shadow-sm border border-gray-200 dark:border-slate-700">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl opacity-15 blur-lg" />
+              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-2xl shadow-lg px-7 py-6">
+                <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <div className="w-[72px] h-[92px] rounded-lg overflow-hidden shadow-sm border border-gray-200 dark:border-slate-700">
                       <img src={samplePhoto1} alt="Original" className="w-full h-full object-cover" />
                     </div>
-                    <ArrowRight className="h-3 w-3 text-primary flex-shrink-0" />
+                    <ArrowRight className="h-4 w-4 text-primary flex-shrink-0" />
                     <div
-                      className="w-[52px] h-[68px] rounded-md shadow-sm border border-primary/30 overflow-hidden relative transition-colors duration-700 ease-in-out"
+                      className="w-[72px] h-[92px] rounded-lg shadow-sm border border-primary/30 overflow-hidden relative transition-colors duration-700 ease-in-out"
                       style={{ backgroundColor: BG_DEMO_COLORS[activeBgIndex].color }}
                     >
                       {bgRemovalLoading && (
                         <div className="absolute inset-0 flex items-center justify-center bg-white/90 z-20">
-                          <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                          <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                         </div>
                       )}
                       <img
@@ -215,19 +221,19 @@ export const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {BG_DEMO_COLORS.map((c, i) => (
                         <button
                           key={i}
                           onClick={() => setActiveBgIndex(i)}
-                          className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-all ${
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                             i === activeBgIndex
                               ? 'bg-primary text-white shadow-sm'
                               : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600'
                           }`}
                         >
                           <div
-                            className={`w-3 h-3 rounded-full flex-shrink-0 ${c.color === '#FFFFFF' ? 'border border-gray-300' : ''}`}
+                            className={`w-3.5 h-3.5 rounded-full flex-shrink-0 ${c.color === '#FFFFFF' ? 'border border-gray-300' : ''}`}
                             style={{ backgroundColor: c.color }}
                           />
                           <span>{c.label}</span>
@@ -236,46 +242,46 @@ export const LandingPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 mt-3">
-                  <Wand2 className="h-3 w-3 text-primary" />
-                  <span className="text-[10px] font-semibold text-primary">AI Background Removal</span>
-                  <span className="px-1.5 py-0.5 bg-primary text-white text-[8px] font-bold rounded-full">NEW</span>
+                <div className="flex items-center justify-center gap-2 mt-4">
+                  <Wand2 className="h-4 w-4 text-primary" />
+                  <span className="text-xs font-semibold text-primary">AI Background Removal</span>
+                  <span className="px-2 py-0.5 bg-primary text-white text-[9px] font-bold rounded-full">NEW</span>
                 </div>
               </div>
             </div>
 
             {/* Card 2: Smart Crop */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary rounded-xl opacity-15 blur-lg" />
-              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-xl shadow-lg px-6 py-5">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-28 h-28 bg-gray-100 dark:bg-slate-700 rounded-lg overflow-hidden shadow-inner flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary rounded-2xl opacity-15 blur-lg" />
+              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-2xl shadow-lg px-7 py-6">
+                <div className="flex items-center gap-5">
+                  <div className="relative w-36 h-36 bg-gray-100 dark:bg-slate-700 rounded-xl overflow-hidden shadow-inner flex-shrink-0">
                     <img src={samplePhoto2} alt="Full photo" className="absolute inset-0 w-full h-full object-cover opacity-30" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div
                         className="relative rounded overflow-hidden shadow-md border-2 border-primary transition-all duration-700 ease-in-out"
                         style={{
-                          width: `${Math.min(100, 100 * (CROP_SIZES[activeCropIndex].w / Math.max(CROP_SIZES[activeCropIndex].w, CROP_SIZES[activeCropIndex].h)))}px`,
-                          height: `${Math.min(100, 100 * (CROP_SIZES[activeCropIndex].h / Math.max(CROP_SIZES[activeCropIndex].w, CROP_SIZES[activeCropIndex].h)))}px`,
+                          width: `${Math.min(120, 120 * (CROP_SIZES[activeCropIndex].w / Math.max(CROP_SIZES[activeCropIndex].w, CROP_SIZES[activeCropIndex].h)))}px`,
+                          height: `${Math.min(120, 120 * (CROP_SIZES[activeCropIndex].h / Math.max(CROP_SIZES[activeCropIndex].w, CROP_SIZES[activeCropIndex].h)))}px`,
                         }}
                       >
                         <img src={samplePhoto2} alt="Cropped" className="w-full h-full object-cover" />
                         {['-top-0.5 -left-0.5', '-top-0.5 -right-0.5', '-bottom-0.5 -left-0.5', '-bottom-0.5 -right-0.5'].map((pos, i) => (
-                          <div key={i} className={`absolute ${pos} w-2 h-2 bg-primary rounded-sm`} />
+                          <div key={i} className={`absolute ${pos} w-2.5 h-2.5 bg-primary rounded-sm`} />
                         ))}
-                        <div className="absolute bottom-0 inset-x-0 bg-black/50 text-white text-center py-0.5 text-[10px] font-bold">
+                        <div className="absolute bottom-0 inset-x-0 bg-black/50 text-white text-center py-0.5 text-xs font-bold">
                           {CROP_SIZES[activeCropIndex].flag} {CROP_SIZES[activeCropIndex].dims}
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {CROP_SIZES.map((size, i) => (
                         <button
                           key={i}
                           onClick={() => setActiveCropIndex(i)}
-                          className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-all ${
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                             i === activeCropIndex
                               ? 'bg-primary text-white shadow-sm'
                               : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600'
@@ -288,9 +294,9 @@ export const LandingPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 mt-3">
-                  <Crop className="h-3 w-3 text-secondary" />
-                  <span className="text-[10px] font-semibold text-secondary">Smart Crop — Any Country, Any Size</span>
+                <div className="flex items-center justify-center gap-2 mt-4">
+                  <Crop className="h-4 w-4 text-secondary" />
+                  <span className="text-xs font-semibold text-secondary">Smart Crop — Any Country, Any Size</span>
                 </div>
               </div>
             </div>
@@ -326,14 +332,14 @@ export const LandingPage: React.FC = () => {
           <div className="hidden md:flex flex-col gap-5 order-3">
             {/* Card 3: Sheet Sizes */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-primary rounded-xl opacity-15 blur-lg" />
-              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-xl shadow-lg px-6 py-5">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-28 h-28 bg-gray-50 dark:bg-slate-700 rounded-lg overflow-hidden shadow-inner flex-shrink-0 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-primary rounded-2xl opacity-15 blur-lg" />
+              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-2xl shadow-lg px-7 py-6">
+                <div className="flex items-center gap-5">
+                  <div className="relative w-36 h-36 bg-gray-50 dark:bg-slate-700 rounded-xl overflow-hidden shadow-inner flex-shrink-0 flex items-center justify-center">
                     {(() => {
                       const sheet = SHEET_SIZES[activeSheetIndex];
                       const aspect = sheet.w / sheet.h;
-                      const maxH = 100;
+                      const maxH = 120;
                       const sheetH = maxH;
                       const sheetW = maxH * aspect;
                       return (
@@ -354,7 +360,7 @@ export const LandingPage: React.FC = () => {
                               </div>
                             ))}
                           </div>
-                          <div className="absolute -bottom-0.5 inset-x-0 bg-black/50 text-white text-center py-0.5 text-[9px] font-bold rounded-b-sm">
+                          <div className="absolute -bottom-0.5 inset-x-0 bg-black/50 text-white text-center py-0.5 text-[10px] font-bold rounded-b-sm">
                             {sheet.label}
                           </div>
                         </div>
@@ -362,38 +368,38 @@ export const LandingPage: React.FC = () => {
                     })()}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {SHEET_SIZES.map((size, i) => (
                         <button
                           key={i}
                           onClick={() => setActiveSheetIndex(i)}
-                          className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-all ${
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                             i === activeSheetIndex
                               ? 'bg-green-600 text-white shadow-sm'
                               : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600'
                           }`}
                         >
-                          <span className="text-[10px]">📄</span>
+                          <span className="text-xs">📄</span>
                           <span>{size.label}</span>
                         </button>
                       ))}
                     </div>
-                    <p className="text-[10px] text-gray-400 dark:text-slate-400 mt-2">{SHEET_SIZES[activeSheetIndex].cols * SHEET_SIZES[activeSheetIndex].rows} photos per sheet</p>
+                    <p className="text-xs text-gray-400 dark:text-slate-400 mt-2">{SHEET_SIZES[activeSheetIndex].cols * SHEET_SIZES[activeSheetIndex].rows} photos per sheet</p>
                   </div>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 mt-3">
-                  <FileText className="h-3 w-3 text-green-600" />
-                  <span className="text-[10px] font-semibold text-green-600">Custom Sheet Size — Print Ready</span>
+                <div className="flex items-center justify-center gap-2 mt-4">
+                  <FileText className="h-4 w-4 text-green-600" />
+                  <span className="text-xs font-semibold text-green-600">Custom Sheet Size — Print Ready</span>
                 </div>
               </div>
             </div>
 
             {/* Card 4: Photo Adjustments */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl opacity-15 blur-lg" />
-              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-xl shadow-lg px-6 py-5">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-28 h-28 rounded-lg overflow-hidden shadow-inner flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl opacity-15 blur-lg" />
+              <div className="relative bg-white dark:bg-slate-800 dark:border dark:border-slate-700 rounded-2xl shadow-lg px-7 py-6">
+                <div className="flex items-center gap-5">
+                  <div className="relative w-36 h-36 rounded-xl overflow-hidden shadow-inner flex-shrink-0">
                     <img
                       src={samplePhoto4}
                       alt="Photo adjustment demo"
@@ -408,25 +414,25 @@ export const LandingPage: React.FC = () => {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {ADJUST_DEMO_ITEMS.map((item, i) => (
                         <button
                           key={i}
-                          className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-all ${
+                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                             i === activeAdjustIndex ? 'bg-amber-500 text-white shadow-sm' : 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-600'
                           }`}
                         >
-                          <item.icon className="h-3 w-3" />
+                          <item.icon className="h-3.5 w-3.5" />
                           <span>{item.label}</span>
                         </button>
                       ))}
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-center gap-1.5 mt-3">
-                  <Sun className="h-3 w-3 text-amber-500" />
-                  <span className="text-[10px] font-semibold text-amber-500">Photo Adjustments — Fine-Tune Your Look</span>
-                  <span className="px-1.5 py-0.5 bg-amber-500 text-white text-[8px] font-bold rounded-full">NEW</span>
+                <div className="flex items-center justify-center gap-2 mt-4">
+                  <Sun className="h-4 w-4 text-amber-500" />
+                  <span className="text-xs font-semibold text-amber-500">Photo Adjustments — Fine-Tune Your Look</span>
+                  <span className="px-2 py-0.5 bg-amber-500 text-white text-[9px] font-bold rounded-full">NEW</span>
                 </div>
               </div>
             </div>
