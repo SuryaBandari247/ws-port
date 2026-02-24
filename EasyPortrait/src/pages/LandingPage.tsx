@@ -196,7 +196,8 @@ export const LandingPage: React.FC = () => {
 
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 dark:bg-slate-900/80 dark:border-slate-700">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Top row: Logo + flags */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Camera className="h-8 w-8 text-primary" />
@@ -207,7 +208,10 @@ export const LandingPage: React.FC = () => {
             </div>
             <span className="hidden sm:inline text-xs text-gray-500 dark:text-slate-400 font-medium">50+ countries supported</span>
           </div>
-          <div className="hidden md:flex items-center gap-2 overflow-x-auto">
+        </div>
+        {/* Bottom row: Nav links */}
+        <div className="hidden md:block border-t border-gray-100 dark:border-slate-700/50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-center gap-3">
             {[
               { label: 'Features', href: '#features' },
               { label: 'Country Guide', href: '#country-guide' },
@@ -220,7 +224,7 @@ export const LandingPage: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="flex-shrink-0 px-3 py-1.5 text-xs font-semibold rounded-md bg-primary/10 text-primary dark:bg-indigo-900/30 dark:text-indigo-300 border border-primary/20 dark:border-indigo-700/40 hover:bg-primary hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all"
+                className="px-4 py-1.5 text-xs font-semibold rounded-md bg-primary/10 text-primary dark:bg-indigo-900/30 dark:text-indigo-300 border border-primary/20 dark:border-indigo-700/40 hover:bg-primary hover:text-white dark:hover:bg-indigo-600 dark:hover:text-white transition-all"
               >
                 {item.label}
               </a>
