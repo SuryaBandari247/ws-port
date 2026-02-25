@@ -9,7 +9,7 @@ export default defineConfig({
     open: true,
   },
   build: {
-    outDir: 'dist',
+    outDir: '../portrait',
     sourcemap: false,
     rollupOptions: {
       output: {

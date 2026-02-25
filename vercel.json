@@ -25,9 +25,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/portrait/assets/:path*", "destination": "/EasyPortrait/dist/assets/:path*" },
-    { "source": "/portrait/vite.svg", "destination": "/EasyPortrait/dist/vite.svg" },
-    { "source": "/portrait/:path*", "destination": "/EasyPortrait/dist/index.html" },
-    { "source": "/portrait", "destination": "/EasyPortrait/dist/index.html" }
+    { "source": "/portrait/:path*", "destination": "/portrait/index.html" }
   ]
 }
