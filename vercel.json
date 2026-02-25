@@ -41,11 +41,19 @@
       "dest": "/EasyPortrait/dist/index.html"
     },
     {
-      "src": "/guides/(.*)",
+      "src": "/guides/([^/]+)/$",
+      "dest": "/guides/$1/index.html"
+    },
+    {
+      "src": "/guides/([^/]+)$",
+      "dest": "/guides/$1/index.html"
+    },
+    {
+      "src": "/guides/(.*\\.(css|js|png|jpg|jpeg|svg|ico|woff|woff2))",
       "dest": "/guides/$1"
     },
     {
-      "src": "/guides",
+      "src": "/guides/?$",
       "dest": "/guides/index.html"
     },
     {
