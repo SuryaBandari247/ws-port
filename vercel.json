@@ -1,6 +1,7 @@
 {
   "buildCommand": "cd EasyPortrait && npm install && npm run build",
   "outputDirectory": ".",
+  "trailingSlash": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -23,94 +24,10 @@
       ]
     }
   ],
-  "routes": [
-    {
-      "src": "/portrait/assets/(.*)",
-      "dest": "/EasyPortrait/dist/assets/$1"
-    },
-    {
-      "src": "/portrait/vite\\.svg",
-      "dest": "/EasyPortrait/dist/vite.svg"
-    },
-    {
-      "src": "/portrait/(.*\\.(js|css|png|jpg|jpeg|svg|ico|woff|woff2|wasm|mjs))",
-      "dest": "/EasyPortrait/dist/$1"
-    },
-    {
-      "src": "/portrait(/.*)?",
-      "dest": "/EasyPortrait/dist/index.html"
-    },
-    {
-      "src": "/guides/styles\\.css",
-      "dest": "/guides/styles.css"
-    },
-    {
-      "src": "/guides/us-passport-photo(/)?",
-      "dest": "/guides/us-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/uk-passport-photo(/)?",
-      "dest": "/guides/uk-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/eu-passport-photo(/)?",
-      "dest": "/guides/eu-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/india-passport-photo(/)?",
-      "dest": "/guides/india-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/canada-passport-photo(/)?",
-      "dest": "/guides/canada-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/australia-passport-photo(/)?",
-      "dest": "/guides/australia-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/china-passport-photo(/)?",
-      "dest": "/guides/china-passport-photo/index.html"
-    },
-    {
-      "src": "/guides/passport-photo-at-home(/)?",
-      "dest": "/guides/passport-photo-at-home/index.html"
-    },
-    {
-      "src": "/guides/passport-photo-rejected(/)?",
-      "dest": "/guides/passport-photo-rejected/index.html"
-    },
-    {
-      "src": "/guides/passport-photo-background(/)?",
-      "dest": "/guides/passport-photo-background/index.html"
-    },
-    {
-      "src": "/guides/passport-photo-print(/)?",
-      "dest": "/guides/passport-photo-print/index.html"
-    },
-    {
-      "src": "/guides/srt-to-vtt(/)?",
-      "dest": "/guides/srt-to-vtt/index.html"
-    },
-    {
-      "src": "/guides/create-subtitles-youtube(/)?",
-      "dest": "/guides/create-subtitles-youtube/index.html"
-    },
-    {
-      "src": "/guides(/)?",
-      "dest": "/guides/index.html"
-    },
-    {
-      "src": "/srt-editor/(.*)",
-      "dest": "/srt-editor/$1"
-    },
-    {
-      "src": "/srt-editor",
-      "dest": "/srt-editor/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+  "rewrites": [
+    { "source": "/portrait/assets/:path*", "destination": "/EasyPortrait/dist/assets/:path*" },
+    { "source": "/portrait/vite.svg", "destination": "/EasyPortrait/dist/vite.svg" },
+    { "source": "/portrait/:path*", "destination": "/EasyPortrait/dist/index.html" },
+    { "source": "/portrait", "destination": "/EasyPortrait/dist/index.html" }
   ]
 }
