@@ -25,6 +25,10 @@
     }
   ],
   "rewrites": [
+    { "source": "/portrait/single", "destination": "/portrait/index.html" },
+    { "source": "/portrait/single/", "destination": "/portrait/index.html" },
+    { "source": "/portrait/collage", "destination": "/portrait/index.html" },
+    { "source": "/portrait/collage/", "destination": "/portrait/index.html" },
     { "source": "/portrait/:path*", "destination": "/portrait/index.html" }
   ]
 }
