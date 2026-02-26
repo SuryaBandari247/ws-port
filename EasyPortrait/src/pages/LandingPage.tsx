@@ -517,7 +517,7 @@ export const LandingPage: React.FC = () => {
               { country: 'Switzerland', flag: '🇨🇭', img: passportSwitzerland, size: '35 × 45 mm', head: 'Face height: 30–36 mm', bg: 'Plain light gray', extra: 'ICAO compliant. Eyes clearly visible. No reflections on skin. Taken within 12 months. Print on photo-quality paper.', docUrl: 'https://www.fedpol.admin.ch/fedpol/en/home/pass---identitaetskarte/pass/pass-id-erfassen.html', docLabel: 'Federal Office of Police (fedpol)' },
             ].map((item, i) => (
               <div key={i} className="bg-white dark:bg-slate-800 rounded-xl overflow-hidden border border-gray-200 dark:border-slate-700 hover:border-primary dark:hover:border-indigo-500 transition hover:shadow-lg group">
-                <div className="aspect-[3/4] bg-gray-100 dark:bg-slate-700 overflow-hidden">
+                <div className="aspect-square bg-gray-100 dark:bg-slate-700 overflow-hidden">
                   <img
                     src={item.img}
                     alt={`${item.country} passport photo example`}
@@ -539,11 +539,10 @@ export const LandingPage: React.FC = () => {
                     href={item.docUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 mt-3 text-[11px] font-semibold text-primary hover:text-blue-700 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
+                    className="flex items-center justify-center gap-1.5 mt-3 px-3 py-2 bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-semibold rounded-lg border border-primary/20 hover:border-primary transition-all"
                   >
-                    <FileText className="h-3 w-3" />
-                    Official Documentation
-                    <span className="text-gray-400 dark:text-slate-500">— {item.docLabel}</span>
+                    <FileText className="h-3.5 w-3.5" />
+                    Official Docs — {item.docLabel}
                   </a>
                 </div>
               </div>
