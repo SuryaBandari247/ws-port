@@ -163,6 +163,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://withswag.org/about.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://withswag.org/contact.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://withswag.org/privacy.html</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
