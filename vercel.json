@@ -1,7 +1,6 @@
 {
   "buildCommand": "cd EasyPortrait && npm install && npm run build",
   "outputDirectory": ".",
-  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
@@ -25,10 +24,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/portrait/editor/single", "destination": "/portrait/index.html" },
-    { "source": "/portrait/editor/single/", "destination": "/portrait/index.html" },
-    { "source": "/portrait/editor/collage", "destination": "/portrait/index.html" },
-    { "source": "/portrait/editor/collage/", "destination": "/portrait/index.html" },
-    { "source": "/portrait/:path*", "destination": "/portrait/index.html" }
+    { "source": "/portrait/(.*)", "destination": "/portrait/index.html" }
   ]
 }
