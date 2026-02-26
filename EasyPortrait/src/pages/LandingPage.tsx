@@ -240,11 +240,11 @@ export const LandingPage: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid md:grid-cols-[1fr_auto_1fr] gap-12 items-center">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-12 items-center">
 
           {/* Left Column: Cards 1 & 2 */}
-          <div className="hidden md:flex flex-col gap-6 order-1 min-w-[380px]">
+          <div className="flex flex-col gap-4 md:gap-6 order-2 md:order-1 md:min-w-[380px]">
             {/* Card 1: AI Background Removal */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl opacity-15 blur-lg" />
@@ -377,31 +377,10 @@ export const LandingPage: React.FC = () => {
                 Create Collage
               </Link>
             </div>
-
-            {/* Mobile-only feature cards */}
-            <div className="flex md:hidden overflow-x-auto gap-3 mt-8 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
-              {[
-                { icon: Wand2, label: 'AI Background Removal', color: 'text-primary', bg: 'bg-primary/10', badge: 'NEW' },
-                { icon: Crop, label: 'Smart Crop — Any Country', color: 'text-secondary', bg: 'bg-secondary/10', badge: null },
-                { icon: FileText, label: 'Print-Ready Sheet Sizes', color: 'text-green-600', bg: 'bg-green-50', badge: null },
-                { icon: Sun, label: 'Photo Adjustments', color: 'text-amber-500', bg: 'bg-amber-50', badge: 'NEW' },
-              ].map((feat, i) => (
-                <div
-                  key={i}
-                  className={`flex-shrink-0 snap-start w-[160px] ${feat.bg} rounded-xl p-4 flex flex-col items-center gap-2 text-center border border-gray-100 dark:border-slate-700`}
-                >
-                  <feat.icon className={`h-6 w-6 ${feat.color}`} />
-                  <span className={`text-xs font-semibold ${feat.color} leading-tight`}>{feat.label}</span>
-                  {feat.badge && (
-                    <span className="px-2 py-0.5 bg-primary text-white text-[9px] font-bold rounded-full">{feat.badge}</span>
-                  )}
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right Column: Cards 3 & 4 */}
-          <div className="hidden md:flex flex-col gap-6 order-3 min-w-[380px]">
+          <div className="flex flex-col gap-4 md:gap-6 order-3 md:min-w-[380px]">
             {/* Card 3: Sheet Sizes */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-primary rounded-2xl opacity-15 blur-lg" />
