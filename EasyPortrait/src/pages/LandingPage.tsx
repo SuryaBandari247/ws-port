@@ -3,6 +3,24 @@ import { Link } from 'react-router-dom';
 import { Camera, Grid3x3, ArrowRight, Check, Wand2, Crop, FileText, Sun, Contrast as ContrastIcon, Palette, Globe, Shield, ChevronDown, ChevronRight, Lightbulb, Lock, Eye, Zap, Monitor } from 'lucide-react';
 import { removeBackground } from '@imgly/background-removal';
 import AppSwitcher from '../components/AppSwitcher';
+
+const FaqItem: React.FC<{ question: string; answer: string; isOpen: boolean; onToggle: () => void }> = ({ question, answer, isOpen, onToggle }) => (
+  <div className="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden">
+    <button
+      onClick={onToggle}
+      className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 dark:hover:bg-slate-800 transition"
+      {...{ 'aria-expanded': isOpen }}
+    >
+      <span className="font-medium text-gray-900 dark:text-slate-100 pr-4">{question}</span>
+      <ChevronDown className={`h-5 w-5 text-gray-400 flex-shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+    </button>
+    {isOpen && (
+      <div className="px-5 pb-4 text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
+        {answer}
+      </div>
+    )}
+  </div>
+);
 import samplePhoto1 from '../resources/Gemini_Generated_Image_29o95h29o95h29o9_1.jpeg';
 import samplePhoto2 from '../resources/Gemini_Generated_Image_2ff4mq2ff4mq2ff4.jpeg';
 import samplePhoto3 from '../resources/Gemini_Generated_Image_7aflzh7aflzh7afl.jpeg';
@@ -888,21 +906,13 @@ export const LandingPage: React.FC = () => {
               { q: 'Can I print the photos at home?', a: 'Yes. Use the collage feature to create a print-ready sheet (A4, 4×6", or 5×7") with multiple photos. Print on glossy photo paper at 300 DPI for best results.' },
               { q: 'How is this different from a photo studio?', a: 'Photo studios charge $10–$20 per set. EasyPortrait gives you the same compliant result for €3 (single) or $8 (collage), and you can retake as many times as you want from home.' },
             ].map((item, i) => (
-              <div key={i} className="border border-gray-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                <button
-                  onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 dark:hover:bg-slate-800 transition"
-                  aria-expanded={openFaqIndex === i}
-                >
-                  <span className="font-medium text-gray-900 dark:text-slate-100 pr-4">{item.q}</span>
-                  <ChevronDown className={`h-5 w-5 text-gray-400 flex-shrink-0 transition-transform ${openFaqIndex === i ? 'rotate-180' : ''}`} />
-                </button>
-                {openFaqIndex === i && (
-                  <div className="px-5 pb-4 text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
-                    {item.a}
-                  </div>
-                )}
-              </div>
+              <FaqItem
+                key={i}
+                question={item.q}
+                answer={item.a}
+                isOpen={openFaqIndex === i}
+                onToggle={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+              />
             ))}
           </div>
         </div>
