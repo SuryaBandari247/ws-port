@@ -245,7 +245,7 @@ export const LandingPage: React.FC = () => {
         <div className="grid md:grid-cols-[1fr_auto_1fr] gap-8 md:gap-12 items-center">
 
           {/* Left Column: Cards 1 & 2 */}
-          <div className="flex flex-col gap-4 md:gap-6 order-2 md:order-1 md:min-w-[380px]">
+          <div className="hidden md:flex flex-col gap-4 md:gap-6 order-2 md:order-1 md:min-w-[380px]">
             {/* Card 1: AI Background Removal */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl opacity-15 blur-lg" />
@@ -378,10 +378,25 @@ export const LandingPage: React.FC = () => {
                 Create Collage
               </Link>
             </div>
+
+            {/* Mobile Feature Cards — compact grid visible only on mobile */}
+            <div className="grid grid-cols-2 gap-3 mt-8 md:hidden">
+              {[
+                { icon: Wand2, label: 'AI Background Removal', color: 'text-primary', bg: 'bg-primary/10' },
+                { icon: Crop, label: 'Smart Crop — 50+ Countries', color: 'text-secondary', bg: 'bg-secondary/10' },
+                { icon: FileText, label: 'Print-Ready Sheets', color: 'text-green-600', bg: 'bg-green-50' },
+                { icon: Sun, label: 'Photo Adjustments', color: 'text-amber-500', bg: 'bg-amber-50' },
+              ].map((item, i) => (
+                <div key={i} className={`flex flex-col items-center gap-2 ${item.bg} rounded-xl p-4 border border-gray-100 dark:border-slate-700`}>
+                  <item.icon className={`h-6 w-6 ${item.color}`} />
+                  <span className="text-xs font-semibold text-gray-800 dark:text-slate-200 text-center leading-tight">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Right Column: Cards 3 & 4 */}
-          <div className="flex flex-col gap-4 md:gap-6 order-3 md:min-w-[380px]">
+          <div className="hidden md:flex flex-col gap-4 md:gap-6 order-3 md:min-w-[380px]">
             {/* Card 3: Sheet Sizes */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-primary rounded-2xl opacity-15 blur-lg" />
