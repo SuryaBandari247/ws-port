@@ -239,12 +239,81 @@
         }
         .disclaimer strong { color: #78350f; }
 
+        /* Hero nav links */
+        .hero-nav-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;
+            color: rgba(255,255,255,0.9); text-decoration: none;
+            background: rgba(255,255,255,0.15); backdrop-filter: blur(4px);
+            transition: all 0.2s; border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-nav-link:hover { background: rgba(255,255,255,0.3); color: white; transform: translateY(-1px); }
+
+        /* Flight Search Form */
+        .flight-search-box {
+            background: white; border: 2px solid #e5e7eb; border-radius: 16px;
+            padding: 28px; margin-top: 28px;
+        }
+        .flight-search-box h3 {
+            font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 6px;
+        }
+        .flight-search-box .subtitle {
+            font-size: 13px; color: #6b7280; margin-bottom: 20px;
+        }
+        .search-form-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; align-items: end;
+        }
+        .form-group { display: flex; flex-direction: column; gap: 4px; }
+        .form-group label { font-size: 12px; font-weight: 600; color: #374151; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input, .form-group select {
+            padding: 10px 14px; border: 1px solid #d1d5db; border-radius: 8px;
+            font-size: 14px; font-family: inherit; color: #111827;
+            transition: border-color 0.15s; outline: none;
+        }
+        .form-group input:focus, .form-group select:focus { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+        .form-group input::placeholder { color: #9ca3af; }
+        .search-btn {
+            padding: 10px 20px; background: #dc2626; color: white; border: none;
+            border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer;
+            font-family: inherit; transition: all 0.2s; white-space: nowrap;
+        }
+        .search-btn:hover { background: #b91c1c; transform: translateY(-1px); }
+        .search-links { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .search-link-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+            text-decoration: none; transition: all 0.15s; border: 1px solid #e5e7eb;
+        }
+        .search-link-btn.google { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+        .search-link-btn.google:hover { background: #dbeafe; }
+        .search-link-btn.skyscanner { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
+        .search-link-btn.skyscanner:hover { background: #d1fae5; }
+        .search-link-btn.flightradar { background: #fefce8; color: #a16207; border-color: #fde68a; }
+        .search-link-btn.flightradar:hover { background: #fef9c3; }
+
+        .flight-divider { display: flex; align-items: center; gap: 12px; margin: 24px 0; }
+        .flight-divider span { font-size: 13px; color: #9ca3af; font-weight: 500; white-space: nowrap; }
+        .flight-divider::before, .flight-divider::after { content: ''; flex: 1; height: 1px; background: #e5e7eb; }
+
+        .flight-number-row { display: flex; gap: 12px; align-items: end; }
+        .flight-number-row .form-group { flex: 1; }
+
+        .price-tips {
+            margin-top: 24px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 20px 24px;
+        }
+        .price-tips h4 { font-size: 15px; font-weight: 700; color: #92400e; margin-bottom: 10px; }
+        .price-tips ul { list-style: none; padding: 0; }
+        .price-tips li { font-size: 13px; color: #78350f; padding: 4px 0; padding-left: 20px; position: relative; line-height: 1.6; }
+        .price-tips li::before { content: '💡'; position: absolute; left: 0; }
+
         @media (max-width: 768px) {
             .hero { padding: 70px 16px 50px; }
             .hero h1 { font-size: 30px; }
             .hero p { font-size: 16px; }
             .section-title { font-size: 22px; }
             .emergency-banner { margin: -20px 16px 30px; padding: 20px; }
+            .search-form-grid { grid-template-columns: 1fr; }
+            .flight-number-row { flex-direction: column; }
         }
     </style>
 </head>
@@ -298,6 +367,24 @@
             <a href="#safety" class="cta-btn-secondary" style="color: white; border-color: rgba(255,255,255,0.5);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 Safety Checklist
+            </a>
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px;">
+            <a href="#flights" class="hero-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                Flights
+            </a>
+            <a href="#evacuation" class="hero-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6v12h12"/></svg>
+                Evacuation
+            </a>
+            <a href="#embassies" class="hero-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
+                Embassies
+            </a>
+            <a href="#community" class="hero-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Community
             </a>
         </div>
     </section>
@@ -565,6 +652,243 @@
         </section>
     </div>
 
+    <!-- Flight Status & Alternative Routes -->
+    <div class="container">
+        <section class="section" id="flights">
+            <h2 class="section-title">✈️ Flight Status &amp; Alternative Routes</h2>
+            <p class="section-subtitle">Airspace closures change rapidly. Use these tools to find available flights and plan alternative routes out.</p>
+            
+            <div style="background: #fef2f2; border: 2px solid #fecaca; border-radius: 12px; padding: 20px 24px; margin-bottom: 28px;">
+                <p style="font-size: 14px; color: #991b1b; font-weight: 600; margin-bottom: 4px;">⚠️ Airspace may be closed or restricted</p>
+                <p style="font-size: 13px; color: #6b7280;">When airspace over Israel, Iran, Iraq, or Lebanon is closed, airlines reroute or cancel flights. Always confirm directly with your airline before heading to the airport.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🛫</div>
+                    <h3>Live Flight Tracker</h3>
+                    <p>See which flights are currently in the air, which routes are active, and where airspace is closed in real time.</p>
+                    <a href="https://www.flightradar24.com/" target="_blank" rel="noopener noreferrer">Flightradar24 — Live Map →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🗺️</div>
+                    <h3>Airspace Closures (NOTAMs)</h3>
+                    <p>Check official Notices to Air Missions for real-time airspace restrictions and closures in the Middle East region.</p>
+                    <a href="https://www.notams.faa.gov/" target="_blank" rel="noopener noreferrer">FAA NOTAMs →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h3>Search Alternative Flights</h3>
+                    <p>Use Google Flights or Skyscanner to find available routes. Try nearby airports like Amman (AMM), Larnaca (LCA), or Cairo (CAI) as alternatives.</p>
+                    <a href="https://www.google.com/travel/flights" target="_blank" rel="noopener noreferrer">Google Flights →</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚌</div>
+                    <h3>Overland Routes</h3>
+                    <p>If flights are unavailable, consider overland options. Border crossings to Jordan (Allenby/King Hussein Bridge) or Egypt (Taba) may be open. Check with your embassy first.</p>
+                </div>
+            </div>
+
+            <div class="flight-search-box">
+                <h3>🔍 Search Flights &amp; Check Status</h3>
+                <p class="subtitle">Find available flights from conflict zones. We'll open results directly on Google Flights, Skyscanner, or Flightradar24.</p>
+
+                <div class="search-form-grid" id="flightSearchForm">
+                    <div class="form-group">
+                        <label for="fromAirport">From</label>
+                        <input type="text" id="fromAirport" placeholder="e.g. TLV, BEY" maxlength="3" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label for="toAirport">To</label>
+                        <input type="text" id="toAirport" placeholder="e.g. LCA, AMM" maxlength="3" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-group">
+                        <label for="flightDate">Date</label>
+                        <input type="date" id="flightDate">
+                    </div>
+                    <button class="search-btn" onclick="searchFlights()">Search</button>
+                </div>
+                <div class="search-links" id="flightSearchLinks" style="display: none;">
+                    <a id="googleFlightsLink" class="search-link-btn google" href="#" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        Google Flights
+                    </a>
+                    <a id="skyscannerLink" class="search-link-btn skyscanner" href="#" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                        Skyscanner
+                    </a>
+                </div>
+
+                <div class="flight-divider"><span>or check a specific flight</span></div>
+
+                <div class="flight-number-row">
+                    <div class="form-group">
+                        <label for="flightNumber">Flight Number</label>
+                        <input type="text" id="flightNumber" placeholder="e.g. LY315, EK2961" style="text-transform: uppercase;">
+                    </div>
+                    <button class="search-btn" onclick="trackFlight()" style="background: #d97706;">Track Flight</button>
+                </div>
+                <div class="search-links" id="flightTrackLinks" style="display: none;">
+                    <a id="flightradarLink" class="search-link-btn flightradar" href="#" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                        Track on Flightradar24
+                    </a>
+                </div>
+
+                <div class="price-tips">
+                    <h4>💰 Flight Prices Rising? Tips to Save</h4>
+                    <ul>
+                        <li>Search one-way tickets instead of round trips — often cheaper during crises</li>
+                        <li>Try nearby alternative airports (AMM, LCA, CAI) — prices can be 50-70% lower</li>
+                        <li>Use flexible date search on Google Flights to find the cheapest day</li>
+                        <li>Check budget carriers separately (Ryanair, Wizz Air, Pegasus) — they often don't appear on aggregators</li>
+                        <li>Book connecting flights through Istanbul (IST) or Athens (ATH) — often cheaper than direct</li>
+                        <li>Set Google Flights price alerts — prices fluctuate hourly during crises</li>
+                        <li>Contact your embassy — some governments arrange subsidized evacuation flights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px;">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #111827;">Alternative Airport Options</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                    <div style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+                        <div style="font-weight: 600; font-size: 14px; color: #111827;">🇯🇴 Amman (AMM)</div>
+                        <div style="font-size: 12px; color: #6b7280;">Queen Alia International — Jordan</div>
+                    </div>
+                    <div style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+                        <div style="font-weight: 600; font-size: 14px; color: #111827;">🇨🇾 Larnaca (LCA)</div>
+                        <div style="font-size: 12px; color: #6b7280;">Larnaca International — Cyprus</div>
+                    </div>
+                    <div style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+                        <div style="font-weight: 600; font-size: 14px; color: #111827;">🇪🇬 Cairo (CAI)</div>
+                        <div style="font-size: 12px; color: #6b7280;">Cairo International — Egypt</div>
+                    </div>
+                    <div style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+                        <div style="font-weight: 600; font-size: 14px; color: #111827;">🇬🇷 Athens (ATH)</div>
+                        <div style="font-size: 12px; color: #6b7280;">Eleftherios Venizelos — Greece</div>
+                    </div>
+                    <div style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+                        <div style="font-weight: 600; font-size: 14px; color: #111827;">🇹🇷 Istanbul (IST)</div>
+                        <div style="font-size: 12px; color: #6b7280;">Istanbul Airport — Turkey</div>
+                    </div>
+                    <div style="padding: 12px; background: #f9fafb; border-radius: 8px;">
+                        <div style="font-weight: 600; font-size: 14px; color: #111827;">🇦🇪 Dubai (DXB)</div>
+                        <div style="font-size: 12px; color: #6b7280;">Dubai International — UAE</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Evacuation Routes -->
+    <div class="container">
+        <section class="section" id="evacuation">
+            <h2 class="section-title">🚨 Evacuation Routes &amp; Border Crossings</h2>
+            <p class="section-subtitle">Key land border crossings and evacuation corridors. Always verify status with your embassy before traveling.</p>
+
+            <div style="background: #fef2f2; border: 2px solid #fecaca; border-radius: 12px; padding: 20px 24px; margin-bottom: 28px;">
+                <p style="font-size: 14px; color: #991b1b; font-weight: 600;">⚠️ Border crossings can close without notice during active conflict. Always call ahead.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🇯🇴</div>
+                    <h3>Israel → Jordan</h3>
+                    <p><strong>Allenby / King Hussein Bridge:</strong> Main crossing between West Bank and Jordan. Open to foreign nationals with valid documents. Expect long waits during crisis.</p>
+                    <p style="margin-top: 8px;"><strong>Yitzhak Rabin / Wadi Araba:</strong> Southern crossing near Eilat/Aqaba. Less congested alternative.</p>
+                    <p style="margin-top: 8px;"><strong>Jordan River / Sheikh Hussein:</strong> Northern crossing. Check status with Jordanian authorities.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🇪🇬</div>
+                    <h3>Israel → Egypt</h3>
+                    <p><strong>Taba Crossing:</strong> Near Eilat, connects to Sinai Peninsula. Open to most nationalities. From Taba, you can reach Sharm el-Sheikh airport or continue to Cairo.</p>
+                    <p style="margin-top: 8px;"><strong>Rafah Crossing (Gaza):</strong> Controlled crossing, typically restricted. Not a viable evacuation route for most foreign nationals.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🇱🇧</div>
+                    <h3>Lebanon Evacuation</h3>
+                    <p><strong>Beirut Airport (BEY):</strong> If operational, the fastest way out. Check airline status.</p>
+                    <p style="margin-top: 8px;"><strong>Lebanon → Syria → Turkey:</strong> Overland route via Masnaa border crossing. Extremely situation-dependent. Consult embassy.</p>
+                    <p style="margin-top: 8px;"><strong>Sea Evacuation:</strong> Some governments arrange naval evacuations from Beirut port. Register with your embassy to be included.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🇨🇾</div>
+                    <h3>Sea Route to Cyprus</h3>
+                    <p>During past conflicts, several countries organized ferry evacuations from Israeli and Lebanese ports to Larnaca, Cyprus. Cyprus is an EU member with international airport connections.</p>
+                    <p style="margin-top: 8px;">Contact your embassy about organized sea evacuations. Private charter boats may also be available from marinas.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🇹🇷</div>
+                    <h3>Turkey as Transit Hub</h3>
+                    <p>Istanbul is a major transit hub with flights to virtually every country. If you can reach Turkey (by air from nearby airports or overland from northern routes), you can connect onward.</p>
+                    <p style="margin-top: 8px;">Most nationalities can get a Turkish e-Visa online at <a href="https://www.evisa.gov.tr/" target="_blank" rel="noopener noreferrer">evisa.gov.tr</a></p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Before You Move</h3>
+                    <p><strong>Always:</strong> Contact your embassy before attempting any border crossing. Carry all original documents. Have cash in USD and local currency. Travel during daylight. Inform family of your route and expected arrival.</p>
+                    <p style="margin-top: 8px;"><strong>Never:</strong> Approach military checkpoints without identification. Travel through active conflict zones. Rely on a single route — always have a backup plan.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Community Connect Board -->
+    <div class="container">
+        <section class="section" id="community">
+            <h2 class="section-title">🤝 Community Connect — Find &amp; Help Each Other</h2>
+            <p class="section-subtitle">Connect with other stranded travelers, expats, and volunteers. You're not alone.</p>
+
+            <div class="card-grid">
+                <div class="card" style="border-color: #6366f1; border-width: 2px;">
+                    <div class="card-icon">💬</div>
+                    <h3>WhatsApp Community Groups</h3>
+                    <p>Join region-specific WhatsApp groups where stranded travelers share real-time updates, ride shares, and support each other.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: #6b7280;">Search "stranded in [country] WhatsApp group" or ask your embassy for community group links. Many embassies maintain official WhatsApp broadcast lists.</p>
+                </div>
+                <div class="card" style="border-color: #6366f1; border-width: 2px;">
+                    <div class="card-icon">📱</div>
+                    <h3>Telegram Channels</h3>
+                    <p>Telegram channels are widely used in the Middle East for real-time crisis updates. Many are run by journalists, aid workers, and community organizers.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: #6b7280;">Search Telegram for channels like "Israel Updates", "Expats in [city]", or your country's community group.</p>
+                </div>
+                <div class="card" style="border-color: #6366f1; border-width: 2px;">
+                    <div class="card-icon">🌐</div>
+                    <h3>Reddit Communities</h3>
+                    <p>Active communities sharing information, offering help, and coordinating support for those affected.</p>
+                    <a href="https://www.reddit.com/r/expats/" target="_blank" rel="noopener noreferrer">r/expats →</a>
+                    <a href="https://www.reddit.com/r/travel/" target="_blank" rel="noopener noreferrer" style="margin-left: 12px;">r/travel →</a>
+                </div>
+                <div class="card" style="border-color: #6366f1; border-width: 2px;">
+                    <div class="card-icon">🏠</div>
+                    <h3>Emergency Housing</h3>
+                    <p>Organizations and individuals offering temporary shelter to displaced people and stranded travelers.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: #6b7280;"><strong>Airbnb.org:</strong> Offers free temporary housing during crises. <strong>Local community centers</strong> and <strong>religious institutions</strong> often provide emergency shelter.</p>
+                    <a href="https://www.airbnb.org/" target="_blank" rel="noopener noreferrer">Airbnb.org Emergency Housing →</a>
+                </div>
+                <div class="card" style="border-color: #6366f1; border-width: 2px;">
+                    <div class="card-icon">🚗</div>
+                    <h3>Ride Sharing &amp; Carpools</h3>
+                    <p>When public transport is disrupted, travelers organize carpools to airports, border crossings, and safe zones. Check community groups for ride-share offers.</p>
+                    <p style="margin-top: 8px; font-size: 13px; color: #6b7280;">Post your location and destination in community groups. Always verify the identity of anyone you travel with. Share your live location with family.</p>
+                </div>
+                <div class="card" style="border-color: #6366f1; border-width: 2px;">
+                    <div class="card-icon">🙋</div>
+                    <h3>Volunteer &amp; Donate</h3>
+                    <p>If you're safe and want to help, these organizations accept volunteers and donations to support affected people.</p>
+                    <a href="https://www.icrc.org/en/donate" target="_blank" rel="noopener noreferrer">Donate to ICRC →</a>
+                    <a href="https://www.unhcr.org/donate" target="_blank" rel="noopener noreferrer" style="margin-left: 12px;">Donate to UNHCR →</a>
+                </div>
+            </div>
+
+            <div style="margin-top: 24px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 12px; padding: 20px 24px;">
+                <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #3730a3;">🔒 Stay Safe Online</h3>
+                <p style="font-size: 14px; color: #4338ca; line-height: 1.7;">Be cautious about sharing your exact location publicly. Verify information before acting on it. Scammers may exploit crisis situations — never send money to unverified individuals. Use official channels whenever possible.</p>
+            </div>
+        </section>
+    </div>
+
     <!-- Helpful Resources -->
     <div class="container">
         <section class="section">
@@ -721,6 +1045,72 @@
             }
         });
     })();
+
+    // Flight Search Functions
+    // Set default date to tomorrow
+    (function() {
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var dd = String(tomorrow.getDate()).padStart(2, '0');
+        var mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        var yyyy = tomorrow.getFullYear();
+        document.getElementById('flightDate').value = yyyy + '-' + mm + '-' + dd;
+    })();
+
+    function searchFlights() {
+        var from = document.getElementById('fromAirport').value.trim().toUpperCase();
+        var to = document.getElementById('toAirport').value.trim().toUpperCase();
+        var date = document.getElementById('flightDate').value;
+
+        if (!from || !to) {
+            alert('Please enter both origin and destination airport codes (e.g. TLV, LCA)');
+            return;
+        }
+
+        // Format date for URLs
+        var dateParts = date ? date.split('-') : [];
+        var dateFormatted = dateParts.length === 3 ? dateParts[0] + '-' + dateParts[1] + '-' + dateParts[2] : '';
+        var dateShort = dateParts.length === 3 ? dateParts[0].slice(2) + dateParts[1] + dateParts[2] : '';
+
+        // Google Flights URL
+        var googleUrl = 'https://www.google.com/travel/flights?q=flights+from+' + from + '+to+' + to;
+        if (dateFormatted) googleUrl += '+on+' + dateFormatted;
+        googleUrl += '&curr=USD';
+
+        // Skyscanner URL
+        var skyUrl = 'https://www.skyscanner.com/transport/flights/' + from.toLowerCase() + '/' + to.toLowerCase() + '/';
+        if (dateShort) skyUrl += dateShort + '/';
+        skyUrl += '?adultsv2=1&cabinclass=economy&ref=home';
+
+        document.getElementById('googleFlightsLink').href = googleUrl;
+        document.getElementById('skyscannerLink').href = skyUrl;
+        document.getElementById('flightSearchLinks').style.display = 'flex';
+
+        // Auto-open Google Flights
+        window.open(googleUrl, '_blank');
+    }
+
+    function trackFlight() {
+        var flightNum = document.getElementById('flightNumber').value.trim().toUpperCase().replace(/\s+/g, '');
+
+        if (!flightNum) {
+            alert('Please enter a flight number (e.g. LY315, EK2961)');
+            return;
+        }
+
+        var frUrl = 'https://www.flightradar24.com/data/flights/' + flightNum.toLowerCase();
+
+        document.getElementById('flightradarLink').href = frUrl;
+        document.getElementById('flightTrackLinks').style.display = 'flex';
+
+        window.open(frUrl, '_blank');
+    }
+
+    // Allow Enter key to trigger search
+    document.getElementById('fromAirport').addEventListener('keydown', function(e) { if (e.key === 'Enter') searchFlights(); });
+    document.getElementById('toAirport').addEventListener('keydown', function(e) { if (e.key === 'Enter') searchFlights(); });
+    document.getElementById('flightDate').addEventListener('keydown', function(e) { if (e.key === 'Enter') searchFlights(); });
+    document.getElementById('flightNumber').addEventListener('keydown', function(e) { if (e.key === 'Enter') trackFlight(); });
     </script>
 </body>
 </html>
