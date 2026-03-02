@@ -239,6 +239,52 @@
         }
         .disclaimer strong { color: #78350f; }
 
+        /* Sticky Jump Nav */
+        .jump-nav {
+            position: sticky; top: 0; z-index: 40;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e5e7eb;
+            padding: 10px 0;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        .jump-nav.visible { transform: translateY(0); }
+        .jump-nav-inner {
+            max-width: 1100px; margin: 0 auto; padding: 0 16px;
+            display: flex; align-items: center; gap: 8px;
+            overflow-x: auto; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .jump-nav-inner::-webkit-scrollbar { display: none; }
+        .jump-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+            color: #374151; text-decoration: none; white-space: nowrap;
+            background: #f3f4f6; border: 1px solid #e5e7eb;
+            transition: all 0.2s; flex-shrink: 0;
+        }
+        .jump-btn:hover { background: #e5e7eb; color: #111827; transform: translateY(-1px); }
+        .jump-btn.highlight {
+            background: linear-gradient(135deg, #dc2626, #f97316);
+            color: white; border-color: transparent;
+            box-shadow: 0 2px 8px rgba(220,38,38,0.3);
+        }
+        .jump-btn.highlight:hover {
+            box-shadow: 0 4px 16px rgba(220,38,38,0.4); transform: translateY(-1px);
+        }
+        .jump-btn.highlight-blue {
+            background: linear-gradient(135deg, #2563eb, #6366f1);
+            color: white; border-color: transparent;
+            box-shadow: 0 2px 8px rgba(99,102,241,0.3);
+        }
+        .jump-btn.highlight-blue:hover {
+            box-shadow: 0 4px 16px rgba(99,102,241,0.4); transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .jump-nav { padding: 8px 0; }
+            .jump-btn { padding: 6px 12px; font-size: 12px; }
+        }
+
         /* Hero nav links */
         .hero-nav-link {
             display: inline-flex; align-items: center; gap: 6px;
@@ -305,6 +351,49 @@
         .price-tips ul { list-style: none; padding: 0; }
         .price-tips li { font-size: 13px; color: #78350f; padding: 4px 0; padding-left: 20px; position: relative; line-height: 1.6; }
         .price-tips li::before { content: '💡'; position: absolute; left: 0; }
+
+        /* Affiliate / Recommended Products */
+        .affiliate-section { padding: 50px 0; border-top: 1px solid #e5e7eb; }
+        .affiliate-label {
+            display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; color: #9ca3af; background: #f3f4f6; padding: 3px 8px;
+            border-radius: 4px; margin-bottom: 16px;
+        }
+        .product-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+        }
+        .product-card {
+            background: white; border-radius: 14px; padding: 24px;
+            border: 1px solid #e5e7eb; transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex; flex-direction: column;
+        }
+        .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .product-tag {
+            display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+            padding: 3px 10px; border-radius: 50px; margin-bottom: 12px; width: fit-content;
+        }
+        .product-tag.essential { background: #fef2f2; color: #dc2626; }
+        .product-tag.recommended { background: #eff6ff; color: #2563eb; }
+        .product-tag.popular { background: #f0fdf4; color: #16a34a; }
+        .product-card h3 { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 6px; }
+        .product-card .product-desc { font-size: 13px; color: #6b7280; line-height: 1.6; flex: 1; }
+        .product-card .product-why {
+            font-size: 12px; color: #374151; background: #f9fafb; border-radius: 8px;
+            padding: 10px 12px; margin-top: 12px; line-height: 1.5;
+        }
+        .product-card .product-why strong { color: #111827; }
+        .product-link {
+            display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+            padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 700;
+            text-decoration: none; transition: all 0.2s; width: fit-content;
+        }
+        .product-link.amazon { background: #f59e0b; color: #111827; }
+        .product-link.amazon:hover { background: #d97706; transform: translateY(-1px); }
+        .product-link.blue { background: #2563eb; color: white; }
+        .product-link.blue:hover { background: #1d4ed8; transform: translateY(-1px); }
+        .product-link.green { background: #16a34a; color: white; }
+        .product-link.green:hover { background: #15803d; transform: translateY(-1px); }
 
         @media (max-width: 768px) {
             .hero { padding: 70px 16px 50px; }
@@ -388,6 +477,44 @@
             </a>
         </div>
     </section>
+
+    <!-- Sticky Jump Navigation -->
+    <nav class="jump-nav" id="jumpNav" aria-label="Quick navigation">
+        <div class="jump-nav-inner">
+            <a href="#flights" class="jump-btn highlight" onclick="smoothScroll(event, 'flights')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                Find Cheaper Flights
+            </a>
+            <a href="#flights" class="jump-btn highlight-blue" onclick="smoothScroll(event, 'flights')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                Track Flight Status
+            </a>
+            <a href="#emergency" class="jump-btn" onclick="smoothScroll(event, 'emergency')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Emergency
+            </a>
+            <a href="#embassies" class="jump-btn" onclick="smoothScroll(event, 'embassies')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
+                Embassies
+            </a>
+            <a href="#safety" class="jump-btn" onclick="smoothScroll(event, 'safety')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Safety
+            </a>
+            <a href="#evacuation" class="jump-btn" onclick="smoothScroll(event, 'evacuation')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="M6 6v12h12"/></svg>
+                Evacuation
+            </a>
+            <a href="#community" class="jump-btn" onclick="smoothScroll(event, 'community')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Community
+            </a>
+            <a href="#essentials" class="jump-btn" onclick="smoothScroll(event, 'essentials')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Travel Gear
+            </a>
+        </div>
+    </nav>
 
     <!-- Emergency Numbers Banner -->
     <div class="container">
@@ -965,10 +1092,120 @@
         </section>
     </div>
 
+    <!-- Essential Travel Products (Affiliate) -->
+    <div class="container">
+        <section class="affiliate-section" id="essentials">
+            <span class="affiliate-label">Recommended Products</span>
+            <h2 class="section-title">Travel Essentials for Crisis Situations</h2>
+            <p class="section-subtitle">Products that can make a real difference when you're stranded or evacuating. We may earn a small commission from these links.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="product-tag essential">Essential</span>
+                    <h3>🔋 Anker 20,000mAh Power Bank</h3>
+                    <p class="product-desc">Keep your phone alive for days without a charger. Charges most phones 4-5 times. USB-C fast charging. Compact enough for a go-bag.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Your phone is your lifeline — maps, embassy contacts, flight booking, family check-ins. A dead phone in a crisis zone is dangerous.</div>
+                    <a href="https://www.amazon.com/s?k=anker+power+bank+20000mah&tag=YOUR_AFFILIATE_TAG" class="product-link amazon" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Check on Amazon →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag essential">Essential</span>
+                    <h3>📶 Airalo eSIM — Stay Connected Anywhere</h3>
+                    <p class="product-desc">Instant mobile data in 200+ countries. No physical SIM needed. Buy and activate from your phone in minutes. Plans from $4.50.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Local SIM cards may be unavailable during a crisis. An eSIM gives you instant data for maps, messaging, and emergency calls the moment you land in a new country.</div>
+                    <a href="https://www.airalo.com/" class="product-link blue" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                        Get eSIM from Airalo →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag essential">Essential</span>
+                    <h3>🛡️ SafetyWing Travel Insurance</h3>
+                    <p class="product-desc">Travel medical insurance that covers you in 180+ countries. Includes emergency evacuation, hospital stays, and trip interruption. From $42/month.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Medical emergencies abroad without insurance can cost tens of thousands. Evacuation flights alone can be $50,000+. SafetyWing covers emergency medical evacuation.</div>
+                    <a href="https://safetywing.com/" class="product-link green" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        Get Travel Insurance →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag recommended">Recommended</span>
+                    <h3>🔒 NordVPN — Secure Your Connection</h3>
+                    <p class="product-desc">Encrypt your internet in conflict zones. Access blocked websites and apps. Protect your data on public WiFi. Works in restricted regions.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Governments may block messaging apps, news sites, or social media during conflicts. A VPN keeps you connected and your communications private.</div>
+                    <a href="https://nordvpn.com/" class="product-link blue" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Get NordVPN →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag recommended">Recommended</span>
+                    <h3>🎒 Osprey Farpoint 40L Travel Backpack</h3>
+                    <p class="product-desc">Carry-on sized backpack that fits everything for an emergency evacuation. Lockable zippers, padded laptop sleeve, comfortable for long walks.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> If you need to evacuate quickly, a well-organized grab bag is critical. This fits as carry-on so you won't lose it if checking bags isn't an option.</div>
+                    <a href="https://www.amazon.com/s?k=osprey+farpoint+40&tag=YOUR_AFFILIATE_TAG" class="product-link amazon" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Check on Amazon →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag popular">Popular</span>
+                    <h3>💧 LifeStraw Personal Water Filter</h3>
+                    <p class="product-desc">Filters 99.99% of bacteria and parasites. No batteries or moving parts. Filters up to 4,000 liters. Weighs only 2oz.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Clean water may not be available during evacuations or if infrastructure is damaged. A LifeStraw lets you drink from almost any water source safely.</div>
+                    <a href="https://www.amazon.com/s?k=lifestraw+personal+water+filter&tag=YOUR_AFFILIATE_TAG" class="product-link amazon" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Check on Amazon →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag recommended">Recommended</span>
+                    <h3>🔦 Emergency First Aid Kit</h3>
+                    <p class="product-desc">Compact 300-piece first aid kit with bandages, antiseptic, pain relief, emergency blanket, scissors, and more. Fits in any bag.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Medical facilities may be overwhelmed or inaccessible. A basic first aid kit handles minor injuries and buys time until you can reach professional help.</div>
+                    <a href="https://www.amazon.com/s?k=emergency+first+aid+kit+travel&tag=YOUR_AFFILIATE_TAG" class="product-link amazon" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Check on Amazon →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag popular">Popular</span>
+                    <h3>📻 Emergency Hand Crank Radio</h3>
+                    <p class="product-desc">AM/FM/NOAA weather radio with built-in flashlight, phone charger, and SOS alarm. No batteries needed — hand crank and solar powered.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> When power and internet go down, radio is often the only way to receive emergency broadcasts and evacuation instructions.</div>
+                    <a href="https://www.amazon.com/s?k=emergency+hand+crank+radio&tag=YOUR_AFFILIATE_TAG" class="product-link amazon" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Check on Amazon →
+                    </a>
+                </div>
+
+                <div class="product-card">
+                    <span class="product-tag recommended">Recommended</span>
+                    <h3>📑 Waterproof Document Holder</h3>
+                    <p class="product-desc">RFID-blocking neck pouch for passport, cash, and cards. Waterproof, slash-proof, and hidden under clothing. Keeps documents safe during travel.</p>
+                    <div class="product-why"><strong>Why it matters:</strong> Losing your passport during an evacuation can strand you for weeks. A secure document holder keeps everything safe and accessible.</div>
+                    <a href="https://www.amazon.com/s?k=waterproof+passport+holder+neck+pouch&tag=YOUR_AFFILIATE_TAG" class="product-link amazon" target="_blank" rel="noopener noreferrer sponsored">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        Check on Amazon →
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Disclaimer -->
     <div class="container">
         <div class="disclaimer">
-            <strong>Disclaimer:</strong> This page is a community resource hub and is not affiliated with any government or official organization. Information is compiled from publicly available sources and may not be fully up to date. Always verify critical information directly with your embassy or official government channels. In a life-threatening emergency, call local emergency services immediately. WithSwag provides this resource as a public service — we do not provide legal, medical, or travel advice.
+            <strong>Disclaimer:</strong> This page is a community resource hub and is not affiliated with any government or official organization. Information is compiled from publicly available sources and may not be fully up to date. Always verify critical information directly with your embassy or official government channels. In a life-threatening emergency, call local emergency services immediately. WithSwag provides this resource as a public service — we do not provide legal, medical, or travel advice. <strong>Affiliate Disclosure:</strong> Some links on this page are affiliate links. If you purchase through these links, we may earn a small commission at no extra cost to you. This helps us keep this resource free and updated.
         </div>
     </div>
 
@@ -1111,6 +1348,34 @@
     document.getElementById('toAirport').addEventListener('keydown', function(e) { if (e.key === 'Enter') searchFlights(); });
     document.getElementById('flightDate').addEventListener('keydown', function(e) { if (e.key === 'Enter') searchFlights(); });
     document.getElementById('flightNumber').addEventListener('keydown', function(e) { if (e.key === 'Enter') trackFlight(); });
+
+    // Sticky jump nav — show after scrolling past hero
+    (function() {
+        var jumpNav = document.getElementById('jumpNav');
+        var hero = document.querySelector('.hero');
+        var shown = false;
+        window.addEventListener('scroll', function() {
+            var heroBottom = hero.getBoundingClientRect().bottom;
+            if (heroBottom < 0 && !shown) {
+                jumpNav.classList.add('visible');
+                shown = true;
+            } else if (heroBottom >= 0 && shown) {
+                jumpNav.classList.remove('visible');
+                shown = false;
+            }
+        }, { passive: true });
+    })();
+
+    // Smooth scroll for jump nav links
+    function smoothScroll(e, id) {
+        e.preventDefault();
+        var el = document.getElementById(id);
+        if (el) {
+            var offset = 60; // account for sticky nav height
+            var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+    }
     </script>
 </body>
 </html>
