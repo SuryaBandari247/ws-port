@@ -30,7 +30,7 @@ function AppSwitcher() {
   }, [open]);
 
   return (
-    <div ref={ref} className="fixed top-4 left-4 z-[60]">
+    <div ref={ref} className="hidden md:block fixed top-4 left-4 z-[60]">
       <button
         onClick={() => setOpen(!open)}
         aria-label="Open app switcher"
