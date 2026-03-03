@@ -86,6 +86,38 @@ body {
   text-align: center; font-size: 13px; color: #6b7280; margin: -12px 0 20px; font-style: italic;
 }
 
+/* Affiliate Boxes */
+.affiliate-box {
+  background: white; border: 2px solid #e5e7eb; border-radius: 12px; padding: 24px;
+  margin: 20px 0; transition: all 0.2s;
+}
+.affiliate-box:hover { border-color: #6366f1; box-shadow: 0 4px 16px rgba(99,102,241,0.15); }
+.affiliate-box h4 { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+.affiliate-box p { font-size: 14px; color: #374151; margin-bottom: 12px; }
+.affiliate-box .affiliate-features { list-style: none; margin: 0 0 16px; padding: 0; }
+.affiliate-box .affiliate-features li { font-size: 14px; color: #374151; padding: 4px 0 4px 24px; position: relative; }
+.affiliate-box .affiliate-features li::before { content: "✓"; position: absolute; left: 0; color: #22c55e; font-weight: 700; }
+.affiliate-btn {
+  display: inline-block; background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 15px;
+  text-decoration: none; transition: all 0.2s; box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+}
+.affiliate-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(99,102,241,0.6); color: white; }
+.affiliate-btn-secondary {
+  display: inline-block; background: white; color: #6366f1; border: 2px solid #6366f1;
+  padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px;
+  text-decoration: none; transition: all 0.2s; margin-left: 8px;
+}
+.affiliate-btn-secondary:hover { background: #6366f1; color: white; }
+.affiliate-disclosure {
+  background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 18px;
+  font-size: 13px; color: #6b7280; margin: 24px 0; line-height: 1.6;
+}
+.affiliate-disclosure strong { color: #374151; }
+.affiliate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 20px 0; }
+.price-tag { display: inline-block; background: #ecfdf5; color: #059669; font-weight: 600; font-size: 13px; padding: 4px 10px; border-radius: 6px; margin-bottom: 8px; }
+.comparison-winner { background: #f0fdf4; border-color: #22c55e; }
+
 /* AdSense Ad Containers */
 .guide-ad {
   max-width: 800px; margin: 24px auto; padding: 0 20px; text-align: center;

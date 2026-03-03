@@ -30,8 +30,8 @@ All payments go directly to **YOUR PayPal Business Account**.
 3. Add new variable:
    - **Name**: `REACT_APP_PAYPAL_CLIENT_ID`
    - **Value**: Paste your Client ID from Step 2
-   - **Environment**: Production
-4. Click "Save"
+    - **Environment**: Production
+    4. Click "Save"
 5. Redeploy your app
 
 ### Step 4: Done! 🎉
