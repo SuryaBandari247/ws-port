@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visa Document Checklist Generator — Personalized for Your Application | WithSwag</title>
+<meta name="description" content="Generate a personalized visa document checklist. Select your visa type and destination country to get an exact list of required documents, photos, and forms. Free tool.">
+<meta name="keywords" content="visa checklist, visa documents, schengen visa checklist, us visa documents, visa application checklist, travel document checklist, visa requirements">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://withswag.org/tools/visa-checklist/">
+<meta property="og:title" content="Visa Document Checklist Generator | WithSwag">
+<meta property="og:description" content="Get a personalized visa document checklist. Select visa type + country, get your exact requirements.">
+<meta property="og:url" content="https://withswag.org/tools/visa-checklist/">
+<meta property="og:image" content="https://withswag.org/logo.png">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8351430872646121" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/tools/shared.css">
+</head>
+<body>
+<nav class="tool-nav">
+  <a href="/" class="tool-logo">With<span>Swag</span></a>
+  <div class="tool-nav-links">
+    <a href="/guides/">Guides</a>
+    <a href="/portrait/" class="nav-cta">Create Photo</a>
+  </div>
+</nav>
+<div class="tool-breadcrumb">
+  <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Visa Checklist</span>
+</div>
+
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>📋 Visa Document Checklist Generator</h1>
+    <p>Select your visa type and destination to get a personalized document checklist you can print or save.</p>
+  </div>
+
+  <div class="tool-card" id="checklist-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="visa-type">Visa Type</label>
+        <select id="visa-type">
+          <option value="">Select visa type...</option>
+          <option value="schengen-tourist">Schengen Tourist Visa (C)</option>
+          <option value="schengen-business">Schengen Business Visa</option>
+          <option value="us-b1b2">US B1/B2 Tourist/Business</option>
+          <option value="us-f1">US F1 Student Visa</option>
+          <option value="us-h1b">US H1B Work Visa</option>
+          <option value="us-k1">US K1 Fiancé Visa</option>
+          <option value="uk-visitor">UK Standard Visitor Visa</option>
+          <option value="uk-student">UK Student Visa</option>
+          <option value="uk-work">UK Skilled Worker Visa</option>
+          <option value="canada-visitor">Canada Visitor Visa</option>
+          <option value="canada-study">Canada Study Permit</option>
+          <option value="australia-visitor">Australia Visitor Visa (600)</option>
+          <option value="india-tourist">India Tourist e-Visa</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="travel-purpose">Purpose of Travel</label>
+        <select id="travel-purpose">
+          <option value="tourism">Tourism / Holiday</option>
+          <option value="business">Business</option>
+          <option value="family">Family Visit</option>
+          <option value="study">Study</option>
+          <option value="work">Work</option>
+          <option value="medical">Medical Treatment</option>
+        </select>
+      </div>
+    </div>
+    <button class="tool-btn" onclick="generateChecklist()">Generate My Checklist →</button>
+  </div>
+
+  <div id="checklist-result" class="tool-card" style="display:none;">
+    <div class="result-header">
+      <h2 id="result-title"></h2>
+      <div class="result-actions">
+        <button class="btn-outline" onclick="window.print()">🖨️ Print</button>
+        <button class="btn-outline" onclick="resetChecklist()">↩️ Start Over</button>
+      </div>
+    </div>
+    <div id="checklist-items"></div>
+    <div class="checklist-cta">
+      <p>Need a passport photo for your application?</p>
+      <a href="/portrait/" class="tool-btn">Create Passport Photo →</a>
+    </div>
+  </div>
+</main>
+
+<script>
+const checklists = {
+  'schengen-tourist': {
+    title: 'Schengen Tourist Visa (Type C) — Document Checklist',
+    sections: [
+      { name: 'Application Form & Photo', items: [
+        'Completed Schengen visa application form (signed)',
+        'Two biometric passport photos (35×45mm, white/light grey background)',
+        'Valid passport (at least 2 blank pages, valid 3+ months beyond return date)',
+        'Copies of previous visas and passport stamps'
+      ]},
+      { name: 'Travel & Accommodation', items: [
+        'Round-trip flight reservation (do NOT buy tickets before visa approval)',
+        'Hotel booking or accommodation proof for entire stay',
+        'Detailed travel itinerary (day-by-day plan)',
+        'If staying with someone: invitation letter + their ID copy + proof of address'
+      ]},
+      { name: 'Financial Documents', items: [
+        'Bank statements (last 3 months, stamped by bank)',
+        'Employment letter (stating position, salary, approved leave dates)',
+        'If self-employed: business registration + tax returns (last year)',
+        'If sponsored: sponsor\'s bank statements + sponsorship letter'
+      ]},
+      { name: 'Insurance', items: [
+        'Travel medical insurance (minimum €30,000 coverage)',
+        'Must cover all Schengen countries',
+        'Must cover emergency medical evacuation and repatriation',
+        'Policy must be valid for entire trip duration + 15 days'
+      ]},
+      { name: 'Additional Documents', items: [
+        'Cover letter explaining purpose of trip',
+        'Proof of ties to home country (property, job, family)',
+        'Visa fee payment receipt (€80 adults, €40 children 6-12)',
+        'Appointment confirmation from VFS/TLS/embassy'
+      ]}
+    ]
+  },
+  'schengen-business': {
+    title: 'Schengen Business Visa — Document Checklist',
+    sections: [
+      { name: 'Application Form & Photo', items: [
+        'Completed Schengen visa application form (signed)',
+        'Two biometric passport photos (35×45mm)',
+        'Valid passport (2+ blank pages, valid 3+ months beyond return)',
+        'Copies of previous visas'
+      ]},
+      { name: 'Business Documents', items: [
+        'Invitation letter from the company in the Schengen country',
+        'Letter from your employer confirming business trip',
+        'Business registration documents of your company',
+        'Conference/meeting registration (if applicable)',
+        'Previous business correspondence'
+      ]},
+      { name: 'Travel & Financial', items: [
+        'Flight reservation',
+        'Hotel booking',
+        'Bank statements (last 3 months)',
+        'Company bank statements (if self-employed)',
+        'Travel medical insurance (€30,000 minimum)'
+      ]},
+      { name: 'Additional', items: [
+        'Cover letter explaining business purpose',
+        'Visa fee receipt (€80)',
+        'Appointment confirmation'
+      ]}
+    ]
+  },
+  'us-b1b2': {
+    title: 'US B1/B2 Visa (Tourist/Business) — Document Checklist',
+    sections: [
+      { name: 'Required Forms', items: [
+        'DS-160 confirmation page (completed online at ceac.state.gov)',
+        'Passport valid for 6+ months beyond intended stay',
+        'One 2×2 inch (51×51mm) passport photo (white background)',
+        'DS-160 barcode page printed'
+      ]},
+      { name: 'Financial Evidence', items: [
+        'Bank statements (last 6 months)',
+        'Tax returns (last 2-3 years)',
+        'Pay slips (last 3 months)',
+        'Property ownership documents',
+        'Investment statements'
+      ]},
+      { name: 'Employment / Ties', items: [
+        'Employment letter (position, salary, leave approval)',
+        'Business registration (if self-employed)',
+        'If student: enrollment letter from university',
+        'Family ties documentation (marriage certificate, children\'s birth certificates)'
+      ]},
+      { name: 'Travel Plans', items: [
+        'Travel itinerary (do NOT book flights before approval)',
+        'Hotel reservations (tentative)',
+        'Invitation letter from US host (if visiting someone)',
+        'Conference/event registration (if business)'
+      ]},
+      { name: 'Interview', items: [
+        'Interview appointment confirmation',
+        'Visa fee receipt ($185 MRV fee)',
+        'Previous US visas (if any)',
+        'All original documents + one set of copies'
+      ]}
+    ]
+  },
+  'us-f1': {
+    title: 'US F1 Student Visa — Document Checklist',
+    sections: [
+      { name: 'Required Forms', items: [
+        'DS-160 confirmation page',
+        'I-20 form from your university (signed)',
+        'SEVIS fee receipt (I-901, $350)',
+        'Passport valid for 6+ months',
+        'One 2×2 inch passport photo'
+      ]},
+      { name: 'Academic Documents', items: [
+        'University acceptance letter',
+        'Transcripts and diplomas from previous education',
+        'Standardized test scores (TOEFL, GRE, GMAT, SAT)',
+        'Resume/CV'
+      ]},
+      { name: 'Financial Proof', items: [
+        'Bank statements showing sufficient funds for first year',
+        'Scholarship letter (if applicable)',
+        'Financial sponsor\'s bank statements + affidavit of support (I-134)',
+        'Loan approval letter (if education loan)'
+      ]},
+      { name: 'Interview', items: [
+        'Interview appointment confirmation',
+        'Visa fee receipt ($185)',
+        'Proof of ties to home country',
+        'Study plan / statement of purpose'
+      ]}
+    ]
+  },
+  'us-h1b': {
+    title: 'US H1B Work Visa — Document Checklist',
+    sections: [
+      { name: 'Petition Documents (Employer Files)', items: [
+        'I-129 petition (filed by employer)',
+        'Labor Condition Application (LCA) approval',
+        'I-797 approval notice',
+        'Job offer letter with salary details'
+      ]},
+      { name: 'Your Documents', items: [
+        'DS-160 confirmation page',
+        'Passport valid for 6+ months',
+        'One 2×2 inch passport photo',
+        'Degree certificates + transcripts',
+        'Resume/CV',
+        'Previous employment letters'
+      ]},
+      { name: 'Financial & Supporting', items: [
+        'Recent pay stubs (if currently employed in US)',
+        'Tax returns (if previously in US)',
+        'Employer\'s company profile / annual report',
+        'Client letters (if consulting company)'
+      ]},
+      { name: 'Interview', items: [
+        'Interview appointment confirmation',
+        'Visa fee receipt ($190)',
+        'All original documents + copies',
+        'Previous US visas and I-94 records'
+      ]}
+    ]
+  },
+  'us-k1': {
+    title: 'US K1 Fiancé Visa — Document Checklist',
+    sections: [
+      { name: 'Petition (US Citizen Files)', items: [
+        'I-129F petition approval (I-797 notice)',
+        'Proof of US citizenship (passport or birth certificate)',
+        'Evidence of relationship (photos, messages, travel records)',
+        'Proof of meeting in person within last 2 years'
+      ]},
+      { name: 'Applicant Documents', items: [
+        'DS-160 confirmation page',
+        'Valid passport',
+        'Two 2×2 inch passport photos',
+        'Birth certificate',
+        'Police clearance certificate from every country lived 6+ months',
+        'Medical examination results (from approved physician)',
+        'Divorce decree or death certificate (if previously married)'
+      ]},
+      { name: 'Financial', items: [
+        'Affidavit of Support (I-134) from US fiancé',
+        'US fiancé\'s tax returns (last 3 years)',
+        'US fiancé\'s employment letter',
+        'US fiancé\'s bank statements'
+      ]},
+      { name: 'Interview', items: [
+        'Interview appointment letter',
+        'Visa fee receipt ($265)',
+        'All original documents + copies'
+      ]}
+    ]
+  },
+  'uk-visitor': {
+    title: 'UK Standard Visitor Visa — Document Checklist',
+    sections: [
+      { name: 'Application', items: [
+        'Online application completed at gov.uk',
+        'Valid passport (blank page required)',
+        'One passport photo (35×45mm)',
+        'Previous passports with travel history'
+      ]},
+      { name: 'Financial Documents', items: [
+        'Bank statements (last 6 months)',
+        'Employment letter with salary details',
+        'Tax returns or payslips',
+        'If sponsored: sponsor\'s bank statements + letter'
+      ]},
+      { name: 'Travel Plans', items: [
+        'Flight itinerary',
+        'Hotel booking or invitation letter from UK host',
+        'Travel itinerary',
+        'If visiting family: relationship evidence'
+      ]},
+      { name: 'Biometrics & Fee', items: [
+        'Biometrics appointment at visa application centre',
+        'Visa fee (£115 for 6-month visa)',
+        'IHS surcharge (if applicable)'
+      ]}
+    ]
+  },
+  'uk-student': {
+    title: 'UK Student Visa — Document Checklist',
+    sections: [
+      { name: 'Required', items: [
+        'CAS (Confirmation of Acceptance for Studies) from university',
+        'Valid passport',
+        'Passport photo (35×45mm)',
+        'TB test results (if from listed country)'
+      ]},
+      { name: 'Financial', items: [
+        'Proof of funds: tuition + £1,334/month (London) or £1,023/month (outside London)',
+        'Bank statements held for 28+ consecutive days',
+        'Official financial letter from bank',
+        'Scholarship letter (if applicable)'
+      ]},
+      { name: 'Academic', items: [
+        'ATAS certificate (if required for your course)',
+        'English language test results (IELTS/TOEFL)',
+        'Previous qualifications mentioned in CAS'
+      ]},
+      { name: 'Biometrics & Fee', items: [
+        'Biometrics appointment',
+        'Visa fee (£490)',
+        'Immigration Health Surcharge (£776/year)'
+      ]}
+    ]
+  },
+  'uk-work': {
+    title: 'UK Skilled Worker Visa — Document Checklist',
+    sections: [
+      { name: 'Required', items: [
+        'Certificate of Sponsorship (CoS) from employer',
+        'Valid passport',
+        'Passport photo',
+        'Job description matching SOC code'
+      ]},
+      { name: 'Financial & Employment', items: [
+        'Proof of salary meeting minimum threshold (£26,200 or going rate)',
+        'Bank statements (if needed for maintenance)',
+        'Employment contract or offer letter'
+      ]},
+      { name: 'Additional', items: [
+        'English language proof (B1 level minimum)',
+        'Criminal record certificate',
+        'TB test results (if applicable)',
+        'Biometrics appointment',
+        'Visa fee (£719-£1,420) + IHS (£1,035/year)'
+      ]}
+    ]
+  },
+  'canada-visitor': {
+    title: 'Canada Visitor Visa — Document Checklist',
+    sections: [
+      { name: 'Application', items: [
+        'IMM 5257 application form',
+        'Valid passport',
+        'Two passport photos (50×70mm)',
+        'Digital photo for online application'
+      ]},
+      { name: 'Financial', items: [
+        'Bank statements (last 4 months)',
+        'Employment letter',
+        'Tax documents',
+        'Property ownership (if applicable)'
+      ]},
+      { name: 'Travel & Purpose', items: [
+        'Travel itinerary',
+        'Invitation letter from Canadian host (if visiting someone)',
+        'Hotel reservations',
+        'Proof of ties to home country'
+      ]},
+      { name: 'Fee & Biometrics', items: [
+        'Visa fee (CAD $100)',
+        'Biometrics fee (CAD $85)',
+        'Biometrics appointment at VAC'
+      ]}
+    ]
+  },
+  'canada-study': {
+    title: 'Canada Study Permit — Document Checklist',
+    sections: [
+      { name: 'Required', items: [
+        'Letter of acceptance from DLI (Designated Learning Institution)',
+        'Valid passport',
+        'Passport photos (50×70mm)',
+        'Proof of identity'
+      ]},
+      { name: 'Financial', items: [
+        'Proof of funds: tuition + CAD $20,635/year living expenses',
+        'Bank statements or GIC (Guaranteed Investment Certificate)',
+        'Scholarship letter (if applicable)',
+        'Education loan approval'
+      ]},
+      { name: 'Additional', items: [
+        'Statement of purpose / study plan',
+        'Previous transcripts and diplomas',
+        'English/French language test results',
+        'Police clearance certificate',
+        'Medical exam results (if required)',
+        'Biometrics (CAD $85)',
+        'Application fee (CAD $150)'
+      ]}
+    ]
+  },
+  'australia-visitor': {
+    title: 'Australia Visitor Visa (Subclass 600) — Document Checklist',
+    sections: [
+      { name: 'Application', items: [
+        'Online application via ImmiAccount',
+        'Valid passport',
+        'Passport photo (35×45mm)',
+        'National ID card copy'
+      ]},
+      { name: 'Financial', items: [
+        'Bank statements (last 3 months)',
+        'Employment letter',
+        'Tax returns',
+        'If sponsored: sponsor\'s financial documents + Form 1418'
+      ]},
+      { name: 'Travel & Purpose', items: [
+        'Travel itinerary',
+        'Return flight booking',
+        'Accommodation details',
+        'Invitation letter (if visiting family/friends)',
+        'Proof of ties to home country'
+      ]},
+      { name: 'Health & Character', items: [
+        'Health insurance for duration of stay',
+        'Police clearance (if requested)',
+        'Visa fee (AUD $190)',
+        'Health examination (if requested)'
+      ]}
+    ]
+  },
+  'india-tourist': {
+    title: 'India Tourist e-Visa — Document Checklist',
+    sections: [
+      { name: 'Online Application', items: [
+        'Apply at indianvisaonline.gov.in',
+        'Passport scan (first and last page)',
+        'Passport photo (51×51mm, white background)',
+        'Passport valid for 6+ months with 2 blank pages'
+      ]},
+      { name: 'Travel Details', items: [
+        'Return flight itinerary',
+        'Hotel booking for first few nights',
+        'Travel itinerary within India',
+        'Reference in India (hotel address or contact person)'
+      ]},
+      { name: 'Fee & Processing', items: [
+        'e-Visa fee ($25 for 30-day, $40 for 1-year, $80 for 5-year)',
+        'Processing time: 3-5 business days',
+        'Print ETA (Electronic Travel Authorization) after approval'
+      ]}
+    ]
+  }
+};
+
+function generateChecklist() {
+  const type = document.getElementById('visa-type').value;
+  if (!type) { alert('Please select a visa type'); return; }
+  
+  const data = checklists[type];
+  if (!data) { alert('Checklist not available for this visa type yet.'); return; }
+  
+  document.getElementById('result-title').textContent = data.title;
+  
+  let html = '';
+  data.sections.forEach(function(section) {
+    html += '<div class="checklist-section">';
+    html += '<h3>' + section.name + '</h3>';
+    section.items.forEach(function(item) {
+      html += '<label class="checklist-item"><input type="checkbox"><span>' + item + '</span></label>';
+    });
+    html += '</div>';
+  });
+  
+  document.getElementById('checklist-items').innerHTML = html;
+  document.getElementById('checklist-result').style.display = 'block';
+  document.getElementById('checklist-form').style.display = 'none';
+  document.getElementById('checklist-result').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetChecklist() {
+  document.getElementById('checklist-result').style.display = 'none';
+  document.getElementById('checklist-form').style.display = 'block';
+}
+</script>
+
+<footer class="tool-footer">
+  <p>© 2026 WithSwag. All rights reserved.</p>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+</footer>
+</body>
+</html>

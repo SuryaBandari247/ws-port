@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Insurance Comparison for Visa — Schengen, US, UK | WithSwag</title>
+<meta name="description" content="Compare travel insurance for visa applications. Filter by destination, duration, and coverage. Schengen-compliant options from SafetyWing, World Nomads, Allianz. Find the best price.">
+<meta name="keywords" content="travel insurance visa, schengen travel insurance, visa travel insurance comparison, best travel insurance visa application, travel medical insurance, schengen insurance 30000">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://withswag.org/tools/insurance-compare/">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8351430872646121" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/tools/shared.css">
+<style>
+.ins-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px;transition:border-color .15s;}
+.ins-card:hover{border-color:#2563eb;}
+.ins-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.ins-name{font-size:18px;font-weight:700;color:#0f172a;}
+.ins-price{font-size:22px;font-weight:700;color:#2563eb;}
+.ins-price span{font-size:13px;font-weight:400;color:#64748b;}
+.ins-features{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:12px 0;font-size:13px;color:#475569;}
+.ins-feat{display:flex;align-items:center;gap:6px;}
+.ins-feat .check{color:#16a34a;font-weight:700;}
+.ins-feat .cross{color:#dc2626;font-weight:700;}
+.ins-btn{display:inline-block;background:#2563eb;color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background .15s;}
+.ins-btn:hover{background:#1d4ed8;}
+.ins-badge{font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;background:#dcfce7;color:#15803d;}
+.ins-disclosure{font-size:12px;color:#94a3b8;margin-top:24px;padding:12px;background:#f8fafc;border-radius:8px;line-height:1.5;}
+@media(max-width:768px){.ins-features{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav class="tool-nav">
+  <a href="/" class="tool-logo">With<span>Swag</span></a>
+  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/portrait/" class="nav-cta">Create Photo</a></div>
+</nav>
+<div class="tool-breadcrumb">
+  <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Insurance Compare</span>
+</div>
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>🛡️ Travel Insurance Comparison</h1>
+    <p>Compare travel insurance plans that meet visa requirements. Filter by destination and trip duration.</p>
+  </div>
+  <div class="tool-card">
+    <div class="form-row">
+      <div class="form-group"><label for="ic-dest">Destination</label>
+        <select id="ic-dest">
+          <option value="schengen">Schengen / Europe</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="worldwide">Worldwide</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="ic-duration">Trip Duration</label>
+        <select id="ic-duration">
+          <option value="1week">Up to 1 week</option>
+          <option value="2weeks">Up to 2 weeks</option>
+          <option value="1month">Up to 1 month</option>
+          <option value="3months">Up to 3 months</option>
+          <option value="6months">Up to 6 months</option>
+          <option value="1year">Up to 1 year</option>
+        </select>
+      </div>
+    </div>
+    <button class="tool-btn" onclick="compareInsurance()">Compare Plans →</button>
+  </div>
+  <div id="ic-results" style="display:none;"></div>
+</main>
+
+<script>
+var plans = [
+  {
+    name: 'SafetyWing Nomad Insurance',
+    price: {base: 45.08, per: '4 weeks'},
+    coverage: '$250,000',
+    deductible: '$250',
+    schengen: true,
+    features: ['Emergency medical','Hospital stays','Emergency dental','Travel delay','Lost luggage','Emergency evacuation','COVID-19 coverage','24/7 support'],
+    missing: ['Trip cancellation','Pre-existing conditions'],
+    best: 'Best for long trips & digital nomads',
+    link: 'https://safetywing.com/?referenceID=26486258&utm_source=26486258&utm_medium=Ambassador',
+    badge: 'Best Value'
+  },
+  {
+    name: 'World Nomads Standard',
+    price: {base: 65, per: '2 weeks (approx)'},
+    coverage: '$100,000',
+    deductible: '$100',
+    schengen: true,
+    features: ['Emergency medical','Trip cancellation','Adventure sports','Emergency dental','Travel delay','Lost luggage','Emergency evacuation','24/7 support'],
+    missing: ['Pre-existing conditions'],
+    best: 'Best for adventure travelers',
+    link: 'https://www.worldnomads.com/',
+    badge: 'Most Coverage'
+  },
+  {
+    name: 'World Nomads Explorer',
+    price: {base: 95, per: '2 weeks (approx)'},
+    coverage: '$300,000',
+    deductible: '$100',
+    schengen: true,
+    features: ['Emergency medical','Trip cancellation','Extreme sports','Emergency dental','Travel delay','Lost luggage','Emergency evacuation','Electronics coverage','24/7 support'],
+    missing: [],
+    best: 'Best for extreme sports & high coverage',
+    link: 'https://www.worldnomads.com/',
+    badge: null
+  },
+  {
+    name: 'Allianz Travel Insurance',
+    price: {base: 55, per: '2 weeks (approx)'},
+    coverage: '$150,000',
+    deductible: '$250',
+    schengen: true,
+    features: ['Emergency medical','Trip cancellation','Trip interruption','Emergency dental','Travel delay','Lost luggage','Emergency evacuation','24/7 support'],
+    missing: ['Adventure sports (basic plan)'],
+    best: 'Best for families & traditional travelers',
+    link: 'https://www.allianztravelinsurance.com/',
+    badge: null
+  }
+];
+
+function compareInsurance() {
+  var dest = document.getElementById('ic-dest').value;
+  var duration = document.getElementById('ic-duration').value;
+  var container = document.getElementById('ic-results');
+
+  var html = '';
+
+  if (dest === 'schengen') {
+    html += '<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px;margin-bottom:20px;font-size:14px;color:#1e40af;"><strong>Schengen Requirement:</strong> Travel insurance must cover at least €30,000 (≈$33,000) in medical expenses, including emergency evacuation and repatriation. Must be valid for all Schengen countries.</div>';
+  }
+
+  plans.forEach(function(p) {
+    if (dest === 'schengen' && !p.schengen) return;
+
+    html += '<div class="ins-card">';
+    html += '<div class="ins-header">';
+    html += '<div><div class="ins-name">' + p.name + '</div><div style="font-size:13px;color:#64748b;margin-top:2px;">' + p.best + '</div></div>';
+    html += '<div style="text-align:right;"><div class="ins-price">~$' + p.price.base + ' <span>/ ' + p.price.per + '</span></div>';
+    if (p.badge) html += '<span class="ins-badge">' + p.badge + '</span>';
+    html += '</div></div>';
+
+    html += '<div style="display:flex;gap:24px;margin:12px 0;font-size:13px;flex-wrap:wrap;">';
+    html += '<div><span style="color:#64748b;">Coverage:</span> <strong>' + p.coverage + '</strong></div>';
+    html += '<div><span style="color:#64748b;">Deductible:</span> <strong>' + p.deductible + '</strong></div>';
+    if (p.schengen) html += '<div><span style="color:#16a34a;">✓</span> Schengen compliant</div>';
+    html += '</div>';
+
+    html += '<div class="ins-features">';
+    p.features.forEach(function(f) {
+      html += '<div class="ins-feat"><span class="check">✓</span> ' + f + '</div>';
+    });
+    p.missing.forEach(function(f) {
+      html += '<div class="ins-feat"><span class="cross">✗</span> ' + f + '</div>';
+    });
+    html += '</div>';
+
+    html += '<a href="' + p.link + '" target="_blank" rel="nofollow" class="ins-btn">Get Quote →</a>';
+    html += '</div>';
+  });
+
+  html += '<div class="ins-disclosure"><strong>Affiliate Disclosure:</strong> Some links on this page are affiliate links. If you purchase through them, we may earn a small commission at no extra cost to you. Prices shown are approximate and vary by age, nationality, and trip details. Always verify coverage details before purchasing.</div>';
+
+  container.innerHTML = html;
+  container.style.display = 'block';
+  container.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+<footer class="tool-footer">
+  <p>© 2026 WithSwag. All rights reserved.</p>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+</footer>
+</body>
+</html>

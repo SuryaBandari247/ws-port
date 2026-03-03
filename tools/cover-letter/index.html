@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visa Cover Letter Generator — Free Template for Schengen, US, UK | WithSwag</title>
+<meta name="description" content="Generate a professional visa cover letter in seconds. Fill in your trip details and get a formatted letter ready for your Schengen, US, UK, or Canada visa application. Free tool.">
+<meta name="keywords" content="visa cover letter, schengen visa cover letter, visa application letter, cover letter template visa, visa cover letter generator, tourist visa cover letter">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://withswag.org/tools/cover-letter/">
+<meta property="og:title" content="Visa Cover Letter Generator | WithSwag">
+<meta property="og:description" content="Generate a professional visa cover letter in seconds. Free template for Schengen, US, UK visas.">
+<meta property="og:url" content="https://withswag.org/tools/cover-letter/">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8351430872646121" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/tools/shared.css">
+</head>
+<body>
+<nav class="tool-nav">
+  <a href="/" class="tool-logo">With<span>Swag</span></a>
+  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/portrait/" class="nav-cta">Create Photo</a></div>
+</nav>
+<div class="tool-breadcrumb">
+  <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Cover Letter</span>
+</div>
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>✉️ Visa Cover Letter Generator</h1>
+    <p>Fill in your trip details and get a professional cover letter ready for your visa application.</p>
+  </div>
+  <div class="tool-card" id="letter-form">
+    <div class="form-row">
+      <div class="form-group"><label for="cl-name">Your Full Name</label><input type="text" id="cl-name" placeholder="John Smith"></div>
+      <div class="form-group"><label for="cl-passport">Passport Number</label><input type="text" id="cl-passport" placeholder="AB1234567"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="cl-nationality">Nationality</label><input type="text" id="cl-nationality" placeholder="British"></div>
+      <div class="form-group"><label for="cl-address">Your Address</label><input type="text" id="cl-address" placeholder="123 Main St, London, UK"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="cl-email">Email</label><input type="email" id="cl-email" placeholder="john@example.com"></div>
+      <div class="form-group"><label for="cl-phone">Phone</label><input type="text" id="cl-phone" placeholder="+44 7700 900000"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="cl-embassy">Embassy / Consulate</label><input type="text" id="cl-embassy" placeholder="Embassy of France, London"></div>
+      <div class="form-group"><label for="cl-visa-type">Visa Type</label>
+        <select id="cl-visa-type">
+          <option value="Schengen Tourist Visa (Type C)">Schengen Tourist Visa</option>
+          <option value="Schengen Business Visa">Schengen Business Visa</option>
+          <option value="US B1/B2 Visitor Visa">US B1/B2 Visa</option>
+          <option value="UK Standard Visitor Visa">UK Visitor Visa</option>
+          <option value="Canada Visitor Visa">Canada Visitor Visa</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="cl-dest">Destination Country/Cities</label><input type="text" id="cl-dest" placeholder="France (Paris, Nice)"></div>
+      <div class="form-group"><label for="cl-purpose">Purpose</label>
+        <select id="cl-purpose">
+          <option value="tourism and sightseeing">Tourism</option>
+          <option value="attending a business meeting">Business</option>
+          <option value="visiting family">Family Visit</option>
+          <option value="attending a conference">Conference</option>
+          <option value="medical treatment">Medical</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="cl-depart">Departure Date</label><input type="date" id="cl-depart"></div>
+      <div class="form-group"><label for="cl-return">Return Date</label><input type="date" id="cl-return"></div>
+    </div>
+    <div class="form-group" style="margin-bottom:16px"><label for="cl-itinerary">Brief Itinerary (optional)</label><textarea id="cl-itinerary" placeholder="Day 1: Arrive Paris, check in hotel&#10;Day 2: Visit Eiffel Tower, Louvre&#10;Day 3: Day trip to Versailles..."></textarea></div>
+    <div class="form-group" style="margin-bottom:16px"><label for="cl-accommodation">Accommodation Details</label><input type="text" id="cl-accommodation" placeholder="Hotel Le Marais, Paris (booking ref: 12345)"></div>
+    <div class="form-group" style="margin-bottom:20px"><label for="cl-employer">Your Employer / Occupation</label><input type="text" id="cl-employer" placeholder="Software Engineer at Acme Corp"></div>
+    <button class="tool-btn" onclick="generateLetter()">Generate Cover Letter →</button>
+  </div>
+
+  <div id="letter-result" class="tool-card" style="display:none;">
+    <div class="result-header">
+      <h2>Your Visa Cover Letter</h2>
+      <div class="result-actions">
+        <button class="btn-outline" onclick="copyLetter()">📋 Copy</button>
+        <button class="btn-outline" onclick="window.print()">🖨️ Print</button>
+        <button class="btn-outline" onclick="document.getElementById('letter-result').style.display='none';document.getElementById('letter-form').style.display='block'">↩️ Edit</button>
+      </div>
+    </div>
+    <div id="letter-output" class="output-box"></div>
+  </div>
+</main>
+
+<script>
+function generateLetter() {
+  var n = document.getElementById('cl-name').value.trim();
+  if (!n) { alert('Please enter your name'); return; }
+  var passport = document.getElementById('cl-passport').value.trim() || '[Passport Number]';
+  var nationality = document.getElementById('cl-nationality').value.trim() || '[Nationality]';
+  var address = document.getElementById('cl-address').value.trim() || '[Your Address]';
+  var email = document.getElementById('cl-email').value.trim() || '[Email]';
+  var phone = document.getElementById('cl-phone').value.trim() || '[Phone]';
+  var embassy = document.getElementById('cl-embassy').value.trim() || '[Embassy/Consulate]';
+  var visaType = document.getElementById('cl-visa-type').value;
+  var dest = document.getElementById('cl-dest').value.trim() || '[Destination]';
+  var purpose = document.getElementById('cl-purpose').value;
+  var depart = document.getElementById('cl-depart').value;
+  var ret = document.getElementById('cl-return').value;
+  var itinerary = document.getElementById('cl-itinerary').value.trim();
+  var accommodation = document.getElementById('cl-accommodation').value.trim() || '[Hotel/Accommodation]';
+  var employer = document.getElementById('cl-employer').value.trim() || '[Your Occupation]';
+
+  var departStr = depart ? new Date(depart).toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'}) : '[Departure Date]';
+  var retStr = ret ? new Date(ret).toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'}) : '[Return Date]';
+  var today = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+
+  var days = '';
+  if (depart && ret) {
+    var d = Math.ceil((new Date(ret) - new Date(depart)) / 86400000);
+    days = d + ' days';
+  } else { days = '[Number] days'; }
+
+  var letter = n + '\n' + address + '\n' + email + ' | ' + phone + '\n\n' + today + '\n\nTo,\nThe Visa Officer\n' + embassy + '\n\nSubject: Application for ' + visaType + '\n\nDear Sir/Madam,\n\nI am writing to apply for a ' + visaType + ' to visit ' + dest + ' for the purpose of ' + purpose + '. I kindly request you to consider my application.\n\nPersonal Details:\n- Full Name: ' + n + '\n- Passport Number: ' + passport + '\n- Nationality: ' + nationality + '\n- Occupation: ' + employer + '\n\nTravel Details:\n- Destination: ' + dest + '\n- Travel Dates: ' + departStr + ' to ' + retStr + ' (' + days + ')\n- Accommodation: ' + accommodation + '\n- Purpose: ' + purpose.charAt(0).toUpperCase() + purpose.slice(1) + '\n';
+
+  if (itinerary) {
+    letter += '\nItinerary:\n' + itinerary + '\n';
+  }
+
+  letter += '\nI have enclosed all required documents with this application, including:\n- Valid passport\n- Passport-sized photographs\n- Travel medical insurance\n- Flight reservation\n- Hotel booking confirmation\n- Bank statements (last 3 months)\n- Employment letter\n- Travel itinerary\n\nI confirm that I will abide by the visa conditions and return to my home country before the visa expires. I have strong ties to my home country through my employment and family.\n\nI kindly request you to grant me the visa. Please do not hesitate to contact me if you require any additional information.\n\nThank you for your time and consideration.\n\nYours faithfully,\n' + n;
+
+  document.getElementById('letter-output').textContent = letter;
+  document.getElementById('letter-result').style.display = 'block';
+  document.getElementById('letter-form').style.display = 'none';
+}
+
+function copyLetter() {
+  var text = document.getElementById('letter-output').textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    alert('Cover letter copied to clipboard!');
+  });
+}
+</script>
+<footer class="tool-footer">
+  <p>© 2026 WithSwag. All rights reserved.</p>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+</footer>
+</body>
+</html>

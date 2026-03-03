@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embassy & Consulate Finder — Find Your Nearest Visa Office | WithSwag</title>
+<meta name="description" content="Find the nearest embassy, consulate, or visa application center for your visa application. Addresses, phone numbers, appointment links for US, UK, Schengen, Canada, Australia embassies worldwide.">
+<meta name="keywords" content="embassy finder, consulate finder, visa application center, VFS global, TLS contact, nearest embassy, visa office, embassy address, consulate appointment">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://withswag.org/tools/embassy-finder/">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8351430872646121" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/tools/shared.css">
+</head>
+<body>
+<nav class="tool-nav">
+  <a href="/" class="tool-logo">With<span>Swag</span></a>
+  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/portrait/" class="nav-cta">Create Photo</a></div>
+</nav>
+<div class="tool-breadcrumb">
+  <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Embassy Finder</span>
+</div>
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>🏛️ Embassy & Consulate Finder</h1>
+    <p>Find the nearest embassy, consulate, or visa application center for your destination country.</p>
+  </div>
+  <div class="tool-card">
+    <div class="form-row">
+      <div class="form-group"><label for="ef-country">Your Country (where you are)</label>
+        <select id="ef-country">
+          <option value="">Select your country...</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="de">Germany</option>
+          <option value="fr">France</option>
+          <option value="nl">Netherlands</option>
+          <option value="in">India</option>
+          <option value="ca">Canada</option>
+          <option value="au">Australia</option>
+          <option value="ae">UAE</option>
+          <option value="ng">Nigeria</option>
+          <option value="ph">Philippines</option>
+          <option value="pk">Pakistan</option>
+          <option value="bd">Bangladesh</option>
+          <option value="br">Brazil</option>
+          <option value="mx">Mexico</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="ef-dest">Destination (visa for)</label>
+        <select id="ef-dest">
+          <option value="">Select destination...</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="schengen">Schengen / EU</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+          <option value="india">India</option>
+        </select>
+      </div>
+    </div>
+    <button class="tool-btn" onclick="findEmbassy()">Find Embassy →</button>
+  </div>
+  <div id="ef-results" style="display:none;"></div>
+</main>
+
+<script>
+var embassies = {
+  'in-us': [
+    {name:'US Embassy New Delhi',address:'Shantipath, Chanakyapuri, New Delhi 110021',phone:'+91-11-2419-8000',web:'https://in.usembassy.gov/',appt:'https://www.ustraveldocs.com/in/',type:'Embassy'},
+    {name:'US Consulate Mumbai',address:'C-49, G-Block, Bandra Kurla Complex, Mumbai 400051',phone:'+91-22-2672-4000',web:'https://in.usembassy.gov/embassy-consulates/mumbai/',appt:'https://www.ustraveldocs.com/in/',type:'Consulate'},
+    {name:'US Consulate Chennai',address:'220 Anna Salai, Gemini Circle, Chennai 600006',phone:'+91-44-2857-4000',web:'https://in.usembassy.gov/embassy-consulates/chennai/',appt:'https://www.ustraveldocs.com/in/',type:'Consulate'},
+    {name:'US Consulate Hyderabad',address:'Paigah Palace, 1-8-323, Chiran Fort Lane, Hyderabad 500029',phone:'+91-40-4033-8300',web:'https://in.usembassy.gov/embassy-consulates/hyderabad/',appt:'https://www.ustraveldocs.com/in/',type:'Consulate'},
+    {name:'US Consulate Kolkata',address:'5/1 Ho Chi Minh Sarani, Kolkata 700071',phone:'+91-33-3984-2400',web:'https://in.usembassy.gov/embassy-consulates/kolkata/',appt:'https://www.ustraveldocs.com/in/',type:'Consulate'}
+  ],
+  'in-uk': [
+    {name:'UK Visa Application Centre (VFS) — New Delhi',address:'Shivaji Stadium Metro Station, New Delhi',phone:'VFS helpline',web:'https://www.gov.uk/world/india',appt:'https://www.vfsglobal.co.uk/in/en',type:'VFS Centre'},
+    {name:'UK Visa Application Centre (VFS) — Mumbai',address:'Urmi Axis Building, Mumbai',phone:'VFS helpline',web:'https://www.gov.uk/world/india',appt:'https://www.vfsglobal.co.uk/in/en',type:'VFS Centre'},
+    {name:'UK Visa Application Centre (VFS) — Chennai',address:'Olympia Tech Park, Chennai',phone:'VFS helpline',web:'https://www.gov.uk/world/india',appt:'https://www.vfsglobal.co.uk/in/en',type:'VFS Centre'}
+  ],
+  'in-schengen': [
+    {name:'German Embassy New Delhi',address:'No. 6/50G, Shantipath, Chanakyapuri, New Delhi',phone:'+91-11-4419-9199',web:'https://india.diplo.de/',appt:'https://www.vfsglobal.com/germany/india/',type:'Embassy'},
+    {name:'French Embassy New Delhi',address:'2/50-E, Shantipath, Chanakyapuri, New Delhi',phone:'+91-11-2419-6100',web:'https://in.ambafrance.org/',appt:'https://www.tlscontact.com/in/',type:'Embassy'},
+    {name:'Netherlands Embassy New Delhi',address:'6/50-F, Shantipath, Chanakyapuri, New Delhi',phone:'+91-11-2419-7600',web:'https://www.netherlandsandyou.nl/your-country-and-the-netherlands/india',appt:'https://www.vfsglobal.com/netherlands/india/',type:'Embassy'},
+    {name:'VFS Global (Schengen) — Multiple Cities',address:'Delhi, Mumbai, Chennai, Bangalore, Hyderabad, Kolkata, Pune, Ahmedabad',phone:'VFS helpline',web:'https://www.vfsglobal.com/',appt:'https://www.vfsglobal.com/',type:'VFS Centre'}
+  ],
+  'in-canada': [
+    {name:'Canada Visa Application Centre (VFS) — New Delhi',address:'Shivaji Stadium Metro Station, New Delhi',phone:'VFS helpline',web:'https://www.canada.ca/en/immigration-refugees-citizenship.html',appt:'https://www.vfsglobal.ca/canada/india/',type:'VFS Centre'},
+    {name:'Canada Visa Application Centre (VFS) — Mumbai',address:'Urmi Axis Building, Mumbai',phone:'VFS helpline',appt:'https://www.vfsglobal.ca/canada/india/',type:'VFS Centre'}
+  ],
+  'in-australia': [
+    {name:'Australian Visa Application Centre (VFS) — New Delhi',address:'Shivaji Stadium Metro Station, New Delhi',phone:'VFS helpline',web:'https://india.embassy.gov.au/',appt:'https://www.vfsglobal.com/australia/india/',type:'VFS Centre'},
+    {name:'Australian Visa Application Centre (VFS) — Mumbai',address:'Urmi Axis Building, Mumbai',phone:'VFS helpline',appt:'https://www.vfsglobal.com/australia/india/',type:'VFS Centre'}
+  ],
+  'us-uk': [
+    {name:'UK Visa Application Centre (VFS) — New York',address:'290 Madison Avenue, New York, NY 10017',phone:'VFS helpline',web:'https://www.gov.uk/world/usa',appt:'https://www.vfsglobal.co.uk/us/en',type:'VFS Centre'},
+    {name:'UK Visa Application Centre (VFS) — Los Angeles',address:'11766 Wilshire Blvd, Los Angeles, CA 90025',phone:'VFS helpline',appt:'https://www.vfsglobal.co.uk/us/en',type:'VFS Centre'},
+    {name:'UK Visa Application Centre (VFS) — Washington DC',address:'1625 K Street NW, Washington, DC 20006',phone:'VFS helpline',appt:'https://www.vfsglobal.co.uk/us/en',type:'VFS Centre'}
+  ],
+  'us-schengen': [
+    {name:'German Embassy Washington DC',address:'4645 Reservoir Road NW, Washington, DC 20007',phone:'+1-202-298-4000',web:'https://www.germany.info/',appt:'https://www.germany.info/us-en/service/visa',type:'Embassy'},
+    {name:'French Embassy Washington DC',address:'4101 Reservoir Road NW, Washington, DC 20007',phone:'+1-202-944-6000',web:'https://franceintheus.org/',appt:'https://www.tlscontact.com/us/',type:'Embassy'},
+    {name:'VFS Global (Schengen) — Multiple US Cities',address:'New York, Los Angeles, Chicago, Houston, San Francisco, Miami',phone:'VFS helpline',appt:'https://www.vfsglobal.com/',type:'VFS Centre'}
+  ],
+  'us-canada': [
+    {name:'Canada Visa Application Centre (VFS) — New York',address:'290 Madison Avenue, New York, NY 10017',phone:'VFS helpline',web:'https://www.canada.ca/',appt:'https://www.vfsglobal.ca/canada/usa/',type:'VFS Centre'},
+    {name:'Canada Visa Application Centre (VFS) — Los Angeles',address:'11766 Wilshire Blvd, Los Angeles, CA',phone:'VFS helpline',appt:'https://www.vfsglobal.ca/canada/usa/',type:'VFS Centre'}
+  ],
+  'uk-us': [
+    {name:'US Embassy London',address:'33 Nine Elms Lane, London SW11 7US',phone:'+44-20-7499-9000',web:'https://uk.usembassy.gov/',appt:'https://www.ustraveldocs.com/gb/',type:'Embassy'},
+    {name:'US Consulate Belfast',address:'Danesfort House, 223 Stranmillis Road, Belfast BT9 5GR',phone:'+44-28-9038-6100',web:'https://uk.usembassy.gov/embassy-consulates/belfast/',appt:'https://www.ustraveldocs.com/gb/',type:'Consulate'}
+  ],
+  'uk-schengen': [
+    {name:'TLScontact (France) — London',address:'London',phone:'TLS helpline',web:'https://fr.tlscontact.com/gb/',appt:'https://fr.tlscontact.com/gb/',type:'TLS Centre'},
+    {name:'VFS Global (Germany) — London',address:'London',phone:'VFS helpline',appt:'https://www.vfsglobal.com/germany/uk/',type:'VFS Centre'},
+    {name:'VFS Global (Netherlands) — London',address:'London',phone:'VFS helpline',appt:'https://www.vfsglobal.com/netherlands/uk/',type:'VFS Centre'}
+  ],
+  'de-us': [
+    {name:'US Embassy Berlin',address:'Pariser Platz 2, 10117 Berlin',phone:'+49-30-8305-0',web:'https://de.usembassy.gov/',appt:'https://www.ustraveldocs.com/de/',type:'Embassy'},
+    {name:'US Consulate Frankfurt',address:'Gießener Str. 30, 60435 Frankfurt',phone:'+49-69-7535-0',web:'https://de.usembassy.gov/embassy-consulates/frankfurt/',appt:'https://www.ustraveldocs.com/de/',type:'Consulate'},
+    {name:'US Consulate Munich',address:'Königinstraße 5, 80539 München',phone:'+49-89-2888-0',appt:'https://www.ustraveldocs.com/de/',type:'Consulate'}
+  ],
+  'nl-us': [
+    {name:'US Embassy The Hague',address:'John Adams Park 1, 2244 BZ Wassenaar',phone:'+31-70-310-2209',web:'https://nl.usembassy.gov/',appt:'https://www.ustraveldocs.com/nl/',type:'Embassy'},
+    {name:'US Consulate Amsterdam',address:'Museumplein 19, 1071 DJ Amsterdam',phone:'+31-20-575-5309',web:'https://nl.usembassy.gov/embassy-consulates/amsterdam/',appt:'https://www.ustraveldocs.com/nl/',type:'Consulate'}
+  ],
+  'nl-uk': [
+    {name:'UK Visa Application Centre (VFS) — The Hague',address:'The Hague',phone:'VFS helpline',web:'https://www.gov.uk/world/netherlands',appt:'https://www.vfsglobal.co.uk/nl/en',type:'VFS Centre'}
+  ],
+  'fr-us': [
+    {name:'US Embassy Paris',address:'2 Avenue Gabriel, 75008 Paris',phone:'+33-1-4312-2222',web:'https://fr.usembassy.gov/',appt:'https://www.ustraveldocs.com/fr/',type:'Embassy'}
+  ],
+  'ae-us': [
+    {name:'US Embassy Abu Dhabi',address:'Embassies District, Plot 38, Abu Dhabi',phone:'+971-2-414-2200',web:'https://ae.usembassy.gov/',appt:'https://www.ustraveldocs.com/ae/',type:'Embassy'},
+    {name:'US Consulate Dubai',address:'Corner of Al Seef Rd and Sheikh Khalifa bin Zayed Rd, Dubai',phone:'+971-4-309-4000',appt:'https://www.ustraveldocs.com/ae/',type:'Consulate'}
+  ],
+  'ae-uk': [
+    {name:'UK Visa Application Centre (VFS) — Dubai',address:'Dubai',phone:'VFS helpline',appt:'https://www.vfsglobal.co.uk/ae/en',type:'VFS Centre'},
+    {name:'UK Visa Application Centre (VFS) — Abu Dhabi',address:'Abu Dhabi',phone:'VFS helpline',appt:'https://www.vfsglobal.co.uk/ae/en',type:'VFS Centre'}
+  ],
+  'ae-schengen': [
+    {name:'VFS Global (Schengen) — Dubai & Abu Dhabi',address:'Dubai, Abu Dhabi',phone:'VFS helpline',appt:'https://www.vfsglobal.com/',type:'VFS Centre'}
+  ]
+};
+
+// Generate fallback for missing combos
+function findEmbassy() {
+  var country = document.getElementById('ef-country').value;
+  var dest = document.getElementById('ef-dest').value;
+  if (!country || !dest) { alert('Please select both fields'); return; }
+  if (country === dest) { alert('You don\'t need a visa for your own country!'); return; }
+
+  var key = country + '-' + dest;
+  var results = embassies[key];
+  var container = document.getElementById('ef-results');
+
+  if (!results || results.length === 0) {
+    container.innerHTML = '<div class="tool-card"><h2>No specific data available</h2><p style="color:#64748b;margin-top:8px;">We don\'t have detailed embassy data for this combination yet. Try these resources:</p><ul style="margin-top:12px;padding-left:20px;color:#475569;font-size:14px;line-height:2;"><li><a href="https://www.vfsglobal.com/" rel="nofollow" style="color:#2563eb;">VFS Global</a> — Visa application centers worldwide</li><li><a href="https://www.tlscontact.com/" rel="nofollow" style="color:#2563eb;">TLScontact</a> — Schengen visa centers</li><li>Search: "[destination country] embassy in [your country]"</li></ul></div>';
+    container.style.display = 'block';
+    return;
+  }
+
+  var html = '';
+  results.forEach(function(e) {
+    html += '<div class="embassy-card">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">';
+    html += '<h3>' + e.name + '</h3>';
+    html += '<span style="font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;background:#dbeafe;color:#1d4ed8;">' + e.type + '</span>';
+    html += '</div>';
+    html += '<p style="margin-top:6px;">📍 ' + e.address + '</p>';
+    if (e.phone) html += '<p>📞 ' + e.phone + '</p>';
+    var links = '';
+    if (e.web) links += '<a href="' + e.web + '" target="_blank" rel="nofollow">Website ↗</a> ';
+    if (e.appt) links += '<a href="' + e.appt + '" target="_blank" rel="nofollow">Book Appointment ↗</a>';
+    if (links) html += '<p style="margin-top:8px;">' + links + '</p>';
+    html += '</div>';
+  });
+
+  html += '<div class="tool-card" style="text-align:center;margin-top:16px;"><p style="font-size:14px;color:#475569;margin-bottom:12px;">Need a passport photo for your visa application?</p><a href="/portrait/" class="tool-btn">Create Passport Photo →</a></div>';
+
+  container.innerHTML = html;
+  container.style.display = 'block';
+  container.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+<footer class="tool-footer">
+  <p>© 2026 WithSwag. All rights reserved.</p>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+</footer>
+</body>
+</html>

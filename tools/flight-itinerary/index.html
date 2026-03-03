@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flight Itinerary for Visa Application — Free Generator | WithSwag</title>
+<meta name="description" content="Generate a flight itinerary for your visa application. Create a professional travel plan with flight details, dates, and routes. No booking required. Free tool.">
+<meta name="keywords" content="flight itinerary for visa, visa flight itinerary, dummy flight itinerary, travel itinerary visa application, flight reservation visa, flight plan visa">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://withswag.org/tools/flight-itinerary/">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8351430872646121" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/tools/shared.css">
+</head>
+<body>
+<nav class="tool-nav">
+  <a href="/" class="tool-logo">With<span>Swag</span></a>
+  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/portrait/" class="nav-cta">Create Photo</a></div>
+</nav>
+<div class="tool-breadcrumb">
+  <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Flight Itinerary</span>
+</div>
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>✈️ Flight Itinerary Generator</h1>
+    <p>Create a travel itinerary for your visa application. Enter your flight details and get a formatted document you can print.</p>
+  </div>
+  <div class="tool-card" id="fi-form">
+    <h3 style="margin-bottom:16px;font-size:16px;color:#0f172a;">Passenger Details</h3>
+    <div class="form-row">
+      <div class="form-group"><label for="fi-name">Full Name (as on passport)</label><input type="text" id="fi-name" placeholder="John Smith"></div>
+      <div class="form-group"><label for="fi-passport">Passport Number</label><input type="text" id="fi-passport" placeholder="AB1234567"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="fi-nationality">Nationality</label><input type="text" id="fi-nationality" placeholder="British"></div>
+      <div class="form-group"><label for="fi-dob">Date of Birth</label><input type="date" id="fi-dob"></div>
+    </div>
+
+    <h3 style="margin:24px 0 16px;font-size:16px;color:#0f172a;">Outbound Flight</h3>
+    <div class="form-row">
+      <div class="form-group"><label for="fi-from1">From (City/Airport)</label><input type="text" id="fi-from1" placeholder="London Heathrow (LHR)"></div>
+      <div class="form-group"><label for="fi-to1">To (City/Airport)</label><input type="text" id="fi-to1" placeholder="Paris Charles de Gaulle (CDG)"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="fi-date1">Date</label><input type="date" id="fi-date1"></div>
+      <div class="form-group"><label for="fi-airline1">Airline (optional)</label><input type="text" id="fi-airline1" placeholder="Air France"></div>
+    </div>
+
+    <h3 style="margin:24px 0 16px;font-size:16px;color:#0f172a;">Return Flight</h3>
+    <div class="form-row">
+      <div class="form-group"><label for="fi-from2">From</label><input type="text" id="fi-from2" placeholder="Paris Charles de Gaulle (CDG)"></div>
+      <div class="form-group"><label for="fi-to2">To</label><input type="text" id="fi-to2" placeholder="London Heathrow (LHR)"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="fi-date2">Date</label><input type="date" id="fi-date2"></div>
+      <div class="form-group"><label for="fi-airline2">Airline (optional)</label><input type="text" id="fi-airline2" placeholder="Air France"></div>
+    </div>
+
+    <div id="fi-extra-legs"></div>
+    <button class="btn-outline" style="margin-bottom:20px;" onclick="addLeg()">+ Add Connecting Flight</button>
+    <br>
+    <button class="tool-btn" onclick="generateItinerary()">Generate Itinerary →</button>
+  </div>
+
+  <div id="fi-result" class="tool-card" style="display:none;">
+    <div class="result-header">
+      <h2>Travel Itinerary</h2>
+      <div class="result-actions">
+        <button class="btn-outline" onclick="window.print()">🖨️ Print</button>
+        <button class="btn-outline" onclick="document.getElementById('fi-result').style.display='none';document.getElementById('fi-form').style.display='block'">↩️ Edit</button>
+      </div>
+    </div>
+    <div id="fi-output"></div>
+  </div>
+</main>
+
+<script>
+var legCount = 0;
+function addLeg() {
+  legCount++;
+  var div = document.createElement('div');
+  div.innerHTML = '<h3 style="margin:24px 0 16px;font-size:16px;color:#0f172a;">Connecting Flight ' + legCount + '</h3><div class="form-row"><div class="form-group"><label>From</label><input type="text" class="leg-from" placeholder="City/Airport"></div><div class="form-group"><label>To</label><input type="text" class="leg-to" placeholder="City/Airport"></div></div><div class="form-row"><div class="form-group"><label>Date</label><input type="date" class="leg-date"></div><div class="form-group"><label>Airline</label><input type="text" class="leg-airline" placeholder="Airline name"></div></div>';
+  document.getElementById('fi-extra-legs').appendChild(div);
+}
+
+function fmtDate(d) {
+  if (!d) return '[Date]';
+  return new Date(d).toLocaleDateString('en-GB', {weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+
+function generateItinerary() {
+  var name = document.getElementById('fi-name').value.trim();
+  if (!name) { alert('Please enter passenger name'); return; }
+  var passport = document.getElementById('fi-passport').value.trim() || '[Passport Number]';
+  var nationality = document.getElementById('fi-nationality').value.trim() || '[Nationality]';
+  var dob = document.getElementById('fi-dob').value;
+
+  var flights = [];
+  flights.push({
+    from: document.getElementById('fi-from1').value.trim() || '[Departure City]',
+    to: document.getElementById('fi-to1').value.trim() || '[Arrival City]',
+    date: document.getElementById('fi-date1').value,
+    airline: document.getElementById('fi-airline1').value.trim() || 'Airline TBD'
+  });
+
+  var extraFroms = document.querySelectorAll('.leg-from');
+  var extraTos = document.querySelectorAll('.leg-to');
+  var extraDates = document.querySelectorAll('.leg-date');
+  var extraAirlines = document.querySelectorAll('.leg-airline');
+  for (var i = 0; i < extraFroms.length; i++) {
+    flights.push({
+      from: extraFroms[i].value.trim() || '[City]',
+      to: extraTos[i].value.trim() || '[City]',
+      date: extraDates[i].value,
+      airline: extraAirlines[i].value.trim() || 'Airline TBD'
+    });
+  }
+
+  flights.push({
+    from: document.getElementById('fi-from2').value.trim() || '[Return City]',
+    to: document.getElementById('fi-to2').value.trim() || '[Home City]',
+    date: document.getElementById('fi-date2').value,
+    airline: document.getElementById('fi-airline2').value.trim() || 'Airline TBD'
+  });
+
+  var html = '<div style="border:2px solid #e2e8f0;border-radius:12px;padding:32px;background:#fff;">';
+  html += '<div style="text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:2px solid #e2e8f0;">';
+  html += '<h2 style="font-size:22px;color:#0f172a;margin-bottom:4px;">Travel Itinerary</h2>';
+  html += '<p style="font-size:13px;color:#94a3b8;">Generated for visa application purposes</p>';
+  html += '</div>';
+
+  html += '<div style="margin-bottom:24px;padding:16px;background:#f8fafc;border-radius:8px;">';
+  html += '<h3 style="font-size:14px;color:#64748b;margin-bottom:8px;">PASSENGER DETAILS</h3>';
+  html += '<table style="font-size:14px;color:#1e293b;">';
+  html += '<tr><td style="padding:4px 16px 4px 0;color:#64748b;">Name:</td><td><strong>' + name + '</strong></td></tr>';
+  html += '<tr><td style="padding:4px 16px 4px 0;color:#64748b;">Passport:</td><td>' + passport + '</td></tr>';
+  html += '<tr><td style="padding:4px 16px 4px 0;color:#64748b;">Nationality:</td><td>' + nationality + '</td></tr>';
+  if (dob) html += '<tr><td style="padding:4px 16px 4px 0;color:#64748b;">Date of Birth:</td><td>' + fmtDate(dob) + '</td></tr>';
+  html += '</table></div>';
+
+  html += '<h3 style="font-size:14px;color:#64748b;margin-bottom:16px;">FLIGHT DETAILS</h3>';
+  flights.forEach(function(f, idx) {
+    var label = idx === 0 ? 'OUTBOUND' : (idx === flights.length - 1 ? 'RETURN' : 'CONNECTING');
+    html += '<div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:16px;padding:16px;border:1px solid #e2e8f0;border-radius:8px;">';
+    html += '<div style="font-size:28px;">✈️</div>';
+    html += '<div style="flex:1;">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">';
+    html += '<span style="font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px;background:' + (label==='OUTBOUND'?'#dbeafe':'#dcfce7') + ';color:' + (label==='OUTBOUND'?'#1d4ed8':'#15803d') + ';">' + label + '</span>';
+    html += '<span style="font-size:13px;color:#64748b;">' + f.airline + '</span>';
+    html += '</div>';
+    html += '<p style="font-size:16px;font-weight:600;color:#0f172a;">' + f.from + ' → ' + f.to + '</p>';
+    html += '<p style="font-size:14px;color:#475569;">' + fmtDate(f.date) + '</p>';
+    html += '</div></div>';
+  });
+
+  html += '<div style="margin-top:24px;padding-top:16px;border-top:1px solid #e2e8f0;text-align:center;font-size:12px;color:#94a3b8;">';
+  html += '<p>This itinerary is for visa application purposes only and does not constitute a confirmed booking.</p>';
+  html += '<p style="margin-top:4px;">Generated by WithSwag.org on ' + new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'}) + '</p>';
+  html += '</div></div>';
+
+  document.getElementById('fi-output').innerHTML = html;
+  document.getElementById('fi-result').style.display = 'block';
+  document.getElementById('fi-form').style.display = 'none';
+}
+</script>
+<footer class="tool-footer">
+  <p>© 2026 WithSwag. All rights reserved.</p>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+</footer>
+</body>
+</html>

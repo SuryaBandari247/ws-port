@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visa Fee Calculator 2026 — US, UK, Schengen, Canada, Australia | WithSwag</title>
+<meta name="description" content="Calculate visa fees for 2026. US, UK, Schengen, Canada, Australia visa costs including application fee, biometrics, service center charges, and processing times.">
+<meta name="keywords" content="visa fee calculator, schengen visa fee, us visa fee, uk visa fee, canada visa fee, visa cost 2026, visa application fee, biometrics fee">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://withswag.org/tools/visa-fee-calculator/">
+<meta property="og:title" content="Visa Fee Calculator 2026 | WithSwag">
+<meta property="og:description" content="Calculate exact visa fees. US, UK, Schengen, Canada, Australia — application, biometrics, service charges.">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8351430872646121" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/tools/shared.css">
+</head>
+<body>
+<nav class="tool-nav">
+  <a href="/" class="tool-logo">With<span>Swag</span></a>
+  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/portrait/" class="nav-cta">Create Photo</a></div>
+</nav>
+<div class="tool-breadcrumb">
+  <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Visa Fee Calculator</span>
+</div>
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>💰 Visa Fee Calculator (2026)</h1>
+    <p>Select your destination and visa type to see the exact fees, processing times, and where to apply.</p>
+  </div>
+  <div class="tool-card" id="fee-form">
+    <div class="form-row">
+      <div class="form-group"><label for="fee-dest">Destination</label>
+        <select id="fee-dest" onchange="updateVisaTypes()">
+          <option value="">Select destination...</option>
+          <option value="schengen">Schengen Area (Europe)</option>
+          <option value="us">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+          <option value="india">India</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="fee-type">Visa Type</label>
+        <select id="fee-type"><option value="">Select destination first...</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label for="fee-age">Applicant Age</label>
+        <select id="fee-age">
+          <option value="adult">Adult (18+)</option>
+          <option value="child-12">Child (6-17)</option>
+          <option value="child-6">Child (under 6)</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="fee-service">Service Center</label>
+        <select id="fee-service">
+          <option value="none">Direct / Embassy</option>
+          <option value="vfs">VFS Global</option>
+          <option value="tls">TLScontact</option>
+        </select>
+      </div>
+    </div>
+    <button class="tool-btn" onclick="calculateFee()">Calculate Fees →</button>
+  </div>
+  <div id="fee-result" class="tool-card" style="display:none;">
+    <div class="result-header">
+      <h2 id="fee-title"></h2>
+      <div class="result-actions">
+        <button class="btn-outline" onclick="window.print()">🖨️ Print</button>
+        <button class="btn-outline" onclick="document.getElementById('fee-result').style.display='none';document.getElementById('fee-form').style.display='block'">↩️ Recalculate</button>
+      </div>
+    </div>
+    <table class="result-table" id="fee-table"></table>
+    <div id="fee-notes" style="margin-top:16px;font-size:13px;color:#64748b;line-height:1.6;"></div>
+  </div>
+</main>
+
+<script>
+var visaTypes = {
+  schengen: [
+    {value:'short-stay',label:'Short-Stay Visa (Type C) — Tourist/Business'},
+    {value:'national',label:'National Visa (Type D) — Long Stay'},
+    {value:'transit',label:'Airport Transit Visa (Type A)'}
+  ],
+  us: [
+    {value:'b1b2',label:'B1/B2 Tourist/Business'},
+    {value:'f1',label:'F1 Student'},
+    {value:'h1b',label:'H1B Work Visa'},
+    {value:'k1',label:'K1 Fiancé'},
+    {value:'l1',label:'L1 Intracompany Transfer'},
+    {value:'j1',label:'J1 Exchange Visitor'}
+  ],
+  uk: [
+    {value:'visitor',label:'Standard Visitor (6 months)'},
+    {value:'visitor-long',label:'Long-Term Visitor (2/5/10 years)'},
+    {value:'student',label:'Student Visa'},
+    {value:'skilled-worker',label:'Skilled Worker Visa'},
+    {value:'family',label:'Family Visa'}
+  ],
+  canada: [
+    {value:'visitor',label:'Visitor Visa (TRV)'},
+    {value:'study',label:'Study Permit'},
+    {value:'work',label:'Work Permit'},
+    {value:'eta',label:'Electronic Travel Authorization (eTA)'}
+  ],
+  australia: [
+    {value:'visitor-600',label:'Visitor Visa (Subclass 600)'},
+    {value:'student-500',label:'Student Visa (Subclass 500)'},
+    {value:'work-482',label:'Temporary Skill Shortage (Subclass 482)'},
+    {value:'eta-601',label:'Electronic Travel Authority (Subclass 601)'}
+  ],
+  india: [
+    {value:'e-tourist',label:'e-Tourist Visa'},
+    {value:'e-business',label:'e-Business Visa'},
+    {value:'regular',label:'Regular Tourist Visa'},
+    {value:'employment',label:'Employment Visa'}
+  ]
+};
+
+var feeData = {
+  'schengen-short-stay': {fees:[{item:'Visa Application Fee',adult:'€80',child12:'€40',child6:'Free'},{item:'VFS Service Fee',vfs:'€15–30',tls:'€15–30'},{item:'Photo (if needed)',all:'€3–10'}],processing:'15 calendar days (up to 45 in peak)',notes:'Fee may be reduced for some nationalities. Children under 6 are exempt. Some countries waive fees for students.'},
+  'schengen-national': {fees:[{item:'National Visa Fee',adult:'€75–100 (varies by country)',child12:'€37–50',child6:'Free or reduced'},{item:'Service Center Fee',vfs:'€15–30',tls:'€15–30'}],processing:'1–3 months',notes:'Fees vary by country. Contact the specific embassy for exact amounts.'},
+  'schengen-transit': {fees:[{item:'Transit Visa Fee',adult:'€80',child12:'€40',child6:'Free'}],processing:'15 calendar days',notes:'Not all nationalities need a transit visa. Check with the embassy.'},
+  'us-b1b2': {fees:[{item:'MRV Application Fee',all:'$185'},{item:'Reciprocity Fee (some nationalities)',all:'$0–$303'}],processing:'Interview wait: varies by embassy (days to months)',notes:'Fee is non-refundable even if denied. No biometrics fee — included in MRV fee. Reciprocity fee depends on nationality.'},
+  'us-f1': {fees:[{item:'MRV Application Fee',all:'$185'},{item:'SEVIS Fee (I-901)',all:'$350'}],processing:'Interview wait varies. Allow 2-3 months before program start.',notes:'SEVIS fee is separate and paid online before the interview.'},
+  'us-h1b': {fees:[{item:'MRV Application Fee',all:'$190'},{item:'I-129 Petition Fee (employer pays)',all:'$780'},{item:'Anti-Fraud Fee',all:'$500'},{item:'ACWIA Training Fee',all:'$750–$1,500'},{item:'Premium Processing (optional)',all:'$2,805'}],processing:'Lottery in March, results April. Regular: 3-6 months. Premium: 15 business days.',notes:'Most fees are paid by the employer. Premium processing guarantees 15-day adjudication.'},
+  'us-k1': {fees:[{item:'I-129F Petition Fee (USCIS)',all:'$535'},{item:'MRV Visa Fee',all:'$265'},{item:'Medical Exam',all:'$100–$500 (varies by country)'},{item:'Affidavit of Support',all:'No fee'}],processing:'I-129F: 8-14 months. Embassy: 1-3 months after approval.',notes:'Total process typically takes 10-18 months.'},
+  'us-l1': {fees:[{item:'MRV Application Fee',all:'$190'},{item:'I-129 Petition Fee',all:'$780'},{item:'Anti-Fraud Fee',all:'$500'},{item:'Premium Processing (optional)',all:'$2,805'}],processing:'Regular: 3-6 months. Premium: 15 business days.',notes:'L1A (managers) and L1B (specialized knowledge) have same fees.'},
+  'us-j1': {fees:[{item:'MRV Application Fee',all:'$185'},{item:'SEVIS Fee (I-901)',all:'$220'}],processing:'Interview wait varies.',notes:'Sponsor organization may charge additional program fees.'},
+  'uk-visitor': {fees:[{item:'Visa Application Fee',all:'£115'},{item:'Biometrics (at VAC)',all:'Included'},{item:'Priority Service (optional)',all:'£500'},{item:'Super Priority (optional)',all:'£1,000'}],processing:'Standard: 3 weeks. Priority: 5 working days. Super Priority: next working day.',notes:'Apply online at gov.uk. Biometrics collected at visa application centre.'},
+  'uk-visitor-long': {fees:[{item:'2-Year Visa',all:'£432'},{item:'5-Year Visa',all:'£771'},{item:'10-Year Visa',all:'£963'}],processing:'3 weeks standard',notes:'Must demonstrate regular travel to UK. Same application process as standard visitor.'},
+  'uk-student': {fees:[{item:'Visa Application Fee',all:'£490'},{item:'Immigration Health Surcharge (IHS)',all:'£776/year'},{item:'Priority (optional)',all:'£500'}],processing:'Standard: 3 weeks. Priority: 5 working days.',notes:'IHS gives access to NHS. Must pay for full duration of course. CAS required from university.'},
+  'uk-skilled-worker': {fees:[{item:'Visa Fee (up to 3 years)',all:'£719–£1,420'},{item:'Visa Fee (over 3 years)',all:'£1,420–£2,827'},{item:'Immigration Health Surcharge',all:'£1,035/year'},{item:'Certificate of Sponsorship',all:'Employer pays'}],processing:'Standard: 3 weeks. Priority: 5 working days.',notes:'Fee depends on job type and duration. Employer must be a licensed sponsor.'},
+  'uk-family': {fees:[{item:'Visa Application Fee',all:'£1,846'},{item:'Immigration Health Surcharge',all:'£1,035/year'},{item:'English Language Test',all:'£150–200'}],processing:'Standard: 12 weeks (outside UK)',notes:'Must meet minimum income requirement (£29,000 from 2026).'},
+  'canada-visitor': {fees:[{item:'Visa Application Fee',all:'CAD $100'},{item:'Biometrics Fee',all:'CAD $85'}],processing:'Varies by country. Check IRCC processing times.',notes:'Apply online or on paper. Biometrics valid for 10 years.'},
+  'canada-study': {fees:[{item:'Study Permit Fee',all:'CAD $150'},{item:'Biometrics Fee',all:'CAD $85'}],processing:'Varies. Apply 3-4 months before program start.',notes:'Must have acceptance letter from DLI. Proof of funds required.'},
+  'canada-work': {fees:[{item:'Work Permit Fee',all:'CAD $155'},{item:'Employer Compliance Fee (LMIA)',all:'CAD $1,000 (employer pays)'},{item:'Biometrics Fee',all:'CAD $85'}],processing:'Varies by stream.',notes:'Open work permits available for some categories (spouses, PGWP).'},
+  'canada-eta': {fees:[{item:'eTA Fee',all:'CAD $7'}],processing:'Minutes (online). Some may take days.',notes:'For visa-exempt nationals flying to Canada. Valid for 5 years or until passport expires.'},
+  'australia-visitor-600': {fees:[{item:'Visa Application Fee',all:'AUD $190'},{item:'Biometrics (if required)',all:'No additional fee'}],processing:'Standard: 20-29 days. Can take longer.',notes:'Apply online via ImmiAccount. Health exam may be required.'},
+  'australia-student-500': {fees:[{item:'Visa Application Fee',all:'AUD $710'},{item:'OSHC (health insurance)',all:'AUD $500–600/year'}],processing:'Standard: 4-6 weeks.',notes:'Must have CoE from education provider. Genuine Temporary Entrant (GTE) requirement.'},
+  'australia-work-482': {fees:[{item:'Visa Application Fee',all:'AUD $1,455–$3,035'},{item:'Nomination Fee (employer)',all:'AUD $330'}],processing:'Standard: 1-4 months.',notes:'Employer must be an approved sponsor. Skills assessment may be required.'},
+  'australia-eta-601': {fees:[{item:'ETA Fee',all:'AUD $20'}],processing:'Usually within minutes.',notes:'For eligible passport holders only (US, Canada, EU, etc.). Apply via app.'},
+  'india-e-tourist': {fees:[{item:'30-Day e-Visa',all:'$25'},{item:'1-Year e-Visa',all:'$40'},{item:'5-Year e-Visa',all:'$80'}],processing:'3-5 business days',notes:'Apply at indianvisaonline.gov.in. Available for 150+ nationalities.'},
+  'india-e-business': {fees:[{item:'e-Business Visa',all:'$80'}],processing:'3-5 business days',notes:'For business meetings, trade fairs, etc. Not for employment.'},
+  'india-regular': {fees:[{item:'Visa Fee',all:'$10–$160 (varies by nationality)'},{item:'Service Center Fee (VFS/BLS)',all:'$5–$30'}],processing:'3-5 working days at embassy.',notes:'Fee varies significantly by nationality and reciprocity agreements.'},
+  'india-employment': {fees:[{item:'Employment Visa Fee',all:'$150–$200'},{item:'Service Center Fee',all:'$5–$30'}],processing:'5-7 working days',notes:'Requires employment contract and company registration documents.'}
+};
+
+function updateVisaTypes() {
+  var dest = document.getElementById('fee-dest').value;
+  var sel = document.getElementById('fee-type');
+  sel.innerHTML = '';
+  if (!dest) { sel.innerHTML = '<option>Select destination first...</option>'; return; }
+  visaTypes[dest].forEach(function(v) {
+    var o = document.createElement('option');
+    o.value = v.value; o.textContent = v.label;
+    sel.appendChild(o);
+  });
+}
+
+function calculateFee() {
+  var dest = document.getElementById('fee-dest').value;
+  var type = document.getElementById('fee-type').value;
+  if (!dest || !type) { alert('Please select destination and visa type'); return; }
+  var key = dest + '-' + type;
+  var data = feeData[key];
+  if (!data) { alert('Fee data not available for this combination.'); return; }
+  var age = document.getElementById('fee-age').value;
+  var service = document.getElementById('fee-service').value;
+
+  document.getElementById('fee-title').textContent = document.getElementById('fee-type').selectedOptions[0].textContent;
+  var html = '<tr><th>Item</th><th>Fee</th></tr>';
+  var total = [];
+  data.fees.forEach(function(f) {
+    var amount = f.all || '';
+    if (age === 'child-12' && f.child12) amount = f.child12;
+    if (age === 'child-6' && f.child6) amount = f.child6;
+    if (service === 'vfs' && f.vfs) amount = f.vfs;
+    if (service === 'tls' && f.tls) amount = f.tls;
+    if (service === 'none' && (f.vfs || f.tls) && !f.all && !f.adult) return;
+    if (!amount && f.adult) amount = f.adult;
+    if (!amount) return;
+    html += '<tr><td>' + f.item + '</td><td><strong>' + amount + '</strong></td></tr>';
+  });
+  html += '<tr><td><strong>Processing Time</strong></td><td>' + data.processing + '</td></tr>';
+  document.getElementById('fee-table').innerHTML = html;
+  document.getElementById('fee-notes').innerHTML = '<strong>Notes:</strong> ' + data.notes + '<br><br>Need a passport photo? <a href="/portrait/" style="color:#2563eb;font-weight:500;">Create one here →</a>';
+  document.getElementById('fee-result').style.display = 'block';
+  document.getElementById('fee-form').style.display = 'none';
+}
+</script>
+<footer class="tool-footer">
+  <p>© 2026 WithSwag. All rights reserved.</p>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+</footer>
+</body>
+</html>
