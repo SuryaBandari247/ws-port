@@ -2,76 +2,60 @@
 
 ## What is WithSwag?
 
-WithSwag is a monorepo containing multiple free online tools for creators, all served under the `withswag.org` domain.
+WithSwag is an online passport photo maker focused on passport photos, visa photos, and immigration-related photo content. All served under `withswag.org`.
 
-## Current Tools
+## Site Structure
 
-1. **Landing Page** (`/`)
-   - Location: Root directory (`index.html`)
-   - Shows all available tools with cards
-   - SEO optimized with sitemap and meta tags
-
-2. **SRT Subtitle Editor** (`/srt-editor/`)
-   - Location: `/srt-editor/` directory
-   - Static HTML/CSS/JS application
-   - No build process required
-
-3. **Passport Photo Creator** (`/portrait/`)
-   - Location: `/EasyPortrait/` directory
-   - React + TypeScript + Vite application
-   - Requires build process
-   - Built files go to `/EasyPortrait/dist/`
+1. **Landing Page** (`/`) — Photo-focused landing page with country guides and CTA
+2. **Passport Photo Tool** (`/portrait/`) — React app for creating passport/visa photos
+3. **Photo Guides** (`/guides/`) — Static HTML guides for 50+ countries and visa types
 
 ## Project Structure
 
 ```
 withswag/
-├── index.html              # Landing page
+├── index.html              # Landing page (photo-focused)
 ├── logo.png                # Site logo
 ├── sitemap.xml             # SEO sitemap
 ├── robots.txt              # Search engine directives
 ├── ads.txt                 # AdSense configuration
+├── about.html              # About page
+├── contact.html            # Contact page
 ├── privacy.html            # Privacy policy
-├── srt-editor/             # SRT tool (static)
-│   ├── index.html
-│   ├── app.js
-│   └── styles.css
-├── EasyPortrait/           # Portrait tool (React app)
+├── vercel.json             # Vercel routing configuration
+├── guides/                 # Photo requirement guides (static HTML)
+│   ├── index.html          # Guides hub
+│   ├── styles.css          # Shared guide styles
+│   └── */index.html        # Individual country/visa guides
+├── EasyPortrait/           # Portrait tool source (React app)
 │   ├── src/                # Source code
-│   ├── dist/               # Built files (generated)
 │   ├── package.json
 │   └── vite.config.ts
-├── vercel.json             # Vercel routing configuration
-└── .kiro/                  # Project documentation
+├── portrait/               # Built portrait app (committed, deployed)
+└── .kiro/                  # Project config & steering
     └── steering/
-        ├── ADDING_NEW_TOOL.md
-        └── DEPLOYMENT.md
 ```
 
 ## Technology Stack
 
-- **Landing Page**: Static HTML/CSS
-- **SRT Editor**: Vanilla JavaScript
 - **Portrait Tool**: React 18, TypeScript, Vite, Tailwind CSS
-- **Hosting**: Vercel
+- **Guides & Landing**: Static HTML/CSS
+- **Hosting**: Vercel (auto-deploy from main)
 - **Domain**: withswag.org
-
-## Key Files
-
-- `vercel.json` - Controls routing for all tools
-- `sitemap.xml` - SEO sitemap (update when adding tools)
-- `index.html` - Landing page (add new tool cards here)
+- **Ads**: Google AdSense Auto Ads (not on /portrait/)
 
 ## Development Workflow
 
-1. Make changes to any tool
-2. If changing EasyPortrait: rebuild with `npm run build`
-3. Commit and push to GitHub
-4. Vercel auto-deploys
+1. Edit source files in `EasyPortrait/src/`
+2. Build: `cd EasyPortrait && npm run build` (outputs to `../portrait/`)
+3. Commit both source AND `portrait/` folder
+4. Push to main — Vercel auto-deploys
 
-## Important Notes
+## Key Rules
 
-- All tools must be accessible under `withswag.org` for SEO
-- Each tool should have its own card on the landing page
-- Update sitemap.xml when adding new tools
-- EasyPortrait uses `/portrait/` as base path in routing
+- Site focus: passport photos + visa/immigration photos ONLY
+- Single photo price: €3, collage: $8
+- No AdSense on the portrait React app
+- Amazon affiliate tag: `withswag-20`
+- AdSense publisher: `ca-pub-8351430872646121`
+- Build outputs to `portrait/` at repo root (not `dist/`)

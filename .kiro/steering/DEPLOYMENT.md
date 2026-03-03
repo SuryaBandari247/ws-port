@@ -48,25 +48,29 @@ This:
 
 All routing is controlled by `vercel.json`:
 
-- `/` → `index.html` (landing page)
-- `/srt-editor/` → `srt-editor/` directory
-- `/portrait/` → `EasyPortrait/dist/` directory
+- `/` → `index.html` (landing page — passport photo focused)
+- `/portrait/` → `portrait/` directory (built React app)
+- `/guides/` → `guides/` directory (static HTML photo guides)
 - Static files (images, CSS, etc.) → root directory
 
-## Updating Tools
+## Site Focus
 
-### Static Tools (SRT Editor)
-1. Edit files directly
+WithSwag is focused exclusively on passport photos, visa photos, and immigration-related photo content. No unrelated tools.
+
+## Updating
+
+### Static Guides
+1. Edit files directly in `guides/`
 2. Commit and push
 3. No build needed
 
-### React Apps (Portrait Tool)
-1. Edit source files in `src/`
-2. Build locally: `npm run build`
-3. Commit both source AND dist files
+### React App (Portrait Tool)
+1. Edit source files in `EasyPortrait/src/`
+2. Build: `cd EasyPortrait && npm run build` (outputs to `../portrait/`)
+3. Commit both source AND `portrait/` folder
 4. Push to GitHub
 
-**Important**: Always commit the `dist/` folder for React apps!
+**Important**: Always commit the `portrait/` folder (the built React app output)!
 
 ## Domain Configuration
 

@@ -4,7 +4,7 @@ Follow these steps to add a new tool to the WithSwag platform.
 
 ## Step 1: Decide Tool Type
 
-### Option A: Static Tool (like SRT Editor)
+### Option A: Static Guide Page (like country photo guides)
 - Simple HTML/CSS/JS
 - No build process
 - Fast to develop
@@ -128,8 +128,8 @@ If it's a React app, also update the build command:
 
 ### Update meta tags in `index.html`:
 ```html
-<meta name="description" content="Free online tools for creators. SRT editor, passport photos, my new tool, and more.">
-<meta name="keywords" content="free tools, srt editor, passport photo, my tool, online tools">
+<meta name="description" content="Online passport photo maker for 50+ countries. Create visa photos, ID photos, and more.">
+<meta name="keywords" content="passport photo, visa photo, id photo, passport photo maker, online tools">
 ```
 
 ## Step 6: Test Locally (Optional)
@@ -303,7 +303,7 @@ All tools must be mobile-responsive:
 ### Example Implementation
 
 See existing tools for reference:
-- **SRT Editor**: Static HTML/CSS with gradient background
-- **EasyPortrait**: React app with Tailwind CSS
+- **Photo Guides**: Static HTML/CSS pages in `guides/` directory
+- **EasyPortrait**: React app with Tailwind CSS in `EasyPortrait/`
 
-Both follow the design system and include home buttons.
+Both follow the design system and include navigation components.

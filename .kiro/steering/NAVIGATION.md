@@ -4,42 +4,36 @@ inclusion: manual
 
 ## Overview
 
-WithSwag uses a multi-app monorepo pattern with a shared domain (`withswag.org`) and path-based routing. Each tool lives at its own path (`/portrait/`, `/srt-editor/`, etc.) and the root page (`/`) serves as the tool hub/directory.
-
-All tools — whether static HTML or React apps — must implement a consistent navigation system so users can move between tools seamlessly.
+WithSwag is focused on passport photos, visa photos, and immigration-related photo content. The site uses path-based routing with the portrait tool as the main app and static HTML guides for SEO content.
 
 ## Architecture
 
 ```
-withswag.org/              → Tool Hub (landing page)
+withswag.org/              → Landing page (passport photo focused)
 withswag.org/portrait/     → EasyPortrait (React app)
-withswag.org/srt-editor/   → SRT Editor (static HTML)
-withswag.org/my-tool/      → Future tools...
+withswag.org/guides/       → Photo requirement guides (static HTML)
 ```
 
 ## Shared App Registry
 
-All tools are registered in a single constant. When adding a new tool, update this one place and every navigation component picks it up automatically.
+All navigation entries are registered in a single constant.
 
 ### TypeScript (React apps)
 
 ```typescript
 // src/constants/apps.ts
 export const WITHSWAG_APPS = [
-  { name: 'Portrait Photo', path: '/portrait/', icon: 'Camera', description: 'Passport & ID photos' },
-  { name: 'SRT Editor', path: '/srt-editor/', icon: 'FileText', description: 'Subtitle file editor' },
-  // Add new tools here
+  { name: 'Passport Photo', path: '/portrait/', icon: 'Camera', description: 'Passport & visa photos for 50+ countries' },
+  { name: 'Photo Guides', path: '/guides/', icon: 'BookOpen', description: 'Country-specific photo requirements' },
 ];
 ```
 
-### JavaScript (Static tools)
+### JavaScript (Static pages)
 
 ```javascript
-// Inline or in a shared script
 const WITHSWAG_APPS = [
-  { name: 'Portrait Photo', path: '/portrait/', icon: 'camera', description: 'Passport & ID photos' },
-  { name: 'SRT Editor', path: '/srt-editor/', icon: 'file-text', description: 'Subtitle file editor' },
-  // Add new tools here
+  { name: 'Passport Photo', path: '/portrait/', icon: 'camera', description: 'Passport & visa photos for 50+ countries' },
+  { name: 'Photo Guides', path: '/guides/', icon: 'book-open', description: 'Country-specific photo requirements' },
 ];
 ```
 

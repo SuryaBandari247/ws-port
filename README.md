@@ -1,85 +1,38 @@
-# SRT Editor Pro
+# WithSwag — Passport Photo Maker Online
 
-A web-based subtitle editor for creating and editing SRT files with built-in monetization.
+Online passport photo maker for 50+ countries. AI background removal, auto-crop to official dimensions, print-ready at 300 DPI.
 
-## Features
+**Live:** [withswag.org](https://withswag.org)
 
-### Three Editing Modes
+## What's Here
 
-1. **Paste & Parse** - Copy/paste existing SRT content and instantly parse it
-2. **Manual Entry** - Create subtitles one by one with a simple form
-3. **Open File** - Load and edit existing .srt files
+- `/portrait/` — Passport photo maker (React app, built from `EasyPortrait/`)
+- `/guides/` — Country-specific photo requirement guides (static HTML)
+- `index.html` — Landing page
 
-### Core Functionality
+## Tech Stack
 
-- Add, edit, and delete subtitle entries
-- Download as .srt file
-- Real-time subtitle counter
-- Clean, intuitive interface
+- React 18 + TypeScript + Vite + Tailwind CSS (portrait tool)
+- Static HTML/CSS (guides, landing page)
+- Vercel (hosting, auto-deploy from main)
 
-### Monetization Strategy
+## Development
 
-- **Free Tier**: Up to 10 subtitles
-- **Pro Tier ($9.99/month)**: 
-  - Unlimited subtitles
-  - Advanced features (ready for expansion)
-  - Batch operations
-  - Auto-sync tools
-  - Priority support
-
-## Getting Started
-
-1. Open `index.html` in a web browser
-2. Choose your editing mode
-3. Start creating subtitles!
-
-## Deployment Options
-
-### Quick Deploy (Static Hosting)
-- Netlify: Drag and drop the folder
-- Vercel: Connect your Git repo
-- GitHub Pages: Push to a repo and enable Pages
-
-### Monetization Integration
-
-Replace the checkout button handler in `app.js` with your payment processor:
-
-```javascript
-// Stripe example
-document.querySelector('.checkout-btn').addEventListener('click', () => {
-    window.location.href = 'https://buy.stripe.com/your-payment-link';
-});
+```bash
+cd EasyPortrait
+npm install
+npm run dev
 ```
 
-**Recommended Payment Processors:**
-- Stripe (easiest integration)
-- PayPal
-- Paddle (handles VAT/taxes)
-- Gumroad (simple for digital products)
+## Build & Deploy
 
-### Backend Integration (Optional)
+```bash
+cd EasyPortrait
+npm run build    # outputs to ../portrait/
+```
 
-For user accounts and subscription management:
-- Add authentication (Firebase, Auth0, Supabase)
-- Store user data and subscription status
-- Implement API to check Pro status
+Commit the `portrait/` folder and push to main. Vercel auto-deploys.
 
-## Customization
+## Domain
 
-- Adjust `FREE_LIMIT` in `app.js` to change free tier limit
-- Modify pricing in `index.html`
-- Add more features to Pro tier
-- Customize colors in `styles.css`
-
-## Future Enhancements
-
-- Video preview with subtitle overlay
-- Auto-timing suggestions
-- Batch import/export
-- Translation features
-- Keyboard shortcuts
-- Undo/redo functionality
-
-## License
-
-Customize for your needs!
+withswag.org — managed via Vercel.

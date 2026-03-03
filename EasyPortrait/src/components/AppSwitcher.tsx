@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { LayoutGrid, Camera, FileText, Shield, X } from 'lucide-react';
+import { LayoutGrid, Camera, BookOpen, X } from 'lucide-react';
 import { WITHSWAG_APPS } from '../constants/apps';
 
 const iconMap: Record<string, React.ElementType> = {
   Camera,
-  FileText,
-  Shield,
+  BookOpen,
 };
 
 function AppSwitcher() {
