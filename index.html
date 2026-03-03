@@ -386,6 +386,79 @@
         .faq-a { padding: 0 20px 18px; font-size: 14px; color: #475569; line-height: 1.7; display: none; }
         .faq-a.open { display: block; }
 
+        /* ── Affiliate Sidebar ── */
+        .aff-sidebar {
+            position: fixed;
+            top: 120px;
+            right: 16px;
+            width: 200px;
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .aff-sidebar-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .aff-sidebar-card:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+            transform: translateY(-2px);
+        }
+        .aff-sidebar-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .aff-sidebar-badge.rec { background: #dcfce7; color: #166534; }
+        .aff-sidebar-badge.deal { background: #fef3c7; color: #92400e; }
+        .aff-sidebar-badge.tool { background: #e0e7ff; color: #3730a3; }
+        .aff-sidebar-icon { font-size: 28px; margin-bottom: 6px; }
+        .aff-sidebar-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .aff-sidebar-desc {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .aff-sidebar-btn {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.15s;
+        }
+        .aff-sidebar-btn:hover { opacity: 0.9; }
+        .aff-sidebar-btn.green { background: #16a34a; }
+        .aff-sidebar-btn.blue { background: #2563eb; }
+        .aff-sidebar-btn.orange { background: #ea580c; }
+
+        @media (max-width: 1279px) {
+            .aff-sidebar { display: none; }
+        }
+
         /* ── SEO content ── */
         .seo-block {
             max-width: 800px;
@@ -686,6 +759,31 @@
         <h3>Travel Insurance</h3>
         <p>Travel medical insurance is mandatory for Schengen visa applications. We compare the best providers — SafetyWing, World Nomads, and Allianz — so you can find the right coverage at the right price. All options meet the €30,000 minimum requirement.</p>
     </div>
+
+    <!-- Affiliate Sidebar (desktop only) -->
+    <aside class="aff-sidebar" aria-label="Recommended services">
+        <a href="https://safetywing.com/?referenceID=26486258&utm_source=26486258&utm_medium=Ambassador" class="aff-sidebar-card" target="_blank" rel="noopener sponsored">
+            <span class="aff-sidebar-badge rec">Recommended</span>
+            <div class="aff-sidebar-icon">🛡️</div>
+            <div class="aff-sidebar-title">SafetyWing Travel Insurance</div>
+            <div class="aff-sidebar-desc">From $45/month. Meets Schengen €30K requirement. Cancel anytime.</div>
+            <span class="aff-sidebar-btn green">Get a Quote →</span>
+        </a>
+        <a href="https://www.amazon.com/dp/B0B5MQ3WY8?tag=withswag-20" class="aff-sidebar-card" target="_blank" rel="noopener sponsored">
+            <span class="aff-sidebar-badge deal">Best Seller</span>
+            <div class="aff-sidebar-icon">🖨️</div>
+            <div class="aff-sidebar-title">Canon SELPHY CP1500</div>
+            <div class="aff-sidebar-desc">Print passport photos at home. ~$0.25 per set.</div>
+            <span class="aff-sidebar-btn orange">View on Amazon →</span>
+        </a>
+        <a href="/tools/insurance-compare/" class="aff-sidebar-card">
+            <span class="aff-sidebar-badge tool">Free Tool</span>
+            <div class="aff-sidebar-icon">⚖️</div>
+            <div class="aff-sidebar-title">Compare Travel Insurance</div>
+            <div class="aff-sidebar-desc">Side-by-side comparison of Schengen-compliant providers.</div>
+            <span class="aff-sidebar-btn blue">Compare Now →</span>
+        </a>
+    </aside>
 
     <!-- Footer -->
     <footer class="footer">
