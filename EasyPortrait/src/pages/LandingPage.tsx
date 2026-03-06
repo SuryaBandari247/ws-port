@@ -21,10 +21,10 @@ const FaqItem: React.FC<{ question: string; answer: string; isOpen: boolean; onT
     )}
   </div>
 );
-import samplePhoto1 from '../resources/Gemini_Generated_Image_29o95h29o95h29o9_1.jpeg';
-import samplePhoto2 from '../resources/Gemini_Generated_Image_2ff4mq2ff4mq2ff4.jpeg';
-import samplePhoto3 from '../resources/Gemini_Generated_Image_7aflzh7aflzh7afl.jpeg';
-import samplePhoto4 from '../resources/Gemini_Generated_Image_n0jv12n0jv12n0jv.jpeg';
+import samplePhoto1 from '../resources/sample-portrait-1.jpeg';
+import samplePhoto2 from '../resources/sample-portrait-2.jpeg';
+import samplePhoto3 from '../resources/sample-portrait-3.jpeg';
+import samplePhoto4 from '../resources/sample-portrait-4.jpeg';
 import collagePhoto from '../resources/abced.jpeg';
 import homePhotoGuide from '../resources/387831C9-07A3-4837-AB44-F7D3CFDA983F_1_201_a.jpeg';
 import passportUSA from '../resources/USA.png';

@@ -146,7 +146,7 @@ function applyAdjustmentsToCanvas(
 A new hero card (Card 4) is added to the right-column hero showcase area, following the same pattern as the existing three cards (AI Background Removal, Smart Crop, Sheet Sizes). It demonstrates the photo adjustment feature with an interactive before/after slider effect.
 
 **Visual Design:**
-- Uses `samplePhoto4` (the "lady with scarf" image from `EasyPortrait/src/resources/Gemini_Generated_Image_n0jv12n0jv12n0jv.jpeg`) as the demo image
+- Uses `samplePhoto4` (the "lady with scarf" image from `EasyPortrait/src/resources/sample-portrait-4.jpeg`) as the demo image
 - Displays a before/after comparison using a CSS clip-path slider that auto-animates back and forth
 - The "before" side shows the original image; the "after" side shows a CSS-filtered version simulating brightness/contrast adjustments (using CSS `filter: brightness(1.15) contrast(1.1)`)
 - A vertical divider line with a drag handle icon animates horizontally to reveal the effect

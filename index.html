@@ -162,6 +162,37 @@
         }
         .nav-cta:hover { background: #1d4ed8; color: #fff !important; }
 
+        /* Mobile nav menu */
+        .nav-mobile-menu {
+            display: none;
+            position: absolute;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            padding: 16px 24px;
+            z-index: 99;
+        }
+        .nav-mobile-menu a {
+            display: block;
+            padding: 12px 0;
+            color: #475569;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .nav-mobile-menu a:last-child { border-bottom: none; }
+        .nav-mobile-menu a:hover { color: #2563eb; }
+        .nav-mobile-menu .nav-cta {
+            display: inline-block;
+            margin-top: 12px;
+            text-align: center;
+            width: 100%;
+        }
+
         /* ── Hero ── */
         .hero {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -569,6 +600,7 @@
             .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
             .nav-links { display: none; }
             .nav-toggle { display: block; }
+            .nav-mobile-menu.open { display: block; }
             .topbar { font-size: 12px; padding: 6px 12px; }
         }
     </style>
@@ -587,12 +619,20 @@
                 <a href="/guides/">Visa Guides</a>
                 <a href="/tools/">Tools</a>
                 <a href="/guides/schengen-visa-checklist/">Schengen</a>
-                <a href="/guides/passport-application/">Passport</a>
+                <a href="/about.html">About</a>
                 <a href="/portrait/" class="nav-cta">Create Photo</a>
             </div>
-            <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'">
+            <button class="nav-toggle" aria-label="Menu" id="navToggle">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
             </button>
+        </div>
+        <div class="nav-mobile-menu" id="navMobileMenu">
+            <a href="/guides/">Visa Guides</a>
+            <a href="/tools/">Tools</a>
+            <a href="/guides/schengen-visa-checklist/">Schengen Visa</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/portrait/" class="nav-cta">Create Photo</a>
         </div>
     </nav>
 
@@ -816,6 +856,17 @@
     </section>
 
     <script>
+    // Mobile nav toggle
+    (function() {
+        var btn = document.getElementById('navToggle');
+        var menu = document.getElementById('navMobileMenu');
+        if (btn && menu) {
+            btn.addEventListener('click', function() {
+                menu.classList.toggle('open');
+            });
+        }
+    })();
+
     function toggleFaq(btn) {
         var answer = btn.nextElementSibling;
         var isOpen = answer.classList.contains('open');
