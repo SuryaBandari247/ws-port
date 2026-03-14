@@ -10,18 +10,16 @@ import { PassportSizeSelect } from '../components/PassportSizeSelect';
 import { EditorControls } from '../components/EditorControls';
 import { PaymentModal } from '../components/PaymentModal';
 import AdjustmentPanel from '../components/AdjustmentPanel';
-import SuitOverlayPanel from '../components/SuitOverlayPanel';
 import AppSwitcher from '../components/AppSwitcher';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { validateImageFile, fileToDataUrl } from '../utils/imageProcessing';
 import { getTransparentImage, compositeWithBackground, clearBgRemovalCache } from '../utils/backgroundRemoval';
-import { SUIT_TEMPLATES, compositeSuitOverlay } from '../utils/suitOverlay';
 import { applyAdjustments, applyAdjustmentsToCanvas } from '../utils/adjustmentEngine';
 import { checkPaymentStatus, getPaymentAmount, getPaymentDescription } from '../utils/payment';
 import { saveAs } from 'file-saver';
 import { ChevronLeft, AlertCircle, Download } from 'lucide-react';
 
-type EditorStep = 'upload' | 'crop' | 'background' | 'outfit' | 'adjust' | 'layout' | 'preview';
+type EditorStep = 'upload' | 'crop' | 'background' | 'adjust' | 'layout' | 'preview';
 
 export const EditorPage: React.FC = () => {
   const navigate = useNavigate();
@@ -48,8 +46,6 @@ export const EditorPage: React.FC = () => {
   const [canvasSupported, setCanvasSupported] = useState(true);
   const [customColor, setCustomColor] = useState('#FF6B00');
   const [showColorPicker, setShowColorPicker] = useState(false);
-  const [selectedSuitId, setSelectedSuitId] = useState<string | null>(null);
-  const [suitCompositedUrl, setSuitCompositedUrl] = useState<string | null>(null);
 
   const BG_COLORS = [
     { id: 'none', label: 'Original', color: 'transparent', preview: 'bg-gray-200 bg-[url("data:image/svg+xml,%3Csvg width=\'10\' height=\'10\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Crect width=\'5\' height=\'5\' fill=\'%23ccc\'/%3E%3Crect x=\'5\' y=\'5\' width=\'5\' height=\'5\' fill=\'%23ccc\'/%3E%3C/svg%3E")]' },
@@ -127,8 +123,6 @@ export const EditorPage: React.FC = () => {
     setProcessedImageUrl('');
     clearBgRemovalCache();
     setBgColor('none');
-    setSelectedSuitId(null);
-    setSuitCompositedUrl(null);
     // Generate a cropped preview thumbnail
     const img = new Image();
     img.onload = () => {
@@ -178,14 +172,12 @@ export const EditorPage: React.FC = () => {
       setImageFile(null);
     } else if (step === 'background') {
       setStep('crop');
-    } else if (step === 'outfit') {
-      setStep('background');
     } else if (step === 'adjust') {
-      setStep('outfit');
+      setStep('background');
     } else if (step === 'layout') {
-      setStep(canvasSupported ? 'adjust' : 'outfit');
+      setStep(canvasSupported ? 'adjust' : 'background');
     } else if (step === 'preview') {
-      setStep(isCollage ? 'layout' : (canvasSupported ? 'adjust' : 'outfit'));
+      setStep(isCollage ? 'layout' : (canvasSupported ? 'adjust' : 'background'));
     }
   };
 
@@ -201,8 +193,6 @@ export const EditorPage: React.FC = () => {
     if (transparentBlobUrl) URL.revokeObjectURL(transparentBlobUrl);
     setTransparentBlobUrl('');
     setProcessedImageUrl('');
-    setSelectedSuitId(null);
-    setSuitCompositedUrl(null);
     clearBgRemovalCache();
   };
 
@@ -496,28 +486,28 @@ export const EditorPage: React.FC = () => {
   // Progress bar steps
   const stepLabels = isCollage
     ? (canvasSupported
-      ? ['Upload', 'Crop', 'Background', 'Outfit', 'Adjust', 'Layout', 'Download']
-      : ['Upload', 'Crop', 'Background', 'Outfit', 'Layout', 'Download'])
+      ? ['Upload', 'Crop', 'Background', 'Adjust', 'Layout', 'Download']
+      : ['Upload', 'Crop', 'Background', 'Layout', 'Download'])
     : (canvasSupported
-      ? ['Upload', 'Crop', 'Background', 'Outfit', 'Adjust', 'Download']
-      : ['Upload', 'Crop', 'Background', 'Outfit', 'Download']);
+      ? ['Upload', 'Crop', 'Background', 'Adjust', 'Download']
+      : ['Upload', 'Crop', 'Background', 'Download']);
   const stepMap: Record<EditorStep, number> = isCollage
     ? (canvasSupported
-      ? { upload: 0, crop: 1, background: 2, outfit: 3, adjust: 4, layout: 5, preview: 6 }
-      : { upload: 0, crop: 1, background: 2, outfit: 3, adjust: -1, layout: 4, preview: 5 })
+      ? { upload: 0, crop: 1, background: 2, adjust: 3, layout: 4, preview: 5 }
+      : { upload: 0, crop: 1, background: 2, adjust: -1, layout: 3, preview: 4 })
     : (canvasSupported
-      ? { upload: 0, crop: 1, background: 2, outfit: 3, adjust: 4, layout: -1, preview: 5 }
-      : { upload: 0, crop: 1, background: 2, outfit: 3, adjust: -1, layout: -1, preview: 4 });
+      ? { upload: 0, crop: 1, background: 2, adjust: 3, layout: -1, preview: 4 }
+      : { upload: 0, crop: 1, background: 2, adjust: -1, layout: -1, preview: 3 });
   const currentStepIndex = stepMap[step];
 
   // Reverse map: label index → EditorStep value
   const indexToStep: EditorStep[] = isCollage
     ? (canvasSupported
-      ? ['upload', 'crop', 'background', 'outfit', 'adjust', 'layout', 'preview']
-      : ['upload', 'crop', 'background', 'outfit', 'layout', 'preview'])
+      ? ['upload', 'crop', 'background', 'adjust', 'layout', 'preview']
+      : ['upload', 'crop', 'background', 'layout', 'preview'])
     : (canvasSupported
-      ? ['upload', 'crop', 'background', 'outfit', 'adjust', 'preview']
-      : ['upload', 'crop', 'background', 'outfit', 'preview']);
+      ? ['upload', 'crop', 'background', 'adjust', 'preview']
+      : ['upload', 'crop', 'background', 'preview']);
 
   // Track the highest step the user has reached so far
   const [maxReachedStep, setMaxReachedStep] = useState(0);
@@ -732,28 +722,6 @@ export const EditorPage: React.FC = () => {
                 </>
               )}
 
-              {/* Outfit step sidebar */}
-              {step === 'outfit' && (
-                <div className="space-y-3">
-                  <div className="bg-white p-4 rounded-lg border border-gray-200 dark:bg-slate-800 dark:border-slate-700">
-                    <h3 className="font-semibold text-gray-900 dark:text-slate-100 mb-3">Settings</h3>
-                    <div className="space-y-2 text-sm">
-                      <p><span className="text-gray-600 dark:text-slate-400">Size:</span> <span className="font-medium text-gray-900 dark:text-slate-100">{passportSize.name}</span></p>
-                      <p><span className="text-gray-600 dark:text-slate-400">Background:</span> <span className="font-medium text-gray-900 dark:text-slate-100">{BG_COLORS.find(b => b.id === bgColor)?.label || 'Original'}</span></p>
-                      {selectedSuitId && (
-                        <p><span className="text-gray-600 dark:text-slate-400">Outfit:</span> <span className="font-medium text-indigo-600 dark:text-indigo-400">{SUIT_TEMPLATES.find(t => t.id === selectedSuitId)?.name}</span></p>
-                      )}
-                    </div>
-                  </div>
-                  <button
-                    onClick={handleBack}
-                    className="w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-slate-600 dark:text-gray-300 dark:hover:bg-slate-700 rounded-lg font-medium transition text-sm"
-                  >
-                    ← Back to Background
-                  </button>
-                </div>
-              )}
-
               {/* Adjust step sidebar — sliders are in the main AdjustmentPanel component */}
               {step === 'adjust' && (
                 <div className="space-y-3">
@@ -763,16 +731,13 @@ export const EditorPage: React.FC = () => {
                       <p><span className="text-gray-600 dark:text-slate-400">Size:</span> <span className="font-medium text-gray-900 dark:text-slate-100">{passportSize.name}</span></p>
                       <p><span className="text-gray-600 dark:text-slate-400">Dimensions:</span> <span className="font-medium text-gray-900 dark:text-slate-100">{passportSize.widthMm}×{passportSize.heightMm}mm</span></p>
                       <p><span className="text-gray-600 dark:text-slate-400">Background:</span> <span className="font-medium text-gray-900 dark:text-slate-100">{BG_COLORS.find(b => b.id === bgColor)?.label || 'Original'}</span></p>
-                      {selectedSuitId && (
-                        <p><span className="text-gray-600 dark:text-slate-400">Outfit:</span> <span className="font-medium text-gray-900 dark:text-slate-100">{SUIT_TEMPLATES.find(t => t.id === selectedSuitId)?.name}</span></p>
-                      )}
                     </div>
                   </div>
                   <button
                     onClick={handleBack}
                     className="w-full px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-slate-600 dark:text-gray-300 dark:hover:bg-slate-700 rounded-lg font-medium transition text-sm"
                   >
-                    ← Back to Outfit
+                    ← Back to Background
                   </button>
                 </div>
               )}
@@ -966,75 +931,12 @@ export const EditorPage: React.FC = () => {
                 </div>
 
                 <button
-                  onClick={() => setStep('outfit')}
+                  onClick={() => setStep(canvasSupported ? 'adjust' : (isCollage ? 'layout' : 'preview'))}
                   disabled={isRemovingBg}
                   className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 disabled:bg-gray-300 disabled:cursor-not-allowed transition"
                 >
-                  Next: Add Outfit →
+                  {canvasSupported ? 'Next: Adjust Photo' : (isCollage ? 'Next: Configure Layout' : 'Next: Preview & Download')} →
                 </button>
-              </div>
-            )}
-
-            {/* OUTFIT — suit overlay */}
-            {step === 'outfit' && imageSrc && cropArea && (
-              <div className="space-y-6">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Add Formal Outfit</h2>
-                  <p className="text-gray-600 dark:text-slate-400">Optional: add a suit or blazer overlay to your photo</p>
-                </div>
-
-                {transparentBlobUrl ? (
-                  <SuitOverlayPanel
-                    transparentBlobUrl={transparentBlobUrl}
-                    bgColor={bgColor !== 'none' ? (BG_COLORS.find(b => b.id === bgColor)?.color || '#FFFFFF') : '#FFFFFF'}
-                    width={cropArea.width}
-                    height={cropArea.height}
-                    selectedSuitId={selectedSuitId}
-                    onSuitChange={(templateId, compositedUrl) => {
-                      setSelectedSuitId(templateId);
-                      setSuitCompositedUrl(compositedUrl);
-                      if (compositedUrl) {
-                        setProcessedImageUrl(compositedUrl);
-                        setCroppedPreviewUrl(compositedUrl);
-                      } else {
-                        // Revert to bg-only composite
-                        if (bgColor !== 'none') {
-                          const selectedColor = BG_COLORS.find(b => b.id === bgColor)?.color;
-                          if (selectedColor) {
-                            compositeWithBackground(transparentBlobUrl, selectedColor, cropArea.width, cropArea.height)
-                              .then((result) => {
-                                setProcessedImageUrl(result);
-                                setCroppedPreviewUrl(result);
-                              });
-                          }
-                        } else {
-                          setProcessedImageUrl('');
-                          regenerateCroppedPreview(imageSrc, cropArea);
-                        }
-                      }
-                    }}
-                  />
-                ) : (
-                  <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-6 text-center">
-                    <p className="text-sm text-amber-800 dark:text-amber-200 mb-2">Background removal is required for the outfit feature.</p>
-                    <p className="text-xs text-amber-600 dark:text-amber-400">Go back and select a background color first to enable this feature.</p>
-                  </div>
-                )}
-
-                <div className="flex gap-3">
-                  <button
-                    onClick={handleBack}
-                    className="flex-1 px-4 py-3 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-slate-600 dark:text-gray-300 dark:hover:bg-slate-700 font-semibold rounded-lg transition"
-                  >
-                    ← Back to Background
-                  </button>
-                  <button
-                    onClick={() => setStep(canvasSupported ? 'adjust' : (isCollage ? 'layout' : 'preview'))}
-                    className="flex-1 px-4 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition"
-                  >
-                    {canvasSupported ? 'Next: Adjust Photo' : (isCollage ? 'Next: Configure Layout' : 'Next: Preview & Download')} →
-                  </button>
-                </div>
               </div>
             )}
 
@@ -1061,7 +963,7 @@ export const EditorPage: React.FC = () => {
                     onClick={handleBack}
                     className="flex-1 px-4 py-3 border-2 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-slate-600 dark:text-gray-300 dark:hover:bg-slate-700 font-semibold rounded-lg transition"
                   >
-                    ← Back to Outfit
+                    ← Back to Background
                   </button>
                   <button
                     onClick={() => setStep(isCollage ? 'layout' : 'preview')}
