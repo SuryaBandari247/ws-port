@@ -915,7 +915,7 @@ export const LandingPage: React.FC = () => {
                 desc: '200 sheets of glossy photo paper. Works with any inkjet printer. Glossy finish meets passport photo requirements.',
                 price: '~$18',
                 perPhoto: '$0.09/sheet',
-                url: 'https://www.amazon.com/dp/B00009XOZ4?tag=withswag-20',
+                url: 'https://www.amazon.com/CanonInk-Glossy-Photo-Sheets-1433C001/dp/B01M1P0WY8?tag=withswag-20',
               },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6 hover:border-primary dark:hover:border-indigo-500 transition hover:shadow-lg">
@@ -945,7 +945,7 @@ export const LandingPage: React.FC = () => {
                 title: 'Epson EcoTank ET-2850',
                 desc: 'Best value inkjet. Refillable ink tanks = ultra-low running costs. Great for photos + documents.',
                 price: '~$200',
-                url: 'https://www.amazon.com/dp/B09BJCZ4RK?tag=withswag-20',
+                url: 'https://www.amazon.com/Epson-Wireless-Cartridge-Free-Supertank-Printing/dp/B096N828X5?tag=withswag-20',
               },
               {
                 title: 'Paper Cutter / Trimmer',
@@ -957,7 +957,7 @@ export const LandingPage: React.FC = () => {
                 title: 'SELPHY Ink + Paper Kit',
                 desc: '108-sheet pack with ink cartridge for SELPHY CP1500. Everything you need in one box.',
                 price: '~$35',
-                url: 'https://www.amazon.com/dp/B003Y5N0JO?tag=withswag-20',
+                url: 'https://www.amazon.com/Canon-Color-Ink-Paper-Set/dp/B003Y5N0JO?tag=withswag-20',
               },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-5 hover:border-primary dark:hover:border-indigo-500 transition">
