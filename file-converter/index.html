@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>File Converter for Visa & Passport — Resize, Compress, Convert | WithSwag</title>
-<meta name="description" content="Free browser-based file converter for visa and passport applications. Resize photos, compress PDFs, convert formats. Your files never leave your device — 100% private.">
-<meta name="keywords" content="file converter, resize photo for passport, compress pdf for visa, reduce photo size, passport photo resize, visa document converter, image compressor, pdf compressor, file size reducer">
+<meta name="description" content="Free browser-based file converter for visa and passport applications. Resize photos, compress images & PDFs, convert formats. Your files never leave your device — 100% private.">
+<meta name="keywords" content="file converter, resize photo for passport, compress pdf for visa, reduce photo size, passport photo resize, visa document converter, image compressor, pdf compressor, file size reducer, png to jpg, jpg to png, webp to jpg, compress pdf online, pdf to image">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://withswag.org/file-converter/">
 <meta property="og:title" content="File Converter for Visa & Passport Applications | WithSwag">
@@ -22,8 +22,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="/cookie-consent.js"></script>
-<link rel="stylesheet" href="/tools/shared.css">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -33,12 +31,8 @@
   "description": "Free browser-based file converter for visa and passport applications. Resize photos, compress images, convert formats. 100% private — files never leave your device.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Web Browser",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "featureList": ["Image resize for passport photos", "File compression to target size", "Format conversion (JPG, PNG, WebP, BMP)", "Country-specific upload presets", "100% browser-based processing", "No file uploads — complete privacy"]
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Image resize for passport photos", "File compression to target size", "Format conversion (JPG, PNG, WebP, BMP)", "PDF to image conversion", "Image to PDF conversion", "Country-specific upload presets", "100% browser-based processing", "No file uploads — complete privacy"]
 }
 </script>
 <script type="application/ld+json">
@@ -46,449 +40,298 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is this file converter safe to use with passport photos?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. All processing happens inside your browser using the Canvas API. Your files are never uploaded to any server. This makes it safer than online converters that require file uploads."}
-    },
-    {
-      "@type": "Question",
-      "name": "What file size does a US passport photo need to be?",
-      "acceptedAnswer": {"@type": "Answer", "text": "US passport and visa photos (DS-160) must be 600x600 pixels in JPEG format, under 240KB. Use the US Passport or US Visa preset to auto-resize and compress to these exact specs."}
-    },
-    {
-      "@type": "Question",
-      "name": "Can I reduce my photo to a specific file size?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Use the Compress tab and enter your target file size (e.g., 200 KB). The tool uses binary search compression to hit your target while preserving maximum quality."}
-    },
-    {
-      "@type": "Question",
-      "name": "How do I reduce my photo to exactly 200KB?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Click the Compress tab, enter 200 in the target size field, select KB, and click Compress. The tool tries multiple quality levels to find the highest quality that fits under 200KB."}
-    },
-    {
-      "@type": "Question",
-      "name": "Can I resize and compress at the same time?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. Use the Country Presets tab. Each preset resizes to the exact pixel dimensions AND compresses to the maximum file size required by that country's government portal. One click does both."}
-    },
-    {
-      "@type": "Question",
-      "name": "Does this work on mobile phones?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Yes. The tool is fully responsive and works on iPhone, Android, iPad, and any mobile browser. Take a photo with your phone camera and convert it right there — no app download needed."}
-    }
+    {"@type": "Question", "name": "Is this file converter safe to use with passport photos?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. All processing happens inside your browser using the Canvas API. Your files are never uploaded to any server."}},
+    {"@type": "Question", "name": "What file size does a US passport photo need to be?", "acceptedAnswer": {"@type": "Answer", "text": "US passport and visa photos (DS-160) must be 600x600 pixels in JPEG format, under 240KB."}},
+    {"@type": "Question", "name": "Can I reduce my photo to a specific file size?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Use the Compress mode and enter your target file size. The tool uses binary search compression to hit your target while preserving maximum quality."}},
+    {"@type": "Question", "name": "Can I convert PDF to image?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Upload a PDF and the tool renders each page as a high-quality image using pdf.js, all in your browser."}},
+    {"@type": "Question", "name": "Does this work on mobile phones?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Fully responsive — works on iPhone, Android, iPad, and any mobile browser."}}
   ]
 }
 </script>
-<style>
-/* Privacy banner */
-.privacy-banner {
-  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
-  border: 1px solid #bbf7d0;
-  border-radius: 10px;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
-  font-size: 14px;
-  color: #166534;
-}
-.privacy-banner svg { flex-shrink: 0; }
-
-/* Tab navigation */
-.tab-nav {
-  display: flex;
-  gap: 4px;
-  background: #f1f5f9;
-  border-radius: 10px;
-  padding: 4px;
-  margin-bottom: 24px;
-}
-.tab-btn {
-  flex: 1;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  background: transparent;
-  color: #64748b;
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.tab-btn.active {
-  background: #fff;
-  color: #0f172a;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-.tab-btn:hover:not(.active) { color: #2563eb; }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-
-/* Drop zone */
-.drop-zone {
-  border: 2px dashed #cbd5e1;
-  border-radius: 12px;
-  padding: 48px 24px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: #fafbfc;
-  margin-bottom: 20px;
-}
-.drop-zone:hover, .drop-zone.dragover {
-  border-color: #2563eb;
-  background: #eff6ff;
-}
-.drop-zone-icon { font-size: 40px; margin-bottom: 12px; }
-.drop-zone-text { font-size: 15px; color: #475569; font-weight: 500; }
-.drop-zone-hint { font-size: 13px; color: #94a3b8; margin-top: 6px; }
-.drop-zone input[type="file"] { display: none; }
-
-/* File info */
-.file-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-.file-info-icon { font-size: 28px; }
-.file-info-details { flex: 1; }
-.file-info-name { font-size: 14px; font-weight: 600; color: #0f172a; word-break: break-all; }
-.file-info-meta { font-size: 12px; color: #64748b; margin-top: 2px; }
-.file-info-remove {
-  background: none; border: none; cursor: pointer; color: #94a3b8; padding: 4px;
-  transition: color 0.15s;
-}
-.file-info-remove:hover { color: #ef4444; }
-
-/* Preset buttons */
-.preset-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.preset-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 500;
-  color: #374151;
-  transition: all 0.15s;
-  text-align: left;
-}
-.preset-btn:hover { border-color: #2563eb; background: #eff6ff; }
-.preset-btn.selected { border-color: #2563eb; background: #eff6ff; box-shadow: 0 0 0 2px rgba(37,99,235,0.2); }
-.preset-flag { font-size: 20px; }
-.preset-info { line-height: 1.3; }
-.preset-name { font-weight: 600; color: #0f172a; }
-.preset-spec { font-size: 11px; color: #64748b; }
-
-/* Settings */
-.settings-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.setting-group { display: flex; flex-direction: column; gap: 6px; }
-.setting-group label { font-size: 13px; font-weight: 600; color: #374151; }
-.setting-group input, .setting-group select {
-  padding: 9px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: inherit;
-  color: #1a1a2e;
-  background: #fff;
-}
-.setting-group input:focus, .setting-group select:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-}
-
-/* Quality slider */
-.quality-slider {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.quality-slider input[type="range"] {
-  flex: 1;
-  accent-color: #2563eb;
-  height: 6px;
-}
-.quality-val {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2563eb;
-  min-width: 36px;
-  text-align: right;
-}
-
-/* Target size */
-.target-size-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-.target-size-row input {
-  width: 100px;
-  padding: 9px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: inherit;
-}
-.target-size-row select {
-  padding: 9px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: inherit;
-}
-
-/* Preview */
-.preview-area {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 20px 0;
-}
-.preview-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-}
-.preview-box h4 { font-size: 13px; font-weight: 600; color: #64748b; margin-bottom: 10px; }
-.preview-box img {
-  max-width: 100%;
-  max-height: 200px;
-  border-radius: 6px;
-  object-fit: contain;
-}
-.preview-box .size-badge {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-  background: #f1f5f9;
-  color: #475569;
-}
-.size-reduced { background: #dcfce7; color: #166534; }
-
-/* Action buttons */
-.action-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-.action-row .tool-btn { flex: 1; text-align: center; }
-.btn-download {
-  background: #16a34a;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.btn-download:hover { background: #15803d; }
-
-/* Progress */
-.progress-bar {
-  width: 100%;
-  height: 6px;
-  background: #e2e8f0;
-  border-radius: 3px;
-  overflow: hidden;
-  margin: 16px 0;
-  display: none;
-}
-.progress-bar.active { display: block; }
-.progress-fill {
-  height: 100%;
-  background: #2563eb;
-  border-radius: 3px;
-  transition: width 0.3s;
-  width: 0%;
-}
-
-/* Conversion result */
-.result-summary {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin: 16px 0;
-}
-.result-stat {
-  text-align: center;
-  padding: 14px;
-  background: #f8fafc;
-  border-radius: 8px;
-}
-.result-stat-val { font-size: 20px; font-weight: 700; color: #0f172a; }
-.result-stat-label { font-size: 12px; color: #64748b; margin-top: 2px; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .tab-btn span { display: none; }
-  .tab-btn { padding: 10px 12px; }
-  .settings-row { grid-template-columns: 1fr; }
-  .preview-area { grid-template-columns: 1fr; }
-  .result-summary { grid-template-columns: 1fr; }
-  .preset-grid { grid-template-columns: 1fr 1fr; }
-  .action-row { flex-direction: column; }
-}
-</style>
 </head>
 <body>
-<nav class="tool-nav">
-  <a href="/" class="tool-logo">With<span>Swag</span></a>
-  <div class="tool-nav-links">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f0f14;color:#e2e8f0;min-height:100vh}
+a{color:#818cf8;text-decoration:none}
+a:hover{color:#a5b4fc}
+
+/* Nav */
+.nav{background:rgba(15,15,20,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+.nav-logo{font-size:20px;font-weight:800;color:#fff;text-decoration:none}
+.nav-logo span{color:#818cf8}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{color:#94a3b8;font-size:14px;font-weight:500}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:#6366f1!important;color:#fff!important;padding:7px 16px;border-radius:8px;font-weight:600}
+.nav-cta:hover{background:#4f46e5!important}
+
+/* Hero */
+.hero{text-align:center;padding:48px 24px 32px;max-width:720px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);color:#4ade80;font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:0.5px;text-transform:uppercase}
+.hero-badge svg{width:14px;height:14px}
+.hero h1{font-size:40px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:12px;letter-spacing:-0.5px}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:16px;color:#94a3b8;line-height:1.6;max-width:520px;margin:0 auto}
+
+/* Privacy pill */
+.privacy-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:10px 18px;margin:20px auto 0;font-size:13px;color:#4ade80;font-weight:500}
+.privacy-pill svg{flex-shrink:0}
+
+/* Main container */
+.main{max-width:920px;margin:0 auto;padding:0 20px 80px}
+
+/* Mode selector */
+.modes{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:28px}
+.mode-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;cursor:pointer;transition:all 0.2s;font-family:inherit;color:#94a3b8;font-size:12px;font-weight:500}
+.mode-btn svg{width:22px;height:22px;stroke-width:1.5}
+.mode-btn:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.3);color:#c7d2fe}
+.mode-btn.active{background:rgba(99,102,241,0.15);border-color:#6366f1;color:#fff;box-shadow:0 0 20px rgba(99,102,241,0.15)}
+
+/* Card */
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:32px;margin-bottom:20px}
+
+/* Drop zone */
+.drop-zone{border:2px dashed rgba(255,255,255,0.12);border-radius:16px;padding:56px 24px;text-align:center;cursor:pointer;transition:all 0.25s;background:rgba(255,255,255,0.02);position:relative;overflow:hidden}
+.drop-zone::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(99,102,241,0.06),transparent 70%);pointer-events:none}
+.drop-zone:hover,.drop-zone.dragover{border-color:#6366f1;background:rgba(99,102,241,0.06)}
+.drop-zone-icon{width:56px;height:56px;margin:0 auto 16px;background:rgba(99,102,241,0.12);border-radius:14px;display:flex;align-items:center;justify-content:center}
+.drop-zone-icon svg{width:28px;height:28px;color:#818cf8}
+.drop-zone-text{font-size:15px;color:#e2e8f0;font-weight:500;margin-bottom:4px}
+.drop-zone-hint{font-size:13px;color:#64748b}
+.drop-zone input[type="file"]{display:none}
+
+/* File info */
+.file-info{display:flex;align-items:center;gap:14px;padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;margin-bottom:24px}
+.file-thumb{width:48px;height:48px;border-radius:8px;object-fit:cover;background:#1e1e2e}
+.file-details{flex:1;min-width:0}
+.file-name{font-size:14px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file-meta{font-size:12px;color:#64748b;margin-top:2px}
+.file-remove{background:none;border:none;cursor:pointer;color:#64748b;padding:8px;border-radius:8px;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
+.file-remove:hover{color:#f87171;background:rgba(248,113,113,0.1)}
+
+/* Panel */
+.panel{display:none}
+.panel.active{display:block}
+
+/* Settings */
+.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px}
+.field input,.field select{padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:14px;font-family:inherit;color:#fff;transition:border-color 0.15s}
+.field input:focus,.field select:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,0.15)}
+.field select option{background:#1e1e2e;color:#fff}
+
+/* Checkbox */
+.check-row{display:flex;align-items:center;gap:10px;margin-bottom:20px;font-size:13px;color:#94a3b8;cursor:pointer}
+.check-row input{accent-color:#6366f1;width:16px;height:16px}
+
+/* Slider */
+.slider-row{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.slider-row label{font-size:12px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;min-width:80px}
+.slider-row input[type="range"]{flex:1;accent-color:#6366f1;height:4px;-webkit-appearance:none;background:rgba(255,255,255,0.1);border-radius:2px;outline:none}
+.slider-row input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#6366f1;cursor:pointer;box-shadow:0 0 8px rgba(99,102,241,0.4)}
+.slider-val{font-size:14px;font-weight:700;color:#818cf8;min-width:40px;text-align:right}
+
+/* Target size */
+.target-row{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.target-row input{width:100px;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:14px;font-family:inherit;color:#fff}
+.target-row select{padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:14px;font-family:inherit;color:#fff}
+.target-row .hint{font-size:12px;color:#64748b}
+
+/* Presets */
+.preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:24px}
+.preset-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;cursor:pointer;font-family:inherit;transition:all 0.2s;text-align:left;color:#e2e8f0}
+.preset-btn:hover{border-color:rgba(99,102,241,0.4);background:rgba(99,102,241,0.08)}
+.preset-btn.selected{border-color:#6366f1;background:rgba(99,102,241,0.12);box-shadow:0 0 16px rgba(99,102,241,0.1)}
+.preset-flag{font-size:24px;line-height:1}
+.preset-name{font-size:13px;font-weight:600;color:#fff}
+.preset-spec{font-size:11px;color:#64748b;margin-top:1px}
+
+/* Action button */
+.action-row{display:flex;gap:10px;margin-top:24px}
+.btn-primary{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s;box-shadow:0 4px 16px rgba(99,102,241,0.3)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(99,102,241,0.4)}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+.btn-primary svg{width:18px;height:18px}
+.btn-secondary{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;background:rgba(255,255,255,0.06);color:#e2e8f0;border:1px solid rgba(255,255,255,0.1);border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.btn-secondary:hover{background:rgba(255,255,255,0.1)}
+.btn-download{background:linear-gradient(135deg,#059669,#10b981)!important;box-shadow:0 4px 16px rgba(16,185,129,0.3)!important}
+.btn-download:hover{box-shadow:0 6px 24px rgba(16,185,129,0.4)!important}
+
+/* Progress */
+.progress{width:100%;height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;margin:20px 0;display:none}
+.progress.active{display:block}
+.progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#8b5cf6);border-radius:2px;transition:width 0.3s;width:0%}
+
+/* Preview */
+.preview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.preview-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px;text-align:center}
+.preview-box h4{font-size:11px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+.preview-box img{max-width:100%;max-height:200px;border-radius:8px;object-fit:contain}
+.preview-badge{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;padding:4px 12px;border-radius:8px;background:rgba(255,255,255,0.06);color:#94a3b8}
+.badge-green{background:rgba(34,197,94,0.12);color:#4ade80}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0}
+.stat{text-align:center;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px}
+.stat-val{font-size:22px;font-weight:700;color:#fff}
+.stat-label{font-size:11px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+
+/* Download row */
+.dl-row{display:flex;gap:10px;margin-top:20px}
+
+/* SEO content */
+.seo-section{margin-top:48px}
+.seo-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;margin-bottom:16px}
+.seo-card h2{font-size:20px;font-weight:700;color:#fff;margin-bottom:12px}
+.seo-card h3{font-size:15px;font-weight:600;color:#e2e8f0;margin-bottom:6px}
+.seo-card p{font-size:14px;color:#94a3b8;line-height:1.7;margin-bottom:12px}
+.seo-card p:last-child{margin-bottom:0}
+.seo-card ol,.seo-card ul{font-size:14px;color:#94a3b8;line-height:1.8;padding-left:20px;margin-bottom:12px}
+.seo-card strong{color:#e2e8f0}
+.seo-card table{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0}
+.seo-card th{padding:10px 14px;text-align:left;border-bottom:2px solid rgba(255,255,255,0.1);font-weight:600;color:#e2e8f0;font-size:13px}
+.seo-card td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,0.06);color:#94a3b8}
+.faq-item{margin-bottom:16px}
+.faq-item:last-child{margin-bottom:0}
+
+/* Footer */
+.footer{background:rgba(0,0,0,0.3);border-top:1px solid rgba(255,255,255,0.06);color:#64748b;padding:24px;text-align:center;font-size:13px}
+.footer nav{margin-top:8px}
+.footer a{color:#64748b;margin:0 10px}
+.footer a:hover{color:#fff}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero h1{font-size:28px}
+  .modes{grid-template-columns:repeat(3,1fr)}
+  .settings-grid{grid-template-columns:1fr}
+  .preview{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .preset-grid{grid-template-columns:1fr 1fr}
+  .dl-row,.action-row{flex-direction:column}
+  .card{padding:20px}
+}
+@media(max-width:480px){
+  .modes{grid-template-columns:repeat(2,1fr)}
+  .preset-grid{grid-template-columns:1fr}
+}
+</style>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="/" class="nav-logo">With<span>Swag</span></a>
+  <div class="nav-links">
     <a href="/guides/">Guides</a>
     <a href="/tools/">Tools</a>
     <a href="/passport-photo-maker/" class="nav-cta">Create Photo</a>
   </div>
 </nav>
-<div class="tool-breadcrumb">
-  <a href="/">WithSwag</a><span>›</span><span>File Converter</span>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    100% Private · Browser-Based · Free
+  </div>
+  <h1>File Converter for<br><em>Visa & Passport</em></h1>
+  <p>Resize, compress, convert images and PDFs — everything runs in your browser. Your files never leave your device.</p>
+  <div class="privacy-pill">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Zero uploads. Zero tracking. Your data stays on your device.
+  </div>
 </div>
 
-<main class="tool-container" style="max-width:860px;">
-  <div class="tool-header">
-    <h1>📁 File Converter for Visa & Passport</h1>
-    <p>Resize photos, compress images, convert formats — all in your browser. Your files never leave your device.</p>
+<!-- Main -->
+<div class="main">
+
+  <!-- Mode selector -->
+  <div class="modes" id="modes">
+    <button class="mode-btn active" data-mode="resize" onclick="switchMode('resize')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+      Resize
+    </button>
+    <button class="mode-btn" data-mode="compress" onclick="switchMode('compress')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 17l4 4 4-4"/></svg>
+      Compress
+    </button>
+    <button class="mode-btn" data-mode="convert" onclick="switchMode('convert')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+      Convert
+    </button>
+    <button class="mode-btn" data-mode="preset" onclick="switchMode('preset')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      Presets
+    </button>
+    <button class="mode-btn" data-mode="pdf2img" onclick="switchMode('pdf2img')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M10 13l2 2 4-4"/></svg>
+      PDF → Image
+    </button>
+    <button class="mode-btn" data-mode="img2pdf" onclick="switchMode('img2pdf')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3-3 3 3"/></svg>
+      Image → PDF
+    </button>
   </div>
 
-  <div class="privacy-banner">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <span>100% Private — All processing happens in your browser. No files are uploaded to any server.</span>
-  </div>
-
-  <!-- Tabs -->
-  <div class="tab-nav">
-    <button class="tab-btn active" data-tab="resize" onclick="switchTab('resize')">📐 <span>Resize Image</span></button>
-    <button class="tab-btn" data-tab="compress" onclick="switchTab('compress')">🗜️ <span>Compress</span></button>
-    <button class="tab-btn" data-tab="convert" onclick="switchTab('convert')">🔄 <span>Convert Format</span></button>
-    <button class="tab-btn" data-tab="preset" onclick="switchTab('preset')">🌍 <span>Country Presets</span></button>
-  </div>
-</main>
-</body>
-</html>
-  <!-- Tabs -->
-  <div class="tab-nav">
-    <button class="tab-btn active" data-tab="resize" onclick="switchTab('resize')">📐 <span>Resize Image</span></button>
-    <button class="tab-btn" data-tab="compress" onclick="switchTab('compress')">🗜️ <span>Compress</span></button>
-    <button class="tab-btn" data-tab="convert" onclick="switchTab('convert')">🔄 <span>Convert Format</span></button>
-    <button class="tab-btn" data-tab="preset" onclick="switchTab('preset')">🌍 <span>Country Presets</span></button>
-  </div>
-
-  <!-- Shared drop zone -->
-  <div class="tool-card">
+  <!-- Drop zone -->
+  <div class="card" id="uploadCard">
     <div class="drop-zone" id="dropZone">
-      <div class="drop-zone-icon">📎</div>
-      <div class="drop-zone-text">Drop your file here or click to browse</div>
-      <div class="drop-zone-hint">Supports JPG, PNG, WebP, BMP, GIF — up to 50MB</div>
-      <input type="file" id="fileInput" accept="image/*">
-    </div>
-    <div class="file-info" id="fileInfo" style="display:none;">
-      <div class="file-info-icon" id="fileIcon">🖼️</div>
-      <div class="file-info-details">
-        <div class="file-info-name" id="fileName"></div>
-        <div class="file-info-meta" id="fileMeta"></div>
+      <div class="drop-zone-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       </div>
-      <button class="file-info-remove" onclick="clearFile()" aria-label="Remove file">✕</button>
+      <div class="drop-zone-text">Drop your file here or click to browse</div>
+      <div class="drop-zone-hint" id="dropHint">Supports JPG, PNG, WebP, BMP, GIF, PDF — up to 50MB</div>
+      <input type="file" id="fileInput" accept="image/*,application/pdf">
+    </div>
+    <div class="file-info" id="fileInfo" style="display:none">
+      <img class="file-thumb" id="fileThumb" alt="" src="">
+      <div class="file-details">
+        <div class="file-name" id="fileName"></div>
+        <div class="file-meta" id="fileMeta"></div>
+      </div>
+      <button class="file-remove" onclick="clearFile()" aria-label="Remove file">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
 
     <!-- RESIZE panel -->
-    <div class="tab-panel active" id="panel-resize">
-      <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:14px;">Resize Settings</h3>
-      <div class="settings-row">
-        <div class="setting-group">
-          <label for="resizeWidth">Width (px)</label>
-          <input type="number" id="resizeWidth" placeholder="e.g. 600" min="1" max="10000">
-        </div>
-        <div class="setting-group">
-          <label for="resizeHeight">Height (px)</label>
-          <input type="number" id="resizeHeight" placeholder="e.g. 600" min="1" max="10000">
-        </div>
+    <div class="panel active" id="panel-resize">
+      <div class="settings-grid">
+        <div class="field"><label>Width (px)</label><input type="number" id="resizeWidth" placeholder="600" min="1" max="10000"></div>
+        <div class="field"><label>Height (px)</label><input type="number" id="resizeHeight" placeholder="600" min="1" max="10000"></div>
       </div>
-      <div style="margin-bottom:16px;">
-        <label style="font-size:13px;display:flex;align-items:center;gap:8px;cursor:pointer;">
-          <input type="checkbox" id="lockAspect" checked style="accent-color:#2563eb;width:16px;height:16px;">
-          <span style="font-weight:500;color:#374151;">Lock aspect ratio</span>
-        </label>
+      <label class="check-row"><input type="checkbox" id="lockAspect" checked> Lock aspect ratio</label>
+      <div class="slider-row">
+        <label>Quality</label>
+        <input type="range" id="resizeQuality" min="10" max="100" value="92" oninput="document.getElementById('rqVal').textContent=this.value+'%'">
+        <span class="slider-val" id="rqVal">92%</span>
       </div>
-      <div class="setting-group" style="margin-bottom:16px;">
-        <label for="resizeQuality">Output Quality</label>
-        <div class="quality-slider">
-          <input type="range" id="resizeQuality" min="10" max="100" value="92" title="Output quality" oninput="document.getElementById('resizeQualVal').textContent=this.value+'%'">
-          <span class="quality-val" id="resizeQualVal">92%</span>
-        </div>
-      </div>
-      <div class="action-row">
-        <button class="tool-btn" onclick="processResize()">Resize Image</button>
-      </div>
+      <div class="action-row"><button class="btn-primary" onclick="processResize()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg> Resize Image</button></div>
     </div>
 
     <!-- COMPRESS panel -->
-    <div class="tab-panel" id="panel-compress">
-      <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:14px;">Compression Settings</h3>
-      <div style="margin-bottom:16px;">
-        <label style="font-size:13px;font-weight:600;color:#374151;display:block;margin-bottom:6px;">Target File Size (optional)</label>
-        <div class="target-size-row">
-          <input type="number" id="targetSize" placeholder="e.g. 200" min="1">
-          <select id="targetUnit">
-            <option value="KB">KB</option>
-            <option value="MB">MB</option>
-          </select>
-          <span style="font-size:12px;color:#94a3b8;">Leave empty for auto</span>
+    <div class="panel" id="panel-compress">
+      <div class="field" style="margin-bottom:16px"><label>Target File Size</label>
+        <div class="target-row">
+          <input type="number" id="targetSize" placeholder="200" min="1">
+          <select id="targetUnit"><option value="KB">KB</option><option value="MB">MB</option></select>
+          <span class="hint">Leave empty for auto</span>
         </div>
       </div>
-      <div class="setting-group" style="margin-bottom:16px;">
-        <label>Quality Level</label>
-        <div class="quality-slider">
-          <input type="range" id="compressQuality" min="5" max="100" value="75" oninput="document.getElementById('compressQualVal').textContent=this.value+'%'">
-          <span class="quality-val" id="compressQualVal">75%</span>
-        </div>
+      <div class="slider-row">
+        <label>Quality</label>
+        <input type="range" id="compressQuality" min="5" max="100" value="75" oninput="document.getElementById('cqVal').textContent=this.value+'%'">
+        <span class="slider-val" id="cqVal">75%</span>
       </div>
-      <div class="action-row">
-        <button class="tool-btn" onclick="processCompress()">Compress File</button>
-      </div>
+      <div class="action-row"><button class="btn-primary" onclick="processCompress()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 17l4 4 4-4"/></svg> Compress</button></div>
     </div>
 
     <!-- CONVERT panel -->
-    <div class="tab-panel" id="panel-convert">
-      <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:14px;">Format Conversion</h3>
-      <div class="settings-row">
-        <div class="setting-group">
-          <label>Current Format</label>
-          <input type="text" id="currentFormat" readonly style="background:#f8fafc;color:#64748b;">
-        </div>
-        <div class="setting-group">
-          <label for="targetFormat">Convert To</label>
+    <div class="panel" id="panel-convert">
+      <div class="settings-grid">
+        <div class="field"><label>Current Format</label><input type="text" id="currentFormat" readonly style="opacity:0.5"></div>
+        <div class="field"><label>Convert To</label>
           <select id="targetFormat">
             <option value="image/jpeg">JPEG (.jpg)</option>
             <option value="image/png">PNG (.png)</option>
@@ -497,212 +340,211 @@
           </select>
         </div>
       </div>
-      <div class="setting-group" style="margin-bottom:16px;">
-        <label>Output Quality</label>
-        <div class="quality-slider">
-          <input type="range" id="convertQuality" min="10" max="100" value="92" oninput="document.getElementById('convertQualVal').textContent=this.value+'%'">
-          <span class="quality-val" id="convertQualVal">92%</span>
-        </div>
+      <div class="slider-row">
+        <label>Quality</label>
+        <input type="range" id="convertQuality" min="10" max="100" value="92" oninput="document.getElementById('cvqVal').textContent=this.value+'%'">
+        <span class="slider-val" id="cvqVal">92%</span>
       </div>
-      <div class="action-row">
-        <button class="tool-btn" onclick="processConvert()">Convert Format</button>
-      </div>
+      <div class="action-row"><button class="btn-primary" onclick="processConvert()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Convert Format</button></div>
     </div>
 
     <!-- PRESET panel -->
-    <div class="tab-panel" id="panel-preset">
-      <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">Country Upload Presets</h3>
-      <p style="font-size:13px;color:#64748b;margin-bottom:14px;">One click to resize and format your photo for a specific country's requirements.</p>
+    <div class="panel" id="panel-preset">
+      <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Select a country to auto-resize and compress to exact government specs.</p>
       <div class="preset-grid" id="presetGrid"></div>
-      <div class="action-row">
-        <button class="tool-btn" id="presetGoBtn" onclick="processPreset()" disabled>Apply Preset</button>
-      </div>
+      <div class="action-row"><button class="btn-primary" id="presetGoBtn" onclick="processPreset()" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Apply Preset</button></div>
     </div>
 
-    <!-- Progress bar -->
-    <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
-
-    <!-- Preview area -->
-    <div class="preview-area" id="previewArea" style="display:none;">
-      <div class="preview-box">
-        <h4>Original</h4>
-        <img id="previewOriginal" alt="Original">
-        <div class="size-badge" id="originalSize"></div>
+    <!-- PDF to Image panel -->
+    <div class="panel" id="panel-pdf2img">
+      <div class="settings-grid">
+        <div class="field"><label>Output Format</label>
+          <select id="pdfOutFormat"><option value="image/png">PNG (best quality)</option><option value="image/jpeg">JPEG (smaller size)</option></select>
+        </div>
+        <div class="field"><label>Scale</label>
+          <select id="pdfScale"><option value="1">1x (72 DPI)</option><option value="2" selected>2x (144 DPI)</option><option value="3">3x (216 DPI)</option></select>
+        </div>
       </div>
-      <div class="preview-box">
-        <h4>Result</h4>
-        <img id="previewResult" alt="Result">
-        <div class="size-badge size-reduced" id="resultSize"></div>
-      </div>
+      <div class="action-row"><button class="btn-primary" onclick="processPdf2Img()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg> Convert PDF to Images</button></div>
     </div>
 
-    <!-- Result summary -->
-    <div class="result-summary" id="resultSummary" style="display:none;">
-      <div class="result-stat">
-        <div class="result-stat-val" id="statOriginal">—</div>
-        <div class="result-stat-label">Original Size</div>
-      </div>
-      <div class="result-stat">
-        <div class="result-stat-val" id="statResult">—</div>
-        <div class="result-stat-label">New Size</div>
-      </div>
-      <div class="result-stat">
-        <div class="result-stat-val" id="statReduction">—</div>
-        <div class="result-stat-label">Reduction</div>
-      </div>
+    <!-- Image to PDF panel -->
+    <div class="panel" id="panel-img2pdf">
+      <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Upload one or more images. They'll be combined into a single PDF. You can also add more images after the first upload.</p>
+      <div id="img2pdfList" style="margin-bottom:16px"></div>
+      <div class="action-row"><button class="btn-primary" onclick="processImg2Pdf()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg> Create PDF</button></div>
     </div>
+
+    <!-- Progress -->
+    <div class="progress" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <!-- Preview -->
+    <div class="preview" id="previewArea" style="display:none">
+      <div class="preview-box"><h4>Original</h4><img id="previewOriginal" alt="Original"><div class="preview-badge" id="originalSize"></div></div>
+      <div class="preview-box"><h4>Result</h4><img id="previewResult" alt="Result"><div class="preview-badge badge-green" id="resultSize"></div></div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats" id="resultStats" style="display:none">
+      <div class="stat"><div class="stat-val" id="statOriginal">—</div><div class="stat-label">Original</div></div>
+      <div class="stat"><div class="stat-val" id="statResult">—</div><div class="stat-label">New Size</div></div>
+      <div class="stat"><div class="stat-val" id="statReduction">—</div><div class="stat-label">Reduction</div></div>
+    </div>
+
+    <!-- PDF pages result -->
+    <div id="pdfPagesResult" style="display:none;margin-top:20px"></div>
 
     <!-- Download -->
-    <div class="action-row" id="downloadRow" style="display:none;">
-      <button class="tool-btn btn-download" id="downloadBtn" onclick="downloadResult()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <div class="dl-row" id="downloadRow" style="display:none">
+      <button class="btn-primary btn-download" id="downloadBtn" onclick="downloadResult()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download
       </button>
-      <button class="tool-btn" onclick="clearFile()" style="background:#64748b;">Start Over</button>
+      <button class="btn-secondary" onclick="clearFile()">Start Over</button>
     </div>
   </div>
 
-  <!-- SEO content -->
-  <div style="margin-top:40px;">
-    <div class="tool-card">
-      <h2 style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px;">Why Use This Tool?</h2>
-      <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:12px;">Government portals for passport and visa applications often have strict file size and format requirements. A US passport photo upload needs to be under 240KB in JPEG format. Schengen visa portals may require photos under 500KB. Indian passport applications need specific pixel dimensions.</p>
-      <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:12px;">Most free online converters upload your files to their servers — meaning your passport photo, ID scan, or personal documents pass through unknown infrastructure. This tool processes everything inside your browser using the Canvas API. Nothing leaves your device.</p>
-      <p style="font-size:14px;color:#475569;line-height:1.7;">Use the country presets to instantly resize and compress your photo to meet exact government specifications. Or use the manual controls for custom dimensions and target file sizes.</p>
+  <!-- SEO Content -->
+  <div class="seo-section">
+    <div class="seo-card">
+      <h2>Why Use This Tool?</h2>
+      <p>Government portals for passport and visa applications have strict file size and format requirements. A US passport photo upload needs to be under 240KB in JPEG format. Schengen visa portals may require photos under 500KB. Indian passport applications need specific pixel dimensions.</p>
+      <p>Most free online converters upload your files to their servers — meaning your passport photo, ID scan, or personal documents pass through unknown infrastructure. This tool processes everything inside your browser using the Canvas API. Nothing leaves your device.</p>
     </div>
 
-    <div class="tool-card" style="margin-top:16px;">
-      <h2 style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px;">How to Reduce Photo Size to 200KB</h2>
-      <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:12px;">Many government portals require photos under a specific file size — 200KB, 240KB, or 500KB. Here's how to reduce your photo size without losing quality:</p>
-      <ol style="font-size:14px;color:#475569;line-height:1.8;padding-left:20px;margin-bottom:12px;">
+    <div class="seo-card">
+      <h2>How to Reduce Photo Size to 200KB</h2>
+      <p>Many government portals require photos under a specific file size — 200KB, 240KB, or 500KB. Here's how:</p>
+      <ol>
         <li>Upload your photo using the drop zone above</li>
-        <li>Click the <strong>Compress</strong> tab</li>
+        <li>Select the <strong>Compress</strong> mode</li>
         <li>Enter your target size (e.g. 200 KB)</li>
-        <li>Click "Compress File" — the tool uses binary search to find the best quality at your target size</li>
+        <li>Click "Compress" — the tool uses binary search to find the best quality at your target size</li>
         <li>Download the result</li>
       </ol>
-      <p style="font-size:14px;color:#475569;line-height:1.7;">This works for any target: reduce photo to 100KB, 200KB, 240KB, 500KB, or any custom size. The algorithm preserves maximum quality while hitting your exact file size limit.</p>
+      <p>This works for any target: reduce photo to 100KB, 200KB, 240KB, 500KB, or any custom size.</p>
     </div>
 
-    <div class="tool-card" style="margin-top:16px;">
-      <h2 style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px;">Resize Photo to Passport Size Online</h2>
-      <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:12px;">Different countries require different passport photo dimensions. Use the <strong>Country Presets</strong> tab to auto-resize to the exact pixel dimensions required:</p>
-      <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0;">
-        <thead>
-          <tr style="background:#f8fafc;"><th style="padding:10px 14px;text-align:left;border-bottom:2px solid #e2e8f0;font-weight:600;color:#374151;">Country</th><th style="padding:10px 14px;text-align:left;border-bottom:2px solid #e2e8f0;font-weight:600;color:#374151;">Photo Size</th><th style="padding:10px 14px;text-align:left;border-bottom:2px solid #e2e8f0;font-weight:600;color:#374151;">Pixels</th><th style="padding:10px 14px;text-align:left;border-bottom:2px solid #e2e8f0;font-weight:600;color:#374151;">Max File Size</th></tr>
-        </thead>
+    <div class="seo-card">
+      <h2>Resize Photo to Passport Size Online</h2>
+      <p>Different countries require different passport photo dimensions. Use the <strong>Presets</strong> mode to auto-resize to exact pixel dimensions:</p>
+      <table>
+        <thead><tr><th>Country</th><th>Photo Size</th><th>Pixels</th><th>Max File Size</th></tr></thead>
         <tbody>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇺🇸 US Passport</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">2×2 inches</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">600×600 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">240 KB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇺🇸 US Visa (DS-160)</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">2×2 inches</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">600×600 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">240 KB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇪🇺 Schengen Visa</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">35×45 mm</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">413×531 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">500 KB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇬🇧 UK Passport</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">35×45 mm</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">600×750 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">10 MB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇮🇳 India Passport</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">2×2 inches</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">600×600 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">1 MB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇨🇦 Canada PR</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">50×70 mm</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">420×540 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">4 MB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇨🇳 China Passport</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">33×48 mm</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">390×567 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">500 KB</td></tr>
-          <tr><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">🇺🇸 DV Lottery</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">2×2 inches</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">600×600 px</td><td style="padding:10px 14px;border-bottom:1px solid #e2e8f0;color:#475569;">240 KB</td></tr>
+          <tr><td>🇺🇸 US Passport</td><td>2×2 in</td><td>600×600 px</td><td>240 KB</td></tr>
+          <tr><td>🇺🇸 US Visa (DS-160)</td><td>2×2 in</td><td>600×600 px</td><td>240 KB</td></tr>
+          <tr><td>🇪🇺 Schengen Visa</td><td>35×45 mm</td><td>413×531 px</td><td>500 KB</td></tr>
+          <tr><td>🇬🇧 UK Passport</td><td>35×45 mm</td><td>600×750 px</td><td>10 MB</td></tr>
+          <tr><td>🇮🇳 India Passport</td><td>2×2 in</td><td>600×600 px</td><td>1 MB</td></tr>
+          <tr><td>🇨🇦 Canada PR</td><td>50×70 mm</td><td>420×540 px</td><td>4 MB</td></tr>
+          <tr><td>🇨🇳 China Passport</td><td>33×48 mm</td><td>390×567 px</td><td>500 KB</td></tr>
+          <tr><td>🇺🇸 DV Lottery</td><td>2×2 in</td><td>600×600 px</td><td>240 KB</td></tr>
         </tbody>
       </table>
-      <p style="font-size:14px;color:#475569;line-height:1.7;">Select your country from the presets and the tool automatically resizes and compresses your photo to meet the exact requirements. No manual calculations needed.</p>
     </div>
 
-    <div class="tool-card" style="margin-top:16px;">
-      <h2 style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px;">Convert JPG to PNG, PNG to JPG, WebP to JPG</h2>
-      <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:12px;">Some government portals only accept JPEG files. Others require PNG. This tool converts between all common image formats:</p>
-      <ul style="font-size:14px;color:#475569;line-height:1.8;padding-left:20px;margin-bottom:12px;">
+    <div class="seo-card">
+      <h2>Convert JPG to PNG, PNG to JPG, WebP to JPG</h2>
+      <p>Some government portals only accept JPEG files. Others require PNG. This tool converts between all common image formats:</p>
+      <ul>
         <li><strong>JPG to PNG</strong> — when you need transparency or lossless quality</li>
-        <li><strong>PNG to JPG</strong> — when the portal requires JPEG format (most common for visa applications)</li>
+        <li><strong>PNG to JPG</strong> — when the portal requires JPEG format</li>
         <li><strong>WebP to JPG</strong> — when your phone saves photos in WebP but the portal needs JPEG</li>
         <li><strong>BMP to JPG</strong> — when you have a scanned document in BMP format</li>
         <li><strong>Any format to WebP</strong> — for smaller file sizes with good quality</li>
       </ul>
-      <p style="font-size:14px;color:#475569;line-height:1.7;">All conversions happen instantly in your browser. The quality slider lets you control the output — higher quality means larger file size, lower quality means smaller files.</p>
     </div>
 
-    <div class="tool-card" style="margin-top:16px;">
-      <h2 style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px;">Common File Size Requirements for Government Uploads</h2>
-      <p style="font-size:14px;color:#475569;line-height:1.7;margin-bottom:12px;">Here are the most common file size limits people search for when applying for passports, visas, and government IDs:</p>
-      <ul style="font-size:14px;color:#475569;line-height:1.8;padding-left:20px;margin-bottom:12px;">
-        <li><strong>Reduce photo to 200KB</strong> — common for Indian government portals (Aadhaar, PAN card, passport)</li>
-        <li><strong>Reduce photo to 240KB</strong> — required for US passport and DS-160 visa applications</li>
-        <li><strong>Reduce photo to 500KB</strong> — Schengen visa photo uploads, many EU portals</li>
-        <li><strong>Reduce photo to 100KB</strong> — some university and job application portals</li>
-        <li><strong>Reduce photo to 50KB</strong> — Indian competitive exam applications (SSC, UPSC, banking)</li>
-        <li><strong>Reduce photo to 20KB</strong> — signature file uploads for Indian government forms</li>
-        <li><strong>Resize photo to 600×600 pixels</strong> — US passport and visa photo digital requirement</li>
-        <li><strong>Resize photo to 413×531 pixels</strong> — Schengen/EU biometric photo requirement</li>
-        <li><strong>Resize photo to 350×350 pixels</strong> — Indian passport online application</li>
+    <div class="seo-card">
+      <h2>PDF to Image & Image to PDF</h2>
+      <p>Need to extract pages from a PDF as images? Or combine multiple photos into a single PDF for a visa application? Both are supported:</p>
+      <ul>
+        <li><strong>PDF → Image</strong> — renders each PDF page as a high-quality PNG or JPEG using pdf.js. Choose 1x, 2x, or 3x scale for different DPI levels.</li>
+        <li><strong>Image → PDF</strong> — combines one or more images into a single PDF document. Each image becomes a full page.</li>
       </ul>
-      <p style="font-size:14px;color:#475569;line-height:1.7;">Use the Compress tab with your target size, or pick a Country Preset for automatic handling. The tool uses smart compression to preserve maximum quality at your target file size.</p>
+      <p>All processing happens in your browser. PDFs are rendered client-side — no server involved.</p>
     </div>
 
-    <div class="tool-card" style="margin-top:16px;">
-      <h2 style="font-size:20px;font-weight:700;color:#0f172a;margin-bottom:12px;">Frequently Asked Questions</h2>
-      <div style="margin-bottom:16px;">
-        <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">Is this tool really free?</h3>
-        <p style="font-size:14px;color:#475569;line-height:1.7;">Yes, completely free with no limits. No sign-up, no watermarks, no hidden fees. Use it as many times as you need.</p>
+    <div class="seo-card">
+      <h2>Common File Size Requirements</h2>
+      <ul>
+        <li><strong>Reduce photo to 200KB</strong> — Indian government portals (Aadhaar, PAN card, passport)</li>
+        <li><strong>Reduce photo to 240KB</strong> — US passport and DS-160 visa applications</li>
+        <li><strong>Reduce photo to 500KB</strong> — Schengen visa photo uploads, many EU portals</li>
+        <li><strong>Reduce photo to 100KB</strong> — university and job application portals</li>
+        <li><strong>Reduce photo to 50KB</strong> — Indian competitive exam applications (SSC, UPSC)</li>
+        <li><strong>Resize to 600×600 pixels</strong> — US passport and visa photo digital requirement</li>
+        <li><strong>Resize to 413×531 pixels</strong> — Schengen/EU biometric photo requirement</li>
+      </ul>
+    </div>
+
+    <div class="seo-card">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Is this tool really free?</h3>
+        <p>Yes, completely free with no limits. No sign-up, no watermarks, no hidden fees.</p>
       </div>
-      <div style="margin-bottom:16px;">
-        <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">Are my files uploaded to a server?</h3>
-        <p style="font-size:14px;color:#475569;line-height:1.7;">No. All processing happens inside your browser using the HTML5 Canvas API. Your photos and documents never leave your device. This is safer than online converters that upload your sensitive passport photos and ID scans to their servers.</p>
+      <div class="faq-item">
+        <h3>Are my files uploaded to a server?</h3>
+        <p>No. All processing happens inside your browser using the HTML5 Canvas API and pdf.js. Your photos and documents never leave your device.</p>
       </div>
-      <div style="margin-bottom:16px;">
-        <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">How do I reduce my photo to exactly 200KB?</h3>
-        <p style="font-size:14px;color:#475569;line-height:1.7;">Click the Compress tab, enter "200" in the target size field, select "KB", and click Compress. The tool uses binary search compression — it tries multiple quality levels to find the highest quality that fits under 200KB.</p>
+      <div class="faq-item">
+        <h3>How do I reduce my photo to exactly 200KB?</h3>
+        <p>Select Compress mode, enter "200" in the target size field, select "KB", and click Compress. The tool uses binary search compression to find the highest quality that fits under 200KB.</p>
       </div>
-      <div style="margin-bottom:16px;">
-        <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">Can I resize and compress at the same time?</h3>
-        <p style="font-size:14px;color:#475569;line-height:1.7;">Yes — use the Country Presets tab. Each preset resizes to the exact pixel dimensions AND compresses to the maximum file size required by that country's government portal. One click does both.</p>
+      <div class="faq-item">
+        <h3>Can I convert PDF to images?</h3>
+        <p>Yes. Select "PDF → Image" mode, upload your PDF, choose output format and scale, then convert. Each page becomes a separate downloadable image.</p>
       </div>
-      <div style="margin-bottom:16px;">
-        <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">Does this work on mobile?</h3>
-        <p style="font-size:14px;color:#475569;line-height:1.7;">Yes. The tool is fully responsive and works on iPhone, Android, iPad, and any mobile browser. Take a photo with your phone camera and convert it right there — no app download needed.</p>
+      <div class="faq-item">
+        <h3>Does this work on mobile?</h3>
+        <p>Yes. Fully responsive — works on iPhone, Android, iPad, and any mobile browser. No app download needed.</p>
       </div>
-      <div>
-        <h3 style="font-size:15px;font-weight:600;color:#1e293b;margin-bottom:6px;">What image formats are supported?</h3>
-        <p style="font-size:14px;color:#475569;line-height:1.7;">JPG/JPEG, PNG, WebP, BMP, and GIF. You can convert between any of these formats. Most government portals require JPEG — use the Convert tab to switch formats.</p>
+      <div class="faq-item">
+        <h3>What formats are supported?</h3>
+        <p>JPG/JPEG, PNG, WebP, BMP, GIF for images. PDF for document conversion. You can convert between any of these formats.</p>
       </div>
     </div>
   </div>
-</main>
+</div>
 
-<footer class="tool-footer">
+<footer class="footer">
   <p>© 2026 WithSwag. All rights reserved.</p>
   <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/tools/">Tools</a><a href="/passport-photo-maker/">Photo Tool</a><a href="/about.html">About</a></nav>
 </footer>
 
+<!-- pdf.js for PDF processing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
-// ── Country presets ──
+if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+// ── State ──
 var PRESETS = [
-  { id:'us-passport', flag:'🇺🇸', name:'US Passport', spec:'2×2 in, 600×600px, <240KB', w:600, h:600, maxKB:240, format:'image/jpeg' },
-  { id:'us-visa', flag:'🇺🇸', name:'US Visa (DS-160)', spec:'600×600px JPEG, <240KB', w:600, h:600, maxKB:240, format:'image/jpeg' },
-  { id:'schengen', flag:'🇪🇺', name:'Schengen Visa', spec:'35×45mm, 413×531px, <500KB', w:413, h:531, maxKB:500, format:'image/jpeg' },
-  { id:'uk-passport', flag:'🇬🇧', name:'UK Passport', spec:'35×45mm, 600×750px, <10MB', w:600, h:750, maxKB:10240, format:'image/jpeg' },
-  { id:'india-passport', flag:'🇮🇳', name:'India Passport', spec:'2×2 in, 600×600px, <1MB', w:600, h:600, maxKB:1024, format:'image/jpeg' },
-  { id:'canada-pr', flag:'🇨🇦', name:'Canada PR', spec:'50×70mm, 420×540px, <4MB', w:420, h:540, maxKB:4096, format:'image/jpeg' },
-  { id:'australia', flag:'🇦🇺', name:'Australia Passport', spec:'35×45mm, 413×531px, <2MB', w:413, h:531, maxKB:2048, format:'image/jpeg' },
-  { id:'germany', flag:'🇩🇪', name:'Germany Passport', spec:'35×45mm, 413×531px, <500KB', w:413, h:531, maxKB:500, format:'image/jpeg' },
-  { id:'france', flag:'🇫🇷', name:'France Passport', spec:'35×45mm, 413×531px, <500KB', w:413, h:531, maxKB:500, format:'image/jpeg' },
-  { id:'china', flag:'🇨🇳', name:'China Passport', spec:'33×48mm, 390×567px, <500KB', w:390, h:567, maxKB:500, format:'image/jpeg' },
-  { id:'japan', flag:'🇯🇵', name:'Japan Passport', spec:'35×45mm, 413×531px, <500KB', w:413, h:531, maxKB:500, format:'image/jpeg' },
-  { id:'dv-lottery', flag:'🇺🇸', name:'DV Lottery', spec:'600×600px JPEG, 54–240KB', w:600, h:600, maxKB:240, format:'image/jpeg' },
+  {id:'us-passport',flag:'🇺🇸',name:'US Passport',spec:'600×600px, <240KB',w:600,h:600,maxKB:240,format:'image/jpeg'},
+  {id:'us-visa',flag:'🇺🇸',name:'US Visa (DS-160)',spec:'600×600px, <240KB',w:600,h:600,maxKB:240,format:'image/jpeg'},
+  {id:'schengen',flag:'🇪🇺',name:'Schengen Visa',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
+  {id:'uk-passport',flag:'🇬🇧',name:'UK Passport',spec:'600×750px, <10MB',w:600,h:750,maxKB:10240,format:'image/jpeg'},
+  {id:'india-passport',flag:'🇮🇳',name:'India Passport',spec:'600×600px, <1MB',w:600,h:600,maxKB:1024,format:'image/jpeg'},
+  {id:'canada-pr',flag:'🇨🇦',name:'Canada PR',spec:'420×540px, <4MB',w:420,h:540,maxKB:4096,format:'image/jpeg'},
+  {id:'australia',flag:'🇦🇺',name:'Australia',spec:'413×531px, <2MB',w:413,h:531,maxKB:2048,format:'image/jpeg'},
+  {id:'germany',flag:'🇩🇪',name:'Germany',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
+  {id:'france',flag:'🇫🇷',name:'France',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
+  {id:'china',flag:'🇨🇳',name:'China',spec:'390×567px, <500KB',w:390,h:567,maxKB:500,format:'image/jpeg'},
+  {id:'japan',flag:'🇯🇵',name:'Japan',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
+  {id:'dv-lottery',flag:'🇺🇸',name:'DV Lottery',spec:'600×600px, 54–240KB',w:600,h:600,maxKB:240,format:'image/jpeg'}
 ];
 
-var selectedPreset = null;
-var originalFile = null;
-var originalImg = null;
-var resultBlob = null;
-var resultFilename = '';
+var selectedPreset = null, originalFile = null, originalImg = null, resultBlob = null, resultFilename = '', pdfResultBlobs = [], currentMode = 'resize';
 
 // ── Init presets ──
-(function() {
+(function(){
   var grid = document.getElementById('presetGrid');
-  PRESETS.forEach(function(p) {
+  PRESETS.forEach(function(p){
     var btn = document.createElement('button');
     btn.className = 'preset-btn';
-    btn.setAttribute('data-preset', p.id);
-    btn.innerHTML = '<span class="preset-flag">' + p.flag + '</span><div class="preset-info"><div class="preset-name">' + p.name + '</div><div class="preset-spec">' + p.spec + '</div></div>';
-    btn.onclick = function() {
-      document.querySelectorAll('.preset-btn').forEach(function(b) { b.classList.remove('selected'); });
+    btn.innerHTML = '<span class="preset-flag">'+p.flag+'</span><div><div class="preset-name">'+p.name+'</div><div class="preset-spec">'+p.spec+'</div></div>';
+    btn.onclick = function(){
+      document.querySelectorAll('.preset-btn').forEach(function(b){b.classList.remove('selected')});
       btn.classList.add('selected');
       selectedPreset = p;
       document.getElementById('presetGoBtn').disabled = false;
@@ -711,284 +553,435 @@ var resultFilename = '';
   });
 })();
 
-// ── Tab switching ──
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.toggle('active', b.getAttribute('data-tab') === tab); });
-  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.toggle('active', p.id === 'panel-' + tab); });
+// ── Mode switching ──
+function switchMode(mode){
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-mode')===mode)});
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('active',p.id==='panel-'+mode)});
+  // Update file input accept
+  var fi = document.getElementById('fileInput');
+  var hint = document.getElementById('dropHint');
+  if(mode==='pdf2img'){fi.accept='application/pdf';hint.textContent='Upload a PDF file — up to 50MB'}
+  else if(mode==='img2pdf'){fi.accept='image/*';fi.multiple=true;hint.textContent='Upload one or more images — JPG, PNG, WebP'}
+  else{fi.accept='image/*,application/pdf';fi.multiple=false;hint.textContent='Supports JPG, PNG, WebP, BMP, GIF, PDF — up to 50MB'}
 }
 
 // ── Drop zone ──
-var dropZone = document.getElementById('dropZone');
-var fileInput = document.getElementById('fileInput');
+var dropZone = document.getElementById('dropZone'), fileInput = document.getElementById('fileInput');
+dropZone.addEventListener('click',function(){fileInput.click()});
+dropZone.addEventListener('dragover',function(e){e.preventDefault();dropZone.classList.add('dragover')});
+dropZone.addEventListener('dragleave',function(){dropZone.classList.remove('dragover')});
+dropZone.addEventListener('drop',function(e){e.preventDefault();dropZone.classList.remove('dragover');if(e.dataTransfer.files.length){if(currentMode==='img2pdf')handleMultiFiles(e.dataTransfer.files);else handleFile(e.dataTransfer.files[0])}});
+fileInput.addEventListener('change',function(){if(fileInput.files.length){if(currentMode==='img2pdf')handleMultiFiles(fileInput.files);else handleFile(fileInput.files[0])}});
 
-dropZone.addEventListener('click', function() { fileInput.click(); });
-dropZone.addEventListener('dragover', function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
-dropZone.addEventListener('dragleave', function() { dropZone.classList.remove('dragover'); });
-dropZone.addEventListener('drop', function(e) {
-  e.preventDefault();
-  dropZone.classList.remove('dragover');
-  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
-});
-fileInput.addEventListener('change', function() { if (fileInput.files.length) handleFile(fileInput.files[0]); });
+var img2pdfFiles = [];
 
-function handleFile(file) {
-  if (!file.type.startsWith('image/')) { alert('Please select an image file (JPG, PNG, WebP, BMP, GIF).'); return; }
-  if (file.size > 50 * 1024 * 1024) { alert('File too large. Maximum 50MB.'); return; }
-  originalFile = file;
-  // Load image
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var img = new Image();
-    img.onload = function() {
-      originalImg = img;
-      showFileInfo(file, img);
+function handleMultiFiles(files){
+  for(var i=0;i<files.length;i++){
+    if(files[i].type.startsWith('image/'))img2pdfFiles.push(files[i]);
+  }
+  renderImg2PdfList();
+  // Show first file info
+  if(img2pdfFiles.length && !originalFile){
+    originalFile = img2pdfFiles[0];
+    document.getElementById('dropZone').style.display='none';
+    document.getElementById('fileInfo').style.display='flex';
+    document.getElementById('fileName').textContent=img2pdfFiles.length+' image(s) selected';
+    document.getElementById('fileMeta').textContent=img2pdfFiles.map(function(f){return f.name}).join(', ');
+    document.getElementById('fileThumb').style.display='none';
+  }
+}
+
+function renderImg2PdfList(){
+  var list=document.getElementById('img2pdfList');
+  list.innerHTML='';
+  img2pdfFiles.forEach(function(f,i){
+    var div=document.createElement('div');
+    div.style.cssText='display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;margin-bottom:6px;font-size:13px;color:#e2e8f0';
+    div.innerHTML='<span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+f.name+' ('+formatSize(f.size)+')</span><button onclick="removeImg2Pdf('+i+')" style="background:none;border:none;color:#f87171;cursor:pointer;font-size:16px">✕</button>';
+    list.appendChild(div);
+  });
+}
+
+function removeImg2Pdf(i){img2pdfFiles.splice(i,1);renderImg2PdfList();if(!img2pdfFiles.length)clearFile()}
+
+function handleFile(file){
+  if(file.size>50*1024*1024){alert('File too large. Maximum 50MB.');return}
+  if(file.type==='application/pdf'){
+    originalFile=file;
+    document.getElementById('dropZone').style.display='none';
+    document.getElementById('fileInfo').style.display='flex';
+    document.getElementById('fileName').textContent=file.name;
+    document.getElementById('fileMeta').textContent=formatSize(file.size)+' · PDF';
+    document.getElementById('fileThumb').style.display='none';
+    return;
+  }
+  if(!file.type.startsWith('image/')){alert('Please select an image or PDF file.');return}
+  originalFile=file;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var img=new Image();
+    img.onload=function(){
+      originalImg=img;
+      showFileInfo(file,img);
     };
-    img.src = e.target.result;
+    img.src=e.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-function showFileInfo(file, img) {
-  document.getElementById('dropZone').style.display = 'none';
-  var info = document.getElementById('fileInfo');
-  info.style.display = 'flex';
-  document.getElementById('fileName').textContent = file.name;
-  document.getElementById('fileMeta').textContent = img.width + '×' + img.height + 'px · ' + formatSize(file.size) + ' · ' + file.type.split('/')[1].toUpperCase();
-  document.getElementById('currentFormat').value = file.type.split('/')[1].toUpperCase();
-  // Pre-fill resize fields
-  document.getElementById('resizeWidth').value = img.width;
-  document.getElementById('resizeHeight').value = img.height;
-  // Set original preview
-  document.getElementById('previewOriginal').src = URL.createObjectURL(file);
+function showFileInfo(file,img){
+  document.getElementById('dropZone').style.display='none';
+  var info=document.getElementById('fileInfo');
+  info.style.display='flex';
+  document.getElementById('fileName').textContent=file.name;
+  document.getElementById('fileMeta').textContent=img.width+'×'+img.height+'px · '+formatSize(file.size)+' · '+file.type.split('/')[1].toUpperCase();
+  document.getElementById('currentFormat').value=file.type.split('/')[1].toUpperCase();
+  var thumb=document.getElementById('fileThumb');
+  thumb.src=URL.createObjectURL(file);
+  thumb.style.display='';
+  document.getElementById('resizeWidth').value=img.width;
+  document.getElementById('resizeHeight').value=img.height;
+  document.getElementById('previewOriginal').src=URL.createObjectURL(file);
 }
 
-function clearFile() {
-  originalFile = null;
-  originalImg = null;
-  resultBlob = null;
-  fileInput.value = '';
-  document.getElementById('dropZone').style.display = '';
-  document.getElementById('fileInfo').style.display = 'none';
-  document.getElementById('previewArea').style.display = 'none';
-  document.getElementById('resultSummary').style.display = 'none';
-  document.getElementById('downloadRow').style.display = 'none';
+function clearFile(){
+  originalFile=null;originalImg=null;resultBlob=null;pdfResultBlobs=[];img2pdfFiles=[];
+  fileInput.value='';fileInput.multiple=false;
+  document.getElementById('dropZone').style.display='';
+  document.getElementById('fileInfo').style.display='none';
+  document.getElementById('previewArea').style.display='none';
+  document.getElementById('resultStats').style.display='none';
+  document.getElementById('downloadRow').style.display='none';
+  document.getElementById('pdfPagesResult').style.display='none';
+  document.getElementById('pdfPagesResult').innerHTML='';
   document.getElementById('progressBar').classList.remove('active');
+  document.getElementById('img2pdfList').innerHTML='';
 }
 
 // ── Aspect ratio lock ──
-(function() {
-  var wInput = document.getElementById('resizeWidth');
-  var hInput = document.getElementById('resizeHeight');
-  var lock = document.getElementById('lockAspect');
-  wInput.addEventListener('input', function() {
-    if (lock.checked && originalImg) {
-      var ratio = originalImg.height / originalImg.width;
-      hInput.value = Math.round(wInput.value * ratio);
-    }
-  });
-  hInput.addEventListener('input', function() {
-    if (lock.checked && originalImg) {
-      var ratio = originalImg.width / originalImg.height;
-      wInput.value = Math.round(hInput.value * ratio);
-    }
-  });
+(function(){
+  var w=document.getElementById('resizeWidth'),h=document.getElementById('resizeHeight'),lock=document.getElementById('lockAspect');
+  w.addEventListener('input',function(){if(lock.checked&&originalImg){h.value=Math.round(w.value*(originalImg.height/originalImg.width))}});
+  h.addEventListener('input',function(){if(lock.checked&&originalImg){w.value=Math.round(h.value*(originalImg.width/originalImg.height))}});
 })();
 
-// ── Processing functions ──
-function processResize() {
-  if (!originalFile) { alert('Please select a file first.'); return; }
-  var w = parseInt(document.getElementById('resizeWidth').value);
-  var h = parseInt(document.getElementById('resizeHeight').value);
-  if (!w || !h || w < 1 || h < 1) { alert('Please enter valid dimensions.'); return; }
-  var quality = parseInt(document.getElementById('resizeQuality').value) / 100;
+// ── Processing ──
+function processResize(){
+  if(!originalFile||!originalImg){alert('Please select an image first.');return}
+  var w=parseInt(document.getElementById('resizeWidth').value),h=parseInt(document.getElementById('resizeHeight').value);
+  if(!w||!h||w<1||h<1){alert('Please enter valid dimensions.');return}
+  var q=parseInt(document.getElementById('resizeQuality').value)/100;
   showProgress();
-  setTimeout(function() {
-    var canvas = resizeImage(originalImg, w, h);
-    canvasToBlob(canvas, originalFile.type, quality, function(blob) {
-      showResult(blob, getResizedName(originalFile.name, w, h));
-    });
-  }, 100);
+  setTimeout(function(){var c=resizeImage(originalImg,w,h);canvasToBlob(c,originalFile.type,q,function(b){showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-'+w+'x'+h+originalFile.name.match(/\.[^.]+$/)[0])})},100);
 }
 
-function processCompress() {
-  if (!originalFile) { alert('Please select a file first.'); return; }
-  var targetKB = parseInt(document.getElementById('targetSize').value);
-  var targetUnit = document.getElementById('targetUnit').value;
-  var quality = parseInt(document.getElementById('compressQuality').value) / 100;
+function processCompress(){
+  if(!originalFile||!originalImg){alert('Please select an image first.');return}
+  var targetKB=parseInt(document.getElementById('targetSize').value),unit=document.getElementById('targetUnit').value,q=parseInt(document.getElementById('compressQuality').value)/100;
   showProgress();
-  setTimeout(function() {
-    if (targetKB && targetKB > 0) {
-      var targetBytes = targetUnit === 'MB' ? targetKB * 1024 * 1024 : targetKB * 1024;
-      compressToSize(originalImg, originalFile.type, targetBytes, function(blob) {
-        showResult(blob, getCompressedName(originalFile.name));
-      });
-    } else {
-      var canvas = resizeImage(originalImg, originalImg.width, originalImg.height);
-      canvasToBlob(canvas, originalFile.type, quality, function(blob) {
-        showResult(blob, getCompressedName(originalFile.name));
-      });
+  setTimeout(function(){
+    if(targetKB&&targetKB>0){
+      var bytes=unit==='MB'?targetKB*1024*1024:targetKB*1024;
+      compressToSize(originalImg,originalFile.type,bytes,function(b){showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-compressed'+originalFile.name.match(/\.[^.]+$/)[0])});
+    }else{
+      var c=resizeImage(originalImg,originalImg.width,originalImg.height);
+      canvasToBlob(c,originalFile.type,q,function(b){showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-compressed'+originalFile.name.match(/\.[^.]+$/)[0])});
     }
-  }, 100);
+  },100);
 }
 
-function processConvert() {
-  if (!originalFile) { alert('Please select a file first.'); return; }
-  var targetFormat = document.getElementById('targetFormat').value;
-  var quality = parseInt(document.getElementById('convertQuality').value) / 100;
+function processConvert(){
+  if(!originalFile||!originalImg){alert('Please select an image first.');return}
+  var fmt=document.getElementById('targetFormat').value,q=parseInt(document.getElementById('convertQuality').value)/100;
   showProgress();
-  setTimeout(function() {
-    var canvas = resizeImage(originalImg, originalImg.width, originalImg.height);
-    canvasToBlob(canvas, targetFormat, quality, function(blob) {
-      var ext = targetFormat.split('/')[1];
-      if (ext === 'jpeg') ext = 'jpg';
-      var name = originalFile.name.replace(/\.[^.]+$/, '') + '.' + ext;
-      showResult(blob, name);
-    });
-  }, 100);
+  setTimeout(function(){
+    var c=resizeImage(originalImg,originalImg.width,originalImg.height);
+    canvasToBlob(c,fmt,q,function(b){var ext=fmt.split('/')[1];if(ext==='jpeg')ext='jpg';showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'.'+ext)});
+  },100);
 }
 
-function processPreset() {
-  if (!originalFile || !selectedPreset) { alert('Please select a file and a preset.'); return; }
-  var p = selectedPreset;
+function processPreset(){
+  if(!originalFile||!originalImg||!selectedPreset){alert('Please select a file and a preset.');return}
+  var p=selectedPreset;
   showProgress();
-  setTimeout(function() {
-    if (p.maxKB < 10240) {
-      // Resize then compress to target
-      var canvas = resizeImage(originalImg, p.w, p.h);
-      compressCanvasToSize(canvas, p.format, p.maxKB * 1024, function(blob) {
-        var ext = p.format.split('/')[1];
-        if (ext === 'jpeg') ext = 'jpg';
-        var name = originalFile.name.replace(/\.[^.]+$/, '') + '-' + p.id + '.' + ext;
-        showResult(blob, name);
-      });
-    } else {
-      var canvas = resizeImage(originalImg, p.w, p.h);
-      canvasToBlob(canvas, p.format, 0.92, function(blob) {
-        var ext = p.format.split('/')[1];
-        if (ext === 'jpeg') ext = 'jpg';
-        var name = originalFile.name.replace(/\.[^.]+$/, '') + '-' + p.id + '.' + ext;
-        showResult(blob, name);
-      });
+  setTimeout(function(){
+    var c=resizeImage(originalImg,p.w,p.h);
+    if(p.maxKB<10240){
+      compressCanvasToSize(c,p.format,p.maxKB*1024,function(b){var ext=p.format.split('/')[1];if(ext==='jpeg')ext='jpg';showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-'+p.id+'.'+ext)});
+    }else{
+      canvasToBlob(c,p.format,0.92,function(b){var ext=p.format.split('/')[1];if(ext==='jpeg')ext='jpg';showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-'+p.id+'.'+ext)});
     }
-  }, 100);
+  },100);
+}
+
+function processPdf2Img(){
+  if(!originalFile||originalFile.type!=='application/pdf'){alert('Please upload a PDF file.');return}
+  showProgress();
+  var fmt=document.getElementById('pdfOutFormat').value;
+  var scale=parseFloat(document.getElementById('pdfScale').value);
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var data=new Uint8Array(e.target.result);
+    pdfjsLib.getDocument({data:data}).promise.then(function(pdf){
+      var pages=pdf.numPages;
+      pdfResultBlobs=[];
+      var container=document.getElementById('pdfPagesResult');
+      container.innerHTML='<p style="font-size:14px;color:#e2e8f0;font-weight:600;margin-bottom:12px">'+pages+' page(s) converted:</p>';
+      container.style.display='block';
+      var done=0;
+      function renderPage(num){
+        pdf.getPage(num).then(function(page){
+          var vp=page.getViewport({scale:scale});
+          var canvas=document.createElement('canvas');
+          canvas.width=vp.width;canvas.height=vp.height;
+          var ctx=canvas.getContext('2d');
+          page.render({canvasContext:ctx,viewport:vp}).promise.then(function(){
+            var q=fmt==='image/jpeg'?0.92:undefined;
+            canvas.toBlob(function(blob){
+              pdfResultBlobs.push({blob:blob,name:'page-'+num+'.'+(fmt==='image/jpeg'?'jpg':'png')});
+              // Show thumbnail
+              var div=document.createElement('div');
+              div.style.cssText='display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin:0 8px 8px 0';
+              var img=document.createElement('img');
+              img.src=URL.createObjectURL(blob);
+              img.style.cssText='max-width:120px;max-height:160px;border-radius:6px';
+              img.alt='Page '+num;
+              div.appendChild(img);
+              var info=document.createElement('span');
+              info.style.cssText='font-size:11px;color:#94a3b8';
+              info.textContent='Page '+num+' · '+formatSize(blob.size);
+              div.appendChild(info);
+              var dl=document.createElement('button');
+              dl.style.cssText='font-size:12px;color:#818cf8;background:none;border:none;cursor:pointer;font-family:inherit;font-weight:600;margin-top:2px';
+              dl.textContent='Download';
+              dl.onclick=(function(b,n){return function(){downloadBlob(b,n)}})(blob,'page-'+num+'.'+(fmt==='image/jpeg'?'jpg':'png'));
+              div.appendChild(dl);
+              container.appendChild(div);
+              done++;
+              document.getElementById('progressFill').style.width=(done/pages*100)+'%';
+              if(done>=pages){
+                setTimeout(function(){document.getElementById('progressBar').classList.remove('active')},500);
+                // Add download all button
+                if(pages>1){
+                  var allBtn=document.createElement('button');
+                  allBtn.className='btn-primary';
+                  allBtn.style.cssText='margin-top:16px;display:inline-flex';
+                  allBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download All Pages';
+                  allBtn.onclick=function(){pdfResultBlobs.forEach(function(r){downloadBlob(r.blob,r.name)})};
+                  container.appendChild(document.createElement('br'));
+                  container.appendChild(allBtn);
+                }
+              }else{renderPage(num+1)}
+            },fmt,q);
+          });
+        });
+      }
+      renderPage(1);
+    }).catch(function(err){alert('Error reading PDF: '+err.message);document.getElementById('progressBar').classList.remove('active')});
+  };
+  reader.readAsArrayBuffer(originalFile);
+}
+
+function processImg2Pdf(){
+  if(!img2pdfFiles.length){alert('Please upload at least one image.');return}
+  showProgress();
+  // Use jsPDF-like approach with canvas
+  var images=[];var loaded=0;
+  img2pdfFiles.forEach(function(file,i){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      var img=new Image();
+      img.onload=function(){
+        images[i]={img:img,w:img.width,h:img.height};
+        loaded++;
+        if(loaded===img2pdfFiles.length)buildPdf(images);
+      };
+      img.src=e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function buildPdf(images){
+  // Simple PDF builder — each image is a full page
+  var pdf=[];
+  pdf.push('%PDF-1.4');
+  var offsets=[];
+  var objNum=1;
+  // We'll build objects: catalog, pages, each page + image xobject
+  // For simplicity, render each image to JPEG via canvas, embed in PDF
+  var pageRefs=[];
+  var imgDatas=[];
+  var ready=0;
+
+  images.forEach(function(item,i){
+    var canvas=document.createElement('canvas');
+    canvas.width=item.w;canvas.height=item.h;
+    var ctx=canvas.getContext('2d');
+    ctx.drawImage(item.img,0,0);
+    canvas.toBlob(function(blob){
+      var reader=new FileReader();
+      reader.onload=function(e){
+        imgDatas[i]=new Uint8Array(e.target.result);
+        ready++;
+        if(ready===images.length)finalizePdf(images,imgDatas);
+      };
+      reader.readAsArrayBuffer(blob);
+    },'image/jpeg',0.92);
+  });
+}
+
+function finalizePdf(images,imgDatas){
+  // Build a minimal valid PDF with embedded JPEG images
+  var out='';var offsets=[];var objCount=0;
+  function addObj(content){objCount++;offsets.push(out.length);out+= objCount+' 0 obj\n'+content+'\nendobj\n';return objCount}
+
+  // 1: Catalog
+  var catalogRef=addObj('<< /Type /Catalog /Pages 2 0 R >>');
+  // 2: Pages (placeholder, we'll fix)
+  var pagesIdx=out.length;
+  addObj('PLACEHOLDER');
+
+  var pageObjNums=[];
+  var imgObjNums=[];
+
+  // For each image: create image XObject + page
+  for(var i=0;i<images.length;i++){
+    var w=images[i].w,h=images[i].h;
+    var imgData=imgDatas[i];
+    // Image XObject (stream)
+    var imgRef=addObj('<< /Type /XObject /Subtype /Image /Width '+w+' /Height '+h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+imgData.length+' >>\nstream\n');
+    // Append binary data
+    // We need to handle this differently for binary — use Blob approach instead
+    // Actually, let's use a simpler approach: render to canvas and use data URL in a downloadable PDF
+  }
+
+  // Simpler approach: use canvas to create images, then build PDF with basic structure
+  // For a proper implementation, let's just create a multi-page PDF using a minimal approach
+  document.getElementById('progressBar').classList.remove('active');
+
+  // Use the proven approach: create PDF blob manually
+  createSimplePdf(images,imgDatas);
+}
+
+function createSimplePdf(images,imgDatas){
+  var parts=[];
+  var offsets=[];
+  var pos=0;
+
+  function write(str){parts.push(str);pos+=str.length}
+  function writeBin(arr){parts.push(arr);pos+=arr.length}
+
+  write('%PDF-1.4\n%\xFF\xFF\xFF\xFF\n');
+
+  var numPages=images.length;
+  var objNum=0;
+
+  function startObj(){objNum++;offsets[objNum]=pos;write(objNum+' 0 obj\n');return objNum}
+  function endObj(){write('endobj\n')}
+
+  // Object 1: Catalog
+  startObj();write('<< /Type /Catalog /Pages 2 0 R >>\n');endObj();
+
+  // Object 2: Pages
+  startObj();
+  var pageRefs='';
+  for(var i=0;i<numPages;i++)pageRefs+=(3+i*3)+' 0 R ';
+  write('<< /Type /Pages /Kids [ '+pageRefs+'] /Count '+numPages+' >>\n');
+  endObj();
+
+  // For each page: Page obj, Resources with XObject, Content stream
+  for(var i=0;i<numPages;i++){
+    var w=images[i].w,h=images[i].h;
+    var imgObjNum=3+i*3+2; // image object number
+
+    // Page object
+    startObj();
+    write('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+w+' '+h+'] /Contents '+(3+i*3+1)+' 0 R /Resources << /XObject << /Img'+i+' '+imgObjNum+' 0 R >> >> >>\n');
+    endObj();
+
+    // Content stream
+    var content='q '+w+' 0 0 '+h+' 0 0 cm /Img'+i+' Do Q';
+    startObj();
+    write('<< /Length '+content.length+' >>\nstream\n'+content+'\nendstream\n');
+    endObj();
+
+    // Image XObject
+    startObj();
+    write('<< /Type /XObject /Subtype /Image /Width '+w+' /Height '+h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+imgDatas[i].length+' >>\nstream\n');
+    writeBin(imgDatas[i]);
+    write('\nendstream\n');
+    endObj();
+  }
+
+  // xref
+  var xrefPos=pos;
+  write('xref\n0 '+(objNum+1)+'\n');
+  write('0000000000 65535 f \n');
+  for(var i=1;i<=objNum;i++){
+    var off=('0000000000'+offsets[i]).slice(-10);
+    write(off+' 00000 n \n');
+  }
+
+  write('trailer\n<< /Size '+(objNum+1)+' /Root 1 0 R >>\nstartxref\n'+xrefPos+'\n%%EOF\n');
+
+  // Build blob
+  var blob=new Blob(parts,{type:'application/pdf'});
+  resultBlob=blob;
+  resultFilename='combined.pdf';
+  document.getElementById('downloadRow').style.display='';
+  document.getElementById('progressBar').classList.remove('active');
+  // Show simple stats
+  document.getElementById('resultStats').style.display='';
+  document.getElementById('statOriginal').textContent=numPages+' images';
+  document.getElementById('statResult').textContent=formatSize(blob.size);
+  document.getElementById('statReduction').textContent='PDF';
 }
 
 // ── Canvas helpers ──
-function resizeImage(img, w, h) {
-  var canvas = document.createElement('canvas');
-  canvas.width = w;
-  canvas.height = h;
-  var ctx = canvas.getContext('2d');
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(img, 0, 0, w, h);
-  return canvas;
-}
-
-function canvasToBlob(canvas, type, quality, cb) {
-  canvas.toBlob(function(blob) { cb(blob); }, type, quality);
-}
-
-function compressToSize(img, type, targetBytes, cb) {
-  var canvas = resizeImage(img, img.width, img.height);
-  compressCanvasToSize(canvas, type, targetBytes, cb);
-}
-
-function compressCanvasToSize(canvas, type, targetBytes, cb) {
-  var lo = 0.01, hi = 1.0, best = null, attempts = 0, maxAttempts = 15;
-  function tryQuality() {
-    var mid = (lo + hi) / 2;
-    canvas.toBlob(function(blob) {
+function resizeImage(img,w,h){var c=document.createElement('canvas');c.width=w;c.height=h;var ctx=c.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);return c}
+function canvasToBlob(c,type,q,cb){c.toBlob(function(b){cb(b)},type,q)}
+function compressToSize(img,type,bytes,cb){var c=resizeImage(img,img.width,img.height);compressCanvasToSize(c,type,bytes,cb)}
+function compressCanvasToSize(canvas,type,targetBytes,cb){
+  var lo=0.01,hi=1.0,best=null,attempts=0,max=15;
+  function tryQ(){
+    var mid=(lo+hi)/2;
+    canvas.toBlob(function(blob){
       attempts++;
-      if (blob.size <= targetBytes) {
-        best = blob;
-        lo = mid;
-      } else {
-        hi = mid;
-      }
-      if (attempts >= maxAttempts || (hi - lo) < 0.01) {
-        if (!best) {
-          // Even lowest quality is too big — try scaling down
-          var scale = Math.sqrt(targetBytes / blob.size) * 0.9;
-          var newW = Math.round(canvas.width * scale);
-          var newH = Math.round(canvas.height * scale);
-          var smaller = resizeImage(originalImg, newW, newH);
-          smaller.toBlob(function(b) { cb(b); }, type, 0.7);
-        } else {
-          cb(best);
-        }
-      } else {
-        tryQuality();
-      }
-    }, type, mid);
+      if(blob.size<=targetBytes){best=blob;lo=mid}else{hi=mid}
+      if(attempts>=max||(hi-lo)<0.01){
+        if(!best){var scale=Math.sqrt(targetBytes/blob.size)*0.9;var nw=Math.round(canvas.width*scale);var nh=Math.round(canvas.height*scale);var s=resizeImage(originalImg,nw,nh);s.toBlob(function(b){cb(b)},type,0.7)}
+        else{cb(best)}
+      }else{tryQ()}
+    },type,mid);
   }
-  tryQuality();
+  tryQ();
 }
 
 // ── UI helpers ──
-function showProgress() {
-  var bar = document.getElementById('progressBar');
-  var fill = document.getElementById('progressFill');
-  bar.classList.add('active');
-  fill.style.width = '0%';
-  var w = 0;
-  var interval = setInterval(function() {
-    w += Math.random() * 15 + 5;
-    if (w > 90) w = 90;
-    fill.style.width = w + '%';
-    if (w >= 90) clearInterval(interval);
-  }, 100);
-  bar._interval = interval;
+function showProgress(){var bar=document.getElementById('progressBar'),fill=document.getElementById('progressFill');bar.classList.add('active');fill.style.width='0%';var w=0;var iv=setInterval(function(){w+=Math.random()*15+5;if(w>90)w=90;fill.style.width=w+'%';if(w>=90)clearInterval(iv)},100);bar._iv=iv}
+
+function showResult(blob,filename){
+  clearInterval(document.getElementById('progressBar')._iv);
+  document.getElementById('progressFill').style.width='100%';
+  setTimeout(function(){document.getElementById('progressBar').classList.remove('active')},500);
+  resultBlob=blob;resultFilename=filename;
+  document.getElementById('previewResult').src=URL.createObjectURL(blob);
+  document.getElementById('previewArea').style.display='';
+  document.getElementById('originalSize').textContent=formatSize(originalFile.size);
+  document.getElementById('resultSize').textContent=formatSize(blob.size);
+  document.getElementById('resultStats').style.display='';
+  document.getElementById('statOriginal').textContent=formatSize(originalFile.size);
+  document.getElementById('statResult').textContent=formatSize(blob.size);
+  var r=((1-blob.size/originalFile.size)*100);
+  document.getElementById('statReduction').textContent=(r>0?'-':'+')+Math.abs(r).toFixed(1)+'%';
+  document.getElementById('downloadRow').style.display='';
 }
 
-function showResult(blob, filename) {
-  clearInterval(document.getElementById('progressBar')._interval);
-  document.getElementById('progressFill').style.width = '100%';
-  setTimeout(function() { document.getElementById('progressBar').classList.remove('active'); }, 500);
-
-  resultBlob = blob;
-  resultFilename = filename;
-
-  // Preview
-  document.getElementById('previewResult').src = URL.createObjectURL(blob);
-  document.getElementById('previewArea').style.display = '';
-  document.getElementById('originalSize').textContent = formatSize(originalFile.size);
-  document.getElementById('resultSize').textContent = formatSize(blob.size);
-
-  // Stats
-  document.getElementById('resultSummary').style.display = '';
-  document.getElementById('statOriginal').textContent = formatSize(originalFile.size);
-  document.getElementById('statResult').textContent = formatSize(blob.size);
-  var reduction = ((1 - blob.size / originalFile.size) * 100);
-  document.getElementById('statReduction').textContent = (reduction > 0 ? '-' : '+') + Math.abs(reduction).toFixed(1) + '%';
-
-  // Download
-  document.getElementById('downloadRow').style.display = '';
-}
-
-function downloadResult() {
-  if (!resultBlob) return;
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(resultBlob);
-  a.download = resultFilename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-
-function formatSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
-}
-
-function getResizedName(name, w, h) {
-  return name.replace(/\.[^.]+$/, '') + '-' + w + 'x' + h + name.match(/\.[^.]+$/)[0];
-}
-
-function getCompressedName(name) {
-  return name.replace(/\.[^.]+$/, '') + '-compressed' + name.match(/\.[^.]+$/)[0];
-}
+function downloadResult(){if(resultBlob)downloadBlob(resultBlob,resultFilename)}
+function downloadBlob(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a)}
+function formatSize(b){if(b<1024)return b+' B';if(b<1024*1024)return(b/1024).toFixed(1)+' KB';return(b/(1024*1024)).toFixed(2)+' MB'}
 </script>
 </body>
 </html>
