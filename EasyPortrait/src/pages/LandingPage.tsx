@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Camera, Grid3x3, ArrowRight, Check, Wand2, Crop, FileText, Sun, Contrast as ContrastIcon, Palette, Globe, Shield, ChevronDown, ChevronRight, Lightbulb, Lock, Eye, Zap, Monitor } from 'lucide-react';
+import { Camera, Grid3x3, ArrowRight, Check, Wand2, Crop, FileText, Sun, Contrast as ContrastIcon, Palette, Globe, Shield, ChevronDown, ChevronRight, Lightbulb, Lock, Eye, Zap, Monitor, Printer, ExternalLink } from 'lucide-react';
 import { removeBackground } from '@imgly/background-removal';
 import AppSwitcher from '../components/AppSwitcher';
 
@@ -242,6 +242,7 @@ export const LandingPage: React.FC = () => {
                 { label: 'Compliance', href: '#compliance' },
                 { label: 'Privacy', href: '#privacy' },
                 { label: 'How-To', href: '#home-photo' },
+                { label: 'Gear', href: '#gear' },
                 { label: 'FAQ', href: '#faq' },
                 { label: 'Pricing', href: '#pricing' },
               ].map((item) => (
@@ -873,6 +874,116 @@ export const LandingPage: React.FC = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Recommended Gear — Amazon Affiliate */}
+      <section id="gear" className="bg-white dark:bg-slate-900 py-20 border-t border-gray-100 dark:border-slate-700">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Printer className="h-10 w-10 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-4">Recommended Gear for Passport Photos</h2>
+            <p className="text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+              Print your passport photos at home with the right equipment. These are the tools we recommend.
+            </p>
+            <p className="text-xs text-gray-400 dark:text-slate-500 mt-2">
+              Disclosure: Links below are Amazon affiliate links. We earn a small commission at no extra cost to you.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                badge: '⭐ Best Printer',
+                title: 'Canon SELPHY CP1500',
+                desc: 'Compact dye-sublimation printer. True photo-lab quality with protective overcoat. Prints a 4×6 in ~47 seconds.',
+                price: '~$130',
+                perPhoto: '~$0.25/set',
+                url: 'https://www.amazon.com/Canon-SELPHY-CP1500-Compact-Printer/dp/B0BF6T86WD?tag=withswag-20',
+              },
+              {
+                badge: '📷 Best Camera Setup',
+                title: 'Smartphone Tripod + Ring Light',
+                desc: 'Adjustable phone tripod with built-in ring light. Even lighting, steady shot — perfect for passport photos at home.',
+                price: '~$25',
+                perPhoto: 'One-time purchase',
+                url: 'https://www.amazon.com/s?k=phone+tripod+ring+light+passport+photo&tag=withswag-20',
+              },
+              {
+                badge: '🖨️ Best Photo Paper',
+                title: 'Canon GP-701 Glossy 4×6',
+                desc: '200 sheets of glossy photo paper. Works with any inkjet printer. Glossy finish meets passport photo requirements.',
+                price: '~$18',
+                perPhoto: '$0.09/sheet',
+                url: 'https://www.amazon.com/dp/B00009XOZ4?tag=withswag-20',
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6 hover:border-primary dark:hover:border-indigo-500 transition hover:shadow-lg">
+                <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full mb-3">{item.badge}</span>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-slate-400 mb-4">{item.desc}</p>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-lg font-bold text-gray-900 dark:text-slate-100">{item.price}</span>
+                  <span className="text-xs text-gray-500 dark:text-slate-400">{item.perPhoto}</span>
+                </div>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener sponsored"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-[#FF9900] hover:bg-[#e88b00] text-white rounded-lg font-semibold text-sm transition"
+                >
+                  View on Amazon
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Epson EcoTank ET-2850',
+                desc: 'Best value inkjet. Refillable ink tanks = ultra-low running costs. Great for photos + documents.',
+                price: '~$200',
+                url: 'https://www.amazon.com/dp/B09BJCZ4RK?tag=withswag-20',
+              },
+              {
+                title: 'Paper Cutter / Trimmer',
+                desc: 'Clean, straight cuts for your passport photos. Much better than scissors.',
+                price: '~$12',
+                url: 'https://www.amazon.com/s?k=paper+cutter+trimmer+photo&tag=withswag-20',
+              },
+              {
+                title: 'SELPHY Ink + Paper Kit',
+                desc: '108-sheet pack with ink cartridge for SELPHY CP1500. Everything you need in one box.',
+                price: '~$35',
+                url: 'https://www.amazon.com/dp/B003Y5N0JO?tag=withswag-20',
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-5 hover:border-primary dark:hover:border-indigo-500 transition">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-1">{item.title}</h3>
+                <p className="text-xs text-gray-600 dark:text-slate-400 mb-3">{item.desc}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-bold text-gray-900 dark:text-slate-100">{item.price}</span>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener sponsored"
+                    className="flex items-center gap-1 px-3 py-1.5 bg-[#FF9900] hover:bg-[#e88b00] text-white rounded-md font-medium text-xs transition"
+                  >
+                    Amazon
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center mt-8">
+            <a href="/guides/best-passport-photo-printers/" className="text-primary hover:text-indigo-700 dark:hover:text-indigo-300 font-semibold text-sm underline underline-offset-2">
+              See our full printer comparison guide →
+            </a>
+          </p>
         </div>
       </section>
 
