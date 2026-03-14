@@ -20,7 +20,7 @@
 <body>
 <nav class="tool-nav">
   <a href="/" class="tool-logo">With<span>Swag</span></a>
-  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/portrait/" class="nav-cta">Create Photo</a></div>
+  <div class="tool-nav-links"><a href="/guides/">Guides</a><a href="/passport-photo-maker/" class="nav-cta">Create Photo</a></div>
 </nav>
 <div class="tool-breadcrumb">
   <a href="/">WithSwag</a><span>›</span><a href="/tools/">Tools</a><span>›</span><span>Visa Fee Calculator</span>
@@ -187,7 +187,7 @@ function calculateFee() {
   });
   html += '<tr><td><strong>Processing Time</strong></td><td>' + data.processing + '</td></tr>';
   document.getElementById('fee-table').innerHTML = html;
-  document.getElementById('fee-notes').innerHTML = '<strong>Notes:</strong> ' + data.notes + '<br><br>Need a passport photo? <a href="/portrait/" style="color:#2563eb;font-weight:500;">Create one here →</a>';
+  document.getElementById('fee-notes').innerHTML = '<strong>Notes:</strong> ' + data.notes + '<br><br>Need a passport photo? <a href="/passport-photo-maker/" style="color:#2563eb;font-weight:500;">Create one here →</a>';
   document.getElementById('fee-result').style.display = 'block';
   document.getElementById('fee-form').style.display = 'none';
 }
@@ -209,7 +209,7 @@ function calculateFee() {
 </section>
 <footer class="tool-footer">
   <p>© 2026 WithSwag. All rights reserved.</p>
-  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/portrait/">Photo Tool</a><a href="/about.html">About</a></nav>
+  <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/passport-photo-maker/">Photo Tool</a><a href="/about.html">About</a></nav>
 </footer>
 </body>
 </html>

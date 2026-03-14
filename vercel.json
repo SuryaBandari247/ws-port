@@ -24,6 +24,10 @@
     }
   ],
   "redirects": [
+    { "source": "/passport-photo-maker", "destination": "/portrait/", "statusCode": 301 },
+    { "source": "/passport-photo-maker/(.*)", "destination": "/portrait/$1", "statusCode": 301 },
+    { "source": "/passport-photo-online", "destination": "/portrait/", "statusCode": 301 },
+    { "source": "/passport-photo-online/(.*)", "destination": "/portrait/$1", "statusCode": 301 },
     { "source": "/crisis-help/flights/", "destination": "/tools/flight-itinerary/", "statusCode": 301 },
     { "source": "/crisis-help/travel-gear/", "destination": "/guides/best-passport-photo-printers/", "statusCode": 301 },
     { "source": "/crisis-help/(.*)", "destination": "/", "statusCode": 301 }

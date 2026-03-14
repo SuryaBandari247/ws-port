@@ -190,3 +190,71 @@ body {
   font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px;
   margin-bottom: 4px;
 }
+
+/* ── Embedded Tool CTA (above the fold, after header) ── */
+.guide-tool-embed {
+  background: #f0f4ff;
+  border: 2px solid #c7d2fe;
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin: 0 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.2s;
+}
+.guide-tool-embed:hover {
+  border-color: #6366f1;
+  box-shadow: 0 4px 20px rgba(99,102,241,0.15);
+}
+.guide-tool-embed-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+.guide-tool-embed-text {
+  flex: 1;
+}
+.guide-tool-embed-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin-bottom: 4px;
+}
+.guide-tool-embed-desc {
+  font-size: 14px;
+  color: #475569;
+  margin: 0;
+  line-height: 1.5;
+}
+.guide-tool-embed-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+  transition: all 0.2s;
+}
+.guide-tool-embed-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(99,102,241,0.6);
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .guide-tool-embed {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 12px;
+  }
+  .guide-tool-embed-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
