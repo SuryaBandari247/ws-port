@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passport Power Ranking 2026 — Interactive Global Index | WithSwag</title>
+<meta name="description" content="Interactive 2026 passport power ranking. See which passports offer the most visa-free travel. Compare 199 passports across 227 destinations. Updated with Henley Passport Index data.">
+<meta name="keywords" content="passport ranking 2026, strongest passport, passport index, visa free countries, passport power, henley passport index, best passport, passport strength, global mobility index">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://withswag.org/passport-ranking/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://withswag.org/passport-ranking/">
+<meta property="og:title" content="Passport Power Ranking 2026 — Interactive Global Index">
+<meta property="og:description" content="Which passport is the most powerful? Explore the 2026 global passport ranking with interactive search, compare mode, and visa-free access data for 199 countries.">
+<meta property="og:image" content="https://withswag.org/guides/images/og-social-share.png">
+<meta property="og:site_name" content="WithSwag">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Passport Power Ranking 2026 — Interactive Global Index">
+<meta name="twitter:description" content="Which passport is the most powerful? Explore the 2026 global passport ranking.">
+<link rel="icon" href="/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="/cookie-consent.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset","name":"Global Passport Power Ranking 2026","description":"Interactive ranking of 199 passports by visa-free travel access to 227 destinations, based on Henley Passport Index 2026 data.","url":"https://withswag.org/passport-ranking/","creator":{"@type":"Organization","name":"WithSwag","url":"https://withswag.org"},"dateModified":"2026-03-15","license":"https://creativecommons.org/licenses/by/4.0/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the most powerful passport in 2026?","acceptedAnswer":{"@type":"Answer","text":"Singapore holds the #1 position in the 2026 Henley Passport Index with visa-free or visa-on-arrival access to 192 out of 227 destinations worldwide."}},{"@type":"Question","name":"How many countries can a US passport visit without a visa?","acceptedAnswer":{"@type":"Answer","text":"The US passport ranks 10th in 2026 with visa-free access to 179 destinations, a decline from its joint 1st place position in 2014."}},{"@type":"Question","name":"What is the weakest passport in the world?","acceptedAnswer":{"@type":"Answer","text":"Afghanistan has the weakest passport in 2026 with access to only 24 destinations, creating a 168-destination gap from the top-ranked Singapore passport."}}]}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;overflow-x:hidden}
+
+/* Nav */
+.pr-nav{background:rgba(15,23,42,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 24px;position:sticky;top:0;z-index:100}
+.pr-nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+.pr-nav a.logo{font-size:20px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:-0.5px}
+.pr-nav a.logo span{color:#60a5fa}
+.pr-nav-links{display:flex;gap:24px;align-items:center}
+.pr-nav-links a{color:#94a3b8;text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
+.pr-nav-links a:hover{color:#fff}
+.pr-nav-links a.cta{background:#2563eb;color:#fff;padding:7px 16px;border-radius:8px;font-weight:600}
+.pr-nav-links a.cta:hover{background:#1d4ed8}
+@media(max-width:768px){.pr-nav-links{display:none}}
+
+/* Hero */
+.pr-hero{text-align:center;padding:64px 24px 48px;position:relative;overflow:hidden}
+.pr-hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(99,102,241,0.15) 0%,transparent 70%);pointer-events:none}
+.pr-hero-badge{display:inline-block;background:rgba(99,102,241,0.15);color:#818cf8;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;border:1px solid rgba(99,102,241,0.3);margin-bottom:20px;letter-spacing:0.5px;text-transform:uppercase}
+.pr-hero h1{font-size:48px;font-weight:800;line-height:1.1;margin-bottom:16px;letter-spacing:-1.5px;background:linear-gradient(135deg,#fff 0%,#94a3b8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pr-hero p{font-size:18px;color:#64748b;max-width:600px;margin:0 auto 32px;line-height:1.6}
+@media(max-width:768px){.pr-hero h1{font-size:32px}.pr-hero p{font-size:15px}}
+
+/* Stats strip */
+.pr-stats{display:flex;justify-content:center;gap:48px;padding:0 24px 48px;flex-wrap:wrap}
+.pr-stat{text-align:center}
+.pr-stat-num{font-size:42px;font-weight:800;background:linear-gradient(135deg,#60a5fa,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.pr-stat-label{font-size:13px;color:#64748b;margin-top:4px;font-weight:500}
+@media(max-width:768px){.pr-stats{gap:24px}.pr-stat-num{font-size:32px}}
+
+/* Controls */
+.pr-controls{max-width:1200px;margin:0 auto;padding:0 24px 24px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.pr-search{flex:1;min-width:240px;position:relative}
+.pr-search input{width:100%;padding:12px 16px 12px 44px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;font-size:15px;font-family:inherit;outline:none;transition:all .2s}
+.pr-search input:focus{border-color:#6366f1;background:rgba(255,255,255,0.1);box-shadow:0 0 0 3px rgba(99,102,241,0.2)}
+.pr-search input::placeholder{color:#475569}
+.pr-search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#475569}
+.pr-filter-btns{display:flex;gap:6px;flex-wrap:wrap}
+.pr-filter-btn{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#94a3b8;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.pr-filter-btn:hover{border-color:rgba(255,255,255,0.2);color:#fff}
+.pr-filter-btn.active{background:#6366f1;border-color:#6366f1;color:#fff}
+.pr-compare-btn{padding:8px 16px;border-radius:8px;border:1px solid rgba(139,92,246,0.4);background:rgba(139,92,246,0.1);color:#a78bfa;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.pr-compare-btn:hover{background:rgba(139,92,246,0.2);color:#c4b5fd}
+.pr-compare-btn.active{background:#7c3aed;border-color:#7c3aed;color:#fff}
+
+/* Table */
+.pr-table-wrap{max-width:1200px;margin:0 auto;padding:0 24px 64px}
+.pr-table{width:100%;border-collapse:separate;border-spacing:0 6px}
+.pr-table thead th{padding:10px 16px;text-align:left;font-size:11px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;user-select:none;transition:color .15s;position:sticky;top:56px;background:#0f172a;z-index:10}
+.pr-table thead th:hover{color:#818cf8}
+.pr-table thead th.sorted{color:#818cf8}
+.pr-table thead th .sort-arrow{display:inline-block;margin-left:4px;transition:transform .2s}
+.pr-table tbody tr{background:rgba(255,255,255,0.03);border-radius:12px;transition:all .25s;cursor:pointer}
+.pr-table tbody tr:hover{background:rgba(99,102,241,0.08);transform:translateX(4px)}
+.pr-table tbody tr.compare-selected{background:rgba(139,92,246,0.12);box-shadow:inset 0 0 0 1px rgba(139,92,246,0.3)}
+.pr-table tbody td{padding:14px 16px;font-size:14px}
+.pr-table tbody td:first-child{border-radius:12px 0 0 12px}
+.pr-table tbody td:last-child{border-radius:0 12px 12px 0}
+
+/* Rank cell */
+.pr-rank{font-size:16px;font-weight:800;color:#475569;width:50px;text-align:center}
+.pr-rank.top3{font-size:20px}
+.pr-rank.r1{color:#fbbf24}
+.pr-rank.r2{color:#94a3b8}
+.pr-rank.r3{color:#d97706}
+
+/* Country cell */
+.pr-country{display:flex;align-items:center;gap:12px}
+.pr-flag{font-size:28px;line-height:1}
+.pr-country-name{font-weight:600;color:#f1f5f9;font-size:15px}
+.pr-country-region{font-size:12px;color:#475569;font-weight:400}
+
+/* Score bar */
+.pr-score-cell{width:300px}
+.pr-score-bar-wrap{display:flex;align-items:center;gap:10px}
+.pr-score-bar-bg{flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
+.pr-score-bar{height:100%;border-radius:4px;transition:width .8s cubic-bezier(0.4,0,0.2,1)}
+.pr-score-num{font-size:15px;font-weight:700;min-width:36px;text-align:right}
+
+/* Tier badge */
+.pr-tier{display:inline-block;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase}
+.pr-tier.t1{background:rgba(34,197,94,0.15);color:#4ade80}
+.pr-tier.t2{background:rgba(59,130,246,0.15);color:#60a5fa}
+.pr-tier.t3{background:rgba(234,179,8,0.15);color:#facc15}
+.pr-tier.t4{background:rgba(249,115,22,0.15);color:#fb923c}
+.pr-tier.t5{background:rgba(239,68,68,0.15);color:#f87171}
+
+/* Photo CTA */
+.pr-photo-link{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#818cf8;text-decoration:none;padding:4px 10px;border-radius:6px;background:rgba(99,102,241,0.1);transition:all .15s;white-space:nowrap}
+.pr-photo-link:hover{background:rgba(99,102,241,0.2);color:#a5b4fc}
+
+/* Compare panel */
+.pr-compare-panel{position:fixed;bottom:-300px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:800px;background:rgba(30,41,59,0.98);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.1);border-radius:16px 16px 0 0;padding:24px;z-index:90;transition:bottom .4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 -8px 40px rgba(0,0,0,0.4)}
+.pr-compare-panel.visible{bottom:0}
+.pr-compare-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.pr-compare-header h3{font-size:16px;font-weight:700;color:#fff}
+.pr-compare-close{background:none;border:none;color:#64748b;cursor:pointer;padding:4px;font-size:20px}
+.pr-compare-body{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center}
+.pr-compare-country{text-align:center}
+.pr-compare-country .flag{font-size:48px;margin-bottom:8px}
+.pr-compare-country .name{font-size:18px;font-weight:700;color:#fff}
+.pr-compare-country .score{font-size:36px;font-weight:800;margin-top:4px}
+.pr-compare-vs{font-size:24px;font-weight:800;color:#475569}
+.pr-compare-bars{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.pr-compare-bar-item{text-align:center}
+.pr-compare-bar-item .label{font-size:11px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:0.5px;margin-bottom:6px}
+.pr-compare-bar-item .bar-wrap{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+.pr-compare-bar-item .bar{height:100%;border-radius:3px;transition:width .6s}
+
+/* Detail slide-out */
+.pr-detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s}
+.pr-detail-overlay.visible{opacity:1;pointer-events:auto}
+.pr-detail-panel{position:fixed;top:0;right:-480px;width:480px;max-width:100%;height:100%;background:#1e293b;z-index:201;transition:right .4s cubic-bezier(0.4,0,0.2,1);overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,0.4)}
+.pr-detail-panel.visible{right:0}
+.pr-detail-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;color:#94a3b8;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pr-detail-close:hover{background:rgba(255,255,255,0.2);color:#fff}
+.pr-detail-hero{padding:48px 32px 32px;text-align:center;background:linear-gradient(180deg,rgba(99,102,241,0.1) 0%,transparent 100%)}
+.pr-detail-hero .flag{font-size:72px;margin-bottom:12px}
+.pr-detail-hero .name{font-size:28px;font-weight:800;color:#fff}
+.pr-detail-hero .rank-badge{display:inline-block;margin-top:8px;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:700}
+.pr-detail-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);margin:0 24px;border-radius:12px;overflow:hidden}
+.pr-detail-stat{background:#1e293b;padding:20px 16px;text-align:center}
+.pr-detail-stat .num{font-size:28px;font-weight:800;color:#fff}
+.pr-detail-stat .label{font-size:11px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:0.5px;margin-top:4px}
+.pr-detail-section{padding:24px 32px}
+.pr-detail-section h4{font-size:13px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+.pr-detail-meter{height:10px;background:rgba(255,255,255,0.06);border-radius:5px;overflow:hidden;margin-bottom:8px}
+.pr-detail-meter .fill{height:100%;border-radius:5px;transition:width 1s cubic-bezier(0.4,0,0.2,1)}
+.pr-detail-meter-labels{display:flex;justify-content:space-between;font-size:12px;color:#475569}
+.pr-detail-cta{display:block;margin:0 32px 32px;padding:14px;text-align:center;background:#2563eb;color:#fff;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all .15s}
+.pr-detail-cta:hover{background:#1d4ed8;transform:translateY(-1px)}
+
+/* Footer */
+.pr-footer{border-top:1px solid rgba(255,255,255,0.06);padding:32px 24px;text-align:center}
+.pr-footer p{font-size:13px;color:#475569;max-width:600px;margin:0 auto 12px}
+.pr-footer a{color:#64748b;text-decoration:none;margin:0 8px;font-size:13px;transition:color .15s}
+.pr-footer a:hover{color:#fff}
+
+/* Animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.pr-table tbody tr{animation:fadeInUp .4s ease both}
+
+/* Scroll indicator */
+.pr-scroll-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;background:#6366f1;border:none;border-radius:50%;color:#fff;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(99,102,241,0.4);transition:all .2s;z-index:50;font-size:18px}
+.pr-scroll-top:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(99,102,241,0.5)}
+.pr-scroll-top.visible{display:flex}
+
+/* No results */
+.pr-no-results{text-align:center;padding:48px 24px;color:#475569;font-size:16px}
+
+@media(max-width:768px){
+.pr-score-cell{width:auto}
+.pr-table thead th:nth-child(4),.pr-table tbody td:nth-child(4){display:none}
+.pr-table thead th:nth-child(5),.pr-table tbody td:nth-child(5){display:none}
+.pr-detail-panel{width:100%}
+.pr-compare-body{grid-template-columns:1fr;gap:8px}
+.pr-compare-vs{display:none}
+}
+</style>
+</head>
+<body>
+<!-- Nav -->
+<nav class="pr-nav">
+<div class="pr-nav-inner">
+<a href="/" class="logo">With<span>Swag</span></a>
+<div class="pr-nav-links">
+<a href="/guides/">Guides</a>
+<a href="/passport-photo-maker/">Photo Maker</a>
+<a href="/tools/">Tools</a>
+<a href="/passport-photo-maker/" class="cta">Create Photo</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="pr-hero">
+<div class="pr-hero-badge">2026 Henley Passport Index</div>
+<h1>Global Passport Power Ranking</h1>
+<p>Explore which passports unlock the most borders. Interactive ranking of 199 passports across 227 destinations — search, compare, and discover.</p>
+</section>
+
+<!-- Animated stats -->
+<div class="pr-stats">
+<div class="pr-stat"><div class="pr-stat-num" data-target="199">0</div><div class="pr-stat-label">Passports Ranked</div></div>
+<div class="pr-stat"><div class="pr-stat-num" data-target="227">0</div><div class="pr-stat-label">Destinations Tracked</div></div>
+<div class="pr-stat"><div class="pr-stat-num" data-target="192">0</div><div class="pr-stat-label">Top Score (Singapore)</div></div>
+<div class="pr-stat"><div class="pr-stat-num" data-target="168">0</div><div class="pr-stat-label">Mobility Gap</div></div>
+</div>
+
+<!-- Controls -->
+<div class="pr-controls">
+<div class="pr-search">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="text" id="searchInput" placeholder="Search any country..." aria-label="Search countries">
+</div>
+<div class="pr-filter-btns">
+<button class="pr-filter-btn active" data-filter="all">All</button>
+<button class="pr-filter-btn" data-filter="top10">Top 10</button>
+<button class="pr-filter-btn" data-filter="europe">Europe</button>
+<button class="pr-filter-btn" data-filter="asia">Asia</button>
+<button class="pr-filter-btn" data-filter="americas">Americas</button>
+<button class="pr-filter-btn" data-filter="africa">Africa</button>
+<button class="pr-filter-btn" data-filter="oceania">Oceania</button>
+</div>
+<button class="pr-compare-btn" id="compareToggle">⚖️ Compare</button>
+</div>
+
+<!-- Table -->
+<div class="pr-table-wrap">
+<table class="pr-table" role="table">
+<thead>
+<tr>
+<th data-sort="rank" class="sorted">Rank <span class="sort-arrow">↑</span></th>
+<th data-sort="name">Country</th>
+<th data-sort="score">Visa-Free Access</th>
+<th data-sort="tier">Tier</th>
+<th>Photo Guide</th>
+</tr>
+</thead>
+<tbody id="rankingBody"></tbody>
+</table>
+<div class="pr-no-results" id="noResults" style="display:none">No countries match your search.</div>
+</div>
+
+<!-- Detail panel -->
+<div class="pr-detail-overlay" id="detailOverlay"></div>
+<div class="pr-detail-panel" id="detailPanel">
+<button class="pr-detail-close" id="detailClose" aria-label="Close detail panel">✕</button>
+<div id="detailContent"></div>
+</div>
+
+<!-- Compare panel -->
+<div class="pr-compare-panel" id="comparePanel">
+<div class="pr-compare-header">
+<h3>🔍 Compare Passports</h3>
+<button class="pr-compare-close" id="compareClose" aria-label="Close compare">✕</button>
+</div>
+<div class="pr-compare-body" id="compareBody">
+<p style="color:#64748b;grid-column:1/-1;text-align:center;font-size:14px;">Click two countries in the table to compare them</p>
+</div>
+</div>
+
+<!-- Scroll to top -->
+<button class="pr-scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- Footer -->
+<footer class="pr-footer">
+<p>Data sourced from the Henley Passport Index 2026, published by Henley & Partners using IATA data. Rankings reflect visa-free and visa-on-arrival access as of January 2026.</p>
+<div>
+<a href="/">Home</a>
+<a href="/passport-photo-maker/">Passport Photo Maker</a>
+<a href="/guides/">Photo Guides</a>
+<a href="/privacy.html">Privacy</a>
+</div>
+<p style="margin-top:16px">© 2026 WithSwag.org</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
