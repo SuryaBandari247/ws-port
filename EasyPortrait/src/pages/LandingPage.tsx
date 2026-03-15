@@ -21,22 +21,22 @@ const FaqItem: React.FC<{ question: string; answer: string; isOpen: boolean; onT
     )}
   </div>
 );
-import samplePhoto1 from '../resources/sample-portrait-1.jpeg';
-import samplePhoto2 from '../resources/sample-portrait-2.jpeg';
-import samplePhoto3 from '../resources/sample-portrait-3.jpeg';
-import samplePhoto4 from '../resources/sample-portrait-4.jpeg';
-import collagePhoto from '../resources/abced.jpeg';
-import homePhotoGuide from '../resources/387831C9-07A3-4837-AB44-F7D3CFDA983F_1_201_a.jpeg';
-import passportUSA from '../resources/USA.png';
-import passportIndia from '../resources/india.png';
-import passportCanada from '../resources/canada.png';
-import passportAustralia from '../resources/australian.png';
-import passportChina from '../resources/china.png';
-import passportFrance from '../resources/france.png';
-import passportGermany from '../resources/german.png';
-import passportNetherlands from '../resources/netherlands.png';
-import passportNorway from '../resources/norway.png';
-import passportSwitzerland from '../resources/swiss.png';
+import samplePhoto1 from '../resources/sample-portrait-1.webp';
+import samplePhoto2 from '../resources/sample-portrait-2.webp';
+import samplePhoto3 from '../resources/sample-portrait-3.webp';
+import samplePhoto4 from '../resources/sample-portrait-4.webp';
+import collagePhoto from '../resources/abced.webp';
+import homePhotoGuide from '../resources/387831C9-07A3-4837-AB44-F7D3CFDA983F_1_201_a.webp';
+import passportUSA from '../resources/USA.webp';
+import passportIndia from '../resources/india.webp';
+import passportCanada from '../resources/canada.webp';
+import passportAustralia from '../resources/australian.webp';
+import passportChina from '../resources/china.webp';
+import passportFrance from '../resources/france.webp';
+import passportGermany from '../resources/german.webp';
+import passportNetherlands from '../resources/netherlands.webp';
+import passportNorway from '../resources/norway.webp';
+import passportSwitzerland from '../resources/swiss.webp';
 
 const BG_DEMO_COLORS = [
   { color: '#F87171', label: 'Red' },

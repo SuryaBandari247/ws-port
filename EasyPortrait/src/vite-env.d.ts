@@ -18,6 +18,11 @@ declare module '*.png' {
   export default src;
 }
 
+declare module '*.webp' {
+  const src: string;
+  export default src;
+}
+
 declare module 'react-easy-crop' {
   export interface Area {
     x: number;
