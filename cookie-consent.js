@@ -55,14 +55,20 @@
   // ── Build banner ──
   function showBanner() {
     if (document.getElementById('ws-cookie-banner')) return;
+    // Safety: wait for body to exist
+    if (!document.body) {
+      document.addEventListener('DOMContentLoaded', showBanner);
+      return;
+    }
 
     var overlay = document.createElement('div');
     overlay.id = 'ws-cookie-banner';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-label', 'Cookie consent');
+    overlay.setAttribute('aria-modal', 'false');
 
     overlay.innerHTML =
-      '<div style="position:fixed;bottom:0;left:0;right:0;z-index:99999;padding:0 16px 16px;pointer-events:none;">' +
+      '<div style="position:fixed;bottom:0;left:0;right:0;z-index:99999;padding:0 16px 16px;pointer-events:none;animation:wsCookieSlideUp 0.4s ease-out;">' +
         '<div style="max-width:680px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:24px 28px;pointer-events:auto;font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;border:1px solid #e5e7eb;">' +
           '<div style="display:flex;align-items:flex-start;gap:14px;">' +
             '<span style="font-size:28px;line-height:1;flex-shrink:0;">🍪</span>' +
@@ -78,6 +84,11 @@
           '</div>' +
         '</div>' +
       '</div>';
+
+    // Add slide-up animation
+    var style = document.createElement('style');
+    style.textContent = '@keyframes wsCookieSlideUp{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}';
+    overlay.appendChild(style);
 
     document.body.appendChild(overlay);
 
