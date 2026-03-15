@@ -11,7 +11,7 @@
       ]
     },
     {
-      "source": "/passport-photo-maker/assets/(.*)",
+      "source": "/passport-photo-online/assets/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
@@ -30,10 +30,10 @@
     }
   ],
   "redirects": [
-    { "source": "/portrait", "destination": "/passport-photo-maker/", "statusCode": 301 },
-    { "source": "/portrait/(.*)", "destination": "/passport-photo-maker/$1", "statusCode": 301 },
-    { "source": "/passport-photo-online", "destination": "/passport-photo-maker/", "statusCode": 301 },
-    { "source": "/passport-photo-online/(.*)", "destination": "/passport-photo-maker/$1", "statusCode": 301 },
+    { "source": "/passport-photo-maker", "destination": "/passport-photo-online/", "statusCode": 301 },
+    { "source": "/passport-photo-maker/(.*)", "destination": "/passport-photo-online/$1", "statusCode": 301 },
+    { "source": "/portrait", "destination": "/passport-photo-online/", "statusCode": 301 },
+    { "source": "/portrait/(.*)", "destination": "/passport-photo-online/$1", "statusCode": 301 },
     { "source": "/crisis-help/flights/", "destination": "/tools/flight-itinerary/", "statusCode": 301 },
     { "source": "/crisis-help/travel-gear/", "destination": "/guides/best-passport-photo-printers/", "statusCode": 301 },
     { "source": "/crisis-help/(.*)", "destination": "/", "statusCode": 301 },
@@ -41,6 +41,6 @@
     { "source": "/tools/file-converter/(.*)", "destination": "/file-converter/$1", "statusCode": 301 }
   ],
   "rewrites": [
-    { "source": "/passport-photo-maker/(.*)", "destination": "/passport-photo-maker/index.html" }
+    { "source": "/passport-photo-online/(.*)", "destination": "/passport-photo-online/index.html" }
   ]
 }

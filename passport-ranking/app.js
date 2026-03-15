@@ -249,7 +249,7 @@ function openDetail(name){
   var bc=getBarColor(d.s);
   var visaRequired=MAX-d.s;
   var rank=d.r;
-  var guideLink=d.g!=="/guides/"?'<a href="'+d.g+'" class="pr-detail-cta">📸 Get '+d.n+' Passport Photo</a>':'<a href="/passport-photo-maker/" class="pr-detail-cta">📸 Create Passport Photo</a>';
+  var guideLink=d.g!=="/guides/"?'<a href="'+d.g+'" class="pr-detail-cta">📸 Get '+d.n+' Passport Photo</a>':'<a href="/passport-photo-online/" class="pr-detail-cta">📸 Create Passport Photo</a>';
 
   var html='<div class="pr-detail-hero">';
   html+='<div class="flag">'+d.f+'</div>';

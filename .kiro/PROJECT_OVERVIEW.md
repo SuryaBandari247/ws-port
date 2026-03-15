@@ -2,7 +2,7 @@
 
 ## What is WithSwag?
 
-WithSwag is an online passport photo maker focused on passport photos, visa photos, and immigration-related photo content. All served under `withswag.org`.
+WithSwag is an online passport photo tool focused on passport photos, visa photos, and immigration-related photo content. All served under `withswag.org`.
 
 ## Site Structure
 

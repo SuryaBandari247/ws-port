@@ -6,7 +6,7 @@ import './index.css';
 
 function App() {
   return (
-    <Router basename="/passport-photo-maker">
+    <Router basename="/passport-photo-online">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/editor/:type" element={<EditorPage />} />

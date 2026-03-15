@@ -128,8 +128,8 @@ If it's a React app, also update the build command:
 
 ### Update meta tags in `index.html`:
 ```html
-<meta name="description" content="Online passport photo maker for 50+ countries. Create visa photos, ID photos, and more.">
-<meta name="keywords" content="passport photo, visa photo, id photo, passport photo maker, online tools">
+<meta name="description" content="Passport photo online for 50+ countries. Create visa photos, ID photos, and more.">
+<meta name="keywords" content="passport photo, visa photo, id photo, passport photo online, online tools">
 ```
 
 ## Step 6: Test Locally (Optional)
