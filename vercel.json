@@ -17,7 +17,13 @@
       ]
     },
     {
-      "source": "/(.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.svg|.*\\.ico|.*\\.woff2)",
+      "source": "/(.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.svg|.*\\.ico|.*\\.woff2|.*\\.webp)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
+      ]
+    },
+    {
+      "source": "/(.*\\.css|.*\\.js)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=2592000" }
       ]

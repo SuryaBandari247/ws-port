@@ -20,7 +20,7 @@
 <link rel="icon" href="/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="/cookie-consent.js"></script>
 <script type="application/ld+json">
 {
@@ -513,10 +513,20 @@ a:hover{color:#a5b4fc}
   <nav><a href="/">Home</a><a href="/guides/">Guides</a><a href="/tools/">Tools</a><a href="/passport-photo-maker/">Photo Tool</a><a href="/about.html">About</a></nav>
 </footer>
 
-<!-- pdf.js for PDF processing -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<!-- pdf.js loaded on demand -->
 <script>
-if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+var pdfJsLoaded = false;
+function loadPdfJs(cb) {
+  if (pdfJsLoaded) { if (cb) cb(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+  s.onload = function() {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    pdfJsLoaded = true;
+    if (cb) cb();
+  };
+  document.head.appendChild(s);
+}
 
 // ── State ──
 var PRESETS = [
@@ -561,7 +571,7 @@ function switchMode(mode){
   // Update file input accept
   var fi = document.getElementById('fileInput');
   var hint = document.getElementById('dropHint');
-  if(mode==='pdf2img'){fi.accept='application/pdf';hint.textContent='Upload a PDF file — up to 50MB'}
+  if(mode==='pdf2img'){fi.accept='application/pdf';hint.textContent='Upload a PDF file — up to 50MB';loadPdfJs()}
   else if(mode==='img2pdf'){fi.accept='image/*';fi.multiple=true;hint.textContent='Upload one or more images — JPG, PNG, WebP'}
   else{fi.accept='image/*,application/pdf';fi.multiple=false;hint.textContent='Supports JPG, PNG, WebP, BMP, GIF, PDF — up to 50MB'}
 }
@@ -718,6 +728,7 @@ function processPreset(){
 function processPdf2Img(){
   if(!originalFile||originalFile.type!=='application/pdf'){alert('Please upload a PDF file.');return}
   showProgress();
+  loadPdfJs(function(){
   var fmt=document.getElementById('pdfOutFormat').value;
   var scale=parseFloat(document.getElementById('pdfScale').value);
   var reader=new FileReader();
@@ -781,6 +792,7 @@ function processPdf2Img(){
     }).catch(function(err){alert('Error reading PDF: '+err.message);document.getElementById('progressBar').classList.remove('active')});
   };
   reader.readAsArrayBuffer(originalFile);
+  }); // end loadPdfJs
 }
 
 function processImg2Pdf(){
