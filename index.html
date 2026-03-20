@@ -324,16 +324,26 @@
             background: #fff;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 24px;
+            padding: 0;
             text-decoration: none;
             color: #1a1a2e;
             transition: all 0.2s;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .card:hover {
             border-color: #2563eb;
             box-shadow: 0 4px 20px rgba(37, 99, 235, 0.12);
             transform: translateY(-2px);
         }
+        .card-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            display: block;
+        }
+        .card-body { padding: 20px 24px 24px; }
         .card-icon {
             width: 44px;
             height: 44px;
@@ -725,72 +735,52 @@
             <p class="section-sub">Step-by-step guides for visa applications, passport renewals, and immigration processes.</p>
             <div class="card-grid">
                 <a href="/guides/passport-application/" class="card">
-                    <div class="card-icon">🛂</div>
-                    <h3>Passport Application Guide</h3>
-                    <p>How to apply for or renew your passport. Forms, fees, processing times, and tips for US, UK, EU, India, Canada.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=260&fit=crop" alt="Passport application guide" loading="lazy">
+                    <div class="card-body"><h3>Passport Application Guide</h3><p>How to apply for or renew your passport. Forms, fees, processing times, and tips for US, UK, EU, India, Canada.</p><span class="card-tag tag-green">New</span></div>
                 </a>
                 <a href="/guides/family-reunification-visa/" class="card">
-                    <div class="card-icon">👨‍👩‍👧‍👦</div>
-                    <h3>Family Reunification Visa</h3>
-                    <p>Bring parents & siblings from Asia to Europe, USA, or Canada. Country-by-country requirements and timelines.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=500&h=260&fit=crop" alt="Family reunification visa" loading="lazy">
+                    <div class="card-body"><h3>Family Reunification Visa</h3><p>Bring parents & siblings from Asia to Europe, USA, or Canada. Country-by-country requirements and timelines.</p><span class="card-tag tag-green">New</span></div>
                 </a>
                 <a href="/guides/schengen-visa-checklist/" class="card">
-                    <div class="card-icon">🇪🇺</div>
-                    <h3>Schengen Visa Checklist 2026</h3>
-                    <p>Complete document checklist for all 29 Schengen countries. Every form, photo, and insurance you need.</p>
-                    <span class="card-tag tag-blue">Popular</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500&h=260&fit=crop" alt="Schengen visa checklist" loading="lazy">
+                    <div class="card-body"><h3>Schengen Visa Checklist 2026</h3><p>Complete document checklist for all 29 Schengen countries. Every form, photo, and insurance you need.</p><span class="card-tag tag-blue">Popular</span></div>
                 </a>
                 <a href="/guides/h1b-visa-timeline/" class="card">
-                    <div class="card-icon">🇺🇸</div>
-                    <h3>H1B Visa Timeline & Costs</h3>
-                    <p>Lottery dates, filing fees, processing times, and step-by-step process for 2026.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=260&fit=crop" alt="H1B visa timeline" loading="lazy">
+                    <div class="card-body"><h3>H1B Visa Timeline & Costs</h3><p>Lottery dates, filing fees, processing times, and step-by-step process for 2026.</p></div>
                 </a>
                 <a href="/guides/green-card-process/" class="card">
-                    <div class="card-icon">🇺🇸</div>
-                    <h3>Green Card Process 2026</h3>
-                    <p>PERM, I-140, I-485 — employment and family-based paths explained.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=500&h=260&fit=crop" alt="Green card process" loading="lazy">
+                    <div class="card-body"><h3>Green Card Process 2026</h3><p>PERM, I-140, I-485 — employment and family-based paths explained.</p></div>
                 </a>
                 <a href="/guides/travel-insurance-schengen-visa/" class="card">
-                    <div class="card-icon">🛡️</div>
-                    <h3>Travel Insurance for Schengen</h3>
-                    <p>Mandatory insurance compared — best providers, costs, what consulates accept.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&h=260&fit=crop" alt="Travel insurance for Schengen" loading="lazy">
+                    <div class="card-body"><h3>Travel Insurance for Schengen</h3><p>Mandatory insurance compared — best providers, costs, what consulates accept.</p></div>
                 </a>
                 <a href="/guides/passport-photo-at-home/" class="card">
-                    <div class="card-icon">📱</div>
-                    <h3>Take Passport Photo at Home</h3>
-                    <p>Step-by-step smartphone guide. Lighting, background, and printing tips.</p>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&h=260&fit=crop" alt="Passport photo at home" loading="lazy">
+                    <div class="card-body"><h3>Take Passport Photo at Home</h3><p>Step-by-step smartphone guide. Lighting, background, and printing tips.</p></div>
                 </a>
                 <a href="/guides/baby-passport-photo/" class="card">
-                    <div class="card-icon">👶</div>
-                    <h3>Baby Passport Photo Guide</h3>
-                    <p>How to take a compliant passport photo of your baby or infant at home.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=500&h=260&fit=crop" alt="Baby passport photo" loading="lazy">
+                    <div class="card-body"><h3>Baby Passport Photo Guide</h3><p>How to take a compliant passport photo of your baby or infant at home.</p><span class="card-tag tag-green">New</span></div>
                 </a>
                 <a href="/guides/passport-photo-sizes/" class="card">
-                    <div class="card-icon">📏</div>
-                    <h3>Passport Photo Sizes Chart</h3>
-                    <p>Complete size comparison for 50+ countries — dimensions, DPI, backgrounds.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=260&fit=crop" alt="Passport photo sizes" loading="lazy">
+                    <div class="card-body"><h3>Passport Photo Sizes Chart</h3><p>Complete size comparison for 50+ countries — dimensions, DPI, backgrounds.</p><span class="card-tag tag-green">New</span></div>
                 </a>
                 <a href="/guides/passport-photo-glasses/" class="card">
-                    <div class="card-icon">👓</div>
-                    <h3>Glasses in Passport Photos</h3>
-                    <p>Can you wear glasses? 2026 rules by country — US, UK, EU, and more.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=500&h=260&fit=crop" alt="Glasses in passport photos" loading="lazy">
+                    <div class="card-body"><h3>Glasses in Passport Photos</h3><p>Can you wear glasses? 2026 rules by country — US, UK, EU, and more.</p><span class="card-tag tag-green">New</span></div>
                 </a>
                 <a href="/guides/passport-photo-dress-code/" class="card">
-                    <div class="card-icon">👔</div>
-                    <h3>Passport Photo Dress Code</h3>
-                    <p>What to wear, best colors, head coverings, and grooming tips.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&h=260&fit=crop" alt="Passport photo dress code" loading="lazy">
+                    <div class="card-body"><h3>Passport Photo Dress Code</h3><p>What to wear, best colors, head coverings, and grooming tips.</p><span class="card-tag tag-green">New</span></div>
                 </a>
                 <a href="/guides/digital-passport-photo/" class="card">
-                    <div class="card-icon">💻</div>
-                    <h3>Digital Passport Photo</h3>
-                    <p>File format, pixel size, and resolution for online applications.</p>
-                    <span class="card-tag tag-green">New</span>
+                    <img class="card-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=260&fit=crop" alt="Digital passport photo" loading="lazy">
+                    <div class="card-body"><h3>Digital Passport Photo</h3><p>File format, pixel size, and resolution for online applications.</p><span class="card-tag tag-green">New</span></div>
                 </a>
             </div>
         </div>
@@ -826,14 +816,14 @@
             <h2 class="section-title">Free Visa Application Tools</h2>
             <p class="section-sub">Interactive tools to help you prepare your visa application. All free.</p>
             <div class="card-grid">
-                <a href="/tools/visa-checklist/" class="card"><div class="card-icon">📋</div><h3>Document Checklist</h3><p>Personalized checklist for your visa type. Never miss a document.</p><span class="card-tag tag-green">Free</span></a>
-                <a href="/tools/cover-letter/" class="card"><div class="card-icon">✉️</div><h3>Cover Letter Generator</h3><p>Professional visa cover letter in seconds. Fill in details, get a letter.</p><span class="card-tag tag-green">Free</span></a>
-                <a href="/tools/visa-fee-calculator/" class="card"><div class="card-icon">💰</div><h3>Visa Fee Calculator</h3><p>Exact fees, biometrics costs, and processing times for 2026.</p><span class="card-tag tag-green">Free</span></a>
-                <a href="/tools/embassy-finder/" class="card"><div class="card-icon">🏛️</div><h3>Embassy Finder</h3><p>Find the nearest embassy, consulate, or visa application center.</p><span class="card-tag tag-green">Free</span></a>
-                <a href="/tools/flight-itinerary/" class="card"><div class="card-icon">✈️</div><h3>Flight Itinerary</h3><p>Create a travel itinerary for your visa application. Print-ready.</p><span class="card-tag tag-green">Free</span></a>
-                <a href="/tools/insurance-compare/" class="card"><div class="card-icon">🛡️</div><h3>Insurance Comparison</h3><p>Compare Schengen-compliant travel insurance. Best providers & prices.</p><span class="card-tag tag-green">Free</span></a>
-                <a href="/file-converter/" class="card"><div class="card-icon">📁</div><h3>File Converter</h3><p>Resize, compress & convert files for visa uploads. 100% private.</p><span class="card-tag tag-green">New</span></a>
-                <a href="/passport-ranking/" class="card"><div class="card-icon">🌍</div><h3>Passport Power Ranking</h3><p>Interactive 2026 passport strength index. Compare 199 passports across 227 destinations.</p><span class="card-tag tag-green">New</span></a>
+                <a href="/tools/visa-checklist/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&h=260&fit=crop" alt="Document checklist" loading="lazy"><div class="card-body"><h3>Document Checklist</h3><p>Personalized checklist for your visa type. Never miss a document.</p><span class="card-tag tag-green">Free</span></div></a>
+                <a href="/tools/cover-letter/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=260&fit=crop" alt="Cover letter generator" loading="lazy"><div class="card-body"><h3>Cover Letter Generator</h3><p>Professional visa cover letter in seconds. Fill in details, get a letter.</p><span class="card-tag tag-green">Free</span></div></a>
+                <a href="/tools/visa-fee-calculator/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=260&fit=crop" alt="Visa fee calculator" loading="lazy"><div class="card-body"><h3>Visa Fee Calculator</h3><p>Exact fees, biometrics costs, and processing times for 2026.</p><span class="card-tag tag-green">Free</span></div></a>
+                <a href="/tools/embassy-finder/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?w=500&h=260&fit=crop" alt="Embassy finder" loading="lazy"><div class="card-body"><h3>Embassy Finder</h3><p>Find the nearest embassy, consulate, or visa application center.</p><span class="card-tag tag-green">Free</span></div></a>
+                <a href="/tools/flight-itinerary/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500&h=260&fit=crop" alt="Flight itinerary" loading="lazy"><div class="card-body"><h3>Flight Itinerary</h3><p>Create a travel itinerary for your visa application. Print-ready.</p><span class="card-tag tag-green">Free</span></div></a>
+                <a href="/tools/insurance-compare/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&h=260&fit=crop" alt="Insurance comparison" loading="lazy"><div class="card-body"><h3>Insurance Comparison</h3><p>Compare Schengen-compliant travel insurance. Best providers & prices.</p><span class="card-tag tag-green">Free</span></div></a>
+                <a href="/file-converter/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&h=260&fit=crop" alt="File converter" loading="lazy"><div class="card-body"><h3>File Converter</h3><p>Resize, compress & convert files for visa uploads. 100% private.</p><span class="card-tag tag-green">New</span></div></a>
+                <a href="/passport-ranking/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=500&h=260&fit=crop" alt="Passport power ranking" loading="lazy"><div class="card-body"><h3>Passport Power Ranking</h3><p>Interactive 2026 passport strength index. Compare 199 passports across 227 destinations.</p><span class="card-tag tag-green">New</span></div></a>
             </div>
             <div style="text-align:center;margin-top:20px;"><a href="/tools/" style="color:#2563eb;font-weight:600;font-size:15px;text-decoration:none;">View All Tools →</a></div>
         </div>
@@ -893,18 +883,18 @@
             <h2 class="section-title">Visa & Immigration Photo Guides</h2>
             <p class="section-sub">Photo requirements for visa applications, green cards, work permits, and more.</p>
             <div class="card-grid">
-                <a href="/guides/schengen-visa-photo/" class="card"><div class="card-icon">🇪🇺</div><h3>Schengen Visa Photo</h3><p>35×45mm biometric for all 29 Schengen countries.</p></a>
-                <a href="/guides/green-card-photo/" class="card"><div class="card-icon">🇺🇸</div><h3>Green Card Photo</h3><p>2×2 inch USCIS photo for I-485, I-130, I-751.</p></a>
-                <a href="/guides/us-visa-photo/" class="card"><div class="card-icon">🇺🇸</div><h3>US Visa Photo (DS-160)</h3><p>2×2 inch print + 600×600px digital upload.</p></a>
-                <a href="/guides/h1b-visa-photo/" class="card"><div class="card-icon">🇺🇸</div><h3>H1B Visa Photo</h3><p>Work visa — I-129 petition + consulate photos.</p></a>
-                <a href="/guides/b1-b2-visa-photo/" class="card"><div class="card-icon">🇺🇸</div><h3>B1/B2 Visa Photo</h3><p>Tourist & business visa photo requirements.</p></a>
-                <a href="/guides/f1-visa-photo/" class="card"><div class="card-icon">🇺🇸</div><h3>F1 Student Visa Photo</h3><p>International student visa photo specs.</p></a>
-                <a href="/guides/k1-visa-photo/" class="card"><div class="card-icon">🇺🇸</div><h3>K1 Fiancé Visa Photo</h3><p>I-129F petition + embassy interview photos.</p></a>
-                <a href="/guides/eu-blue-card-photo/" class="card"><div class="card-icon">🇪🇺</div><h3>EU Blue Card Photo</h3><p>Photo requirements for Blue Card by country.</p></a>
-                <a href="/guides/oci-card-photo/" class="card"><div class="card-icon">🇮🇳</div><h3>OCI Card Photo</h3><p>Overseas Citizen of India card photo specs.</p></a>
-                <a href="/guides/permanent-residence-photo/" class="card"><div class="card-icon">🏠</div><h3>Permanent Residence Photo</h3><p>PR card photos — Green Card, ILR, Niederlassungserlaubnis.</p></a>
-                <a href="/guides/naturalisation-photo/" class="card"><div class="card-icon">🏛️</div><h3>Naturalisation Photo</h3><p>Citizenship application photo requirements.</p></a>
-                <a href="/guides/driving-licence-photo/" class="card"><div class="card-icon">🚗</div><h3>Driving Licence Photo</h3><p>Photo requirements for driver's licences.</p></a>
+                <a href="/guides/schengen-visa-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=500&h=260&fit=crop" alt="Schengen visa photo" loading="lazy"><div class="card-body"><h3>Schengen Visa Photo</h3><p>35×45mm biometric for all 29 Schengen countries.</p></div></a>
+                <a href="/guides/green-card-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=500&h=260&fit=crop" alt="Green card photo" loading="lazy"><div class="card-body"><h3>Green Card Photo</h3><p>2×2 inch USCIS photo for I-485, I-130, I-751.</p></div></a>
+                <a href="/guides/us-visa-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1422464804701-7d8356b3a42f?w=500&h=260&fit=crop" alt="US visa photo" loading="lazy"><div class="card-body"><h3>US Visa Photo (DS-160)</h3><p>2×2 inch print + 600×600px digital upload.</p></div></a>
+                <a href="/guides/h1b-visa-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=260&fit=crop" alt="H1B visa photo" loading="lazy"><div class="card-body"><h3>H1B Visa Photo</h3><p>Work visa — I-129 petition + consulate photos.</p></div></a>
+                <a href="/guides/b1-b2-visa-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500&h=260&fit=crop" alt="B1/B2 visa photo" loading="lazy"><div class="card-body"><h3>B1/B2 Visa Photo</h3><p>Tourist & business visa photo requirements.</p></div></a>
+                <a href="/guides/f1-visa-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&h=260&fit=crop" alt="F1 student visa photo" loading="lazy"><div class="card-body"><h3>F1 Student Visa Photo</h3><p>International student visa photo specs.</p></div></a>
+                <a href="/guides/k1-visa-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=500&h=260&fit=crop" alt="K1 fiancé visa photo" loading="lazy"><div class="card-body"><h3>K1 Fiancé Visa Photo</h3><p>I-129F petition + embassy interview photos.</p></div></a>
+                <a href="/guides/eu-blue-card-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=500&h=260&fit=crop" alt="EU Blue Card photo" loading="lazy"><div class="card-body"><h3>EU Blue Card Photo</h3><p>Photo requirements for Blue Card by country.</p></div></a>
+                <a href="/guides/oci-card-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&h=260&fit=crop" alt="OCI card photo" loading="lazy"><div class="card-body"><h3>OCI Card Photo</h3><p>Overseas Citizen of India card photo specs.</p></div></a>
+                <a href="/guides/permanent-residence-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=500&h=260&fit=crop" alt="Permanent residence photo" loading="lazy"><div class="card-body"><h3>Permanent Residence Photo</h3><p>PR card photos — Green Card, ILR, Niederlassungserlaubnis.</p></div></a>
+                <a href="/guides/naturalisation-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=500&h=260&fit=crop" alt="Naturalisation photo" loading="lazy"><div class="card-body"><h3>Naturalisation Photo</h3><p>Citizenship application photo requirements.</p></div></a>
+                <a href="/guides/driving-licence-photo/" class="card"><img class="card-img" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=500&h=260&fit=crop" alt="Driving licence photo" loading="lazy"><div class="card-body"><h3>Driving Licence Photo</h3><p>Photo requirements for driver's licences.</p></div></a>
             </div>
         </div>
     </section>

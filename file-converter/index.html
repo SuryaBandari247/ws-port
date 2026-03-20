@@ -32,7 +32,7 @@
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Web Browser",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": ["File compression to target size", "Format conversion (JPG, PNG, WebP, BMP)", "PDF to image conversion", "Image to PDF conversion", "Country-specific upload presets", "100% browser-based processing", "No file uploads — complete privacy"]
+  "featureList": ["File compression to target size", "Format conversion (JPG, PNG, WebP, BMP)", "PDF to image conversion", "Image to PDF conversion", "100% browser-based processing", "No file uploads — complete privacy"]
 }
 </script>
 <script type="application/ld+json">
@@ -81,10 +81,10 @@ a:hover{color:#a5b4fc}
 /* Main container */
 .main{max-width:920px;margin:0 auto;padding:0 20px 80px}
 
-/* Mode selector */
-.modes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:28px}
-.mode-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;cursor:pointer;transition:all 0.2s;font-family:inherit;color:#94a3b8;font-size:12px;font-weight:500}
-.mode-btn svg{width:22px;height:22px;stroke-width:1.5}
+/* Mode selector — now 4 columns */
+.modes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:28px}
+.mode-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;cursor:pointer;transition:all 0.2s;font-family:inherit;color:#94a3b8;font-size:12px;font-weight:500}
+.mode-btn svg{width:24px;height:24px;stroke-width:1.5}
 .mode-btn:hover{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.3);color:#c7d2fe}
 .mode-btn.active{background:rgba(99,102,241,0.15);border-color:#6366f1;color:#fff;box-shadow:0 0 20px rgba(99,102,241,0.15)}
 
@@ -122,10 +122,6 @@ a:hover{color:#a5b4fc}
 .field input:focus,.field select:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,0.15)}
 .field select option{background:#1e1e2e;color:#fff}
 
-/* Checkbox */
-.check-row{display:flex;align-items:center;gap:10px;margin-bottom:20px;font-size:13px;color:#94a3b8;cursor:pointer}
-.check-row input{accent-color:#6366f1;width:16px;height:16px}
-
 /* Slider */
 .slider-row{display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .slider-row label{font-size:12px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px;min-width:80px}
@@ -138,15 +134,6 @@ a:hover{color:#a5b4fc}
 .target-row input{width:100px;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:14px;font-family:inherit;color:#fff}
 .target-row select{padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:14px;font-family:inherit;color:#fff}
 .target-row .hint{font-size:12px;color:#64748b}
-
-/* Presets */
-.preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:24px}
-.preset-btn{display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;cursor:pointer;font-family:inherit;transition:all 0.2s;text-align:left;color:#e2e8f0}
-.preset-btn:hover{border-color:rgba(99,102,241,0.4);background:rgba(99,102,241,0.08)}
-.preset-btn.selected{border-color:#6366f1;background:rgba(99,102,241,0.12);box-shadow:0 0 16px rgba(99,102,241,0.1)}
-.preset-flag{font-size:24px;line-height:1}
-.preset-name{font-size:13px;font-weight:600;color:#fff}
-.preset-spec{font-size:11px;color:#64748b;margin-top:1px}
 
 /* Action button */
 .action-row{display:flex;gap:10px;margin-top:24px}
@@ -181,6 +168,9 @@ a:hover{color:#a5b4fc}
 /* Download row */
 .dl-row{display:flex;gap:10px;margin-top:20px}
 
+/* Convert info note */
+.convert-note{display:none;padding:12px 16px;background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.2);border-radius:10px;margin-bottom:16px;font-size:13px;color:#fbbf24;line-height:1.5}
+
 /* SEO content */
 .seo-section{margin-top:48px}
 .seo-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:32px;margin-bottom:16px}
@@ -205,17 +195,12 @@ a:hover{color:#a5b4fc}
 /* Responsive */
 @media(max-width:768px){
   .hero h1{font-size:28px}
-  .modes{grid-template-columns:repeat(3,1fr)}
+  .modes{grid-template-columns:repeat(2,1fr)}
   .settings-grid{grid-template-columns:1fr}
   .preview{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr}
-  .preset-grid{grid-template-columns:1fr 1fr}
   .dl-row,.action-row{flex-direction:column}
   .card{padding:20px}
-}
-@media(max-width:480px){
-  .modes{grid-template-columns:repeat(2,1fr)}
-  .preset-grid{grid-template-columns:1fr}
 }
 </style>
 
@@ -246,26 +231,22 @@ a:hover{color:#a5b4fc}
 <!-- Main -->
 <div class="main">
 
-  <!-- Mode selector -->
+  <!-- Mode selector — 4 modes (Presets removed) -->
   <div class="modes" id="modes">
     <button class="mode-btn active" data-mode="compress" onclick="switchMode('compress')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 17l4 4 4-4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
       Compress
     </button>
     <button class="mode-btn" data-mode="convert" onclick="switchMode('convert')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
       Convert
     </button>
-    <button class="mode-btn" data-mode="preset" onclick="switchMode('preset')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      Presets
-    </button>
     <button class="mode-btn" data-mode="pdf2img" onclick="switchMode('pdf2img')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M10 13l2 2 4-4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m10 13 2 2 4-4"/></svg>
       PDF → Image
     </button>
     <button class="mode-btn" data-mode="img2pdf" onclick="switchMode('img2pdf')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 18v-6M9 15l3-3 3 3"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>
       Image → PDF
     </button>
   </div>
@@ -308,15 +289,16 @@ a:hover{color:#a5b4fc}
           <span class="slider-val" id="cqVal">75%</span>
         </div>
       </div>
-      <div class="action-row"><button class="btn-primary" onclick="processCompress()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9M8 17l4 4 4-4"/></svg> Compress</button></div>
+      <div class="action-row"><button class="btn-primary" onclick="processCompress()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg> Compress</button></div>
     </div>
 
     <!-- CONVERT panel -->
     <div class="panel" id="panel-convert">
+      <div class="convert-note" id="convertNote"></div>
       <div class="settings-grid">
         <div class="field"><label>Current Format</label><input type="text" id="currentFormat" readonly style="opacity:0.5"></div>
         <div class="field"><label>Convert To</label>
-          <select id="targetFormat">
+          <select id="targetFormat" onchange="updateConvertNote()">
             <option value="image/jpeg">JPEG (.jpg)</option>
             <option value="image/png">PNG (.png)</option>
             <option value="image/webp">WebP (.webp)</option>
@@ -329,14 +311,7 @@ a:hover{color:#a5b4fc}
         <input type="range" id="convertQuality" min="10" max="100" value="92" oninput="document.getElementById('cvqVal').textContent=this.value+'%'">
         <span class="slider-val" id="cvqVal">92%</span>
       </div>
-      <div class="action-row"><button class="btn-primary" onclick="processConvert()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Convert Format</button></div>
-    </div>
-
-    <!-- PRESET panel -->
-    <div class="panel" id="panel-preset">
-      <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Select a country to auto-resize and compress to exact government specs.</p>
-      <div class="preset-grid" id="presetGrid"></div>
-      <div class="action-row"><button class="btn-primary" id="presetGoBtn" onclick="processPreset()" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Apply Preset</button></div>
+      <div class="action-row"><button class="btn-primary" onclick="processConvert()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> Convert Format</button></div>
     </div>
 
     <!-- PDF to Image panel -->
@@ -349,14 +324,15 @@ a:hover{color:#a5b4fc}
           <select id="pdfScale"><option value="1">1x (72 DPI)</option><option value="2" selected>2x (144 DPI)</option><option value="3">3x (216 DPI)</option></select>
         </div>
       </div>
-      <div class="action-row"><button class="btn-primary" onclick="processPdf2Img()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg> Convert PDF to Images</button></div>
+      <div class="action-row"><button class="btn-primary" onclick="processPdf2Img()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg> Convert PDF to Images</button></div>
     </div>
 
     <!-- Image to PDF panel -->
     <div class="panel" id="panel-img2pdf">
-      <p style="font-size:13px;color:#64748b;margin-bottom:16px;">Upload one or more images. They'll be combined into a single PDF. You can also add more images after the first upload.</p>
+      <p style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Upload one or more images. They'll be combined into a single PDF. You can also add more images after the first upload.</p>
       <div id="img2pdfList" style="margin-bottom:16px"></div>
-      <div class="action-row"><button class="btn-primary" onclick="processImg2Pdf()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/></svg> Create PDF</button></div>
+      <div style="margin-bottom:16px"><button class="btn-secondary" onclick="addMoreImages()" style="flex:none;padding:10px 18px;font-size:13px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add More Images</button></div>
+      <div class="action-row"><button class="btn-primary" onclick="processImg2Pdf()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg> Create PDF</button></div>
     </div>
 
     <!-- Progress -->
@@ -411,7 +387,7 @@ a:hover{color:#a5b4fc}
 
     <div class="seo-card">
       <h2>Compress Photo to Passport Size Online</h2>
-      <p>Different countries require different passport photo dimensions and file sizes. Use the <strong>Presets</strong> mode to auto-resize and compress to exact pixel dimensions:</p>
+      <p>Different countries require different passport photo dimensions and file sizes:</p>
       <table>
         <thead><tr><th>Country</th><th>Photo Size</th><th>Pixels</th><th>Max File Size</th></tr></thead>
         <tbody>
@@ -454,11 +430,10 @@ a:hover{color:#a5b4fc}
       <ul>
         <li><strong>Reduce photo to 200KB</strong> — Indian government portals (Aadhaar, PAN card, passport)</li>
         <li><strong>Reduce photo to 240KB</strong> — US passport and DS-160 visa applications</li>
-        <li><strong>Reduce photo to 500KB</strong> — Schengen visa photo uploads, many EU portals</li>
         <li><strong>Reduce photo to 100KB</strong> — university and job application portals</li>
         <li><strong>Reduce photo to 50KB</strong> — Indian competitive exam applications (SSC, UPSC)</li>
-        <li><strong>Compress to 600×600 pixels</strong> — US passport and visa photo digital requirement (use Presets)</li>
-        <li><strong>Compress to 413×531 pixels</strong> — Schengen/EU biometric photo requirement (use Presets)</li>
+        <li><strong>Compress to 600×600 pixels</strong> — US passport and visa photo digital requirement</li>
+        <li><strong>Compress to 413×531 pixels</strong> — Schengen/EU biometric photo requirement</li>
       </ul>
     </div>
 
@@ -513,39 +488,11 @@ function loadPdfJs(cb) {
 }
 
 // ── State ──
-var PRESETS = [
-  {id:'us-passport',flag:'🇺🇸',name:'US Passport',spec:'600×600px, <240KB',w:600,h:600,maxKB:240,format:'image/jpeg'},
-  {id:'us-visa',flag:'🇺🇸',name:'US Visa (DS-160)',spec:'600×600px, <240KB',w:600,h:600,maxKB:240,format:'image/jpeg'},
-  {id:'schengen',flag:'🇪🇺',name:'Schengen Visa',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
-  {id:'uk-passport',flag:'🇬🇧',name:'UK Passport',spec:'600×750px, <10MB',w:600,h:750,maxKB:10240,format:'image/jpeg'},
-  {id:'india-passport',flag:'🇮🇳',name:'India Passport',spec:'600×600px, <1MB',w:600,h:600,maxKB:1024,format:'image/jpeg'},
-  {id:'canada-pr',flag:'🇨🇦',name:'Canada PR',spec:'420×540px, <4MB',w:420,h:540,maxKB:4096,format:'image/jpeg'},
-  {id:'australia',flag:'🇦🇺',name:'Australia',spec:'413×531px, <2MB',w:413,h:531,maxKB:2048,format:'image/jpeg'},
-  {id:'germany',flag:'🇩🇪',name:'Germany',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
-  {id:'france',flag:'🇫🇷',name:'France',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
-  {id:'china',flag:'🇨🇳',name:'China',spec:'390×567px, <500KB',w:390,h:567,maxKB:500,format:'image/jpeg'},
-  {id:'japan',flag:'🇯🇵',name:'Japan',spec:'413×531px, <500KB',w:413,h:531,maxKB:500,format:'image/jpeg'},
-  {id:'dv-lottery',flag:'🇺🇸',name:'DV Lottery',spec:'600×600px, 54–240KB',w:600,h:600,maxKB:240,format:'image/jpeg'}
-];
-
-var selectedPreset = null, originalFile = null, originalImg = null, resultBlob = null, resultFilename = '', pdfResultBlobs = [], currentMode = 'compress';
-
-// ── Init presets ──
-(function(){
-  var grid = document.getElementById('presetGrid');
-  PRESETS.forEach(function(p){
-    var btn = document.createElement('button');
-    btn.className = 'preset-btn';
-    btn.innerHTML = '<span class="preset-flag">'+p.flag+'</span><div><div class="preset-name">'+p.name+'</div><div class="preset-spec">'+p.spec+'</div></div>';
-    btn.onclick = function(){
-      document.querySelectorAll('.preset-btn').forEach(function(b){b.classList.remove('selected')});
-      btn.classList.add('selected');
-      selectedPreset = p;
-      document.getElementById('presetGoBtn').disabled = false;
-    };
-    grid.appendChild(btn);
-  });
-})();
+var originalFile = null, originalImg = null, resultBlob = null, resultFilename = '', pdfResultBlobs = [], currentMode = 'compress';
+// Shared image store: files uploaded in any tool are available for img2pdf
+var img2pdfFiles = [];
+// Track the last uploaded image file across tools so img2pdf can reuse it
+var lastUploadedImageFile = null;
 
 // ── Mode switching ──
 function switchMode(mode){
@@ -564,10 +511,24 @@ function switchMode(mode){
   var fi = document.getElementById('fileInput');
   var hint = document.getElementById('dropHint');
   if(mode==='pdf2img'){fi.accept='application/pdf';fi.multiple=false;hint.textContent='Upload a PDF file — up to 50MB';loadPdfJs()}
-  else if(mode==='img2pdf'){fi.accept='image/*';fi.multiple=true;hint.textContent='Upload one or more images — JPG, PNG, WebP'}
+  else if(mode==='img2pdf'){
+    fi.accept='image/*';fi.multiple=true;hint.textContent='Upload one or more images — JPG, PNG, WebP';
+    // If we have a previously uploaded image from another tool, auto-add it
+    if(lastUploadedImageFile && img2pdfFiles.length===0){
+      img2pdfFiles.push(lastUploadedImageFile);
+      renderImg2PdfList();
+      document.getElementById('dropZone').style.display='none';
+      document.getElementById('fileInfo').style.display='flex';
+      document.getElementById('fileName').textContent=img2pdfFiles.length+' image(s) selected';
+      document.getElementById('fileMeta').textContent=img2pdfFiles.map(function(f){return f.name}).join(', ');
+      document.getElementById('fileThumb').style.display='none';
+    }
+  }
   else{fi.accept='image/*,application/pdf';fi.multiple=false;hint.textContent='Supports JPG, PNG, WebP, BMP, GIF — up to 50MB'}
   // Reset compress panel state
   if(mode==='compress'){toggleCompressMode()}
+  // Update convert note
+  if(mode==='convert'){updateConvertNote()}
 }
 
 // ── Drop zone ──
@@ -578,15 +539,19 @@ dropZone.addEventListener('dragleave',function(){dropZone.classList.remove('drag
 dropZone.addEventListener('drop',function(e){e.preventDefault();dropZone.classList.remove('dragover');if(e.dataTransfer.files.length){if(currentMode==='img2pdf')handleMultiFiles(e.dataTransfer.files);else handleFile(e.dataTransfer.files[0])}});
 fileInput.addEventListener('change',function(){if(fileInput.files.length){if(currentMode==='img2pdf')handleMultiFiles(fileInput.files);else handleFile(fileInput.files[0])}});
 
-var img2pdfFiles = [];
+function addMoreImages(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';inp.multiple=true;
+  inp.onchange=function(){if(inp.files.length)handleMultiFiles(inp.files)};
+  inp.click();
+}
 
 function handleMultiFiles(files){
   for(var i=0;i<files.length;i++){
     if(files[i].type.startsWith('image/'))img2pdfFiles.push(files[i]);
   }
   renderImg2PdfList();
-  // Show first file info
-  if(img2pdfFiles.length && !originalFile){
+  if(img2pdfFiles.length){
     originalFile = img2pdfFiles[0];
     document.getElementById('dropZone').style.display='none';
     document.getElementById('fileInfo').style.display='flex';
@@ -622,6 +587,8 @@ function handleFile(file){
   }
   if(!file.type.startsWith('image/')){alert('Please select an image or PDF file.');return}
   originalFile=file;
+  // Track this image so img2pdf can reuse it
+  lastUploadedImageFile=file;
   var reader=new FileReader();
   reader.onload=function(e){
     var img=new Image();
@@ -645,6 +612,7 @@ function showFileInfo(file,img){
   thumb.src=URL.createObjectURL(file);
   thumb.style.display='';
   document.getElementById('previewOriginal').src=URL.createObjectURL(file);
+  updateConvertNote();
 }
 
 function clearFile(){
@@ -667,10 +635,7 @@ function clearFile(){
   // Reset convert panel
   document.getElementById('convertQuality').value=92;
   document.getElementById('cvqVal').textContent='92%';
-  // Reset preset selection
-  selectedPreset=null;
-  document.querySelectorAll('.preset-btn').forEach(function(b){b.classList.remove('selected')});
-  document.getElementById('presetGoBtn').disabled=true;
+  document.getElementById('convertNote').style.display='none';
 }
 
 // ── Compress mode toggle (target size vs quality) ──
@@ -689,120 +654,230 @@ function toggleCompressMode(){
   }
 }
 
-// ── Processing ──
+// ── Convert note: warn about format size differences ──
+function updateConvertNote(){
+  var note=document.getElementById('convertNote');
+  if(!originalFile||!originalImg){note.style.display='none';return}
+  var srcType=originalFile.type;
+  var dstType=document.getElementById('targetFormat').value;
+  // Warn when converting lossy→lossless (e.g. jpg→png) — file will be larger
+  var lossless=['image/png','image/bmp'];
+  var lossy=['image/jpeg','image/webp'];
+  if(lossy.indexOf(srcType)!==-1 && lossless.indexOf(dstType)!==-1){
+    note.style.display='block';
+    note.textContent='⚠ Converting '+srcType.split('/')[1].toUpperCase()+' → '+dstType.split('/')[1].toUpperCase()+' will likely increase file size because '+dstType.split('/')[1].toUpperCase()+' is a lossless format. This is expected behavior. If you need a smaller file, use Compress mode or convert to JPEG/WebP instead.';
+  }else{
+    note.style.display='none';
+  }
+}
+</script>
+
+<script>
+// ── COMPRESS: Fixed to always output JPEG when target size is set ──
+// PNG ignores quality param in toBlob, so we must use JPEG for compression
 function processCompress(){
   if(!originalFile||!originalImg){alert('Please select an image first.');return}
-  var targetKB=parseInt(document.getElementById('targetSize').value),unit=document.getElementById('targetUnit').value,q=parseInt(document.getElementById('compressQuality').value)/100;
+  var targetKB=parseInt(document.getElementById('targetSize').value);
+  var unit=document.getElementById('targetUnit').value;
+  var q=parseInt(document.getElementById('compressQuality').value)/100;
   showProgress();
   setTimeout(function(){
     if(targetKB&&targetKB>0){
-      var bytes=unit==='MB'?targetKB*1024*1024:targetKB*1024;
-      compressToSize(originalImg,originalFile.type,bytes,function(b){showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-compressed'+originalFile.name.match(/\.[^.]+$/)[0])});
+      var targetBytes=unit==='MB'?targetKB*1024*1024:targetKB*1024;
+      // Always use JPEG for target-size compression (PNG ignores quality)
+      var outType='image/jpeg';
+      var ext='.jpg';
+      compressToTargetSize(originalImg,outType,targetBytes,function(b){
+        showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-compressed'+ext);
+      });
     }else{
+      // Manual quality mode — use original format
       var c=resizeImage(originalImg,originalImg.width,originalImg.height);
-      canvasToBlob(c,originalFile.type,q,function(b){showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-compressed'+originalFile.name.match(/\.[^.]+$/)[0])});
+      var outType=originalFile.type;
+      // If PNG, convert to JPEG for quality slider to work
+      if(outType==='image/png'||outType==='image/bmp'||outType==='image/gif'){
+        outType='image/jpeg';
+      }
+      canvasToBlob(c,outType,q,function(b){
+        var ext=outType==='image/jpeg'?'.jpg':'.'+outType.split('/')[1];
+        showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-compressed'+ext);
+      });
     }
   },100);
 }
 
+// Improved binary search compression that actually hits the target
+function compressToTargetSize(img,type,targetBytes,cb){
+  var canvas=resizeImage(img,img.width,img.height);
+  var lo=0.01,hi=1.0,best=null,bestDiff=Infinity,attempts=0,maxAttempts=20;
+
+  function tryQuality(){
+    var mid=(lo+hi)/2;
+    canvas.toBlob(function(blob){
+      attempts++;
+      var diff=Math.abs(blob.size-targetBytes);
+      if(blob.size<=targetBytes){
+        // Under target — this is a valid result, keep if closest
+        if(!best||diff<bestDiff){best=blob;bestDiff=diff}
+        lo=mid; // try higher quality
+      }else{
+        hi=mid; // try lower quality
+      }
+      // Stop conditions: close enough, or max attempts
+      if(attempts>=maxAttempts||(hi-lo)<0.005){
+        if(best){
+          cb(best);
+        }else{
+          // Even at lowest quality we're over target — need to scale down dimensions
+          scaleDownToFit(img,type,targetBytes,cb);
+        }
+      }else{
+        tryQuality();
+      }
+    },type,mid);
+  }
+  tryQuality();
+}
+
+// Scale down image dimensions to fit target size
+function scaleDownToFit(img,type,targetBytes,cb){
+  // Start from current size and progressively reduce
+  var scale=0.9;
+  var attempts=0;
+  function tryScale(){
+    var nw=Math.round(img.width*scale);
+    var nh=Math.round(img.height*scale);
+    if(nw<10||nh<10){
+      // Can't go smaller, just return what we have
+      var c=resizeImage(img,nw,nh);
+      canvasToBlob(c,type,0.5,function(b){cb(b)});
+      return;
+    }
+    var c=resizeImage(img,nw,nh);
+    // Try binary search on this smaller canvas
+    var lo2=0.3,hi2=0.95,best2=null;
+    var a2=0;
+    function inner(){
+      var mid2=(lo2+hi2)/2;
+      c.toBlob(function(blob){
+        a2++;
+        if(blob.size<=targetBytes){
+          best2=blob;lo2=mid2;
+        }else{hi2=mid2}
+        if(a2>=10||(hi2-lo2)<0.01){
+          if(best2){cb(best2)}
+          else{scale*=0.8;attempts++;if(attempts>5){c.toBlob(function(b){cb(b)},type,0.1)}else{tryScale()}}
+        }else{inner()}
+      },type,mid2);
+    }
+    inner();
+  }
+  tryScale();
+}
+
+// ── CONVERT ──
 function processConvert(){
   if(!originalFile||!originalImg){alert('Please select an image first.');return}
-  var fmt=document.getElementById('targetFormat').value,q=parseInt(document.getElementById('convertQuality').value)/100;
+  var fmt=document.getElementById('targetFormat').value;
+  var q=parseInt(document.getElementById('convertQuality').value)/100;
   showProgress();
   setTimeout(function(){
     var c=resizeImage(originalImg,originalImg.width,originalImg.height);
-    canvasToBlob(c,fmt,q,function(b){var ext=fmt.split('/')[1];if(ext==='jpeg')ext='jpg';showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'.'+ext)});
+    canvasToBlob(c,fmt,q,function(b){
+      var ext=fmt.split('/')[1];
+      if(ext==='jpeg')ext='jpg';
+      showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'.'+ext);
+    });
   },100);
 }
 
-function processPreset(){
-  if(!originalFile||!originalImg||!selectedPreset){alert('Please select a file and a preset.');return}
-  var p=selectedPreset;
-  showProgress();
-  setTimeout(function(){
-    var c=resizeImage(originalImg,p.w,p.h);
-    if(p.maxKB<10240){
-      compressCanvasToSize(c,p.format,p.maxKB*1024,function(b){var ext=p.format.split('/')[1];if(ext==='jpeg')ext='jpg';showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-'+p.id+'.'+ext)});
-    }else{
-      canvasToBlob(c,p.format,0.92,function(b){var ext=p.format.split('/')[1];if(ext==='jpeg')ext='jpg';showResult(b,originalFile.name.replace(/\.[^.]+$/,'')+'-'+p.id+'.'+ext)});
-    }
-  },100);
-}
-
+// ── PDF to Image: Fixed download-all to download each page separately ──
 function processPdf2Img(){
   if(!originalFile||originalFile.type!=='application/pdf'){alert('Please upload a PDF file.');return}
   showProgress();
   loadPdfJs(function(){
-  var fmt=document.getElementById('pdfOutFormat').value;
-  var scale=parseFloat(document.getElementById('pdfScale').value);
-  var reader=new FileReader();
-  reader.onload=function(e){
-    var data=new Uint8Array(e.target.result);
-    pdfjsLib.getDocument({data:data}).promise.then(function(pdf){
-      var pages=pdf.numPages;
-      pdfResultBlobs=[];
-      var container=document.getElementById('pdfPagesResult');
-      container.innerHTML='<p style="font-size:14px;color:#e2e8f0;font-weight:600;margin-bottom:12px">'+pages+' page(s) converted:</p>';
-      container.style.display='block';
-      var done=0;
-      function renderPage(num){
-        pdf.getPage(num).then(function(page){
-          var vp=page.getViewport({scale:scale});
-          var canvas=document.createElement('canvas');
-          canvas.width=vp.width;canvas.height=vp.height;
-          var ctx=canvas.getContext('2d');
-          page.render({canvasContext:ctx,viewport:vp}).promise.then(function(){
-            var q=fmt==='image/jpeg'?0.92:undefined;
-            canvas.toBlob(function(blob){
-              pdfResultBlobs.push({blob:blob,name:'page-'+num+'.'+(fmt==='image/jpeg'?'jpg':'png')});
-              // Show thumbnail
-              var div=document.createElement('div');
-              div.style.cssText='display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin:0 8px 8px 0';
-              var img=document.createElement('img');
-              img.src=URL.createObjectURL(blob);
-              img.style.cssText='max-width:120px;max-height:160px;border-radius:6px';
-              img.alt='Page '+num;
-              div.appendChild(img);
-              var info=document.createElement('span');
-              info.style.cssText='font-size:11px;color:#94a3b8';
-              info.textContent='Page '+num+' · '+formatSize(blob.size);
-              div.appendChild(info);
-              var dl=document.createElement('button');
-              dl.style.cssText='font-size:12px;color:#818cf8;background:none;border:none;cursor:pointer;font-family:inherit;font-weight:600;margin-top:2px';
-              dl.textContent='Download';
-              dl.onclick=(function(b,n){return function(){downloadBlob(b,n)}})(blob,'page-'+num+'.'+(fmt==='image/jpeg'?'jpg':'png'));
-              div.appendChild(dl);
-              container.appendChild(div);
-              done++;
-              document.getElementById('progressFill').style.width=(done/pages*100)+'%';
-              if(done>=pages){
-                setTimeout(function(){document.getElementById('progressBar').classList.remove('active')},500);
-                // Add download all button
-                if(pages>1){
-                  var allBtn=document.createElement('button');
-                  allBtn.className='btn-primary';
-                  allBtn.style.cssText='margin-top:16px;display:inline-flex';
-                  allBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download All Pages';
-                  allBtn.onclick=function(){pdfResultBlobs.forEach(function(r){downloadBlob(r.blob,r.name)})};
-                  container.appendChild(document.createElement('br'));
-                  container.appendChild(allBtn);
-                }
-              }else{renderPage(num+1)}
-            },fmt,q);
+    var fmt=document.getElementById('pdfOutFormat').value;
+    var scale=parseFloat(document.getElementById('pdfScale').value);
+    var reader=new FileReader();
+    reader.onload=function(e){
+      var data=new Uint8Array(e.target.result);
+      pdfjsLib.getDocument({data:data}).promise.then(function(pdf){
+        var pages=pdf.numPages;
+        pdfResultBlobs=[];
+        var container=document.getElementById('pdfPagesResult');
+        container.innerHTML='<p style="font-size:14px;color:#e2e8f0;font-weight:600;margin-bottom:12px">'+pages+' page(s) converted:</p>';
+        container.style.display='block';
+        var done=0;
+        function renderPage(num){
+          pdf.getPage(num).then(function(page){
+            var vp=page.getViewport({scale:scale});
+            var canvas=document.createElement('canvas');
+            canvas.width=vp.width;canvas.height=vp.height;
+            var ctx=canvas.getContext('2d');
+            page.render({canvasContext:ctx,viewport:vp}).promise.then(function(){
+              var q=fmt==='image/jpeg'?0.92:undefined;
+              canvas.toBlob(function(blob){
+                var ext=fmt==='image/jpeg'?'jpg':'png';
+                var pageName='page-'+num+'.'+ext;
+                pdfResultBlobs.push({blob:blob,name:pageName});
+                // Show thumbnail
+                var div=document.createElement('div');
+                div.style.cssText='display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;margin:0 8px 8px 0';
+                var img=document.createElement('img');
+                img.src=URL.createObjectURL(blob);
+                img.style.cssText='max-width:120px;max-height:160px;border-radius:6px';
+                img.alt='Page '+num;
+                div.appendChild(img);
+                var info=document.createElement('span');
+                info.style.cssText='font-size:11px;color:#94a3b8';
+                info.textContent='Page '+num+' · '+formatSize(blob.size);
+                div.appendChild(info);
+                var dl=document.createElement('button');
+                dl.style.cssText='font-size:12px;color:#818cf8;background:none;border:none;cursor:pointer;font-family:inherit;font-weight:600;margin-top:2px';
+                dl.textContent='Download';
+                dl.onclick=(function(b,n){return function(){downloadBlob(b,n)}})(blob,pageName);
+                div.appendChild(dl);
+                container.appendChild(div);
+                done++;
+                document.getElementById('progressFill').style.width=(done/pages*100)+'%';
+                if(done>=pages){
+                  setTimeout(function(){document.getElementById('progressBar').classList.remove('active')},500);
+                  // Download All button — triggers individual downloads with delay so browser doesn't block them
+                  if(pages>1){
+                    var allBtn=document.createElement('button');
+                    allBtn.className='btn-primary';
+                    allBtn.style.cssText='margin-top:16px;display:inline-flex';
+                    allBtn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download All Pages';
+                    allBtn.onclick=function(){
+                      // Download each page with a small delay to prevent browser blocking
+                      pdfResultBlobs.forEach(function(r,idx){
+                        setTimeout(function(){downloadBlob(r.blob,r.name)},idx*300);
+                      });
+                    };
+                    container.appendChild(document.createElement('br'));
+                    container.appendChild(allBtn);
+                  }
+                }else{renderPage(num+1)}
+              },fmt,q);
+            });
           });
-        });
-      }
-      renderPage(1);
-    }).catch(function(err){alert('Error reading PDF: '+err.message);document.getElementById('progressBar').classList.remove('active')});
-  };
-  reader.readAsArrayBuffer(originalFile);
-  }); // end loadPdfJs
+        }
+        renderPage(1);
+      }).catch(function(err){alert('Error reading PDF: '+err.message);document.getElementById('progressBar').classList.remove('active')});
+    };
+    reader.readAsArrayBuffer(originalFile);
+  });
 }
 
+// ── Image to PDF: reuses files from other tools ──
 function processImg2Pdf(){
+  // If no files in the list but we have a lastUploadedImageFile, use it
+  if(!img2pdfFiles.length && lastUploadedImageFile){
+    img2pdfFiles.push(lastUploadedImageFile);
+    renderImg2PdfList();
+  }
   if(!img2pdfFiles.length){alert('Please upload at least one image.');return}
   showProgress();
-  // Use jsPDF-like approach with canvas
   var images=[];var loaded=0;
   img2pdfFiles.forEach(function(file,i){
     var reader=new FileReader();
@@ -820,17 +895,8 @@ function processImg2Pdf(){
 }
 
 function buildPdf(images){
-  // Simple PDF builder — each image is a full page
-  var pdf=[];
-  pdf.push('%PDF-1.4');
-  var offsets=[];
-  var objNum=1;
-  // We'll build objects: catalog, pages, each page + image xobject
-  // For simplicity, render each image to JPEG via canvas, embed in PDF
-  var pageRefs=[];
   var imgDatas=[];
   var ready=0;
-
   images.forEach(function(item,i){
     var canvas=document.createElement('canvas');
     canvas.width=item.w;canvas.height=item.h;
@@ -841,44 +907,11 @@ function buildPdf(images){
       reader.onload=function(e){
         imgDatas[i]=new Uint8Array(e.target.result);
         ready++;
-        if(ready===images.length)finalizePdf(images,imgDatas);
+        if(ready===images.length)createSimplePdf(images,imgDatas);
       };
       reader.readAsArrayBuffer(blob);
     },'image/jpeg',0.92);
   });
-}
-
-function finalizePdf(images,imgDatas){
-  // Build a minimal valid PDF with embedded JPEG images
-  var out='';var offsets=[];var objCount=0;
-  function addObj(content){objCount++;offsets.push(out.length);out+= objCount+' 0 obj\n'+content+'\nendobj\n';return objCount}
-
-  // 1: Catalog
-  var catalogRef=addObj('<< /Type /Catalog /Pages 2 0 R >>');
-  // 2: Pages (placeholder, we'll fix)
-  var pagesIdx=out.length;
-  addObj('PLACEHOLDER');
-
-  var pageObjNums=[];
-  var imgObjNums=[];
-
-  // For each image: create image XObject + page
-  for(var i=0;i<images.length;i++){
-    var w=images[i].w,h=images[i].h;
-    var imgData=imgDatas[i];
-    // Image XObject (stream)
-    var imgRef=addObj('<< /Type /XObject /Subtype /Image /Width '+w+' /Height '+h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+imgData.length+' >>\nstream\n');
-    // Append binary data
-    // We need to handle this differently for binary — use Blob approach instead
-    // Actually, let's use a simpler approach: render to canvas and use data URL in a downloadable PDF
-  }
-
-  // Simpler approach: use canvas to create images, then build PDF with basic structure
-  // For a proper implementation, let's just create a multi-page PDF using a minimal approach
-  document.getElementById('progressBar').classList.remove('active');
-
-  // Use the proven approach: create PDF blob manually
-  createSimplePdf(images,imgDatas);
 }
 
 function createSimplePdf(images,imgDatas){
@@ -907,23 +940,19 @@ function createSimplePdf(images,imgDatas){
   write('<< /Type /Pages /Kids [ '+pageRefs+'] /Count '+numPages+' >>\n');
   endObj();
 
-  // For each page: Page obj, Resources with XObject, Content stream
   for(var i=0;i<numPages;i++){
     var w=images[i].w,h=images[i].h;
-    var imgObjNum=3+i*3+2; // image object number
+    var imgObjNum=3+i*3+2;
 
-    // Page object
     startObj();
     write('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+w+' '+h+'] /Contents '+(3+i*3+1)+' 0 R /Resources << /XObject << /Img'+i+' '+imgObjNum+' 0 R >> >> >>\n');
     endObj();
 
-    // Content stream
     var content='q '+w+' 0 0 '+h+' 0 0 cm /Img'+i+' Do Q';
     startObj();
     write('<< /Length '+content.length+' >>\nstream\n'+content+'\nendstream\n');
     endObj();
 
-    // Image XObject
     startObj();
     write('<< /Type /XObject /Subtype /Image /Width '+w+' /Height '+h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+imgDatas[i].length+' >>\nstream\n');
     writeBin(imgDatas[i]);
@@ -931,7 +960,6 @@ function createSimplePdf(images,imgDatas){
     endObj();
   }
 
-  // xref
   var xrefPos=pos;
   write('xref\n0 '+(objNum+1)+'\n');
   write('0000000000 65535 f \n');
@@ -942,13 +970,11 @@ function createSimplePdf(images,imgDatas){
 
   write('trailer\n<< /Size '+(objNum+1)+' /Root 1 0 R >>\nstartxref\n'+xrefPos+'\n%%EOF\n');
 
-  // Build blob
   var blob=new Blob(parts,{type:'application/pdf'});
   resultBlob=blob;
   resultFilename='combined.pdf';
   document.getElementById('downloadRow').style.display='';
   document.getElementById('progressBar').classList.remove('active');
-  // Show simple stats
   document.getElementById('resultStats').style.display='';
   document.getElementById('statOriginal').textContent=numPages+' images';
   document.getElementById('statResult').textContent=formatSize(blob.size);
@@ -958,22 +984,6 @@ function createSimplePdf(images,imgDatas){
 // ── Canvas helpers ──
 function resizeImage(img,w,h){var c=document.createElement('canvas');c.width=w;c.height=h;var ctx=c.getContext('2d');ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,w,h);return c}
 function canvasToBlob(c,type,q,cb){c.toBlob(function(b){cb(b)},type,q)}
-function compressToSize(img,type,bytes,cb){var c=resizeImage(img,img.width,img.height);compressCanvasToSize(c,type,bytes,cb)}
-function compressCanvasToSize(canvas,type,targetBytes,cb){
-  var lo=0.01,hi=1.0,best=null,attempts=0,max=15;
-  function tryQ(){
-    var mid=(lo+hi)/2;
-    canvas.toBlob(function(blob){
-      attempts++;
-      if(blob.size<=targetBytes){best=blob;lo=mid}else{hi=mid}
-      if(attempts>=max||(hi-lo)<0.01){
-        if(!best){var scale=Math.sqrt(targetBytes/blob.size)*0.9;var nw=Math.round(canvas.width*scale);var nh=Math.round(canvas.height*scale);var s=resizeImage(originalImg,nw,nh);s.toBlob(function(b){cb(b)},type,0.7)}
-        else{cb(best)}
-      }else{tryQ()}
-    },type,mid);
-  }
-  tryQ();
-}
 
 // ── UI helpers ──
 function showProgress(){var bar=document.getElementById('progressBar'),fill=document.getElementById('progressFill');bar.classList.add('active');fill.style.width='0%';var w=0;var iv=setInterval(function(){w+=Math.random()*15+5;if(w>90)w=90;fill.style.width=w+'%';if(w>=90)clearInterval(iv)},100);bar._iv=iv}
@@ -999,7 +1009,7 @@ function downloadResult(){if(resultBlob)downloadBlob(resultBlob,resultFilename)}
 function downloadBlob(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a)}
 function formatSize(b){if(b<1024)return b+' B';if(b<1024*1024)return(b/1024).toFixed(1)+' KB';return(b/(1024*1024)).toFixed(2)+' MB'}
 
-// ── Init: set compress mode as default ──
+// ── Init ──
 toggleCompressMode();
 </script>
 </body>

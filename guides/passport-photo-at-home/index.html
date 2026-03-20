@@ -24,6 +24,17 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"HowTo","name":"How to Take a Passport Photo at Home","description":"Take a compliant passport photo at home using your smartphone and a free online tool.","totalTime":"PT5M","step":[{"@type":"HowToStep","position":1,"name":"Set up your background","text":"Find a plain white or light-colored wall. Tape a white sheet or poster board to the wall if needed."},{"@type":"HowToStep","position":2,"name":"Set up lighting","text":"Use natural daylight from a window. Face the window so light falls evenly on your face. Avoid direct sunlight and flash."},{"@type":"HowToStep","position":3,"name":"Position yourself","text":"Stand 4 feet from the wall to avoid shadows. Have someone hold the camera at your eye level, about 4 feet away."},{"@type":"HowToStep","position":4,"name":"Take the photo","text":"Use your phone's rear camera for best quality. Keep a neutral expression, eyes open, mouth closed. Take several shots."},{"@type":"HowToStep","position":5,"name":"Edit and format online","text":"Upload your best photo to WithSwag's passport photo tool. Select your country, crop, remove background, and download."}]}
 </script>
+<style>
+.guide-hero{position:relative;height:280px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.guide-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.guide-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,0.6) 0%,rgba(139,92,246,0.55) 50%,rgba(217,70,239,0.5) 100%);opacity:0.4}
+.guide-hero-content{position:relative;z-index:2;color:#fff;padding:0 20px;max-width:700px}
+.guide-hero-content h1{font-size:32px;font-weight:700;margin-bottom:10px;text-shadow:0 2px 12px rgba(0,0,0,0.25)}
+.guide-hero-content p{font-size:16px;opacity:0.93;line-height:1.6;text-shadow:0 1px 6px rgba(0,0,0,0.15);margin-bottom:16px}
+.guide-hero-content .guide-cta{display:inline-block;background:white;color:#6366f1;padding:12px 28px;border-radius:8px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.25);transition:all 0.2s}
+.guide-hero-content .guide-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.35)}
+@media(max-width:768px){.guide-hero{height:220px}.guide-hero-content h1{font-size:24px}.guide-hero-content p{font-size:14px}}
+</style>
 </head>
 <body>
 <nav class="guide-nav">
@@ -31,11 +42,15 @@
   <a href="/guides/">Guides</a><span class="sep">›</span>
   <span>Take Photo at Home</span>
 </nav>
-<header class="guide-header">
-  <h1>How to Take a Passport Photo at Home with Your Phone</h1>
-  <p>Save $15+ by taking your own passport photo. Works for US, UK, EU, India, Canada, and 50+ other countries.</p>
-  <a href="/passport-photo-online/" class="guide-cta">Format My Photo Now →</a>
-</header>
+<section class="guide-hero">
+  <img class="guide-hero-bg" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1400&h=400&fit=crop" alt="How to Take a Passport Photo at Home with Your Phone">
+  <div class="guide-hero-overlay"></div>
+  <div class="guide-hero-content">
+    <h1>How to Take a Passport Photo at Home with Your Phone</h1>
+    <p>Save $15+ by taking your own passport photo. Works for US, UK, EU, India, Canada, and 50+ other countries.</p>
+    <a href="/passport-photo-online/" class="guide-cta">Format My Photo Now →</a>
+  </div>
+</section>
 <div class="guide-layout">
 <aside class="guide-toc-sidebar">
 <nav class="guide-toc" aria-label="Table of contents">

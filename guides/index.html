@@ -21,6 +21,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/guides/styles.css">
+<style>
+.guide-hero{position:relative;height:340px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.guide-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.guide-hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,0.6) 0%,rgba(139,92,246,0.55) 50%,rgba(217,70,239,0.5) 100%);opacity:0.4}
+.guide-hero-content{position:relative;z-index:2;color:#fff;padding:0 20px;max-width:700px}
+.guide-hero-content h1{font-size:40px;font-weight:700;margin-bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,0.2)}
+.guide-hero-content p{font-size:18px;opacity:0.93;line-height:1.6;text-shadow:0 1px 6px rgba(0,0,0,0.15)}
+@media(max-width:768px){.guide-hero{height:260px}.guide-hero-content h1{font-size:28px}.guide-hero-content p{font-size:15px}}
+</style>
 <script src="/cookie-consent.js"></script>
 </head>
 <body>
@@ -28,100 +37,264 @@
   <a href="/">WithSwag</a><span class="sep">›</span>
   <span>Guides</span>
 </nav>
-<header class="guide-header">
-  <h1>Passport & Visa Photo Guides</h1>
-  <p>Official photo requirements by country. Sizes, backgrounds, and tips to get your photo right the first time.</p>
-</header>
+
+<section class="guide-hero">
+  <img class="guide-hero-bg" src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1400&h=500&fit=crop" alt="Travel and passport documents">
+  <div class="guide-hero-overlay"></div>
+  <div class="guide-hero-content">
+    <h1>Passport & Visa Photo Guides</h1>
+    <p>Official photo requirements by country. Sizes, backgrounds, and tips to get your photo right the first time.</p>
+  </div>
+</section>
+
 <main class="guide-content">
+
 <h2>Passport Photo Guides by Country</h2>
 <div class="related-guides">
-<a href="/guides/us-passport-photo/" class="related-card"><h4>🇺🇸 US Passport Photo</h4><p>2×2 inch, white background, full State Department specs</p></a>
-<a href="/guides/uk-passport-photo/" class="related-card"><h4>🇬🇧 UK Passport Photo</h4><p>35×45mm, light grey background, HMPO rules</p></a>
-<a href="/guides/eu-passport-photo/" class="related-card"><h4>🇪🇺 EU/Schengen Passport Photo</h4><p>35×45mm biometric for all EU countries</p></a>
-<a href="/guides/india-passport-photo/" class="related-card"><h4>🇮🇳 India Passport Photo</h4><p>2×2 inch, white background, OCI specs</p></a>
-<a href="/guides/canada-passport-photo/" class="related-card"><h4>🇨🇦 Canada Passport Photo</h4><p>50×70mm, white background, IRCC rules</p></a>
-<a href="/guides/australia-passport-photo/" class="related-card"><h4>🇦🇺 Australia Passport Photo</h4><p>35×45mm, white background, DFAT specs</p></a>
-<a href="/guides/china-passport-photo/" class="related-card"><h4>🇨🇳 China Passport Photo</h4><p>33×48mm, white background, visa specs</p></a>
-<a href="/guides/france-passport-photo/" class="related-card"><h4>🇫🇷 France Passport Photo</h4><p>35×45mm, light grey background, ANTS-compliant</p></a>
-<a href="/guides/germany-passport-photo/" class="related-card"><h4>🇩🇪 Germany Passport Photo</h4><p>35×45mm, strict biometric, light grey background</p></a>
-<a href="/guides/netherlands-passport-photo/" class="related-card"><h4>🇳🇱 Netherlands Passport Photo</h4><p>35×45mm, light grey, both ears visible</p></a>
-<a href="/guides/norway-passport-photo/" class="related-card"><h4>🇳🇴 Norway Passport Photo</h4><p>35×45mm, light grey background, ICAO specs</p></a>
-<a href="/guides/switzerland-passport-photo/" class="related-card"><h4>🇨🇭 Switzerland Passport Photo</h4><p>35×45mm, light grey, Schengen-compliant</p></a>
-<a href="/guides/japan-passport-photo/" class="related-card"><h4>🇯🇵 Japan Passport Photo</h4><p>35×45mm, white background, strict biometric rules</p></a>
+  <a href="/guides/us-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=600&h=300&fit=crop" alt="US passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 US Passport Photo</h4><p>2×2 inch, white background, full State Department specs</p></div>
+  </a>
+  <a href="/guides/uk-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=300&fit=crop" alt="UK passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇬🇧 UK Passport Photo</h4><p>35×45 mm, light grey background, HMPO digital rules</p></div>
+  </a>
+  <a href="/guides/eu-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&h=300&fit=crop" alt="EU passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇪🇺 EU Passport Photo</h4><p>35×45 mm biometric standard across all EU member states</p></div>
+  </a>
+  <a href="/guides/india-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=300&fit=crop" alt="India passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇮🇳 India Passport Photo</h4><p>2×2 inch / 51×51 mm, white background, MEA specs</p></div>
+  </a>
+  <a href="/guides/canada-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&h=300&fit=crop" alt="Canada passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇨🇦 Canada Passport Photo</h4><p>50×70 mm, white or light background, IRCC requirements</p></div>
+  </a>
+  <a href="/guides/australia-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=300&fit=crop" alt="Australia passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇦🇺 Australia Passport Photo</h4><p>35×45 mm, plain light background, DFAT guidelines</p></div>
+  </a>
+  <a href="/guides/china-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&h=300&fit=crop" alt="China passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇨🇳 China Passport Photo</h4><p>33×48 mm, white background, MPS specifications</p></div>
+  </a>
+  <a href="/guides/france-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=300&fit=crop" alt="France passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇫🇷 France Passport Photo</h4><p>35×45 mm, light grey background, ANTS norms</p></div>
+  </a>
+  <a href="/guides/germany-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=600&h=300&fit=crop" alt="Germany passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇩🇪 Germany Passport Photo</h4><p>35×45 mm biometric, light background, Bundesdruckerei specs</p></div>
+  </a>
+  <a href="/guides/netherlands-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=600&h=300&fit=crop" alt="Netherlands passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇳🇱 Netherlands Passport Photo</h4><p>35×45 mm, light grey background, RvIG requirements</p></div>
+  </a>
+  <a href="/guides/norway-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&h=300&fit=crop" alt="Norway passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇳🇴 Norway Passport Photo</h4><p>35×45 mm, light grey background, UDI specifications</p></div>
+  </a>
+  <a href="/guides/switzerland-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&h=300&fit=crop" alt="Switzerland passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇨🇭 Switzerland Passport Photo</h4><p>35×45 mm, light background, fedpol biometric rules</p></div>
+  </a>
+  <a href="/guides/japan-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=300&fit=crop" alt="Japan passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇯🇵 Japan Passport Photo</h4><p>35×45 mm, plain white background, MOFA standards</p></div>
+  </a>
 </div>
 
 <h2>Visa & Immigration Photo Guides</h2>
 <div class="related-guides">
-<a href="/guides/schengen-visa-photo/" class="related-card"><h4>🇪🇺 Schengen Visa Photo</h4><p>35×45mm biometric for all 29 Schengen countries</p></a>
-<a href="/guides/green-card-photo/" class="related-card"><h4>🇺🇸 Green Card Photo</h4><p>2×2 inch USCIS photo for I-485, I-130, I-751</p></a>
-<a href="/guides/us-visa-photo/" class="related-card"><h4>🇺🇸 US Visa Photo (DS-160)</h4><p>2×2 inch + 600×600px digital upload specs</p></a>
-<a href="/guides/h1b-visa-photo/" class="related-card"><h4>🇺🇸 H1B Visa Photo</h4><p>Work visa — I-129 petition + stamping photos</p></a>
-<a href="/guides/b1-b2-visa-photo/" class="related-card"><h4>🇺🇸 B1/B2 Visa Photo</h4><p>Tourist & business visa photo requirements</p></a>
-<a href="/guides/f1-visa-photo/" class="related-card"><h4>🇺🇸 F1 Student Visa Photo</h4><p>International student visa photo specs</p></a>
-<a href="/guides/k1-visa-photo/" class="related-card"><h4>🇺🇸 K1 Fiancé Visa Photo</h4><p>I-129F petition + embassy interview photos</p></a>
-<a href="/guides/eu-blue-card-photo/" class="related-card"><h4>🇪🇺 EU Blue Card Photo</h4><p>Photo requirements for Blue Card applications by country</p></a>
-<a href="/guides/permanent-residence-photo/" class="related-card"><h4>🏠 Permanent Residence Photo</h4><p>PR card photo requirements — Green Card, ILR, Niederlassungserlaubnis</p></a>
-<a href="/guides/naturalisation-photo/" class="related-card"><h4>🏛️ Naturalisation Photo</h4><p>Citizenship application photo requirements by country</p></a>
-<a href="/guides/oci-card-photo/" class="related-card"><h4>🇮🇳 OCI Card Photo</h4><p>Overseas Citizen of India card photo specifications</p></a>
-<a href="/guides/driving-licence-photo/" class="related-card"><h4>🚗 Driving Licence Photo</h4><p>Photo requirements for driver's licences by country</p></a>
-<a href="/guides/uk-driving-licence-photo/" class="related-card"><h4>🇬🇧 UK Driving Licence Photo</h4><p>DVLA photo rules — same as passport photo</p></a>
+  <a href="/guides/schengen-visa-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=600&h=300&fit=crop" alt="Schengen visa photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇪🇺 Schengen Visa Photo</h4><p>35×45 mm ICAO standard for all Schengen zone applications</p></div>
+  </a>
+  <a href="/guides/green-card-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?w=600&h=300&fit=crop" alt="Green Card photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 Green Card Photo</h4><p>2×2 inch, white background, USCIS permanent residence specs</p></div>
+  </a>
+  <a href="/guides/us-visa-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1422464804701-7d8356b3a42f?w=600&h=300&fit=crop" alt="US visa photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 US Visa Photo</h4><p>2×2 inch, white background, DOS requirements for all visa types</p></div>
+  </a>
+  <a href="/guides/h1b-visa-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=300&fit=crop" alt="H1B visa photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 H1B Visa Photo</h4><p>2×2 inch photo specs for H-1B specialty occupation visa</p></div>
+  </a>
+  <a href="/guides/b1-b2-visa-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&h=300&fit=crop" alt="B1/B2 visa photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 B1/B2 Visa Photo</h4><p>2×2 inch photo for US business and tourist visa applications</p></div>
+  </a>
+  <a href="/guides/f1-visa-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&h=300&fit=crop" alt="F1 visa photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 F1 Visa Photo</h4><p>2×2 inch photo requirements for US student visa</p></div>
+  </a>
+  <a href="/guides/k1-visa-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=600&h=300&fit=crop" alt="K1 visa photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 K1 Visa Photo</h4><p>2×2 inch photo specs for fiancé(e) visa petition</p></div>
+  </a>
+  <a href="/guides/eu-blue-card-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=600&h=300&fit=crop" alt="EU Blue Card photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇪🇺 EU Blue Card Photo</h4><p>35×45 mm biometric photo for EU Blue Card work permit</p></div>
+  </a>
+  <a href="/guides/permanent-residence-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&h=300&fit=crop" alt="Permanent residence photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🏠 Permanent Residence Photo</h4><p>Photo requirements for permanent residence applications worldwide</p></div>
+  </a>
+  <a href="/guides/naturalisation-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1569974507005-6dc61f97fb5c?w=600&h=300&fit=crop" alt="Naturalisation photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🪪 Naturalisation Photo</h4><p>Biometric photo specs for citizenship & naturalisation applications</p></div>
+  </a>
+  <a href="/guides/oci-card-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=300&fit=crop" alt="OCI card photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇮🇳 OCI Card Photo</h4><p>2×2 inch photo for Overseas Citizen of India card</p></div>
+  </a>
+  <a href="/guides/driving-licence-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&h=300&fit=crop" alt="Driving licence photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🚗 Driving Licence Photo</h4><p>Photo requirements for driving licence applications by country</p></div>
+  </a>
+  <a href="/guides/uk-driving-licence-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=300&fit=crop" alt="UK driving licence photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🇬🇧 UK Driving Licence Photo</h4><p>35×45 mm, DVLA digital photo rules for UK licence</p></div>
+  </a>
 </div>
 
 <h2>Guides auf Deutsch</h2>
 <div class="related-guides">
-<a href="/guides/passfoto-online/" class="related-card"><h4>🇩🇪 Passfoto Online Erstellen</h4><p>Biometrisches Passfoto 35×45mm — Reisepass, Personalausweis, Führerschein</p></a>
-<a href="/guides/fuehrerschein-foto/" class="related-card"><h4>🇩🇪 Führerschein Foto</h4><p>Biometrisches Foto für den deutschen Führerschein</p></a>
+  <a href="/guides/passfoto-groesse-deutschland/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=600&h=300&fit=crop" alt="Passfoto Deutschland" loading="lazy">
+    <div class="related-card-body"><h4>🇩🇪 Passfoto Größe Deutschland</h4><p>35×45 mm biometrisch, alle Anforderungen der Bundesdruckerei</p></div>
+  </a>
+  <a href="/guides/passfoto-groesse-schweiz/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&h=300&fit=crop" alt="Passfoto Schweiz" loading="lazy">
+    <div class="related-card-body"><h4>🇨🇭 Passfoto Größe Schweiz</h4><p>35×45 mm, biometrische Anforderungen für Schweizer Pass</p></div>
+  </a>
 </div>
 
 <h2>Guías en Español</h2>
 <div class="related-guides">
-<a href="/guides/foto-pasaporte-espana/" class="related-card"><h4>🇪🇸 Foto Pasaporte España</h4><p>35×45mm, fondo blanco, requisitos oficiales</p></a>
-<a href="/guides/foto-carnet-conducir/" class="related-card"><h4>🇪🇸 Foto Carnet de Conducir</h4><p>32×26mm, requisitos DGT para el permiso</p></a>
+  <a href="/guides/foto-pasaporte-estados-unidos/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1501466044931-62695aada8e9?w=600&h=300&fit=crop" alt="Foto pasaporte EEUU" loading="lazy">
+    <div class="related-card-body"><h4>🇺🇸 Foto Pasaporte Estados Unidos</h4><p>2×2 pulgadas, fondo blanco, requisitos del Departamento de Estado</p></div>
+  </a>
+  <a href="/guides/foto-pasaporte-espana/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=600&h=300&fit=crop" alt="Foto pasaporte España" loading="lazy">
+    <div class="related-card-body"><h4>🇪🇸 Foto Pasaporte España</h4><p>32×26 mm, fondo blanco, requisitos de la Policía Nacional</p></div>
+  </a>
 </div>
 
 <h2>Guide in Italiano</h2>
 <div class="related-guides">
-<a href="/guides/fototessera-passaporto/" class="related-card"><h4>🇮🇹 Fototessera Passaporto</h4><p>35×45mm, sfondo bianco, requisiti ufficiali</p></a>
-<a href="/guides/fototessera-patente/" class="related-card"><h4>🇮🇹 Fototessera Patente</h4><p>35×45mm, sfondo bianco, stessi requisiti del passaporto</p></a>
+  <a href="/guides/fototessera-passaporto-italiano/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=600&h=300&fit=crop" alt="Fototessera passaporto italiano" loading="lazy">
+    <div class="related-card-body"><h4>🇮🇹 Fototessera Passaporto Italiano</h4><p>35×45 mm, sfondo bianco, requisiti della Polizia di Stato</p></div>
+  </a>
+  <a href="/guides/fototessera-carta-identita/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1529260830199-42c24126f198?w=600&h=300&fit=crop" alt="Fototessera carta d'identità" loading="lazy">
+    <div class="related-card-body"><h4>🇮🇹 Fototessera Carta d'Identità</h4><p>35×45 mm, requisiti per la carta d'identità elettronica</p></div>
+  </a>
 </div>
 
 <h2>Guides en Français</h2>
 <div class="related-guides">
-<a href="/guides/photo-permis-conduire/" class="related-card"><h4>🇫🇷 Photo Permis de Conduire</h4><p>35×45mm, normes ANTS, fond gris clair</p></a>
+  <a href="/guides/photo-passeport-france/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=300&fit=crop" alt="Photo passeport France" loading="lazy">
+    <div class="related-card-body"><h4>🇫🇷 Photo Passeport France</h4><p>35×45 mm, fond gris clair, normes ANTS et photo-signature</p></div>
+  </a>
 </div>
 
 <h2>Guides in het Nederlands</h2>
 <div class="related-guides">
-<a href="/guides/pasfoto-rijbewijs/" class="related-card"><h4>🇳🇱 Pasfoto Rijbewijs</h4><p>35×45mm, lichtgrijze achtergrond, gemeente-eisen</p></a>
+  <a href="/guides/pasfoto-nederland/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?w=600&h=300&fit=crop" alt="Pasfoto Nederland" loading="lazy">
+    <div class="related-card-body"><h4>🇳🇱 Pasfoto Eisen Nederland</h4><p>35×45 mm, lichtgrijze achtergrond, RvIG-eisen voor paspoort</p></div>
+  </a>
 </div>
 
 <h2>Passport & Visa Application Guides</h2>
 <div class="related-guides">
-<a href="/guides/passport-application/" class="related-card"><h4>🛂 Passport Application Guide 2026</h4><p>How to apply for or renew your passport — US, UK, EU, India, Canada, Australia</p></a>
-<a href="/guides/family-reunification-visa/" class="related-card"><h4>👨‍👩‍👧‍👦 Family Reunification Visa Guide</h4><p>Bring parents & siblings from Asia to Europe, USA, or Canada — requirements, costs, timelines</p></a>
-<a href="/guides/schengen-visa-checklist/" class="related-card"><h4>🇪🇺 Schengen Visa Checklist 2026</h4><p>Complete document checklist for Schengen visa applications</p></a>
-<a href="/guides/h1b-visa-timeline/" class="related-card"><h4>🇺🇸 H1B Visa Timeline & Costs 2026</h4><p>Lottery dates, fees, processing times, step-by-step</p></a>
-<a href="/guides/green-card-process/" class="related-card"><h4>🇺🇸 Green Card Application Process</h4><p>PERM, I-140, I-485 — employment & family-based paths</p></a>
-<a href="/guides/travel-insurance-schengen-visa/" class="related-card"><h4>🛡️ Travel Insurance for Schengen Visa</h4><p>Mandatory insurance — best providers compared</p></a>
+  <a href="/guides/passport-photo-size/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=300&fit=crop" alt="Passport photo size guide" loading="lazy">
+    <div class="related-card-body"><h4>📐 Passport Photo Size Guide</h4><p>Complete reference for passport photo dimensions by country</p></div>
+  </a>
+  <a href="/guides/passport-photo-background/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=600&h=300&fit=crop" alt="Passport photo background guide" loading="lazy">
+    <div class="related-card-body"><h4>🎨 Passport Photo Background</h4><p>White vs grey vs blue — which background colour your country needs</p></div>
+  </a>
+  <a href="/guides/biometric-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=300&fit=crop" alt="Biometric passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🔐 Biometric Passport Photo</h4><p>ICAO 9303 biometric standards — face position, lighting, expression</p></div>
+  </a>
+  <a href="/guides/passport-photo-glasses/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=600&h=300&fit=crop" alt="Passport photo glasses rules" loading="lazy">
+    <div class="related-card-body"><h4>👓 Glasses in Passport Photos</h4><p>Which countries allow glasses and which don't — updated rules</p></div>
+  </a>
+  <a href="/guides/passport-photo-dress-code/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=300&fit=crop" alt="Passport photo dress code" loading="lazy">
+    <div class="related-card-body"><h4>👔 Passport Photo Dress Code</h4><p>What to wear and avoid — clothing rules for passport photos</p></div>
+  </a>
+  <a href="/guides/passport-photo-for-baby/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=300&fit=crop" alt="Baby passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>👶 Baby Passport Photo</h4><p>How to take a compliant passport photo of an infant or toddler</p></div>
+  </a>
 </div>
 
 <h2>How-To Guides</h2>
 <div class="related-guides">
-<a href="/guides/passport-photo-at-home/" class="related-card"><h4>Take Passport Photo at Home</h4><p>Step-by-step with your smartphone. Save $15+.</p></a>
-<a href="/guides/passport-photo-rejected/" class="related-card"><h4>Passport Photo Rejected?</h4><p>12 common rejection reasons and how to fix each one</p></a>
-<a href="/guides/passport-photo-background/" class="related-card"><h4>Background Color Guide</h4><p>White, grey, blue, red — which color for which country?</p></a>
-<a href="/guides/passport-photo-print/" class="related-card"><h4>Print Passport Photos at Home</h4><p>4×6 and A4 collage sheets. Save vs drugstore prices.</p></a>
-<a href="/guides/best-passport-photo-printers/" class="related-card"><h4>Best Passport Photo Printers 2026</h4><p>Top printers for passport photos at home. Save $15+ per set.</p></a>
-<a href="/guides/baby-passport-photo/" class="related-card"><h4>👶 Baby Passport Photo Guide</h4><p>How to take a compliant passport photo of your baby or infant</p></a>
-<a href="/guides/passport-photo-sizes/" class="related-card"><h4>📏 Passport Photo Sizes by Country</h4><p>Complete size chart for 50+ countries — dimensions, DPI, file sizes</p></a>
-<a href="/guides/passport-photo-glasses/" class="related-card"><h4>👓 Glasses in Passport Photos</h4><p>Can you wear glasses? 2026 rules for US, UK, EU, and 50+ countries</p></a>
-<a href="/guides/passport-photo-dress-code/" class="related-card"><h4>👔 Passport Photo Dress Code</h4><p>What to wear, best colors, head coverings, and grooming tips</p></a>
-<a href="/guides/digital-passport-photo/" class="related-card"><h4>💻 Digital Passport Photo</h4><p>File format, pixel size, and resolution for online applications</p></a>
+  <a href="/guides/passport-photo-at-home/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=300&fit=crop" alt="Take passport photo at home" loading="lazy">
+    <div class="related-card-body"><h4>📸 Passport Photo at Home</h4><p>Step-by-step guide to taking a perfect passport photo with your phone</p></div>
+  </a>
+  <a href="/guides/print-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&h=300&fit=crop" alt="Print passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>🖨️ Print Passport Photo</h4><p>How to print passport photos at home — paper, settings, and layout</p></div>
+  </a>
+  <a href="/guides/passport-photo-lighting/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=600&h=300&fit=crop" alt="Passport photo lighting tips" loading="lazy">
+    <div class="related-card-body"><h4>💡 Passport Photo Lighting</h4><p>Natural vs artificial light — how to avoid shadows and glare</p></div>
+  </a>
+  <a href="/guides/resize-photo-for-passport/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=300&fit=crop" alt="Resize photo for passport" loading="lazy">
+    <div class="related-card-body"><h4>🔄 Resize Photo for Passport</h4><p>Crop and resize any photo to exact passport dimensions — free tools</p></div>
+  </a>
+  <a href="/guides/passport-photo-maker/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600&h=300&fit=crop" alt="Passport photo maker tools" loading="lazy">
+    <div class="related-card-body"><h4>🛠️ Passport Photo Maker</h4><p>Best free online tools and apps to create passport photos</p></div>
+  </a>
+  <a href="/guides/remove-background-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=300&fit=crop" alt="Remove background from passport photo" loading="lazy">
+    <div class="related-card-body"><h4>✂️ Remove Background</h4><p>How to remove or change your passport photo background for free</p></div>
+  </a>
+  <a href="/guides/passport-photo-with-iphone/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=300&fit=crop" alt="Passport photo with iPhone" loading="lazy">
+    <div class="related-card-body"><h4>📱 Passport Photo with iPhone</h4><p>Use your iPhone camera to take a compliant passport photo</p></div>
+  </a>
+  <a href="/guides/digital-passport-photo/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=300&fit=crop" alt="Digital passport photo guide" loading="lazy">
+    <div class="related-card-body"><h4>💻 Digital Passport Photo</h4><p>File format, resolution, and size requirements for online submissions</p></div>
+  </a>
+  <a href="/guides/best-passport-photo-printers/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=600&h=300&fit=crop" alt="Best passport photo printers" loading="lazy">
+    <div class="related-card-body"><h4>🖨️ Best Passport Photo Printers</h4><p>Top-rated photo printers for printing passport photos at home</p></div>
+  </a>
+  <a href="/guides/passport-photo-rejected/" class="related-card">
+    <img class="related-card-img" src="https://images.unsplash.com/photo-1594322436404-5a0526db4d13?w=600&h=300&fit=crop" alt="Passport photo rejected reasons" loading="lazy">
+    <div class="related-card-body"><h4>❌ Passport Photo Rejected?</h4><p>Common rejection reasons and how to fix them before resubmitting</p></div>
+  </a>
 </div>
+
 </main>
 <footer class="guide-footer">
-<p>© 2026 WithSwag.org</p>
-<p><a href="/">Home</a><a href="/passport-photo-online/">Passport Photo Tool</a><a href="/privacy.html">Privacy</a></p>
+  <p>© 2025 WithSwag. All rights reserved.</p>
+  <p>
+    <a href="/">Home</a>
+    <a href="/guides/">Guides</a>
+    <a href="/file-converter/">Tools</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+  </p>
 </footer>
 </body>
 </html>
