@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Camera, Grid3x3, ArrowRight, Check, Wand2, Crop, FileText, Sun, Contrast as ContrastIcon, Palette, Globe, Shield, ChevronDown, ChevronRight, Lightbulb, Lock, Eye, Zap, Monitor, Printer, ExternalLink } from 'lucide-react';
+import { Camera, Grid3x3, ArrowRight, Check, Wand2, Crop, FileText, Sun, Contrast as ContrastIcon, Palette, Globe, Shield, ChevronDown, ChevronRight, Lightbulb, Lock, Eye, Zap, Monitor, Printer, ExternalLink, Scissors, Package } from 'lucide-react';
 import { removeBackground } from '@imgly/background-removal';
 import AppSwitcher from '../components/AppSwitcher';
 
@@ -226,7 +226,7 @@ export const LandingPage: React.FC = () => {
           className="block bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-2.5 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all no-underline"
         >
           <span className="inline-block text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 mb-1">Best Setup</span>
-          <img src="https://m.media-amazon.com/images/I/71n7US0Y1hL._AC_SL1500_.jpg" alt="Tripod + Ring Light" className="w-10 h-10 object-contain mx-auto rounded mb-0.5" loading="lazy" />
+          <div className="flex justify-center mb-0.5"><Camera className="h-6 w-6 text-indigo-500" /></div>
           <div className="text-[11px] font-bold text-gray-900 dark:text-slate-100 leading-tight mb-0.5">Tripod + Ring Light</div>
           <div className="text-[9px] text-gray-500 dark:text-slate-400 leading-snug mb-1.5">Perfect for passport photos at home. ~$25</div>
           <span className="inline-block text-[9px] font-semibold px-2.5 py-1 rounded-md text-white bg-[#FF9900]">Amazon →</span>
@@ -238,7 +238,7 @@ export const LandingPage: React.FC = () => {
           className="block bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-2.5 text-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all no-underline"
         >
           <span className="inline-block text-[8px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded bg-green-100 text-green-800 mb-1">⭐ Best Printer</span>
-          <img src="https://m.media-amazon.com/images/I/71yGiWMGQ0L._AC_SL1500_.jpg" alt="Canon SELPHY CP1500" className="w-10 h-10 object-contain mx-auto rounded mb-0.5" loading="lazy" />
+          <div className="flex justify-center mb-0.5"><Printer className="h-6 w-6 text-indigo-500" /></div>
           <div className="text-[11px] font-bold text-gray-900 dark:text-slate-100 leading-tight mb-0.5">Canon SELPHY CP1500</div>
           <div className="text-[9px] text-gray-500 dark:text-slate-400 leading-snug mb-1.5">Photo-lab quality. ~$130</div>
           <span className="inline-block text-[9px] font-semibold px-2.5 py-1 rounded-md text-white bg-[#FF9900]">Amazon →</span>
@@ -932,7 +932,7 @@ export const LandingPage: React.FC = () => {
                 desc: 'Compact dye-sublimation printer. True photo-lab quality with protective overcoat. Prints a 4×6 in ~47 seconds.',
                 price: '~$130',
                 perPhoto: '~$0.25/set',
-                img: 'https://m.media-amazon.com/images/I/71yGiWMGQ0L._AC_SL1500_.jpg',
+                Icon: Printer,
                 url: 'https://www.amazon.com/Canon-SELPHY-CP1500-Compact-Printer/dp/B0BF6T86WD?tag=withswag-20',
               },
               {
@@ -941,7 +941,7 @@ export const LandingPage: React.FC = () => {
                 desc: 'Adjustable phone tripod with built-in ring light. Even lighting, steady shot — perfect for passport photos at home.',
                 price: '~$25',
                 perPhoto: 'One-time purchase',
-                img: 'https://m.media-amazon.com/images/I/71n7US0Y1hL._AC_SL1500_.jpg',
+                Icon: Camera,
                 url: 'https://www.amazon.com/s?k=phone+tripod+ring+light+passport+photo&tag=withswag-20',
               },
               {
@@ -950,13 +950,13 @@ export const LandingPage: React.FC = () => {
                 desc: '200 sheets of glossy photo paper. Works with any inkjet printer. Glossy finish meets passport photo requirements.',
                 price: '~$18',
                 perPhoto: '$0.09/sheet',
-                img: 'https://m.media-amazon.com/images/I/81GXHXFRHEL._AC_SL1500_.jpg',
+                Icon: FileText,
                 url: 'https://www.amazon.com/CanonInk-Glossy-Photo-Sheets-1433C001/dp/B01M1P0WY8?tag=withswag-20',
               },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-6 hover:border-primary dark:hover:border-indigo-500 transition hover:shadow-lg">
                 <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full mb-3">{item.badge}</span>
-                <img src={item.img} alt={item.title} className="w-20 h-20 object-contain mx-auto rounded-lg mb-3" loading="lazy" />
+                <div className="flex justify-center mb-3"><item.Icon className="h-12 w-12 text-indigo-500" /></div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100 mb-2">{item.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-slate-400 mb-4">{item.desc}</p>
                 <div className="flex items-center justify-between mb-4">
@@ -982,27 +982,27 @@ export const LandingPage: React.FC = () => {
                 title: 'Epson EcoTank ET-2850',
                 desc: 'Best value inkjet. Refillable ink tanks = ultra-low running costs. Great for photos + documents.',
                 price: '~$200',
-                img: 'https://m.media-amazon.com/images/I/71jRgi7jGwL._AC_SL1500_.jpg',
+                Icon: Printer,
                 url: 'https://www.amazon.com/Epson-Wireless-Cartridge-Free-Supertank-Printing/dp/B096N828X5?tag=withswag-20',
               },
               {
                 title: 'Paper Cutter / Trimmer',
                 desc: 'Clean, straight cuts for your passport photos. Much better than scissors.',
                 price: '~$12',
-                img: 'https://m.media-amazon.com/images/I/61qSh0MfURL._AC_SL1500_.jpg',
+                Icon: Scissors,
                 url: 'https://www.amazon.com/s?k=paper+cutter+trimmer+photo&tag=withswag-20',
               },
               {
                 title: 'SELPHY Ink + Paper Kit',
                 desc: '108-sheet pack with ink cartridge for SELPHY CP1500. Everything you need in one box.',
                 price: '~$35',
-                img: 'https://m.media-amazon.com/images/I/71Nh0nOITwL._AC_SL1500_.jpg',
+                Icon: Package,
                 url: 'https://www.amazon.com/Canon-Color-Ink-Paper-Set/dp/B003Y5N0JO?tag=withswag-20',
               },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 p-5 hover:border-primary dark:hover:border-indigo-500 transition">
                 <div className="flex items-start gap-3 mb-2">
-                  <img src={item.img} alt={item.title} className="w-12 h-12 object-contain rounded flex-shrink-0" loading="lazy" />
+                  <div className="flex-shrink-0"><item.Icon className="h-6 w-6 text-indigo-500" /></div>
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900 dark:text-slate-100 mb-1">{item.title}</h3>
                     <p className="text-xs text-gray-600 dark:text-slate-400">{item.desc}</p>
